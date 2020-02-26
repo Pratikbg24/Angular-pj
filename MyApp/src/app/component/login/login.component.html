@@ -1,0 +1,53 @@
+<body class="bg">
+<div class="container">
+ 
+          <div class="d-flex justify-content-center">
+                  <div class="main">
+                  <div class="d-flex justify-content-center">
+                  <img src="assets\Login.png" alt="HTML5 Icon">
+            </div>
+          
+              <h2> Login</h2>
+              <form id="form_id" class=""  name="myform" [formGroup]="formGroup">
+                  <div class="form-group">
+                      <label for="exampleInputEmail1">User Name :</label>
+                      <input type="text" name="username" class="form-control" formControlName="email" id="username" aria-describedby="emailHelp" placeholder="Enter username">
+                      
+                    </div>
+                    <div class="validation-errors">
+                        <ng-container *ngFor="let validation of validation_messages.email">
+                          <div class="error-message"
+                            *ngIf="formGroup.get('email').hasError(validation.type) && (formGroup.get('email').dirty || formGroup.get('email').touched)">
+                            <span name="information-circle-outline"></span> {{ validation.message }}
+                          </div>
+                        </ng-container>
+                      </div>
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Password :</label>
+                 <div>
+                    <input type="password" name="password"  formControlName="password" class="form-control" id="password" aria-describedby="passwordHelp" placeholder="Enter password">
+                 </div>
+                     
+                     
+            </div>
+            <div class="validation-errors">
+                <ng-container *ngFor="let validation of validation_messages.password">
+                  <div class="error-message"
+                    *ngIf="formGroup.get('password').hasError(validation.type) && (formGroup.get('password').dirty || formGroup.get('password').touched)">
+                   <!-- <div class="error-message"
+                   *ngIf="formGroup.get('password').hasError(validation.type) && (formGroup.get('password').minlength || formGroup.get('password').maxlength)"> -->
+                   <span name="information-circle-outline"></span> {{ validation.message }}
+                  </div>
+                </ng-container>
+              </div>    
+                <div>
+                          <button class="btn btn-secondary" id="btn1" ><b>Login</b></button>
+                </div>
+                  
+                  <a class="btn btn-outline-danger" href="#" role="button">Forget Password</a>
+              </form>
+          </div>
+      </div>
+</div>
+  </body>
+  

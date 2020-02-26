@@ -1,0 +1,119 @@
+
+h2
+	{
+		width:auto;
+		background-color: #AED6F1;
+		padding: 20px 25px;
+		margin: -10px -40px;
+		text-align:center;
+		border-radius: 15px 15px 0 0;
+	}
+.bg{
+        background-image: url("https://cdn.pixabay.com/photo/2016/11/23/15/23/cosmos-1853491_960_720.jpg");
+        height: 100%;
+        /* Center and scale the image nicely */
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+	
+	div.main
+	{
+		background-color:#AED6F1;
+		width: 400px;
+		padding: 10px 50px 25px;
+		border: 2px  gray;
+		border-radius: 4px;
+		float:left;
+		margin-top:75px;
+		margin-bottom:75px;
+		margin-left: 75px;
+        margin-right: 75px;
+	}
+	input[type=text],input[type=password]
+	{
+		width: 100%;
+		height: 40px;
+		padding: 5px;
+		margin-bottom: 25px;
+		margin-top: 5px;
+		border: 2px solid #ccc;
+		color: #4f4f4f;
+		font-size: 16px;
+		border-radius: 5px;
+	}
+	img{
+	width:138px;height:138px;
+	background-color:#AED6F1;
+	}
+	label
+	{
+		color: #464646;
+		text-shadow: 0 1px 0 #fff;
+		font-size: 1em;
+		font-weight: bold;
+	}
+	b{
+		color:black;
+    }
+    a, a:hover{
+        color:#333
+      }
+button
+{
+     width: 100%;
+    font-size: 16px;
+	background: linear-gradient(#35C1EE 5%, #E9F3F6  100%);
+	border: 1px solid #e5a900;
+	color: #4E4D4B;
+	font-weight: bold;
+	cursor: pointer;
+	border-radius: 5px;
+    outline:none;
+   
+}
+	a{
+	
+		width: 100%;
+		margin-top: 20px;
+	}
+	#btn1
+	{
+		width: 100% ;
+		float:left;
+	}
+	.row
+	{
+		display: -ms-flexbox;
+		display: flex;
+		-ms-flex-wrap: wrap;
+		flex-wrap: wrap;
+		margin-right: -19px!important;
+		margin-left: -15px!important;
+	 }
+button:hover{
+background: linear-gradient(#F89E4F 100%,#E9F3F6  30%);
+}
+
+.btn btn-outline-secondary border-left-0
+{
+height:50%!important;
+}
+input[type=checkbox], input[type=radio] {
+    box-sizing: border-box!important;
+    padding: 20px!important;
+}
+input[type=checkbox], input[type=radio] {
+    box-sizing: border-box!important;
+    padding: 20%!important;
+}
+.form-check-input {
+    position: absolute!important;
+    margin-top: .5rem!important;
+    margin-left: -1.00rem!important;
+}
+.form-check {
+    position: relative;
+    display: block;
+    padding-left: 2.00rem!important;
+}
