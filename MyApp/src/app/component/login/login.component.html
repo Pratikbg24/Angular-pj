@@ -1,4 +1,5 @@
 <body class="bg">
+<<<<<<< HEAD
   <div class="container">
 
     <div class="d-flex justify-content-center">
@@ -28,6 +29,36 @@
             <div>
               <input type="password" name="password" formControlName="password" class="form-control" id="password"
                 aria-describedby="passwordHelp" placeholder="Enter password">
+=======
+<div class="container">
+ 
+          <div class="d-flex justify-content-center">
+                  <div class="main">
+                  <div class="d-flex justify-content-center">
+                  <img src="assets\Login.png" alt="HTML5 Icon">
+            </div>
+          
+              <h2> Login</h2>
+              <form id="form_id" class=""  name="myform" [formGroup]="formGroup">
+                  <div class="form-group">
+                      <label for="exampleInputEmail1">User Name :</label>
+                      <input type="text" name="username" class="form-control" formControlName="email" id="username" aria-describedby="emailHelp" placeholder="Enter username">
+                      
+                    </div>
+                    <div class="validation-errors">
+                        <ng-container *ngFor="let validation of validation_messages.email">
+                          <div class="error-message"
+                            *ngIf="formGroup.get('email').hasError(validation.type) && (formGroup.get('email').dirty || formGroup.get('email').touched)">
+                            <span name="information-circle-outline"></span> {{ validation.message }}
+                          </div>
+                        </ng-container>
+                      </div>
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Password :</label>
+                 <div>
+                    <input type="password" name="password"  formControlName="password" class="form-control" id="password" aria-describedby="passwordHelp" placeholder="Enter password">
+                 </div>     
+>>>>>>> 38036aff8c4e8bd30914a604a664f01059d1c00d
             </div>
 
 
@@ -38,12 +69,25 @@
                 *ngIf="formGroup.get('password').hasError(validation.type) && (formGroup.get('password').dirty || formGroup.get('password').touched)">
                 <!-- <div class="error-message"
                    *ngIf="formGroup.get('password').hasError(validation.type) && (formGroup.get('password').minlength || formGroup.get('password').maxlength)"> -->
+<<<<<<< HEAD
                 <span name="information-circle-outline"></span> {{ validation.message }}
               </div>
             </ng-container>
           </div>
           <div>
             <button class="btn btn-secondary" type="submit" id="btn1" [disabled]="!formGroup.valid"><b>Login</b></button>
+=======
+                   <span name="information-circle-outline"></span> {{ validation.message }}
+                  </div>
+                </ng-container>
+              </div>    
+                <div>
+                          <button class="btn btn-secondary" id="btn1" (click)="login()" ><b>Login</b></button>
+                </div>
+                  
+                  <a class="btn btn-outline-danger" href="#" role="button">Forget Password</a>
+              </form>
+>>>>>>> 38036aff8c4e8bd30914a604a664f01059d1c00d
           </div>
 
           <a class="btn btn-outline-danger" href="#" role="button">Forget Password</a>
