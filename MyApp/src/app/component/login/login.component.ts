@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
     ],
     'password':[
       { type: 'required', message: 'password is required.' },
-      {type:"minLength",message:"Minimum length should be 6"}
+      {type:"minlength",message:"Minimum length should be 6"}
     ]
   }
   constructor(private service:LoginService,private fb:FormBuilder) { }
@@ -44,6 +44,10 @@ export class LoginComponent implements OnInit {
     }
 
     )
+  }
+  onSubmit(){
+    console.log(this.formGroup.value)
+    console.log(this.formGroup)
   }
 
 }

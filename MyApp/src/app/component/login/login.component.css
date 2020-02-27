@@ -2,14 +2,14 @@
 h2
 	{
 		width:auto;
-		background-color: #AED6F1;
+		background-color:#ccccff;
 		padding: 20px 25px;
 		margin: -10px -40px;
 		text-align:center;
 		border-radius: 15px 15px 0 0;
 	}
 .bg{
-        background-image: url("https://cdn.pixabay.com/photo/2016/11/23/15/23/cosmos-1853491_960_720.jpg");
+    	/* background-image: url("https://cdn.pixabay.com/photo/2016/11/23/15/23/cosmos-1853491_960_720.jpg"); */
         height: 100%;
         /* Center and scale the image nicely */
         background-position: center;
@@ -19,7 +19,7 @@ h2
 	
 	div.main
 	{
-		background-color:#AED6F1;
+		background-color:#ccccff;
 		width: 400px;
 		padding: 10px 50px 25px;
 		border: 2px  gray;
@@ -44,12 +44,11 @@ h2
 	}
 	img{
 	width:138px;height:138px;
-	background-color:#AED6F1;
+	background-color:#ccccff;
 	}
 	label
 	{
-		color: #464646;
-		text-shadow: 0 1px 0 #fff;
+		color:black;
 		font-size: 1em;
 		font-weight: bold;
 	}
@@ -63,7 +62,7 @@ button
 {
      width: 100%;
     font-size: 16px;
-	background: linear-gradient(#35C1EE 5%, #E9F3F6  100%);
+	background: linear-gradient(#b3d9ff 5%, #E9F3F6  100%);
 	border: 1px solid #e5a900;
 	color: #4E4D4B;
 	font-weight: bold;
@@ -92,7 +91,7 @@ button
 		margin-left: -15px!important;
 	 }
 button:hover{
-background: linear-gradient(#F89E4F 100%,#E9F3F6  30%);
+background: linear-gradient(rgb(105, 126, 245) 100%,#E9F3F6  30%);
 }
 
 .btn btn-outline-secondary border-left-0
