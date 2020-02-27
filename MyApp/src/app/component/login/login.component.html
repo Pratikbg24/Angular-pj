@@ -26,9 +26,7 @@
                       <label for="exampleInputEmail1">Password :</label>
                  <div>
                     <input type="password" name="password"  formControlName="password" class="form-control" id="password" aria-describedby="passwordHelp" placeholder="Enter password">
-                 </div>
-                     
-                     
+                 </div>     
             </div>
             <div class="validation-errors">
                 <ng-container *ngFor="let validation of validation_messages.password">
@@ -41,7 +39,7 @@
                 </ng-container>
               </div>    
                 <div>
-                          <button class="btn btn-secondary" id="btn1" ><b>Login</b></button>
+                          <button class="btn btn-secondary" id="btn1" (click)="login()" ><b>Login</b></button>
                 </div>
                   
                   <a class="btn btn-outline-danger" href="#" role="button">Forget Password</a>
