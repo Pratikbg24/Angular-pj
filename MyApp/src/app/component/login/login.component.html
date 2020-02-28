@@ -43,7 +43,8 @@
             </ng-container>
           </div>
           <div>
-            <button class="btn btn-secondary" type="submit" id="btn1" [disabled]="!formGroup.valid"><b>Login</b></button>
+    
+            <button class="btn btn-secondary" type="submit" (click)="onSubmit()" id="btn1" [disabled]="!formGroup.valid"><b>Login</b></button>
           </div>
 
           <a class="btn btn-outline-danger" href="#" role="button">Forget Password</a>

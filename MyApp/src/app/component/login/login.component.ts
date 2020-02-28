@@ -18,8 +18,8 @@ export class LoginComponent implements OnInit {
       { type: 'pattern', message: 'Please enter a valid email.' }
     ],
     'password': [
-      { type: "minlength", message: "Minimum length should be 5." },
-      { type: "maxlength", message: "Maximum length should be less than 10." },
+      { type: 'required', message: 'password is required.' },
+      {type:"minlength",message:"Minimum length should be 6"}
     ]
   }
   constructor(private service: LoginService, private fb: FormBuilder) { }
@@ -33,6 +33,10 @@ export class LoginComponent implements OnInit {
 
 
   login() {
+   }
+  onSubmit(){
+    console.log(this.formGroup.value)
+    console.log(this.formGroup)
     console.log(this.formGroup)
     this.service.getData(this.formGroup.value.email, this.formGroup.value.password).subscribe((data: any) => {
       console.log(data)
@@ -41,10 +45,7 @@ export class LoginComponent implements OnInit {
       }
     }
     )
-  }
-  onSubmit(){
-    console.log(this.formGroup.value)
-    console.log(this.formGroup)
+  
   }
 
 }
