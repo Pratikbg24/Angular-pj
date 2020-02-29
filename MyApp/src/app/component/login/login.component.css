@@ -2,7 +2,7 @@
 h2
 	{
 		width:auto;
-		background-color:#ccccff;
+		background-color:whitesmoke;
 		padding: 20px 25px;
 		margin: -10px -40px;
 		text-align:center;
@@ -19,10 +19,10 @@ h2
 	
 	div.main
 	{
-		background-color:#ccccff;
+		background-color:whitesmoke;
 		width: 400px;
 		padding: 10px 50px 25px;
-		border: 2px  gray;
+		border: solid 1px black;
 		border-radius: 4px;
 		float:left;
 		margin-top:75px;
@@ -44,7 +44,7 @@ h2
 	}
 	img{
 	width:138px;height:138px;
-	background-color:#ccccff;
+	background-color:whitesmoke;
 	}
 	label
 	{
@@ -62,8 +62,8 @@ button
 {
      width: 100%;
     font-size: 16px;
-	background: linear-gradient(#b3d9ff 5%, #E9F3F6  100%);
-	border: 1px solid #e5a900;
+	/* background: linear-gradient(#b3d9ff 5%, #E9F3F6  100%);
+	border: 1px solid #e5a900; */
 	color: #4E4D4B;
 	font-weight: bold;
 	cursor: pointer;
@@ -72,15 +72,17 @@ button
    
 }
 	a{
-	
+		color: blue;
 		width: 100%;
 		margin-top: 20px;
+		
 	}
 	#btn1
 	{
 		width: 100% ;
 		float:left;
-	}
+		background-color:orange;
+	border: 1px solid black;	}
 	.row
 	{
 		display: -ms-flexbox;
@@ -90,14 +92,12 @@ button
 		margin-right: -19px!important;
 		margin-left: -15px!important;
 	 }
-button:hover{
-background: linear-gradient(rgb(105, 126, 245) 100%,#E9F3F6  30%);
-}
+/* button{
+background-color:chocolate;
+} */
 
-.btn btn-outline-secondary border-left-0
-{
-height:50%!important;
-}
+
+
 input[type=checkbox], input[type=radio] {
     box-sizing: border-box!important;
     padding: 20px!important;
@@ -116,3 +116,11 @@ input[type=checkbox], input[type=radio] {
     display: block;
     padding-left: 2.00rem!important;
 }
+
+.error-message{
+    color: red
+}
+input.ng-touched.ng-invalid {
+    border: 1px solid red;
+    
+  }

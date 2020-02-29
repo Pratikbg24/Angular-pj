@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../../service/login.service';
-
+import { Router, ActivatedRoute } from '@angular/router';
 import { FormControl, FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms'
-
 import { from } from 'rxjs';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -11,7 +11,10 @@ import { from } from 'rxjs';
 })
 export class LoginComponent implements OnInit {
   formGroup: FormGroup;
-
+  returnUrls: string;
+  loading = false;
+  submitted = false;
+  alert = false;
   validation_messages = {
     'email': [
       { type: 'required', message: 'Email is required.' },
@@ -19,33 +22,62 @@ export class LoginComponent implements OnInit {
     ],
     'password': [
       { type: 'required', message: 'password is required.' },
-      {type:"minlength",message:"Minimum length should be 6"}
+      { type: "minlength", message: "Minimum length should be 6" },
+      { type: "maxlength", message: "Maximum lenght should be only 20 character" }
     ]
   }
-  constructor(private service: LoginService, private fb: FormBuilder) { }
+  constructor(
+    private service: LoginService,
+    private fb: FormBuilder,
+    private route: ActivatedRoute,
+    private router: Router, ) {
+    this.router.navigate(['/']);
+  }
 
   ngOnInit() {
+    this.returnUrls = this.route.snapshot.queryParams['returnUrls'] || '/';
+
     this.formGroup = this.fb.group({
-      email: ['', Validators.compose([Validators.required, Validators.pattern("[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?")])],
-      password: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(10)]]
+      email: ['', Validators.compose([
+        Validators.required,
+        Validators.pattern("[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?")])],
+
+      password: ['', Validators.compose([
+        Validators.required,
+        Validators.minLength(5),
+        Validators.maxLength(20)])]
     })
   }
 
 
   login() {
-   }
-  onSubmit(){
-    console.log(this.formGroup.value)
-    console.log(this.formGroup)
-    console.log(this.formGroup)
-    this.service.getData(this.formGroup.value.email, this.formGroup.value.password).subscribe((data: any) => {
-      console.log(data)
+  }
+  onSubmit() {
+    this.loading = true;
+    this.service.getData(this.formGroup.value.email, this.formGroup.value.password).subscribe((data:any) => {
+      // console.log(data)
       if (data.status === "success") {
-        alert("success")
+        this.loading = true;
+        //alert("success")
+        this.router.navigate([this.returnUrls + "home1"]);
       }
+      else {
+        if (data.status === "error") {
+          this.loading = true;
+          this.alert = true;
+        }
+        this.loading = false;
+        //this.formGroup.value.password.reset();
+          this.formGroup.reset();
+
+        
+      }
+
     }
-    )
-  
+
+    );
+    //   this.submitted = true;  
+
   }
 
 }
