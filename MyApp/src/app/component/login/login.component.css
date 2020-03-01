@@ -35,7 +35,7 @@ h2
 		width: 100%;
 		height: 40px;
 		padding: 5px;
-		margin-bottom: 25px;
+		margin-bottom: 0px;
 		margin-top: 5px;
 		border: 2px solid #ccc;
 		color: #4f4f4f;
@@ -90,9 +90,9 @@ button
 		margin-right: -19px!important;
 		margin-left: -15px!important;
 	 }
-button:hover{
+/* button:hover{
 background: linear-gradient(rgb(105, 126, 245) 100%,#E9F3F6  30%);
-}
+} */
 
 .btn btn-outline-secondary border-left-0
 {
@@ -115,4 +115,13 @@ input[type=checkbox], input[type=radio] {
     position: relative;
     display: block;
     padding-left: 2.00rem!important;
+}
+.error-message{
+margin-bottom: 10px !important;
+
+}
+p{
+	text-align: center;
+	color: blue;
+	margin-top: 20% !important;
 }
