@@ -8,16 +8,16 @@
         </div>
 
         <h2> Login</h2>
-        <form id="form_id" class="" name="myform" [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+        <form id="form_id" class="" name="myform" [formGroup]="formGroup">
           <div class="form-group">
             <label for="exampleInputEmail1">User Name :</label>
             <input type="text" name="username" class="form-control" formControlName="email" id="username"
-              aria-describedby="emailHelp" placeholder="Enter username">
+              aria-describedby="emailHelp" placeholder="Enter username" >
 
           </div>
           <div class="validation-errors">
             <ng-container *ngFor="let validation of validation_messages.email">
-              <div class="error-message"
+              <div class="error-message text-danger"
                 *ngIf="formGroup.get('email').hasError(validation.type) && (formGroup.get('email').dirty || formGroup.get('email').touched)">
                 <span name="information-circle-outline"></span> {{ validation.message }}
               </div>
@@ -34,7 +34,7 @@
           </div>
           <div class="validation-errors">
             <ng-container *ngFor="let validation of validation_messages.password">
-              <div class="error-message"
+              <div class="error-message text-danger"
                 *ngIf="formGroup.get('password').hasError(validation.type) && (formGroup.get('password').dirty || formGroup.get('password').touched)">
                 <!-- <div class="error-message"
                    *ngIf="formGroup.get('password').hasError(validation.type) && (formGroup.get('password').minlength || formGroup.get('password').maxlength)"> -->
@@ -42,12 +42,21 @@
               </div>
             </ng-container>
           </div>
-          <div>
+          <div></div>
     
-            <button class="btn btn-secondary" type="submit" (click)="onSubmit()" id="btn1" [disabled]="!formGroup.valid"><b>Login</b></button>
-          </div>
+            <div *ngIf="alert" class="alert alert-warning alert-dismissible fade show">
+              <strong>Warning!</strong> Please enter a valid value in all the required fields before proceeding.
+            </div>
+  
+            <div>
+              <button [disabled]="loading" (click)="clickMe()" class="btn btn-secondary" type="submit" id="btn1" [disabled]="!formGroup.valid">
+                <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                <b>Login</b>
+              </button>
+            </div>
 
-          <a class="btn btn-outline-danger" href="#" role="button">Forget Password</a>
+          <a id="link" href="#"><p>Forget Password</p></a>
+
         </form>
       </div>
     </div>
