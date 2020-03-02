@@ -21,6 +21,7 @@ export class LoginComponent implements OnInit {
       { type: 'pattern', message: 'Please enter a valid email.' }
     ],
     'password': [
+
       { type: 'required', message: 'password is required.' },
       { type: "minlength", message: "Minimum length should be 6" },
       { type: "maxlength", message: "Maximum lenght should be only 20 character" }
