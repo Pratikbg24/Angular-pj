@@ -18,12 +18,12 @@ export class LoginComponent implements OnInit {
   alert = false;
   validation_messages = {
     'email': [
-      { type: 'required', message: '**Email is required.' },
-      { type: 'pattern', message: '**Please enter a valid email.' }
+      { type: 'required', message: 'Email is required.' },
+      { type: 'pattern', message: 'Please enter a valid email.' }
     ],
     'password': [
-      { type: 'required', message: '**Password is required.' },
-      {type:"minlength",message:"**Minimum length should be 5"}
+      { type: 'required', message: 'Password is required.' },
+      {type:"minlength",message:"Minimum length should be 5"}
     ]
   }
   constructor(private service: LoginService, private fb: FormBuilder,
