@@ -4,4 +4,19 @@
   padding: 20px;
   margin-top: 70px;
   margin-left: 50px;
+  display: inline-block;
+}
+
+#piechart12{
+  height: auto;
+  width: 30%;
+  padding: 20px;
+  margin-left: 50px;
+  margin-top: 70px;
+  margin-bottom:70px;
+  display: inline-block;
+
+}
+#p1{
+  text-align: center;
 }
