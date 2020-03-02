@@ -6,7 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './component/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import{Chart} from 'chart.js';
 import { HttpClient, HttpClientModule } from "@angular/common/http";
 import { Home1Component } from './component/home1/home1.component';
 
@@ -20,8 +20,8 @@ import { Home1Component } from './component/home1/home1.component';
   ],
   imports: [
     FormsModule,
-    ReactiveFormsModule,
-  
+      ReactiveFormsModule,
+
     BrowserModule,
     AppRoutingModule,
     HttpClientModule

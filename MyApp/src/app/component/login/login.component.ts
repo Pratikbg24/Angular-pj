@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../../service/login.service';
-import { Router, ActivatedRoute } from '@angular/router';
-import { FormControl, FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms'
+import{Router,ActivatedRoute} from '@angular/router';
+import { FormControl, FormGroup, FormBuilder, Validators} from '@angular/forms'
 import { from } from 'rxjs';
 
 @Component({
@@ -11,14 +11,14 @@ import { from } from 'rxjs';
 })
 export class LoginComponent implements OnInit {
   formGroup: FormGroup;
-  returnUrls: string;
+  returnUrl: string;
   loading = false;
   submitted = false;
   alert = false;
   validation_messages = {
     'email': [
-      { type: 'required', message: 'Email is required.' },
-      { type: 'pattern', message: 'Please enter a valid email.' }
+      { type: 'required', message: '**Email is required.' },
+      { type: 'pattern', message: '**Please enter a valid email.' }
     ],
     'password': [
       { type: 'required', message: 'password is required.' },
@@ -67,7 +67,6 @@ export class LoginComponent implements OnInit {
           this.alert = true;
         }
         this.loading = false;
-        //this.formGroup.value.password.reset();
           this.formGroup.reset();
 
         
@@ -76,8 +75,6 @@ export class LoginComponent implements OnInit {
     }
 
     );
-    //   this.submitted = true;  
-
   }
 
 }

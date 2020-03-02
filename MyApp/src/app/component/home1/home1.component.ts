@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Chart} from 'chart.js';
+
+import { Chart } from 'chart.js'; 
+import { HttpClient } from '@angular/common/http';  
+import { Data } from '../../data';  
 
 @Component({
   selector: 'app-home1',
