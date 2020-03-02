@@ -11,7 +11,7 @@ import { from } from 'rxjs';
 })
 export class LoginComponent implements OnInit {
   formGroup: FormGroup;
-  returnUrl: string;
+  returnUrls: string;
   loading = false;
   submitted = false;
   alert = false;
