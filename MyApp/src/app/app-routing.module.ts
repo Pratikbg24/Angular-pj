@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import{Home1Component} from '../app/component/home1/home1.component';
-import{LoginComponent} from '../app/component/login/login.component'
-import { from } from 'rxjs';
+import { Home1Component } from './component/home1/home1.component';
+import{ LoginComponent } from './component/login/login.component';
+
+
+
 const routes: Routes = [
   {
     path:'home1',
@@ -12,6 +14,7 @@ const routes: Routes = [
     path:'',
     component:LoginComponent
   }
+
 ];
 
 @NgModule({

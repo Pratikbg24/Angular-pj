@@ -35,7 +35,7 @@ h2
 		width: 100%;
 		height: 40px;
 		padding: 5px;
-		margin-bottom: 0px;
+		margin-bottom: 25px;
 		margin-top: 5px;
 		border: 2px solid #ccc;
 		color: #4f4f4f;
@@ -92,6 +92,10 @@ button
 		margin-right: -19px!important;
 		margin-left: -15px!important;
 	 }
+/* button{
+background-color:chocolate;
+} */
+
 
 
 input[type=checkbox], input[type=radio] {

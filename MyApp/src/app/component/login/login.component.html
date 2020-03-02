@@ -8,11 +8,11 @@
         </div>
 
         <h2> Login</h2>
-        <form id="form_id" class="" name="myform" [formGroup]="formGroup">
+        <form id="form_id" class="" name="myform" [formGroup]="formGroup" (ngSubmit)="onSubmit()">
           <div class="form-group">
             <label for="exampleInputEmail1">User Name :</label>
             <input type="text" name="username" class="form-control" formControlName="email" id="username"
-              aria-describedby="emailHelp" placeholder="Enter username" >
+              aria-describedby="emailHelp" placeholder="Enter username">
 
           </div>
           <div class="validation-errors">
@@ -34,7 +34,6 @@
           </div>
           <div class="validation-errors">
             <ng-container *ngFor="let validation of validation_messages.password">
-
               <p class="error-message text-danger"
                 *ngIf="formGroup.get('password').hasError(validation.type) && (formGroup.get('password').dirty || formGroup.get('password').touched)">
                 <!-- <div class="error-message"
