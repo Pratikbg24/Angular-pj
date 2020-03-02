@@ -34,29 +34,29 @@
           </div>
           <div class="validation-errors">
             <ng-container *ngFor="let validation of validation_messages.password">
-              <div class="error-message text-danger"
+
+              <p class="error-message text-danger"
                 *ngIf="formGroup.get('password').hasError(validation.type) && (formGroup.get('password').dirty || formGroup.get('password').touched)">
                 <!-- <div class="error-message"
                    *ngIf="formGroup.get('password').hasError(validation.type) && (formGroup.get('password').minlength || formGroup.get('password').maxlength)"> -->
+
                 <span name="information-circle-outline"></span> {{ validation.message }}
-              </div>
+              </p>
             </ng-container>
           </div>
-          <div></div>
-    
-            <div *ngIf="alert" class="alert alert-warning alert-dismissible fade show">
-              <strong>Warning!</strong> Please enter a valid value in all the required fields before proceeding.
-            </div>
-  
-            <div>
-              <button [disabled]="loading" (click)="clickMe()" class="btn btn-secondary" type="submit" id="btn1" [disabled]="!formGroup.valid">
-                <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
-                <b>Login</b>
-              </button>
-            </div>
 
-          <a id="link" href="#"><p>Forget Password</p></a>
+          <div *ngIf="alert" class="alert alert-warning alert-dismissible fade show">
+            <strong>Warning!</strong> Please enter a valid value in all the required fields before proceeding.
+          </div>
 
+          <div>
+            <button [disabled]="loading" class="btn btn-primary" type="submit" id="btn1" [disabled]="!formGroup.valid">
+              <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+              <b>Login</b>
+            </button>
+          </div>
+
+          <a href="#">Forget Password?</a>
         </form>
       </div>
     </div>

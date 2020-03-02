@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../../service/login.service';
 import{Router,ActivatedRoute} from '@angular/router';
 import { FormControl, FormGroup, FormBuilder, Validators} from '@angular/forms'
-
 import { from } from 'rxjs';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -12,7 +12,6 @@ import { from } from 'rxjs';
 export class LoginComponent implements OnInit {
   formGroup: FormGroup;
   returnUrl: string;
-  //returnUrls: string;
   loading = false;
   submitted = false;
   alert = false;
@@ -22,31 +21,46 @@ export class LoginComponent implements OnInit {
       { type: 'pattern', message: '**Please enter a valid email.' }
     ],
     'password': [
-      { type: 'required', message: '**Password is required.' },
-      {type:"minlength",message:"**Minimum length should be 5"}
+      { type: 'required', message: 'password is required.' },
+      { type: "minlength", message: "Minimum length should be 6" },
+      { type: "maxlength", message: "Maximum lenght should be only 20 character" }
     ]
   }
-  constructor(private service: LoginService, private fb: FormBuilder,
-              private route:ActivatedRoute,
-              private router:Router,) {
-                this.router.navigate(['/']);
-               }
+  constructor(
+    private service: LoginService,
+    private fb: FormBuilder,
+    private route: ActivatedRoute,
+    private router: Router, ) {
+    this.router.navigate(['/']);
+  }
 
   ngOnInit() {
+    this.returnUrls = this.route.snapshot.queryParams['returnUrls'] || '/';
 
-      this.returnUrl =this.route.snapshot.queryParams['returnUrl']||'/'
     this.formGroup = this.fb.group({
-      email: ['', Validators.compose([Validators.required, Validators.pattern("[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?")])],
-      password: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(10)]]
+      email: ['', Validators.compose([
+        Validators.required,
+        Validators.pattern("[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?")])],
+
+      password: ['', Validators.compose([
+        Validators.required,
+        Validators.minLength(5),
+        Validators.maxLength(20)])]
     })
   }
 
- 
-   clickMe() {
-    this.loading = true; this.service.getData(this.formGroup.value.email, this.formGroup.value.password).subscribe((data: any) => {
+
+  login() {
+  }
+  onSubmit() {
+    this.loading = true;
+    this.service.getData(this.formGroup.value.email, this.formGroup.value.password).subscribe((data:any) => {
+      // console.log(data)
       if (data.status === "success") {
         this.loading = true;
-        this.router.navigate([this.returnUrl+"home1"]);}
+        //alert("success")
+        this.router.navigate([this.returnUrls + "home1"]);
+      }
       else {
         if (data.status === "error") {
           this.loading = true;
@@ -61,7 +75,6 @@ export class LoginComponent implements OnInit {
     }
 
     );
-   
   }
 
 }
