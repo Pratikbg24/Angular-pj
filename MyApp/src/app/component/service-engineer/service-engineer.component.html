@@ -1,0 +1,126 @@
+<body class="bg">
+    <div class="container">
+  
+      <div class="d-flex justify-content-center">
+        <div class="main">
+  
+        <h2> Create Service Engineer</h2>
+          <form id="form_id" class="" name="myform" [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+           
+           
+            <div class="form-group">
+                <label for="exampleInputEmail1">Name :</label>
+                <div>
+                  <input type="text" name="name" formControlName="name" class="form-control" id="name"
+                     placeholder="Enter Name">
+                </div>
+    
+    
+              </div>
+              <div class="validation-errors">
+                <ng-container *ngFor="let validation of validation_messages.password">
+                  <p class="error-message text-danger"
+                    *ngIf="formGroup.get('password').hasError(validation.type) && (formGroup.get('password').dirty || formGroup.get('password').touched)">
+                    <!-- <div class="error-message"
+                       *ngIf="formGroup.get('password').hasError(validation.type) && (formGroup.get('password').minlength || formGroup.get('password').maxlength)"> -->
+    
+                    <span name="information-circle-outline"></span> {{ validation.message }}
+                  </p>
+                </ng-container>
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Mobile Number :</label>
+                <div>
+                  <input type="text" name="mobno" formControlName="mobno" class="form-control" id="mobno"
+                     placeholder="Enter Mobile Number">
+                </div>
+                <div class="validation-errors">
+                    <ng-container *ngFor="let validation of validation_messages.password">
+                      <p class="error-message text-danger"
+                        *ngIf="formGroup.get('password').hasError(validation.type) && (formGroup.get('password').dirty || formGroup.get('password').touched)">
+                        <span name="information-circle-outline"></span> {{ validation.message }}
+                      </p>
+                    </ng-container>
+                  </div>
+               
+                <div>
+                    <input type="text" name="mobno1" formControlName="mobno1" class="form-control" id="mobno1"
+                       placeholder="Enter Alternet Mobile Number">
+                  </div>
+          
+    
+              </div>
+              
+           
+            <div class="form-group">
+              <label for="exampleInputEmail1">Email :</label>
+              <input type="text" name="username" class="form-control" formControlName="email" id="username"
+                aria-describedby="emailHelp" placeholder="Enter Username">
+  
+            </div>
+            <div class="validation-errors">
+              <ng-container *ngFor="let validation of validation_messages.email">
+                <div class="error-message text-danger"
+                  *ngIf="formGroup.get('email').hasError(validation.type) && (formGroup.get('email').dirty || formGroup.get('email').touched)">
+                  <span name="information-circle-outline"></span> {{ validation.message }}
+                </div>
+              </ng-container>
+            </div>
+          
+            <div class="form-group">
+                <label for="exampleInputEmail1">Address:</label>
+                <div>
+                  <input type="text" name="addr" formControlName="addr" class="form-control" id="addr"
+                     placeholder="Enter Address">
+                </div>
+    
+    
+              </div>
+              <div class="validation-errors">
+                <ng-container *ngFor="let validation of validation_messages.password">
+                  <p class="error-message text-danger"
+                    *ngIf="formGroup.get('password').hasError(validation.type) && (formGroup.get('password').dirty || formGroup.get('password').touched)">
+                    <span name="information-circle-outline"></span> {{ validation.message }}
+                  </p>
+                </ng-container>
+              </div>
+          
+          
+            <div class="form-group">
+              <label for="exampleInputEmail1">Password :</label>
+              <div>
+                <input type="password" name="password" formControlName="password" class="form-control" id="password"
+                  aria-describedby="passwordHelp" placeholder="Enter Password">
+              </div>
+  
+  
+            </div>
+            <div class="validation-errors">
+              <ng-container *ngFor="let validation of validation_messages.password">
+                <p class="error-message text-danger"
+                  *ngIf="formGroup.get('password').hasError(validation.type) && (formGroup.get('password').dirty || formGroup.get('password').touched)">
+                  <!-- <div class="error-message"
+                     *ngIf="formGroup.get('password').hasError(validation.type) && (formGroup.get('password').minlength || formGroup.get('password').maxlength)"> -->
+  
+                  <span name="information-circle-outline"></span> {{ validation.message }}
+                </p>
+              </ng-container>
+            </div>
+  
+            <div *ngIf="alert" class="alert alert-warning alert-dismissible fade show">
+              <strong>Warning!</strong> Please enter a valid value in all the required fields before proceeding.
+            </div>
+  
+            <div>
+              <button [disabled]="loading" class="btn btn-primary" type="submit" id="btn1" [disabled]="!formGroup.valid">
+                <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                <b>Login</b>
+              </button>
+            </div>
+  
+            <a href="#">Forget Password?</a>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
