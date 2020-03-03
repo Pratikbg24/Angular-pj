@@ -50,8 +50,6 @@ export class LoginComponent implements OnInit {
   }
 
 
-  login() {
-  }
   onSubmit() {
     this.loading = true;
     this.service.getData(this.formGroup.value.email, this.formGroup.value.password).subscribe((data:any) => {
