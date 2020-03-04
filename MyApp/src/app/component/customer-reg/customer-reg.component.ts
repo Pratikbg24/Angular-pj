@@ -14,6 +14,8 @@ export class CustomerRegComponent implements OnInit {
   submitted = false
   alert=false
   Machine: any = ['CNC', 'CUTTER', 'SIVING', 'EMBRADORY']
+  dateValid = new Date().toISOString().slice(0,10);
+
 
   validation_messages = {
 
@@ -120,13 +122,10 @@ export class CustomerRegComponent implements OnInit {
 
     const { value: password } = formGroup.get('password');
     const { value: confirmPassword } = formGroup.get('confirmPassword');
-    // return password === confirmPassword ? null : { passwordNotMatch: true };   
-    //  return true;
-      if(!(password === confirmPassword)){
+      if( password.length > 1 && password === confirmPassword){
           this.alert=true
-          return true;
       }
-       
+      
   }
   changeMachine(e) {
     console.log(e.value)
