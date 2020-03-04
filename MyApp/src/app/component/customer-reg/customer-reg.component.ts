@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import  { FormGroup, FormArray, Validators, FormBuilder}from '@angular/forms';
+import { FormGroup, FormArray, Validators, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-customer-reg',
@@ -8,80 +8,99 @@ import  { FormGroup, FormArray, Validators, FormBuilder}from '@angular/forms';
 })
 export class CustomerRegComponent implements OnInit {
 
-
+ 
   arr: FormArray
   formGroup: FormGroup
-  submitted=false
-
+  submitted = false
+  alert=false
   Machine: any = ['CNC', 'CUTTER', 'SIVING', 'EMBRADORY']
 
   validation_messages = {
 
     'name': [
-      { type: 'required', message: 'Name is Required' },
-      { type: 'minlength', message: 'Name Must be 6 character' }
+      { type: 'required', message: '*Name is required' },
+      { type: 'minlength', message: '*Name must be 3 character' }
     ],
-    'Mobilenumber':[
-      {type:'required',message:'Mobile Number is Required'},
-      {type:'maxlength',message:'Mobile Number maximum length should be only 10 number'}
-    ],
-    'Alternatemobile':[
-      {type:'maxlength',message:'Mobile Number maximum length should be only 10 number'}
+    'Mobilenumber': [
+      { type: 'required', message: '*Mobile Number is Required' },
+      { type: 'maxlength', message: '*Mobile number maximum length should be only 10 number' },
+      { type: 'pattern' , message:'*Enter valid mobile number'},
+      { type: 'minlength', message: '*Mobile number minumum lenght 10 number' }
       
     ],
-    'email': [
-      { type: 'required', message: 'Email is required' },
-      { type: 'pattern', message: 'Enter Valid Email' },
-      { type: 'minlength', message: ' minimum length 4 Character.' },
+    'Alternatemobile': [
+      { type: 'maxlength', message: '*Maximum length 10 number' },
+      { type: 'pattern' , message:'*Enter valid mobile number'},
+      { type: 'minlength', message: '*Minumum lenght 10 number' }
+
     ],
+    'email': [
+      { type: 'required', message: '*Email is required' },
+      { type: 'pattern', message: '*Enter valid email' }
+      ],
 
     'password': [
-      { type: 'required', message: 'Password is required' },
-      { type: 'pattern', message: ' password Must Contain Minimum 6 character and maximum 30 characters, at least one uppercase letter, one lowercase letter, one number and one special character:' },
-      { type: 'minlength', message: 'password minumum length 6 Character.' },
-      { type: 'maxlength', message: 'password maximum length 30 Character.' }
+      { type: 'required', message: '*Password is required' },
+      { type: 'minlength', message: '*Password minumum length 6 Character.' }
+      ],
+    'Address': [
+      { type: 'required', message: '*Address is required' },
     ],
-    'Address':[
-      { type: 'required', message: 'Address is Required' },      
+    'Machine_purchase': [
+      { type: 'required', message: '*Please select any one machine' },
     ],
-    'Machine_purchase':[
-      { type: 'required', message: ' please Select Any one Machine' },      
+    'Datepurchased': [
+      {
+        type: 'required', message: '*Please select date'
+      }
     ],
-
     'confirmPassword': [
-      { type: 'required', message: 'Password Required' },
-      { type: 'minlength', message: 'password minumum length 6 Character.' },
-      { type: 'maxlength', message: 'password maximum length 30 Character.' }
-    ]
+      { type: 'required', message: '*Password required' },
+      { type: 'minlength', message: '*Password minumum length 6 character.' }
+      ]
   }
 
   constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
-    this.formGroup = this.fb.group({
+        this.formGroup = this.fb.group({
       name: ['', Validators.compose([
         Validators.required,
-        Validators.minLength(6)
+        Validators.minLength(3)
       ])],
 
-      Mobilenumber:['',Validators.compose([Validators.required,Validators.maxLength(10)])],
-      Alternatemobile:['',Validators.compose([Validators.maxLength(10)])],
+      Mobilenumber: ['', Validators.compose([
+        Validators.required, 
+        Validators.maxLength(10),
+        Validators.pattern('^[0-9]{10}$'),
+        Validators.minLength(10)
+      ])],
+      Alternatemobile: ['', Validators.compose([
+        Validators.maxLength(10),
+        Validators.pattern('^[0-9]{10}$'),
+        Validators.minLength(10)
+      ])],
 
       email: ['', Validators.compose([
         Validators.required,
-        Validators.pattern("[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?"),
-        Validators.minLength(4)
+        Validators.pattern("[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?")
       ])],
-      Address:['',Validators.compose([Validators.required])],
 
-      Machine_purchase: ['',Validators.compose([Validators.required])],
+      Address: ['', Validators.compose([
+        Validators.required
+      ])],
+
+      Machine_purchase: ['', Validators.compose([
+        Validators.required
+      ])],
+      Datepurchased: ['', Validators.compose([
+        Validators.required
+      ])],
 
       password: ['', Validators.compose([
         Validators.required,
-        Validators.pattern("^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,30}$"),
         Validators.minLength(6),
-        Validators.maxLength(30)
-      ])],
+              ])],
 
 
       confirmPassword: ['', Validators.compose([
@@ -101,7 +120,13 @@ export class CustomerRegComponent implements OnInit {
 
     const { value: password } = formGroup.get('password');
     const { value: confirmPassword } = formGroup.get('confirmPassword');
-    return password === confirmPassword ? null : { passwordNotMatch: true };
+    // return password === confirmPassword ? null : { passwordNotMatch: true };   
+    //  return true;
+      if(!(password === confirmPassword)){
+          this.alert=true
+          return true;
+      }
+       
   }
   changeMachine(e) {
     console.log(e.value)
@@ -116,16 +141,16 @@ export class CustomerRegComponent implements OnInit {
 
 
 
-    get f(){
-      return this.formGroup.controls;
-    }
+  get f() {
+    return this.formGroup.controls;
+  }
 
-    onSubmit() {
+  onSubmit() {
     console.log(this.formGroup.value)
     console.log(this.formGroup)
-     
-    this.submitted=true;
-    if(this.formGroup.invalid){
+
+    this.submitted = true;
+    if (this.formGroup.invalid) {
       return;
     }
   }

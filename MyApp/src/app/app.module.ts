@@ -10,6 +10,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from "@angular/common/http";
 import { Home1Component } from './component/home1/home1.component';
 import { CustomerRegComponent } from './component/customer-reg/customer-reg.component';
+// import {MatDatepickerModule} from '@angular/material';
 // import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 // import { NgxSpinnerModule } from "ngx-spinner";
   

@@ -26,6 +26,7 @@
                             <label>Mobile Number<p class="p12">*</p></label>
                             <input type="text" class="form-control" formControlName="Mobilenumber"
                                 placeholder="Enter Mobile Number"
+                                
                                 [ngClass]="{ 'is-invalid': submitted && f.Mobilenumber.errors }">
                         </div>
                         <div class="validation-errors">
@@ -108,14 +109,17 @@
 
                         <div class="form-group">
                             <label>Date Of Purchased<p class="p12">*</p></label>
-                            <input type="text" class="form-control" formControlName="Date_purchased"
-                                placeholder="select Machine"
-                                [ngClass]="{ 'is-invalid': submitted && f.Date_purchased.errors }">
-                        </div>
+                            <input type="date" class="form-control" formControlName="Datepurchased"
+                                placeholder="Choose a date"
+                                minlength="10"
+                                maxlength="10"
+                                [ngClass]="{ 'is-invalid': submitted && f.Datepurchased.errors }">
+                                
+                            </div>
                         <div class="validation-errors">
-                            <ng-container *ngFor="let validation of validation_messages.Date_purchased">
+                            <ng-container *ngFor="let validation of validation_messages.Datepurchased">
                                 <div class="error-message text-danger"
-                                    *ngIf="formGroup.get('Date_purchased').hasError(validation.type) && (formGroup.get('Date_purchased').dirty || formGroup.get('Date_purchased').touched)">
+                                    *ngIf="formGroup.get('Datepurchased').hasError(validation.type) && (formGroup.get('Datepurchased').dirty || formGroup.get('Datepurchased').touched)">
                                     <span name="information-circle-outline"></span> {{ validation.message }}
                                 </div>
                             </ng-container>
@@ -151,17 +155,16 @@
                             <ng-container *ngFor="let validation of validation_messages.confirmPassword">
                                 <div class="error-message text-danger"
                                     *ngIf="formGroup.get('confirmPassword').hasError(validation.type) && (formGroup.get('confirmPassword').dirty || formGroup.get('confirmPassword').touched)">
-
+                                    <div *ngIf="alert" class="alert alert-warning"><strong>Warning!</strong>Passwords must match</div>    
+                                    <!-- <div class="error-msg" *ngIf="f.errors?.passwordNotMatch && (f.controls['confirmPassword'].required || f.controls['confirmPassword'].touched)">
+                                        Passwords don't match </div>                                     -->
                                     <span name="information-circle-outline"></span> {{ validation.message }}
                                 </div>
                             </ng-container>
                         </div>
-                        <pre>
-                            Form Error - {{ formGroup.errors | json }}
-                          </pre>
-
+                    
                         <div class="form-group">
-                            <button type="submit" class="btn btn-primary">
+                            <button type="submit" class="btn btn-primary" [disabled]="!formGroup.valid">
                                 Register
                             </button>
                             <button type="reset" class="btn btn-secondary " style="float:right;margin-top: 5px;">
