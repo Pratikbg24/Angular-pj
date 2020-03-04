@@ -100,7 +100,7 @@ margin-top: 8px;
   flex-direction:initial !important;
   
   display: flex !important;
-
+  float: left;
   
   max-width: 50% !important ;
  
