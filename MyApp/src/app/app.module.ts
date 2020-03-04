@@ -19,7 +19,9 @@ import { Home1Component } from './component/home1/home1.component';
 
     LoginComponent,
 
-    Home1Component
+    Home1Component,
+
+
   ],
   imports: [
     FormsModule,

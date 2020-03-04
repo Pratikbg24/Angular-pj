@@ -21,7 +21,6 @@ export class LoginComponent implements OnInit {
       { type: 'pattern', message: 'Please enter a valid email.' }
     ],
     'password': [
-
       { type: 'required', message: 'password is required.' },
       { type: "minlength", message: "Minimum length should be 6" },
       { type: "maxlength", message: "Maximum lenght should be only 20 character" }
@@ -51,8 +50,6 @@ export class LoginComponent implements OnInit {
   }
 
 
-  login() {
-  }
   onSubmit() {
     this.loading = true;
     this.service.getData(this.formGroup.value.email, this.formGroup.value.password).subscribe((data:any) => {
