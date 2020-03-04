@@ -95,16 +95,7 @@ position: relative !important;
 padding-left: 0px !important;
 margin-top: 8px;
 }
-.col-md-6
-{
-  flex-direction:initial !important;
-  
-  display: flex !important;
-  float: left;
-  
-  max-width: 50% !important ;
- 
-}
+
 .col-md-4 {
   -webkit-box-flex: 0;
   flex-direction: row-reverse  !important;
@@ -112,10 +103,10 @@ margin-top: 8px;
   display: flex;
   margin-top: 14px;
 }
-.row{
+/* .row{
   width: 100%;
   max-width: 1600px !important;
-}
+} */
 .container{
   margin-left: 0px !important;
   margin-right: 0px !important;
