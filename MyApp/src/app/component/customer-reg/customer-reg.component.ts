@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormArray, Validators, FormBuilder } from '@angular/forms';
+import { BsDatepickerDirective} from 'ngx-bootstrap/datepicker';
 
 @Component({
   selector: 'app-customer-reg',
@@ -7,16 +8,17 @@ import { FormGroup, FormArray, Validators, FormBuilder } from '@angular/forms';
   styleUrls: ['./customer-reg.component.css']
 })
 export class CustomerRegComponent implements OnInit {
-
+  
  
   arr: FormArray
   formGroup: FormGroup
   submitted = false
   alert=false
+  loading=false
   Machine: any = ['CNC', 'CUTTER', 'SIVING', 'EMBRADORY']
-  dateValid = new Date().toISOString().slice(0,10);
-
-
+  //dateValid = new Date().toISOString().slice(0,10);
+  maxDate:Date;
+  
   validation_messages = {
 
     'name': [
@@ -62,9 +64,13 @@ export class CustomerRegComponent implements OnInit {
       ]
   }
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder) {
+    this.maxDate=new Date();
+    this.maxDate.setDate(this.maxDate.getDate()+0)
+   }
 
   ngOnInit() {
+
         this.formGroup = this.fb.group({
       name: ['', Validators.compose([
         Validators.required,
@@ -107,9 +113,7 @@ export class CustomerRegComponent implements OnInit {
 
       confirmPassword: ['', Validators.compose([
         Validators.required,
-        Validators.minLength(6),
-        Validators.maxLength(30)
-
+        Validators.minLength(6)
       ])]
     },
       {
@@ -122,10 +126,13 @@ export class CustomerRegComponent implements OnInit {
 
     const { value: password } = formGroup.get('password');
     const { value: confirmPassword } = formGroup.get('confirmPassword');
-      if( password.length > 1 && password === confirmPassword){
-          this.alert=true
+      if( password.length > 1 &&  password === confirmPassword){
+          this.alert=true  
       }
-      
+      if(confirmPassword > password){
+        this.alert=true
+      }
+            
   }
   changeMachine(e) {
     console.log(e.value)
@@ -147,11 +154,16 @@ export class CustomerRegComponent implements OnInit {
   onSubmit() {
     console.log(this.formGroup.value)
     console.log(this.formGroup)
-
+      
+    this.loading=true;
     this.submitted = true;
     if (this.formGroup.invalid) {
       return;
     }
+    this.loading=false;
+    this.formGroup.reset();
   }
+
+
 
 }
