@@ -126,13 +126,12 @@ export class CustomerRegComponent implements OnInit {
 
     const { value: password } = formGroup.get('password');
     const { value: confirmPassword } = formGroup.get('confirmPassword');
-      if( password.length > 1 &&  password === confirmPassword){
-          this.alert=true  
+      if(password === confirmPassword){
+          this.alert=true           
       }
-      if(confirmPassword > password){
-        this.alert=true
+      else{
+        this.alert=false
       }
-            
   }
   changeMachine(e) {
     console.log(e.value)
@@ -160,7 +159,7 @@ export class CustomerRegComponent implements OnInit {
     if (this.formGroup.invalid) {
       return;
     }
-    this.loading=false;
+    
     this.formGroup.reset();
   }
 
