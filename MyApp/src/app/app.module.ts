@@ -23,9 +23,13 @@ import { ServiceEngineerComponent } from './component/service-engineer/service-e
 
     Home1Component,
 
+<<<<<<< HEAD
     CustomerRegComponent,
 
     ServiceEngineerComponent
+=======
+
+>>>>>>> pratik
   ],
   imports: [
     FormsModule,
