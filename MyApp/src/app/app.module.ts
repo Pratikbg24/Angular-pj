@@ -12,6 +12,7 @@ import { Home1Component } from './component/home1/home1.component';
 import { CustomerRegComponent } from './component/customer-reg/customer-reg.component';
 import { BsDatepickerModule} from 'ngx-bootstrap/datepicker';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ServiceEngineerComponent } from './component/service-engineer/service-engineer.component';
   
 
 @NgModule({
@@ -22,7 +23,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
     Home1Component,
 
-    CustomerRegComponent
+    CustomerRegComponent,
+
+    ServiceEngineerComponent
   ],
   imports: [
     FormsModule,
