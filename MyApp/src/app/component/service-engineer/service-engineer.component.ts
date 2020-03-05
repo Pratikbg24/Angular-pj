@@ -161,7 +161,7 @@ export class ServiceEngineerComponent implements OnInit {
     
     this.formGroup.reset();
   }
-  toggleFieldTextType(id){
+  toggleFieldTextType(){
     this.fieldTextType = !this.fieldTextType;
   }
 
