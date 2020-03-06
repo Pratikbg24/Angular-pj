@@ -14,6 +14,7 @@ export class LoginComponent implements OnInit {
   loading = false;
   submitted = false;
   alert = false;
+  fieldTextType:boolean;
   validation_messages = {
     'email': [
       { type: 'required', message: 'Email is required.' },
@@ -77,4 +78,7 @@ export class LoginComponent implements OnInit {
 
   }
 
+  toggleFieldTextType(){
+    this.fieldTextType = !this.fieldTextType;
+  }
 }

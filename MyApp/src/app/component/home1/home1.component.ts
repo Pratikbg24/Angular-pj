@@ -11,16 +11,16 @@ export class Home1Component implements OnInit {
   PieChart2=[];
   PieChart3=[];
   pieChart4=[];
-  returnUrls:string;
+  //returnUrls:string;
 
   constructor(private route:ActivatedRoute,
     private router:Router,) {
-      this.router.navigate(['/']);
+       //this.router.navigate(['/']);
 
      }
 
   ngOnInit() {
-    this.returnUrls = this.route.snapshot.queryParams['returnUrls'] || '/';
+   // this.returnUrls = this.route.snapshot.queryParams['returnUrls'] || '/';
 
     this.PieChart = new Chart('piechart', {
       type: 'pie',
@@ -145,7 +145,8 @@ type: 'doughnut',
         });
     }
     showEngineer(){
-      this.router.navigate([this.returnUrls + "serviceEngineer"]);
+      this.router.navigate(['/serviceEngineer12']);
+      // this.router.navigate([this.returnUrls + "serviceEngineer"]);
     }
   
 }

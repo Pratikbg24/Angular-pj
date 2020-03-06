@@ -1,4 +1,4 @@
-    <div class="container">
+<div class="container">
     <div class="row">
         <div class="col-md-8 mx-auto">
             <div class="card">
@@ -107,7 +107,7 @@
                             <input type="text" class="form-control" formControlName="Datepurchased"
                                 placeholder="MM/DD/YYYY" bsDatepicker [bsConfig]="{ isAnimated: true }"
                                 [maxDate]="maxDate" [ngClass]="{ 'is-invalid': submitted && f.Datepurchased.errors }">
-                                <!-- <i class="fa fa-calendar"></i> -->
+                            <!-- <i class="fa fa-calendar"></i> -->
                         </div>
                         <div class="validation-errors">
                             <ng-container *ngFor="let validation of validation_messages.Datepurchased">
@@ -120,9 +120,18 @@
 
                         <div class="form-group">
                             <label>Password<p class="p12">*</p></label>
-                            <input type="password" class="form-control" formControlName="password"
-                                placeholder="Enter Your password"
-                                [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
+                            <div class="input-group">
+                                <input [type]="fieldTextType ? 'text':'password'" class="form-control"
+                                    formControlName="password" placeholder="Enter Your password"
+                                    [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="fa"
+                                            [ngClass]="{'fa-eye-slash' : !fieldTextType,'fa-eye' : fieldTextType}"
+                                            id="btn2" (click)="toggleFieldTextType()"></i>
+                                    </span>
+                                </div>
+                            </div>
                         </div>
                         <div class="validation-errors">
                             <ng-container *ngFor="let validation of validation_messages.password">
@@ -137,9 +146,18 @@
 
                         <div class="form-group has-success has-feedback">
                             <label class="control-label">Confirm Password<p class="p12">*</p></label>
-                            <input type="password" class="form-control" formControlName="confirmPassword"
-                                placeholder="ConfirmPassword"
-                                [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }">
+                            <div class="input-group">
+                                <input [type]="fieldTextType ? 'text':'password'" class="form-control"
+                                    formControlName="confirmPassword" placeholder="ConfirmPassword"
+                                    [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="fa"
+                                            [ngClass]="{'fa-eye-slash' : !fieldTextType,'fa-eye' : fieldTextType}"
+                                            id="btn2" (click)="toggleFieldTextType()"></i>
+                                    </span>
+                                </div>
+                            </div>
                         </div>
                         <div class="validation-errors">
                             <div *ngIf="!alert" class="alert alert-warning"><strong>Warning! </strong>Passwords must
@@ -150,7 +168,7 @@
                                     <span name="information-circle-outline"></span> {{ validation.message }}
                                 </div>
                             </ng-container>
-                            
+
                         </div>
 
                         <div class="form-group">

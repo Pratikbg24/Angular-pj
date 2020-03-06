@@ -15,6 +15,7 @@ export class CustomerRegComponent implements OnInit {
   submitted = false
   alert=false
   loading=false
+  fieldTextType:boolean;
   Machine: any = ['CNC', 'CUTTER', 'SIVING', 'EMBRADORY']
   //dateValid = new Date().toISOString().slice(0,10);
   maxDate:Date;
@@ -161,6 +162,9 @@ export class CustomerRegComponent implements OnInit {
     }
     
     this.formGroup.reset();
+  }
+  toggleFieldTextType(){
+    this.fieldTextType = !this.fieldTextType;
   }
 
 
