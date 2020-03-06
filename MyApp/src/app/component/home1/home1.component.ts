@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Chart} from 'chart.js';
-
+import { Router,ActivatedRoute} from '@angular/router';
 @Component({
   selector: 'app-home1',
   templateUrl: './home1.component.html',
@@ -11,10 +11,17 @@ export class Home1Component implements OnInit {
   PieChart2=[];
   PieChart3=[];
   pieChart4=[];
+  returnUrls:string;
 
-  constructor() { }
+  constructor(private route:ActivatedRoute,
+    private router:Router,) {
+      this.router.navigate(['/']);
+
+     }
 
   ngOnInit() {
+    this.returnUrls = this.route.snapshot.queryParams['returnUrls'] || '/';
+
     this.PieChart = new Chart('piechart', {
       type: 'pie',
       data: {
@@ -137,5 +144,8 @@ type: 'doughnut',
     // }
         });
     }
-
+    showEngineer(){
+      this.router.navigate([this.returnUrls + "serviceEngineer"]);
+    }
+  
 }

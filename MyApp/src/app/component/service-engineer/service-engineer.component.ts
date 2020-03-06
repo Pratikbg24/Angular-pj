@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormArray, Validators, FormBuilder } from '@angular/forms';
 import { BsDatepickerDirective} from 'ngx-bootstrap/datepicker';
+import { Router,ActivatedRoute } from '@angular/router';
+import { from } from 'rxjs';
 
 @Component({
   selector: 'app-service-engineer',
@@ -10,6 +12,7 @@ import { BsDatepickerDirective} from 'ngx-bootstrap/datepicker';
 export class ServiceEngineerComponent implements OnInit {
   arr: FormArray
   formGroup: FormGroup
+  // returnUrls:string
   submitted = false
   alert=false
   loading=false
@@ -63,9 +66,11 @@ export class ServiceEngineerComponent implements OnInit {
       ]
   }
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder,) 
+    {
     this.maxDate=new Date();
-    this.maxDate.setDate(this.maxDate.getDate()+0)
+    this.maxDate.setDate(this.maxDate.getDate()+0);
+    // this.router.navigate(['/']);
    }
 
   ngOnInit() {
@@ -165,4 +170,10 @@ export class ServiceEngineerComponent implements OnInit {
     this.fieldTextType = !this.fieldTextType;
   }
 
+  // showEngineer(){
+  //   this.router.navigate([this.returnUrls + "serviceEngineer"]);
+  // }
+  
+
+    
 }
