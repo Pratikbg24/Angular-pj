@@ -11,7 +11,7 @@ export class Home1Component implements OnInit {
   PieChart2=[];
   PieChart3=[];
   pieChart4=[];
-  returnUrls:string;
+ // returnUrls:string;
 
   constructor(private route:ActivatedRoute,
     private router:Router,) {
@@ -145,8 +145,8 @@ type: 'doughnut',
         });
     }
     showEngineer(){
-      this.router.navigate(['/serviceEngineer12']);
-     // this.router.navigate([this.returnUrls + "serviceEngineer"]);
-    }
+       this.router.navigate(['home1/serviceEngineer12']);
+    //  // this.router.navigate([this.returnUrls + "serviceEngineer"]);
+     }
   
 }

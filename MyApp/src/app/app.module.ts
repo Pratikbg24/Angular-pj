@@ -13,6 +13,7 @@ import { CustomerRegComponent } from './component/customer-reg/customer-reg.comp
 import { BsDatepickerModule} from 'ngx-bootstrap/datepicker';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceEngineerComponent } from './component/service-engineer/service-engineer.component';
+import { PageNotFoundComponent } from './component/page-not-found/page-not-found.component';
   
 
 @NgModule({
@@ -25,7 +26,9 @@ import { ServiceEngineerComponent } from './component/service-engineer/service-e
 
     CustomerRegComponent,
 
-    ServiceEngineerComponent
+    ServiceEngineerComponent,
+
+    PageNotFoundComponent
   ],
   imports: [
     FormsModule,

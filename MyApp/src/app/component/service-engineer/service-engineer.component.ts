@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormArray, Validators, FormBuilder } from '@angular/forms';
-import { BsDatepickerDirective} from 'ngx-bootstrap/datepicker';
+//import { BsDatepickerDirective} from 'ngx-bootstrap/datepicker';
 import { Router,ActivatedRoute } from '@angular/router';
-import { from } from 'rxjs';
+//import { from } from 'rxjs';
 
 @Component({
   selector: 'app-service-engineer',
@@ -170,11 +170,7 @@ export class ServiceEngineerComponent implements OnInit {
   toggleFieldTextType(){
     this.fieldTextType = !this.fieldTextType;
   }
-
   // showEngineer(){
   //   this.router.navigate([this.returnUrls + "serviceEngineer"]);
-  // }
-  
-
-    
+  // }    
 }
