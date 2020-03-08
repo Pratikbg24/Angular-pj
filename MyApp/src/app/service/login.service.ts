@@ -19,4 +19,4 @@ export class LoginService {
     let url = "https://thawing-eyrie-14958.herokuapp.com/";
     return this.http.post(url + 'users/login', data)
   }
-}
+} 
