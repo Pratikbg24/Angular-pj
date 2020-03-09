@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../../service/login.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import {  FormGroup, FormBuilder, Validators,} from '@angular/forms'
-
+import { NgxSpinnerService} from 'ngx-spinner';
+import { from } from 'rxjs';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -11,7 +12,7 @@ import {  FormGroup, FormBuilder, Validators,} from '@angular/forms'
 export class LoginComponent implements OnInit {
   formGroup: FormGroup;
   returnUrls: string;
-  loading = false;
+  //loading = false;
   submitted = false;
   alert = false;
   fieldTextType:boolean;
@@ -30,7 +31,8 @@ export class LoginComponent implements OnInit {
     private service: LoginService,
     private fb: FormBuilder,
     private route: ActivatedRoute,
-    private router: Router, ) {
+    private router: Router,
+    private spinner:NgxSpinnerService ) {
     this.router.navigate(['/']);
   }
 
@@ -51,33 +53,34 @@ export class LoginComponent implements OnInit {
 
 
   onSubmit() {
-    this.loading = true;
+    //this.loading = true;
+    this.show();
     this.service.getData(this.formGroup.value.email, this.formGroup.value.password).subscribe((data:any) => {
       // console.log(data)
       if (data.status === "success") {
-        this.loading = true;
+      //  this.loading = true;
+          this.show();
         //alert("success")
         this.router.navigate([this.returnUrls + "home1"]);
       }
       else {
         if (data.status === "error") {
-          this.loading = true;
+        //  this.loading = true;
+          this.show();
           this.alert = true;
         }
-        this.loading = false;
+        //this.loading = false;
         //this.formGroup.value.password.reset();
           this.formGroup.reset();
-
-        
       }
-
-    }
-
-    );
-    //   this.submitted = true;  
-
+    });    
   }
-
+      show(){
+        this.spinner.show();
+        setTimeout(()=>{
+          this.spinner.hide();
+        },5000)
+      }
   toggleFieldTextType(){
     this.fieldTextType = !this.fieldTextType;
   }

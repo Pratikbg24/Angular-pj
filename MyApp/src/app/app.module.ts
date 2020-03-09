@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import{LoginService}  from './service/login.service';
-
+import { NgxSpinnerModule} from 'ngx-spinner';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './component/login/login.component';
@@ -14,7 +14,8 @@ import { BsDatepickerModule} from 'ngx-bootstrap/datepicker';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceEngineerComponent } from './component/service-engineer/service-engineer.component';
 import { PageNotFoundComponent } from './component/page-not-found/page-not-found.component';
-  
+import { StatusCheckComponent } from './component/status-check/status-check.component';
+ //import{ ConnectionServiceModule,ConnectionService,} from 'ng-connection-service' 
 
 @NgModule({
   declarations: [
@@ -28,17 +29,22 @@ import { PageNotFoundComponent } from './component/page-not-found/page-not-found
 
     ServiceEngineerComponent,
 
-    PageNotFoundComponent
+    PageNotFoundComponent,
+
+    StatusCheckComponent,
+
   ],
   imports: [
     FormsModule,
     ReactiveFormsModule,
-  
     BrowserModule,
+    NgxSpinnerModule,
     AppRoutingModule,
     HttpClientModule,
     BsDatepickerModule.forRoot(),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    // ConnectionServiceModule,
+    // ConnectionService
   ],
   providers: [
     LoginService

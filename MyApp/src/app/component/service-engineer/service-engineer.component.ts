@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormArray, Validators, FormBuilder } from '@angular/forms';
-//import { BsDatepickerDirective} from 'ngx-bootstrap/datepicker';
-import { Router,ActivatedRoute } from '@angular/router';
-//import { from } from 'rxjs';
-
+import { Router, ActivatedRoute } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { from } from 'rxjs';
 @Component({
   selector: 'app-service-engineer',
   templateUrl: './service-engineer.component.html',
@@ -12,15 +11,12 @@ import { Router,ActivatedRoute } from '@angular/router';
 export class ServiceEngineerComponent implements OnInit {
   arr: FormArray
   formGroup: FormGroup
-  // returnUrls:string
   submitted = false
-  alert=false
-  loading=false
-  fieldTextType:boolean;
-    Engg: any = ['Mechnical', 'Electronic', 'Designing']
-  //dateValid = new Date().toISOString().slice(0,10);
-  maxDate:Date;
-  
+  alert = false
+  fieldTextType: boolean;
+  Engg: any = ['Mechnical', 'Electronic', 'Designing']
+  maxDate: Date;
+
   validation_messages = {
 
     'name': [
@@ -30,25 +26,25 @@ export class ServiceEngineerComponent implements OnInit {
     'Mobilenumber': [
       { type: 'required', message: '*Mobile Number is Required' },
       { type: 'maxlength', message: '*Mobile number maximum length should be only 10 number' },
-      { type: 'pattern' , message:'*Enter valid mobile number'},
+      { type: 'pattern', message: '*Enter valid mobile number' },
       { type: 'minlength', message: '*Mobile number minumum lenght 10 number' }
-      
+
     ],
     'Alternatemobile': [
       { type: 'maxlength', message: '*Maximum length 10 number' },
-      { type: 'pattern' , message:'*Enter valid mobile number'},
+      { type: 'pattern', message: '*Enter valid mobile number' },
       { type: 'minlength', message: '*Minumum lenght 10 number' }
 
     ],
     'email': [
       { type: 'required', message: '*Email is required' },
       { type: 'pattern', message: '*Enter valid email' }
-      ],
+    ],
 
     'password': [
       { type: 'required', message: '*Password is required' },
       { type: 'minlength', message: '*Password minumum length 6 Character.' }
-      ],
+    ],
     'Address': [
       { type: 'required', message: '*Address is required' },
     ],
@@ -63,26 +59,24 @@ export class ServiceEngineerComponent implements OnInit {
     'confirmPassword': [
       { type: 'required', message: '*Password required' },
       { type: 'minlength', message: '*Password minumum length 6 character.' }
-      ]
+    ]
   }
 
-  constructor(private fb: FormBuilder,) 
-    {
-    this.maxDate=new Date();
-    this.maxDate.setDate(this.maxDate.getDate()+0);
-    // this.router.navigate(['/']);
-   }
+  constructor(private fb: FormBuilder, private spinner: NgxSpinnerService) {
+    this.maxDate = new Date();
+    this.maxDate.setDate(this.maxDate.getDate() + 0);
+  }
 
   ngOnInit() {
 
-        this.formGroup = this.fb.group({
+    this.formGroup = this.fb.group({
       name: ['', Validators.compose([
         Validators.required,
         Validators.minLength(3)
       ])],
 
       Mobilenumber: ['', Validators.compose([
-        Validators.required, 
+        Validators.required,
         Validators.maxLength(10),
         Validators.pattern('^[0-9]{10}$'),
         Validators.minLength(10)
@@ -112,7 +106,7 @@ export class ServiceEngineerComponent implements OnInit {
       password: ['', Validators.compose([
         Validators.required,
         Validators.minLength(6),
-              ])],
+      ])],
 
 
       confirmPassword: ['', Validators.compose([
@@ -130,12 +124,12 @@ export class ServiceEngineerComponent implements OnInit {
 
     const { value: password } = formGroup.get('password');
     const { value: confirmPassword } = formGroup.get('confirmPassword');
-      if(password === confirmPassword){
-          this.alert=true           
-      }
-      else{
-        this.alert=false
-      }
+    if (password === confirmPassword) {
+      this.alert = true
+    }
+    else {
+      this.alert = false
+    }
   }
   changeEngineer(e) {
     console.log(e.value)
@@ -157,20 +151,25 @@ export class ServiceEngineerComponent implements OnInit {
   onSubmit() {
     console.log(this.formGroup.value)
     console.log(this.formGroup)
-      
-    this.loading=true;
+
+    this.show();
     this.submitted = true;
     if (this.formGroup.invalid) {
       return;
     }
-    
+
     this.formGroup.reset();
   }
-  
-  toggleFieldTextType(){
+
+  show() {
+    this.spinner.show();
+    setTimeout(() => {
+      this.spinner.hide();
+    }, 5000)
+
+  }
+  toggleFieldTextType() {
     this.fieldTextType = !this.fieldTextType;
   }
-  // showEngineer(){
-  //   this.router.navigate([this.returnUrls + "serviceEngineer"]);
-  // }    
+
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormArray, Validators, FormBuilder } from '@angular/forms';
-import { BsDatepickerDirective} from 'ngx-bootstrap/datepicker';
+import { NgxSpinnerService} from 'ngx-spinner';
 
 @Component({
   selector: 'app-customer-reg',
@@ -14,7 +14,7 @@ export class CustomerRegComponent implements OnInit {
   formGroup: FormGroup
   submitted = false
   alert=false
-  loading=false
+  //loading=false
   fieldTextType:boolean;
   Machine: any = ['CNC', 'CUTTER', 'SIVING', 'EMBRADORY']
   //dateValid = new Date().toISOString().slice(0,10);
@@ -65,7 +65,7 @@ export class CustomerRegComponent implements OnInit {
       ]
   }
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder,private spinner:NgxSpinnerService) {
     this.maxDate=new Date();
     this.maxDate.setDate(this.maxDate.getDate()+0)
    }
@@ -140,23 +140,17 @@ export class CustomerRegComponent implements OnInit {
       onlySelf: true
     })
   }
-
   get Machine_purchase() {
     return this.formGroup.get('Machine_purchase');
   }
-
-
-
   get f() {
     return this.formGroup.controls;
   }
-
   onSubmit() {
     console.log(this.formGroup.value)
-    console.log(this.formGroup)
-      
-    this.loading=true;
-    this.submitted = true;
+    console.log(this.formGroup)   
+      this.show();
+      this.submitted = true;
     if (this.formGroup.invalid) {
       return;
     }
@@ -166,7 +160,13 @@ export class CustomerRegComponent implements OnInit {
   toggleFieldTextType(){
     this.fieldTextType = !this.fieldTextType;
   }
+  show(){
+    this.spinner.show();
+    setTimeout(() => {
+      this.spinner.hide();
+    }, 5000)
 
+  }
 
 
 }

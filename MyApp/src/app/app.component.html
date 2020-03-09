@@ -1,4 +1,7 @@
-<!-- <app-login></app-login>--> 
-<!-- <app-home1></app-home1>   -->
+
+
 <router-outlet></router-outlet>
-<!-- <app-customer-reg></app-customer-reg> -->
+<app-status-check
+[onlineStatusMessage]="connectionStatusMessage"
+[onlineStatus]="connectionStatus">
+</app-status-check>
