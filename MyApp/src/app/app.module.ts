@@ -15,6 +15,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceEngineerComponent } from './component/service-engineer/service-engineer.component';
 import { PageNotFoundComponent } from './component/page-not-found/page-not-found.component';
 import { StatusCheckComponent } from './component/status-check/status-check.component';
+import { ChartComponent } from './component/chart/chart.component';
+import { CustomerDasboardComponent } from './component/customer/customer-dasboard/customer-dasboard.component';
  //import{ ConnectionServiceModule,ConnectionService,} from 'ng-connection-service' 
 
 @NgModule({
@@ -32,6 +34,10 @@ import { StatusCheckComponent } from './component/status-check/status-check.comp
     PageNotFoundComponent,
 
     StatusCheckComponent,
+
+    ChartComponent,
+
+    CustomerDasboardComponent,
 
   ],
   imports: [

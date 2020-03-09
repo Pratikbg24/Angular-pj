@@ -1,8 +1,6 @@
 <body>
     <!-- Navigation -->
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top row ">
-
-
         <div class="col-md-8">
 
             <div class="collapse navbar-collapse float-left" id="ftco-nav">
@@ -15,7 +13,8 @@
                         <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false"><i class="fas fa-users"></i>Customer</a>
                         <div class="dropdown-menu" aria-labelledby="dropdown04">
-                            <a class="dropdown-item" routerLink="home1/createcustomer" routerLinkActive="Active" (click)=" showCustomer()">Create Customer</a>
+                            <a class="dropdown-item" routerLink="/home1/createcustomer" routerLinkActive="Active"
+                                (click)=" showCustomer()">Create Customer</a>
                             <a class="dropdown-item">Update Customer</a>
                             <a class="dropdown-item">Customer Details</a>
                         </div>
@@ -25,7 +24,8 @@
                             aria-haspopup="true" aria-expanded="false"><i class="fas fa-users-cog"></i>Service
                             Engineer</a>
                         <div class="dropdown-menu" aria-labelledby="dropdown04">
-                            <a class="dropdown-item" routerLink="home1/createserviceEngineer" routerLinkActive="Active" (click)="showEngineer()">Create Service Engineer</a>
+                            <a class="dropdown-item" routerLink="createserviceEngineer" routerLinkActive="Active"
+                                (click)="showEngineer()">Create Service Engineer</a>
                             <a class="dropdown-item">Update Service Engineer</a>
                             <a class="dropdown-item">Service Engineer Details</a>
                         </div>
@@ -76,31 +76,13 @@
 
     </nav>
 
-    <div id="barchart2">
-        <canvas id="piechart" width="50" height="50"></canvas>
-        <p id="p1"><b>Pie Chart Demo 1</b></p>
-    </div>
-    <div id="barchart2">
-        <canvas id="piechart2" width="50" height="50"></canvas>
-        <p id="p1"><b>BarChart Demo 2</b></p>
-    </div>
+   
+    <router-outlet ></router-outlet>
 
-    <div id="piechart12">
-        <canvas id="piechart3" width="50" height="50"></canvas>
-        <p id="p1"><b>Pie Chart Demo 3</b></p>
-    </div>
 
-    <div id="piechart12">
-        <canvas id="piechart4" width="50" height="50"></canvas>
-        <p id="p1"><b>Pie Chart Demo 4</b></p>
-    </div>
     <footer class="py-5 bg-dark">
         <div class="container">
             <p class="m-0 text-center text-white">Copyright &copy; Your Website 2017</p>
         </div>
     </footer>
 </body>
-
-
-
-
