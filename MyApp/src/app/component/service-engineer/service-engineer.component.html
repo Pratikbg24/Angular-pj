@@ -1,4 +1,3 @@
-
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <ngx-spinner [fullScreen]="true" type="ball-clip-rotate-multiple" size="medium">
     <p class="loading">Loading Awesomeness...</p>
@@ -126,14 +125,16 @@
                         <div class="form-group">
                             <label>Password<p class="p12">*</p></label>
                             <div class="input-group">
-                            <input [type]="fieldTextType ? 'text' : 'password'" class="form-control" formControlName="password"
-                                placeholder="Enter Your password"
-                                [ngClass]="{ 'is-invalid': submitted && f.password.errors }"/>
+                                <input [type]="passwordTextField ? 'text' : 'password'" class="form-control"
+                                    formControlName="password" placeholder="Enter Your password"
+                                    [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">
-                                      <i class="fa" [ngClass]="{'fa-eye-slash' : !fieldTextType,'fa-eye' : fieldTextType}" id="btn1" (click)="toggleFieldTextType(1)"></i>
+                                        <i class="fa"
+                                            [ngClass]="{'fa-eye-slash' : !passwordTextField,'fa-eye' : passwordTextField}"
+                                            id="btn1" (click)="toggleFieldTextType($event)"></i>
                                     </span>
-                                 </div> 
+                                </div>
                             </div>
                         </div>
                         <div class="validation-errors">
@@ -147,16 +148,18 @@
                         <div class="form-group ">
                             <label class="control-label">Confirm Password<p class="p12">*</p></label>
                             <div class="input-group">
-                            <input [type]="fieldTextType ? 'text':'password'" class="form-control" formControlName="confirmPassword"
-                                placeholder="ConfirmPassword"
-                                [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }"/>
-                                
+                                <input [type]="confirmTextField ? 'text':'password'" class="form-control"
+                                    formControlName="confirmPassword" placeholder="ConfirmPassword"
+                                    [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }" />
+
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">
-                                      <i class="fa" [ngClass]="{'fa-eye-slash' : !fieldTextType,'fa-eye' : fieldTextType}" id="btn2" (click)="toggleFieldTextType()"></i>
+                                        <i class="fa"
+                                            [ngClass]="{'fa-eye-slash' : !confirmTextField,'fa-eye' : confirmTextField}"
+                                            id="btn2" (click)="toggleFieldTextType($event)"></i>
                                     </span>
-                                 </div>
                                 </div>
+                            </div>
                         </div>
                         <div class="validation-errors">
                             <div *ngIf="!alert" class="alert alert-warning"><strong>Warning! </strong>Passwords must
@@ -172,7 +175,7 @@
 
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary" [disabled]="!formGroup.valid">
-                              Register
+                                Register
                             </button>
                             <button type="reset" class="btn btn-secondary " style="float:right;margin-top: 5px;">
                                 Reset Form

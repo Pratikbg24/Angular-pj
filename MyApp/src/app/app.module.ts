@@ -17,7 +17,9 @@ import { PageNotFoundComponent } from './component/page-not-found/page-not-found
 import { StatusCheckComponent } from './component/status-check/status-check.component';
 import { ChartComponent } from './component/chart/chart.component';
 import { CustomerDasboardComponent } from './component/customer/customer-dasboard/customer-dasboard.component';
- //import{ ConnectionServiceModule,ConnectionService,} from 'ng-connection-service' 
+import { HeaderComponent } from './component/header/header.component';
+import { FooterComponent } from './component/footer/footer.component';
+  
 
 @NgModule({
   declarations: [
@@ -38,6 +40,10 @@ import { CustomerDasboardComponent } from './component/customer/customer-dasboar
     ChartComponent,
 
     CustomerDasboardComponent,
+    HeaderComponent,
+
+    FooterComponent,
+
 
   ],
   imports: [

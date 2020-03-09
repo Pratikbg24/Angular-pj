@@ -13,7 +13,8 @@ export class ServiceEngineerComponent implements OnInit {
   formGroup: FormGroup
   submitted = false
   alert = false
-  fieldTextType: boolean;
+  confirmTextField: boolean;
+  passwordTextField:boolean;
   Engg: any = ['Mechnical', 'Electronic', 'Designing']
   maxDate: Date;
 
@@ -168,8 +169,12 @@ export class ServiceEngineerComponent implements OnInit {
     }, 5000)
 
   }
-  toggleFieldTextType() {
-    this.fieldTextType = !this.fieldTextType;
+  toggleFieldTextType(event:any) {
+    if(event.target.id === 'btn1'){
+      this.passwordTextField = !this.passwordTextField
+    }if(event.target.id === 'btn2'){
+      this.confirmTextField = !this.confirmTextField
+    }
   }
 
 }
