@@ -1,0 +1,103 @@
+#barchart2{
+    height: auto;
+    width: 30%;
+    padding: 20px;
+    margin-top: 70px;
+    margin-left: 50px;
+    display: inline-block;
+  }
+  
+  #piechart12{
+    height: auto;
+    width: 30%;
+    padding: 20px;
+    margin-left: 50px;
+    margin-top: 70px;
+    margin-bottom:70px;
+    display: inline-block;
+  
+  }
+  #p1{
+    text-align: center;
+  }
+    nav
+  {
+    padding-top: 15px !important;
+  padding-bottom: 15px !important;
+  
+  } 
+  
+  .fas{
+  margin-left: 10px !important;
+  margin-right: 10px !important;
+  
+  }
+   .nav-link.dropdown-toggle {
+    background-color: #343a40;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+  }
+  
+  .nav-item.dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  .dropdown-menu a {
+    
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  .dropdown-menu a:hover {background-color: rgb(30, 135, 233);}
+  
+  .nav-item.dropdown :hover .dropdown-content {display: block;}
+  
+  .nav-item.dropdown :hover.nav-link.dropdown-toggle{background-color: #3e8e41;}
+  
+  .container{
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+  }
+  .navbar-brand
+  {
+    color: white;
+    text-decoration: none;
+     padding: 12px 23px;
+     position: relative;
+    display: inline-block;
+    border-radius: 2px;
+  }
+  .navbar-brand:hover {
+    background: #3e8e41;
+  }
+  .notification {
+   
+    color: white;
+    text-decoration: none;
+     padding: 8px 10px;
+     position: relative;
+    display: inline-block;
+    border-radius: 2px;
+  }
+  
+  .notification:hover {
+    background: #3e8e41;
+  }
+  
+  .fas .badge {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    padding: 5px 10px;
+    border-radius: 50%;
+    background-color: red;
+    color: white;
+  }
+  i{
+    font-size: x-large;
+  }
+  

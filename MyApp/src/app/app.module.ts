@@ -9,6 +9,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { HttpClient, HttpClientModule } from "@angular/common/http";
 import { Home1Component } from './component/home1/home1.component';
+import { HeaderComponent } from './component/header/header.component';
+import { FooterComponent } from './component/footer/footer.component';
 // import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 // import { NgxSpinnerModule } from "ngx-spinner";
   
@@ -20,6 +22,10 @@ import { Home1Component } from './component/home1/home1.component';
     LoginComponent,
 
     Home1Component,
+
+    HeaderComponent,
+
+    FooterComponent,
 
 
   ],
