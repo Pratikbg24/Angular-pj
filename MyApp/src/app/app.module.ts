@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import{LoginService}  from './service/login.service';
-import{DashboardService} from './service/dashboard.service';
+import { NgxSpinnerModule} from 'ngx-spinner';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './component/login/login.component';
@@ -10,6 +10,17 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { HttpClient, HttpClientModule } from "@angular/common/http";
 import { Home1Component } from './component/home1/home1.component';
+import { CustomerRegComponent } from './component/customer-reg/customer-reg.component';
+import { BsDatepickerModule} from 'ngx-bootstrap/datepicker';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ServiceEngineerComponent } from './component/service-engineer/service-engineer.component';
+import { PageNotFoundComponent } from './component/page-not-found/page-not-found.component';
+import { StatusCheckComponent } from './component/status-check/status-check.component';
+import { ChartComponent } from './component/chart/chart.component';
+import { CustomerDasboardComponent } from './component/customer/customer-dasboard/customer-dasboard.component';
+import { HeaderComponent } from './component/header/header.component';
+import { FooterComponent } from './component/footer/footer.component';
+  
 
 @NgModule({
   declarations: [
@@ -19,19 +30,35 @@ import { Home1Component } from './component/home1/home1.component';
 
     Home1Component,
 
+    CustomerRegComponent,
+
+    ServiceEngineerComponent,
+
+    PageNotFoundComponent,
+
+    StatusCheckComponent,
+
+    ChartComponent,
+
+    CustomerDasboardComponent,
+    HeaderComponent,
+
+    FooterComponent,
+
 
   ],
   imports: [
     FormsModule,
     ReactiveFormsModule,
-   
     BrowserModule,
+    NgxSpinnerModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    BsDatepickerModule.forRoot(),
+    BrowserAnimationsModule,
   ],
   providers: [
-    LoginService,
-    DashboardService
+    LoginService
   ],
   bootstrap: [AppComponent]
 })

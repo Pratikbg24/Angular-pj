@@ -1,0 +1,19 @@
+
+@import url("https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
+
+h3{
+    text-align: center;
+}
+.card-body{
+    background-color: whitesmoke;
+}
+label{
+    font-weight: bold;
+    display: inline-block;
+
+}
+.p12{
+    display: inline-block;
+    color: red;
+}
+ 

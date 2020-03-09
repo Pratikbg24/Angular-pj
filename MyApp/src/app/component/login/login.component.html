@@ -1,8 +1,13 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<ngx-spinner [fullScreen]="true" type="ball-clip-rotate-multiple" size="medium">
+  <p class="loading">Loading Awesomeness...</p>
+</ngx-spinner>
+
 <body class="bg">
   <div class="container">
 
     <div class="d-flex justify-content-center">
-      <div class="main">
+        <div class="main">        
         <div class="d-flex justify-content-center">
           <img src="assets\Login.png" alt="HTML5 Icon">
         </div>
@@ -25,13 +30,18 @@
           </div>
           <div class="form-group">
             <label for="exampleInputEmail1">Password :</label>
-            <div>
-              <input type="password" name="password" formControlName="password" class="form-control" id="password"
-                aria-describedby="passwordHelp" placeholder="Enter password">
+            <div class="input-group">
+              <input [type]="fieldTextType ? 'text':'password'" name="password" formControlName="password"
+                class="form-control" id="password" placeholder="Enter password"/>
+            <div class="input-group-prepend">
+                <span class="input-group-text">
+                  <i class="fa" [ngClass]="{'fa-eye-slash' : !fieldTextType,'fa-eye' : fieldTextType}" id="btn2"
+                    (click)="toggleFieldTextType()"></i>
+                </span>
+              </div>
             </div>
-
-
           </div>
+
           <div class="validation-errors">
             <ng-container *ngFor="let validation of validation_messages.password">
               <p class="error-message text-danger"
@@ -49,8 +59,8 @@
           </div>
 
           <div>
-            <button [disabled]="loading" class="btn btn-primary" type="submit" id="btn1" [disabled]="!formGroup.valid">
-              <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+            <button class="btn btn-primary" type="submit" id="btn1" [disabled]="!formGroup.valid">
+              <!-- <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span> -->
               <b>Login</b>
             </button>
           </div>
@@ -61,3 +71,4 @@
     </div>
   </div>
 </body>
+

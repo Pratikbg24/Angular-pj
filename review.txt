@@ -1,5 +1,1 @@
-01/March/2020
-1) Icon Should have same styling
-2) After clicking on home should't redirect login
-3) Password initial should be in caps
-4) Show password button
+ng g c component/customer/[your_component_name]
