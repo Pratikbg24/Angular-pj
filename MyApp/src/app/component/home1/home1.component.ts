@@ -14,7 +14,7 @@ export class Home1Component implements OnInit {
   
 title='app';
 data: Data[];
-  url = 'http://localhost:4200/';
+  url = 'http://localhost:4200/results';
   month = [];
   price = [];
   chart = [];
