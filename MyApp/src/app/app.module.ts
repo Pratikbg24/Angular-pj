@@ -20,6 +20,9 @@ import { ChartComponent } from './component/chart/chart.component';
 import { CustomerDasboardComponent } from './component/customer/customer-dasboard/customer-dasboard.component';
 import { HeaderComponent } from './component/header/header.component';
 import { FooterComponent } from './component/footer/footer.component';
+import { LoadingSpinnerService} from './service/loading-spinner.service'
+import { CustomerRegService} from './service/customer-reg.service'
+import { from } from 'rxjs';
   
 
 @NgModule({
@@ -44,6 +47,8 @@ import { FooterComponent } from './component/footer/footer.component';
     HeaderComponent,
 
     FooterComponent,
+  
+
 
 
   ],
@@ -58,7 +63,9 @@ import { FooterComponent } from './component/footer/footer.component';
     BrowserAnimationsModule,
   ],
   providers: [
-    LoginService
+    LoginService,
+    LoadingSpinnerService,
+    CustomerRegService
   ],
   bootstrap: [AppComponent]
 })
