@@ -1,4 +1,13 @@
+<div>
+   <ul>
+      <li>UserCount: {{graphData.userCount}}</li>
+      <li>enggCount: {{graphData.enggCount}}</li>
+      <li>adminCount: {{graphData.adminCount}}</li>   
+   </ul>
+</div>
+
+
 <div *ngFor='let user of users' style="text-align: center;">
    <h2>
-          {{users.u_id}}    </h2>
+          {{user.u_name}}    </h2>
 </div>

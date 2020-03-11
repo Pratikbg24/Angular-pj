@@ -16,10 +16,14 @@ import { Data } from 'src/app/data';
 })
 export class ChartComponent implements OnInit {
 
-
-
-  users: user[];
-
+  users:any[];
+  graphData:any={
+    userCount:0,
+    enggCount:0,
+    adminCount:0
+  };
+  engg:any[];
+  admin:any[];
   constructor(private route: ActivatedRoute,
     private router: Router,
     private charts: ChartService,
@@ -30,14 +34,22 @@ export class ChartComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.charts.getData().subscribe((data:any)=>{
+      this.users=data.data.filter((el:any)=>{
+        return  el.u_role === 1
+      })
+      this.engg=data.data.filter((el:any)=>{
+        return  el.u_role === 3
+      })
+      this.admin=data.data.filter((el:any)=>{
+        return  el.u_role === 2
+      })
 
+      this.graphData.userCount = this.users.length;
+      this.graphData.enggCount = this.engg.length;
+      this.graphData.adminCount = this.admin.length;
 
-
-
-    return this.charts.getData()
-      .subscribe(data => this.users = data)
-
-    console.log(user);
+    })
    
   }
   showEngineer() {
