@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './component/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-
+import{Data} from './data'
 import { HttpClient, HttpClientModule } from "@angular/common/http";
 import { Home1Component } from './component/home1/home1.component';
 import { CustomerRegComponent } from './component/customer-reg/customer-reg.component';
@@ -21,6 +21,7 @@ import { CustomerDasboardComponent } from './component/customer/customer-dasboar
 import { HeaderComponent } from './component/header/header.component';
 import { FooterComponent } from './component/footer/footer.component';
  import{ChartService} from './service/chart.service'; 
+import { from } from 'rxjs';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,7 @@ import { FooterComponent } from './component/footer/footer.component';
     HttpClientModule,
     BsDatepickerModule.forRoot(),
     BrowserAnimationsModule,
-   
+ 
   ],
   providers: [
     LoginService,
