@@ -20,7 +20,7 @@ import { ChartComponent } from './component/chart/chart.component';
 import { CustomerDasboardComponent } from './component/customer/customer-dasboard/customer-dasboard.component';
 import { HeaderComponent } from './component/header/header.component';
 import { FooterComponent } from './component/footer/footer.component';
-  
+ import{ChartService} from './service/chart.service'; 
 
 @NgModule({
   declarations: [
@@ -56,9 +56,11 @@ import { FooterComponent } from './component/footer/footer.component';
     HttpClientModule,
     BsDatepickerModule.forRoot(),
     BrowserAnimationsModule,
+   
   ],
   providers: [
-    LoginService
+    LoginService,
+    ChartService
   ],
   bootstrap: [AppComponent]
 })
