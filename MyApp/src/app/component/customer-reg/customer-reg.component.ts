@@ -150,6 +150,7 @@ export class CustomerRegComponent implements OnInit {
   }
   onSubmit() {
     //console.log(this.formGroup.value)
+    this.spinner.show();
     this.custRegservice.getData(
       this.formGroup.value.name, 
       this.formGroup.value.Mobilenumber,
@@ -161,11 +162,18 @@ export class CustomerRegComponent implements OnInit {
       this.formGroup.value.password,
       this.formGroup.value.confirmPassword)
       .subscribe((data:any) => {
-         response=> console.log('Success!',response)
-         error => console.error('Error!',error)
-         this.showMsg=true;       
+       console.log(data)
+       if(data.status === "success"){
+        this.showMsg=true;
+       }if(data.status === "error"){
+         console.log(data.message)
+       }
+
+        //  response=> console.log('Success!',response)
+        //  error => console.error('Error!',error)
+        //  this.showMsg=true;       
        });
-    this.spinner.show();
+   
     this.submitted = true;
     if (this.formGroup.invalid) {
       return;
