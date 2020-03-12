@@ -8,7 +8,7 @@
         <div class="col-md-8 mx-auto">
             <div class="card">
                 <div class="card-header">
-                    <h3>Service Engineer Registration </h3>
+                    <h3> Registration </h3>
                 </div>
                 <div class="card-body">
                     <form class="form" [formGroup]="formGroup" (ngSubmit)="onSubmit(fb)">
@@ -16,7 +16,7 @@
                         <div class="form-group">
                             <label>Name<p class="p12">*</p></label>
                             <input type="text" class="form-control" formControlName="name" placeholder="Enter Your Name"
-                                [ngClass]="{ 'is-invalid': submitted && f.name.errors }">
+                                [ngClass]="{ 'is-invalid': submitted && f.name.errors?.invalid }">
                         </div>
                         <div class="validation-errors">
                             <ng-container *ngFor="let validation of validation_messages.name">
@@ -31,7 +31,7 @@
                             <label>Mobile Number<p class="p12">*</p></label>
                             <input type="text" class="form-control" formControlName="Mobilenumber"
                                 placeholder="Enter Mobile Number"
-                                [ngClass]="{ 'is-invalid': submitted && f.Mobilenumber.errors }">
+                                [ngClass]="{ 'is-invalid': submitted && f.Mobilenumber.errors?.invalid }">
                         </div>
                         <div class="validation-errors">
                             <ng-container *ngFor="let validation of validation_messages.Mobilenumber">
@@ -46,7 +46,7 @@
                             <label>Alternate Mobile Number</label>
                             <input type="text" class="form-control" formControlName="Alternatemobile"
                                 placeholder="Enter Alternate Mobile Number"
-                                [ngClass]="{ 'is-invalid': submitted && f.Alternatemobile.errors }">
+                                [ngClass]="{ 'is-invalid': submitted && f.Alternatemobile.errors?.invalid }">
                         </div>
                         <div class="validation-errors">
                             <ng-container *ngFor="let validation of validation_messages.Alternatemobile">
@@ -61,7 +61,7 @@
                             <label>Email<p class="p12">*</p></label>
                             <input type="email" class="form-control" formControlName="email"
                                 placeholder="Enter Your Email"
-                                [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+                                [ngClass]="{ 'is-invalid': submitted && f.email.errors?.invalid }">
                         </div>
                         <div class="validation-errors">
                             <ng-container *ngFor="let validation of validation_messages.email">
@@ -75,9 +75,9 @@
 
                         <div class="form-group">
                             <label>Address<p class="p12">*</p></label>
-                            <input type="text" class="form-control" formControlName="Address"
-                                placeholder="Enter Alternate Mobile Number"
-                                [ngClass]="{ 'is-invalid': submitted && f.Address.errors }">
+                            <textarea class="form-control" formControlName="Address"
+                                placeholder="Enter Address"
+                                [ngClass]="{ 'is-invalid': submitted && f.Address.errors?.invalid }"></textarea>
                         </div>
                         <div class="validation-errors">
                             <ng-container *ngFor="let validation of validation_messages.Address">
@@ -110,7 +110,7 @@
                             <label>Date Of Joining<p class="p12">*</p></label>
                             <input type="text" class="form-control" formControlName="DateOfjoining"
                                 placeholder="MM/DD/YYYY" bsDatepicker [bsConfig]="{ isAnimated: true }"
-                                [maxDate]="maxDate" [ngClass]="{ 'is-invalid': submitted && f.DateOfjoining.errors }">
+                                [maxDate]="maxDate" [ngClass]="{ 'is-invalid': submitted && f.DateOfjoining.errors?.invalid }">
                             <!-- <i class="fa fa-calendar"></i> -->
                         </div>
                         <div class="validation-errors">
@@ -127,7 +127,7 @@
                             <div class="input-group">
                                 <input [type]="passwordTextField ? 'text' : 'password'" class="form-control"
                                     formControlName="password" placeholder="Enter Your password"
-                                    [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                                    [ngClass]="{ 'is-invalid': submitted && f.password.errors?.invalid }" />
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">
                                         <i class="fa"
@@ -180,8 +180,13 @@
                                 <div class="modal-header">
                                   <button type="button" class="close" data-dismiss="modal">&times;</button>
                                   </div>
-                                <div class="modal-body" class="alert alert-success" *ngIf="showMsg">
-                                    <strong>Registration Successfully!</strong>
+                                <div class="modal-body">
+                                    <div class="alert alert-success fade show" *ngIf="showSuccessMsg" >
+                                        <strong>Success!</strong>Registration Successfully!
+                                    </div>
+                                    <div class="alert alert-danger fade show" *ngIf="showInvalidMsg">
+                                        <strong>Error! </strong>The email address or phone number you have entered is already registered!.
+                                    </div>                                                                        
                                 </div>
                                 <div class="modal-footer">
                                   <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
@@ -191,14 +196,12 @@
                           </div>                    
 
                         <div class="form-group">
-                            <button type="submit" class="btn btn-primary"  data-toggle="modal" data-target="#serviceEnggModal" [disabled]="!formGroup.valid">
+                            <button type="submit" class="btn btn-primary" id="Registerbutton" data-toggle="modal" data-target="#serviceEnggModal" [disabled]="!formGroup.valid">
                                 Register
                             </button>
-                            <button type="reset" class="btn btn-secondary " style="float:right;margin-top: 5px;">
+                            <button type="reset" class="btn btn-secondary" id="ResetButton">
                                 Reset Form
                             </button>
-
-
                         </div>
                     </form>
                 </div>

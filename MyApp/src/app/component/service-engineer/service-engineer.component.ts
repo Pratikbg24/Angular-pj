@@ -17,7 +17,8 @@ export class ServiceEngineerComponent implements OnInit {
   passwordTextField: boolean;
   enggList: Array<any> = [];
   maxDate: Date;
-  showMsg:boolean=false;
+  showSuccessMsg:boolean=false;
+  showInvalidMsg:boolean=false;
 
   validation_messages = {
 
@@ -147,9 +148,13 @@ export class ServiceEngineerComponent implements OnInit {
       this.formGroup.value.password,
       this.formGroup.value.confirmPassword)
       .subscribe((data:any) => {
-         response=> console.log('Success!',response)
-         error => console.error('Error!',error)
-         this.showMsg=true;       
+        console.log(data)
+        if(data.status === "success"){
+          this.showSuccessMsg=true;
+         }if(data.status === "error"){
+          console.log(data.message)
+          this.showInvalidMsg=true;  
+         }       
        });
     this.spinner.show();
     this.submitted = true;

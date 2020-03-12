@@ -19,7 +19,8 @@ export class CustomerRegComponent implements OnInit {
   confirmfieldTextType: boolean;
   Machinelist: Array<any> = [];
   maxDate: Date;
-  showMsg:boolean=false;
+  showSuccessMsg:boolean=false;
+  showInvalidMsg:boolean=false;
 
   validation_messages = {
 
@@ -164,16 +165,12 @@ export class CustomerRegComponent implements OnInit {
       .subscribe((data:any) => {
        console.log(data)
        if(data.status === "success"){
-        this.showMsg=true;
+        this.showSuccessMsg=true;
        }if(data.status === "error"){
          console.log(data.message)
+         this.showInvalidMsg=true;
        }
-
-        //  response=> console.log('Success!',response)
-        //  error => console.error('Error!',error)
-        //  this.showMsg=true;       
        });
-   
     this.submitted = true;
     if (this.formGroup.invalid) {
       return;

@@ -100,4 +100,26 @@
   i{
      font-size: x-large;
   }
-  
+  .loading{
+    color: white;
+  }
+
+   .phase-active{
+    background-color: #3e8e41; 
+    border-radius: 1px;
+    box-shadow: 0 0 1px 2px hsla(0,0%,100%,.8);
+   } 
+   .active{
+    background-color: #3e8e41; 
+   }
+
+   /* #topheader .navbar-nav li > a:focus { 
+    background-color: #005596; 
+    color: #fff;
+    box-shadow: 0 0 1px 2px hsla(0,0%,100%,.8); 
+} 
+  #topheader .navbar-nav li.active > a { 
+    background-color: #3990E0; 
+    color: white;
+    box-shadow: 0 0 1px 2px hsla(0,0%,100%,.8); 
+}  */

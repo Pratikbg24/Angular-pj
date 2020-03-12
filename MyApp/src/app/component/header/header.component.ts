@@ -10,16 +10,23 @@ import { LoginComponent } from '../login/login.component';
 })
 export class HeaderComponent implements OnInit {
 
+    activeButton
   constructor(private spinner: LoadingSpinnerService) { }
 
   ngOnInit() {
   }
-  customerReg() {
+  createCustomer(event) {
     this.spinner.show();
+    this.activeButton=event;
 
   }
-  serviceEngg() {
+  serviceEngg(event) {
     this.spinner.show();
+    this.activeButton=event;
+  }
+  showButton(event){
+    this.spinner.show();
+    this.activeButton = event;
   }
 
 
