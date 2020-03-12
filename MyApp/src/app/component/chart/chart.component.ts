@@ -24,6 +24,7 @@ export class ChartComponent implements OnInit {
   };
   engg:any[];
   admin:any[];
+  chart:[];
   constructor(private route: ActivatedRoute,
     private router: Router,
     private charts: ChartService,
@@ -49,7 +50,41 @@ export class ChartComponent implements OnInit {
       this.graphData.enggCount = this.engg.length;
       this.graphData.adminCount = this.admin.length;
 
+      
+    this.chart=new Chart('canvas',{
+      type:'pie',
+      data:{
+        labels:["admin","engg","users"],
+        datasets:[
+        {
+          data:[this.graphData.adminCount,this.graphData.enggCount,this.graphData.userCount],
+                   borderColor: 'yellow',  
+                backgroundColor: [  
+                  "red",  
+                  "blue",  
+                  "green",  
+                ],
+                fill :true
+        }
+        ]
+      },
+      options:{
+        legend:{
+          display:true
+
+        }
+      },
+      scales: {  
+        xAxes: [{  
+          display: true  
+        }],  
+        yAxes: [{  
+          display: true  
+        }],  
+      }  
     })
+    })
+    
    
   }
   showEngineer() {
