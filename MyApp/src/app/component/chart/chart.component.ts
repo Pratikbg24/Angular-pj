@@ -16,6 +16,7 @@ import { Data } from 'src/app/data';
 })
 export class ChartComponent implements OnInit {
 
+  date1:any[];
   users:any[];
   graphData:any={
     userCount:0,
@@ -45,6 +46,27 @@ export class ChartComponent implements OnInit {
       this.admin=data.data.filter((el:any)=>{
         return  el.u_role === 2
       })
+
+      this.date1  =data.data.filter((el:any)=>{
+          return el.u_joinDate
+       
+         })
+         let x=   this.date1;
+       
+         let allDate= []
+         this.date1.forEach(x => {
+
+         let jsdate =new Date(x*1000)
+         allDate.push(jsdate.toLocaleDateString('en',{year:'numeric',month:'short',day:'numeric'}))           
+         });
+         console.log(allDate)
+       
+
+
+      
+
+
+
 
       this.graphData.userCount = this.users.length;
       this.graphData.enggCount = this.engg.length;
