@@ -14,6 +14,5 @@ export class CustomerDetailServiceService {
   }
 }
 
-
 // return this._http.get<ICustomer[]>("https://thawing-eyrie-14958.herokuapp.com/users/createUser");
     //let url = "https://thawing-eyrie-14958.herokuapp.com/";

@@ -6,6 +6,7 @@ import { ServiceEngineerComponent } from './component/service-engineer/service-e
 import { CustomerRegComponent} from './component/customer-reg/customer-reg.component';
 import {PageNotFoundComponent} from './component/page-not-found/page-not-found.component';
 import { ChartComponent } from "./component/chart/chart.component"
+import { CustomerDetailComponent } from './component/customer-detail/customer-detail.component';
 const routes: Routes = [
   {
     path:'',
@@ -29,6 +30,10 @@ const routes: Routes = [
           path:'createcustomer',
           component:CustomerRegComponent,
           
+        },
+        {
+          path:'customerdetail',
+          component:CustomerDetailComponent
         }        
        ]
   },
