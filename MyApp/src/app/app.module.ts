@@ -23,6 +23,8 @@ import { FooterComponent } from './component/footer/footer.component';
 import { LoadingSpinnerService} from './service/loading-spinner.service'
 import { CustomerRegService} from './service/customer-reg.service'
 import { from } from 'rxjs';
+import { CustomerDetailComponent } from './component/customer-detail/customer-detail.component';
+import {CustomerDetailServiceService} from './service/customer-detail-service.service'
   
 
 @NgModule({
@@ -47,6 +49,8 @@ import { from } from 'rxjs';
     HeaderComponent,
 
     FooterComponent,
+
+    CustomerDetailComponent,
   
 
 
@@ -65,7 +69,8 @@ import { from } from 'rxjs';
   providers: [
     LoginService,
     LoadingSpinnerService,
-    CustomerRegService
+    CustomerRegService,
+    CustomerDetailServiceService
   ],
   bootstrap: [AppComponent]
 })

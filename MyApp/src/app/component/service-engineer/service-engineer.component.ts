@@ -52,7 +52,7 @@ export class ServiceEngineerComponent implements OnInit {
       { type: 'required', message: '*Address is required' },
     ],
     'EngineerType': [
-      { type: 'required', message: '*Please select any one machine' },
+      { type: 'required', message: '*Please select engineer type' },
     ],
     'DateOfjoining': [
       {
@@ -155,9 +155,11 @@ export class ServiceEngineerComponent implements OnInit {
           console.log(data.message)
           this.showInvalidMsg=true;  
          }       
-       });
+       });    
     this.spinner.show();
     this.submitted = true;
+    this.showSuccessMsg=false;
+    this.showInvalidMsg=false;
     if (this.formGroup.invalid) {
       return;
     }

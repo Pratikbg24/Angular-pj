@@ -1,0 +1,14 @@
+<h2> Customer Details</h2>
+<ul *ngFor="let customer of Customers">
+    <li>
+        <h2>name:</h2>{{customer.u_name}}
+        <h2>Mobilenumber:</h2>{{customer.u_mobile}}
+        <h2>Alternatemobile:</h2>{{customer.u_altermobile}}
+        <h2>email:</h2>{{customer.u_email}}
+        <h2>Address:</h2>{{customer.u_address}}
+        <h2>Machine_purchase:</h2>{{customer.u_MachinePurchased}}
+        <h2>Datepurchased:</h2>{{customer.u_dataOf_Purchased}}
+        <h2>password:</h2>{{customer.u_password}}
+        <h2>confirmPassword:</h2>{{customer.u_cpassword}}
+    </li>
+</ul>

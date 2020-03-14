@@ -91,7 +91,7 @@
                         <div class="form-group">
                             <label>Engineer Type<p class="p12">*</p></label>
                             <!-- <input  class="custom-select" (change)="changeCity($event)" formControlName="Machine_purchase" placeholder="select Machine"> -->
-                            <select class="form-control"  formControlName="EngineerType">
+                            <select class="form-control"  formControlName="EngineerType"  placeholder=" Choose Engineer">
                                 <option value="">Choose engg type</option>
                                 <option *ngFor="let engg of enggList; let i= index" value="{{engg.name}}" [selected]="i == 0">{{engg.name}}</option>
                             </select>

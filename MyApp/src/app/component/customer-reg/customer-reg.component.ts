@@ -172,6 +172,8 @@ export class CustomerRegComponent implements OnInit {
        }
        });
     this.submitted = true;
+    this.showSuccessMsg=false;
+    this.showInvalidMsg=false;
     if (this.formGroup.invalid) {
       return;
     }
