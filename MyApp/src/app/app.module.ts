@@ -24,7 +24,11 @@ import { LoadingSpinnerService} from './service/loading-spinner.service'
 import { CustomerRegService} from './service/customer-reg.service'
 import { from } from 'rxjs';
 import { CustomerDetailComponent } from './component/customer-detail/customer-detail.component';
-import {CustomerDetailServiceService} from './service/customer-detail-service.service'
+import {CustomerDetailServiceService} from './service/customer-detail-service.service';
+import { UpdateCustomerComponent } from './component/customer/update-customer/update-customer.component';
+import { SearchPipePipe } from './pipes/search-pipe.pipe';
+import { ServiceEnggDetailsComponent } from './component/ServiceEngg/service-engg-details/service-engg-details.component';
+import { UpdateServiceEnggComponent } from './component/ServiceEngg/update-service-engg/update-service-engg.component';
   
 
 @NgModule({
@@ -51,6 +55,16 @@ import {CustomerDetailServiceService} from './service/customer-detail-service.se
     FooterComponent,
 
     CustomerDetailComponent,
+
+    UpdateCustomerComponent,
+
+    SearchPipePipe,
+
+    ServiceEnggDetailsComponent,
+
+    UpdateServiceEnggComponent,
+
+
   
 
 

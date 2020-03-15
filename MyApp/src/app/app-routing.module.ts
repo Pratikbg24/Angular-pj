@@ -7,6 +7,9 @@ import { CustomerRegComponent} from './component/customer-reg/customer-reg.compo
 import {PageNotFoundComponent} from './component/page-not-found/page-not-found.component';
 import { ChartComponent } from "./component/chart/chart.component"
 import { CustomerDetailComponent } from './component/customer-detail/customer-detail.component';
+import { UpdateCustomerComponent } from './component/customer/update-customer/update-customer.component';
+import { ServiceEnggDetailsComponent } from './component/ServiceEngg/service-engg-details/service-engg-details.component'
+import {  UpdateServiceEnggComponent} from './component/ServiceEngg/update-service-engg/update-service-engg.component';
 const routes: Routes = [
   {
     path:'',
@@ -27,6 +30,14 @@ const routes: Routes = [
           
         },
         {
+          path:'updateserviceEngineer',
+          component:UpdateServiceEnggComponent,
+        },
+        {
+          path:'serviceEnggDetails',
+          component:ServiceEnggDetailsComponent,
+        },
+        {
           path:'createcustomer',
           component:CustomerRegComponent,
           
@@ -34,6 +45,10 @@ const routes: Routes = [
         {
           path:'customerdetail',
           component:CustomerDetailComponent
+        },
+        {
+          path:'updatecustomer',
+          component:UpdateCustomerComponent
         }        
        ]
   },

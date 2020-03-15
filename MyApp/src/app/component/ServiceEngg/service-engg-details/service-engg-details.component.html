@@ -1,34 +1,33 @@
-<h2> Customer Details</h2>
+<h2> ServiceEngineer Details</h2>
 <div class="input-group">
     <input type="text" class="form-control" placeholder="Start searching for a customer Name or Mobilenumber or Email" name="search" 
-    [(ngModel)]="u_email" autocomplete="off">
+    [(ngModel)]="u_name" autocomplete="off">
     <div class="input-group-append">
         <button type="submit" class="btn btn-primary">Search</button>
     </div>
 </div>
 
 <div class="table-responsive-md">
-    <!-- <div *ngFor='let d1 of date1'></div> -->
 <table class="table table-bordered table-hover table-dark table-striped">
     <thead>
         <th>Name</th>
         <th>Mobilenumber</th>
         <th>Email</th>
         <th>Address</th>
-        <th>Machine_purchase</th>
-        <th>Datepurchased</th>
+        <!-- <th>Engineertype</th> -->
+        <th>DateOfJoining</th>
         <th>password</th>
     </thead>
-        <tbody  *ngFor="let customer of Customers | searchPipe:u_email;let i=index">
+        <tbody  *ngFor="let engineer of Engineers | searchPipe:u_name;let i=index">
             <tr>
                 <!-- <th scope="row">{{i+1}}</th> -->
-                <td>{{customer.u_name}}</td>
-                <td>{{customer.u_mobile}}</td>
-                <td>{{customer.u_email}}</td>
-                <td>{{customer.u_address}}</td>
-                <td>{{customer.u_MachinePurchased}}</td>
-                <td>{{customer.u_dateOf_Purchased}}</td>
-                <td>{{customer.u_password}}</td>
+                <td>{{engineer.u_name}}</td>
+                <td>{{engineer.u_mobile}}</td>
+                <td>{{engineer.u_email}}</td>
+                <td>{{engineer.u_address}}</td>
+                <!-- <td>{{engineer.u_EngineerType}}</td> -->
+                <td>{{engineer.u_joinDate}}</td>
+                <td>{{engineer.u_password}}</td>
             </tr>
         </tbody>
     </table>
