@@ -7,14 +7,12 @@ import { CustomerDetailServiceService } from '../../../service/customer-detail-s
   styleUrls: ['./service-engg-details.component.css']
 })
 export class ServiceEnggDetailsComponent implements OnInit {
-
+  initializeItems: any;
   Engineers: any;
-  u_name = "";
-  date1: any;
+  serviceEng = "";
   aa: boolean = false;
   constructor(private serviceEngg: CustomerDetailServiceService) {
     this.Engineers = [];
-    this.date1 = [];
   }
 
   ngOnInit() {
@@ -30,5 +28,26 @@ export class ServiceEnggDetailsComponent implements OnInit {
   }
   setIndex(ii: any) {
     this.aa = ii;
+  }
+  search() {
+    debugger
+    if (this.serviceEng != "") {
+      
+      
+       
+      this.Engineers = this.Engineers.filter((ele,i,res: any) => {
+       /*  
+        let arrElmt= ele.u_name.toLocaleLowerCase()
+        return arrElmt.includes(this.serviceEng)
+      */
+        let arrElmt1= ele.u_email.toLocaleLowerCase()
+        return arrElmt1.includes(this.serviceEng)
+     
+      })
+    }  
+    
+    else if (this.serviceEng == "") {
+      this.ngOnInit();
+    }
   }
 }

@@ -12,7 +12,7 @@ export class SearchPipePipe implements PipeTransform {
   return value.filter((val:any)=>{
     let rval =(val.u_name.toLocaleLowerCase().includes(args))||
     (val.u_mobile.toLocaleLowerCase().includes(args))||
-    (val.u_email.toLocaleLowerCase().includes(args))
+    (val.u_email.toLocaleLowerCase().includes(args));
       return rval;
   })
 
