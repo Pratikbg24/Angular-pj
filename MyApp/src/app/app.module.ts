@@ -22,11 +22,11 @@ import { HeaderComponent } from './component/header/header.component';
 import { FooterComponent } from './component/footer/footer.component';
  import{ChartService} from './service/chart.service'; 
 import { from } from 'rxjs';
+import { AssignComplaintComponent } from './component/assign-complaint/assign-complaint.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-
     LoginComponent,
 
     Home1Component,
@@ -45,6 +45,8 @@ import { from } from 'rxjs';
     HeaderComponent,
 
     FooterComponent,
+
+    AssignComplaintComponent,
 
 
   ],

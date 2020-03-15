@@ -16,4 +16,8 @@ export class ChartService {
   {
     return this._http.get<user[]>("https://thawing-eyrie-14958.herokuapp.com/users/getAnalysisData");
   } 
+  getComplaintData()
+  {
+    return this._http.get("https://thawing-eyrie-14958.herokuapp.com/complaint/gelAllcomplaint");
+  }
 }
