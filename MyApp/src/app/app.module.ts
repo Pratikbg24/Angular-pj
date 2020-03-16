@@ -23,6 +23,8 @@ import { FooterComponent } from './component/footer/footer.component';
  import{ChartService} from './service/chart.service'; 
 import { from } from 'rxjs';
 import { AssignComplaintComponent } from './component/assign-complaint/assign-complaint.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+
 
 @NgModule({
   declarations: [
@@ -59,6 +61,7 @@ import { AssignComplaintComponent } from './component/assign-complaint/assign-co
     HttpClientModule,
     BsDatepickerModule.forRoot(),
     BrowserAnimationsModule,
+    Ng2SearchPipeModule
  
   ],
   providers: [

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient,HttpClientModule,HttpHeaders} from '@angular/common/http'
 import { user } from '../user.module';
+import { AppSettings } from '../../app/app.settings'
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +10,10 @@ export class ChartService {
   
   
   constructor(private _http:HttpClient) { 
+  }
+
+  public getMachineType() {
+    return this._http.get(AppSettings.baseUrl + 'complaint/getMachineType');
   }
 
   
