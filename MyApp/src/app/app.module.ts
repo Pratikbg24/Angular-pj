@@ -29,6 +29,8 @@ import { UpdateCustomerComponent } from './component/customer/update-customer/up
 import { SearchPipePipe } from './pipes/search-pipe.pipe';
 import { ServiceEnggDetailsComponent } from './component/ServiceEngg/service-engg-details/service-engg-details.component';
 import { UpdateServiceEnggComponent } from './component/ServiceEngg/update-service-engg/update-service-engg.component';
+import { CustomerListComponent } from './component/CUSTOMERS/customer-list/customer-list.component';
+import { CustomerEditComponent } from './component/CUSTOMERS/customer-edit/customer-edit.component';
   
 
 @NgModule({
@@ -63,6 +65,10 @@ import { UpdateServiceEnggComponent } from './component/ServiceEngg/update-servi
     ServiceEnggDetailsComponent,
 
     UpdateServiceEnggComponent,
+
+    CustomerListComponent,
+
+    CustomerEditComponent,
 
 
   

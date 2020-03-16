@@ -25,8 +25,8 @@ export class CustomerDetailComponent implements OnInit {
       .subscribe((data: any) => {
         this.Customers = data.data.filter((el: any) => {
           return el.u_role === 1;
-        })//s
-        
+        })
+
         this.date1  =data.data.filter((el:any)=>{
           return el.u_dataOf_Purchased       
          })

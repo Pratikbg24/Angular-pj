@@ -1,0 +1,35 @@
+<div class="container">
+    <h3>List All Customer</h3>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Name</th>
+          <th scope="col">Mobile</th>
+          <th scope="col">Email</th>
+          <th scope="col">Address</th>
+          <th scope="col">Machine Purchased</th>
+          <th scope="col">DateOfPurchased</th>
+          <th scope="col">Password</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of customersData ">
+          <td>{{item.u_id}}</td>
+          <td>{{item.u_name}}</td>
+          <td>{{item.u_mobile}}</td>
+          <td>{{item.u_email}}</td>
+          <td>{{item.u_address}}</td>
+          <td>{{item.u_MachinePurchased}}</td>
+          <td>{{item.u_dateOf_Purchased |date:'dd/MM/yyyy'}}</td>
+          <td>{{item.u_password}}</td>
+          <td style="display: flex">
+              <button type="button" class="btn btn-warning btn-sm" routerLink="edit/{{item.u_id}}">Edit</button>
+              <button type="button" class="btn btn-danger btn-sm ml-1" (click)="delete(item)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+   
+    <!-- <button type="button" class="btn btn-success" [routerLink]="[ '/create']">Add Student</button> -->
+  </div>

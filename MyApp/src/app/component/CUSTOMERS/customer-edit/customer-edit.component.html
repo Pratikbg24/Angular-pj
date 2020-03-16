@@ -1,0 +1,36 @@
+<div class="container">
+
+    <h3>Edit Customer Record</h3>
+    
+        <div class="form-group">
+            <label for="u_name">Name</label>
+            <input type="text" class="form-control" id="u_name" [(ngModel)]="data.u_name" placeholder="Enter Name">
+        </div>
+        <div class="form-group">
+            <label for="u_mobile">MobileNumber</label>
+            <input type="text" class="form-control" id="u_mobile" [(ngModel)]="data.u_mobile" placeholder="Enter Mobile Number">
+        </div>
+        <div class="form-group">
+            <label for="u_altermobile">Alternate mobile</label>
+            <input type="text" class="form-control" id="u_altermobile" [(ngModel)]="data.u_altermobile" placeholder="Enter Name">
+        </div>
+        <div class="form-group">
+            <label for="u_address">Address</label>
+            <input type="text" class="form-control" id="u_address" [(ngModel)]="data.u_address" placeholder="Enter Mobile Number">
+        </div>
+        <div class="form-group">
+            <label for="u_MachinePurchased">Machine Purchased</label>
+            <input type="text" class="form-control" id="u_MachinePurchased" [(ngModel)]="data.u_MachinePurchased" placeholder="Enter Name">
+        </div>
+        <div class="form-group">
+            <label for="u_mobile">Password</label>
+            <input type="text" class="form-control" id="u_password" [(ngModel)]="data.u_password" placeholder="Enter Mobile Number">
+        </div>
+        <div class="form-group">
+            <label for="u_cpassword">Confirm Password</label>
+            <input type="text" class="form-control" id="u_cpassword" [(ngModel)]="data.u_cpassword" placeholder="Enter Name">
+        </div>
+
+        <button type="submit" class="btn btn-success" (click)="update()">Update</button>
+        <button type="submit" class="btn btn-warning ml-1" [routerLink]="[ '/customerdetail']">Cancel</button>
+</div>    
