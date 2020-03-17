@@ -38,23 +38,13 @@ const routes: Routes = [
         path: 'createcustomer',
         component: CustomerRegComponent,
       },
-      // {
-      //   path: 'customerdetail',
-      //   component: CustomerListComponent,
-      // },
-      // {
-      //   path: 'edit/:u_id',
-      //   component: CustomerEditComponent
-      // },
+      {
+        path:'customerdetail/edit/:id', 
+        component: CustomerEditComponent        
+      },
       {
         path:'customerdetail',
-        component:CustomerListComponent,
-        children: [
-         {
-            path:'edit/:u_id', 
-            component: CustomerEditComponent 
-          }
-        ]
+        component:CustomerListComponent
         },
       {
         path: 'updatecustomer',
