@@ -11,6 +11,8 @@ import { UpdateCustomerComponent } from './component/customer/update-customer/up
 import { UpdateServiceEnggComponent } from './component/ServiceEngg/update-service-engg/update-service-engg.component';
 import { CustomerListComponent } from './component/CUSTOMERS/customer-list/customer-list.component';
 import { CustomerEditComponent } from './component/CUSTOMERS/customer-edit/customer-edit.component';
+import { ServiceEnggListComponent } from './component/SERVICE-ENGG/service-engg-list/service-engg-list.component';
+import { ServiceEnggEditComponent } from './component/SERVICE-ENGG/service-engg-edit/service-engg-edit.component';
 const routes: Routes = [
   {
     path: '',
@@ -50,6 +52,14 @@ const routes: Routes = [
         path: 'updatecustomer',
         component: UpdateCustomerComponent
       },
+      {
+        path :'serviceEngglist',
+        component:ServiceEnggListComponent
+      },
+      {
+        path:'serviceEngglist/edit/:u_id',
+        component:ServiceEnggEditComponent
+      }
     ]
   },
     {

@@ -27,6 +27,9 @@ input.ng-touched.ng-invalid {
 select.ng-touched.ng-invalid {
     border: 1px solid red;   
   }
+  textarea.ng-touched.ng-invalid {
+    border: 1px solid red;   
+  }
 
   
  .loading{

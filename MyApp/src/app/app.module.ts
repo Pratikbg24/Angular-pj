@@ -28,6 +28,8 @@ import { SearchPipePipe } from './pipes/search-pipe.pipe';
 import { UpdateServiceEnggComponent } from './component/ServiceEngg/update-service-engg/update-service-engg.component';
 import { CustomerListComponent } from './component/CUSTOMERS/customer-list/customer-list.component';
 import { CustomerEditComponent } from './component/CUSTOMERS/customer-edit/customer-edit.component';
+import { ServiceEnggListComponent } from './component/SERVICE-ENGG/service-engg-list/service-engg-list.component';
+import { ServiceEnggEditComponent } from './component/SERVICE-ENGG/service-engg-edit/service-engg-edit.component';
   
 
 @NgModule({
@@ -61,11 +63,16 @@ import { CustomerEditComponent } from './component/CUSTOMERS/customer-edit/custo
 
     CustomerListComponent,
 
-    CustomerEditComponent
+    CustomerEditComponent,
+
+    ServiceEnggListComponent,
+
+    ServiceEnggEditComponent
   ],
   imports: [
     FormsModule,
-    ReactiveFormsModule,
+    //ReactiveFormsModule,
+    ReactiveFormsModule.withConfig({warnOnNgModelWithFormControl: 'never'}),
     BrowserModule,
     NgxSpinnerModule,
     AppRoutingModule,
