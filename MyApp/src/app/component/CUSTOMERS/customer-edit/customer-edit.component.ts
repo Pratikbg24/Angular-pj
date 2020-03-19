@@ -181,7 +181,7 @@ export class CustomerEditComponent implements OnInit {
   } 
    update(){
      this.updateservice.updateItem(this.u_id,this.data).subscribe(Response=>{
-       this.route.navigate(['/home1/customerdetail']);
+       this.route.navigate(['/home1/updateCustomer1']);
      })
    }   
 

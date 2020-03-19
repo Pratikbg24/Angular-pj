@@ -33,7 +33,7 @@ const routes: Routes = [
 
       },
       {
-        path: 'updateserviceEngineer',
+        path: 'serviceEngglist',
         component: UpdateServiceEnggComponent,
       },
       {
@@ -41,23 +41,23 @@ const routes: Routes = [
         component: CustomerRegComponent,
       },
       {
-        path:'customerdetail/edit/:id', 
+        path:'updateCustomer1/edit/:id', 
         component: CustomerEditComponent        
       },
       {
-        path:'customerdetail',
+        path:'updateCustomer1',
         component:CustomerListComponent
         },
       {
-        path: 'updatecustomer',
+        path: 'customerdetails',
         component: UpdateCustomerComponent
       },
       {
-        path :'serviceEngglist',
+        path :'updateserviceEngineer',
         component:ServiceEnggListComponent
       },
       {
-        path:'serviceEngglist/edit/:u_id',
+        path:'updateserviceEngineer/edit/:u_id',
         component:ServiceEnggEditComponent
       }
     ]

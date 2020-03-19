@@ -22,13 +22,13 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let item of serviceEnggData ">
+        <tr *ngFor="let item of serviceEnggData | searchPipe:u_email;let i=index">
           <td>{{item.u_id}}</td>
           <td>{{item.u_name}}</td>
           <td>{{item.u_mobile}}</td>
           <td>{{item.u_email}}</td>
           <td>{{item.u_address}}</td>
-          <td>{{item.u_MachinePurchased}}</td>
+          <td>{{item.u_EngineerType}}</td>
           <td>{{item.u_joinDate |date:'dd/MM/yyyy'}}</td>
           <td>{{item.u_password}}</td>
           <td style="display: flex">

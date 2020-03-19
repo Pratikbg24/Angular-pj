@@ -10,13 +10,14 @@ export class ServiceEnggListComponent implements OnInit {
 
   serviceEnggData: any;
   DataList:any
-
+  u_email="";
   constructor(private updateservice:UpdateServiceService) { 
     this.serviceEnggData = [];
   }
   
   ngOnInit() {
     this.getAllServiceEngg();
+    // this.getEngineerType();
   }
   getAllServiceEngg(){
     this.updateservice.getList().subscribe((data:any)=>{
@@ -25,5 +26,10 @@ export class ServiceEnggListComponent implements OnInit {
       })
     })
   }
+  // getEngineerType(){
+  //   this.updateservice.machineType().subscribe((data:any)=>{
+  //     this.serviceEnggData=data;
+  //   })
+  // }
 
 }

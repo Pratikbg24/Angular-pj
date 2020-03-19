@@ -10,6 +10,8 @@ import { retry, catchError } from 'rxjs/operators';
 export class UpdateServiceService {
 
   base_path ="https://thawing-eyrie-14958.herokuapp.com/users/getAnalysisData";
+  base_path1="https://thawing-eyrie-14958.herokuapp.com/complaint/getMachineType";
+
   constructor( private http:HttpClient) { }
 
   // Http Options
@@ -75,5 +77,16 @@ export class UpdateServiceService {
         retry(2),
         catchError(this.handleError)
       )
+  }
+
+  // Get Machine Type
+
+  machineType(){
+    return this.http
+    .get<UpdateData>(this.base_path1)
+    .pipe(
+      retry(2),
+      catchError(this.handleError)
+    )
   }
 }

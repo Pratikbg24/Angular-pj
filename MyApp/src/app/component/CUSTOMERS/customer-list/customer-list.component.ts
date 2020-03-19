@@ -11,13 +11,15 @@ export class CustomerListComponent implements OnInit {
 
   customersData: any;
   UpdateData:any
-
+  u_email="";
+  
   constructor(private updateservice:UpdateServiceService) {
     this.customersData = [];
    }
 
    ngOnInit() {
     this.getAllCustomers();
+   
   }
  
   getAllCustomers() {
@@ -30,6 +32,7 @@ export class CustomerListComponent implements OnInit {
       //this.customersData = data;
     })
   }
+ 
  
  
   delete(item) {
