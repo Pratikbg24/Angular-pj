@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormArray, Validators, FormBuilder } from '@angular/forms';
 import { LoadingSpinnerService } from '../../../service/loading-spinner.service'
-import { CustomerRegService } from '../../../service/customer-reg.service';
 import { ActivatedRoute,Router } from '@angular/router';
 import { UpdateData} from '../../../models/update-data';
 import { UpdateServiceService} from '../../../service/update-service.service'
-import { from } from 'rxjs';
 
 @Component({
   selector: 'app-customer-edit',
@@ -75,7 +73,6 @@ export class CustomerEditComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
     private spinner: LoadingSpinnerService,
-    private custRegservice: CustomerRegService,
     private activatedRoute:ActivatedRoute,
     private route:Router,
     private updateservice:UpdateServiceService

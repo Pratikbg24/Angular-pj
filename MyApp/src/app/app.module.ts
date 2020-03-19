@@ -30,6 +30,8 @@ import { CustomerListComponent } from './component/CUSTOMERS/customer-list/custo
 import { CustomerEditComponent } from './component/CUSTOMERS/customer-edit/customer-edit.component';
 import { ServiceEnggListComponent } from './component/SERVICE-ENGG/service-engg-list/service-engg-list.component';
 import { ServiceEnggEditComponent } from './component/SERVICE-ENGG/service-engg-edit/service-engg-edit.component';
+import { ViewCustomerComponent } from './component/CUSTOMERS/view-customer/view-customer.component';
+import { ViewServiceEngineerComponent } from './component/SERVICE-ENGG/view-service-engineer/view-service-engineer.component';
   
 
 @NgModule({
@@ -67,7 +69,11 @@ import { ServiceEnggEditComponent } from './component/SERVICE-ENGG/service-engg-
 
     ServiceEnggListComponent,
 
-    ServiceEnggEditComponent
+    ServiceEnggEditComponent,
+
+    ViewCustomerComponent,
+
+    ViewServiceEngineerComponent
   ],
   imports: [
     FormsModule,
