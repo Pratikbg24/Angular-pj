@@ -24,8 +24,6 @@ import { FooterComponent } from './component/footer/footer.component';
 import { from } from 'rxjs';
 import { AssignComplaintComponent } from './component/assign-complaint/assign-complaint.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -51,6 +49,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     AssignComplaintComponent,
 
 
+
   ],
   imports: [
     FormsModule,
@@ -61,7 +60,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     HttpClientModule,
     BsDatepickerModule.forRoot(),
     BrowserAnimationsModule,
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
  
   ],
   providers: [
@@ -70,4 +69,6 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+
+}

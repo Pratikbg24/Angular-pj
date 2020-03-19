@@ -17,6 +17,18 @@ searchThis() {
 
 export class AssignComplaintComponent implements OnInit {
 
+
+ serviceEnggData: any = {
+  engg_Id: null,
+  engg_Name:null,
+  eng_EMail:null,
+}
+engg_Id: [];
+engg_Name:[];
+eng_EMail:[];
+  DataList:any
+  u_email="";
+
   pageTitle = 'Assign Complaints';
 
   complaint: any[];
@@ -25,6 +37,7 @@ export class AssignComplaintComponent implements OnInit {
     u_Machinepurchesed: null,
 
   }
+
   c_date: [];
   
   searchText;
@@ -37,9 +50,13 @@ export class AssignComplaintComponent implements OnInit {
     private router: Router,
     private charts: ChartService,
     private spinner: NgxSpinnerService,
-    private httpCilent: HttpClient) { }
+    private httpCilent: HttpClient) { 
+      this.serviceEnggData = [];
+    }
 
   ngOnInit() {
+
+    this.getAllServiceEngg();
 
     this.charts.getComplaintData().subscribe((data: any) => {
       this.complaint = data.data.filter((el: any) => {
@@ -74,16 +91,27 @@ export class AssignComplaintComponent implements OnInit {
     }
 
 
-    )/* 
+    )
+    /* 
     this.charts.getComplaintData().subscribe((data: any) => {
-
-      if (data) {
-        this.data= this.data.filter(function (ele, i, array) {
-          let arrayelement = ele.c_desc.toLowerCase()
-          return arrayelement.includes(data)
-        })
-      }
-
+ 
+      this.charts.getMachineType().subscribe((result: any) => {
+          this.machinType = result.data;
+          this.machinType.forEach((ell: any) => {
+            if (el.Machine_type === ell.id) {
+              el.Machine_type = ell.Value;
+            }
+          })
+       
     }) */
+  }
+  getAllServiceEngg(){
+    this.charts.getList().subscribe((data:any)=>{
+      this.serviceEnggData=data.data.filter((el:any)=>{
+        return el.u_role === 3;
+    })
+  })
+
+  console.log(this.serviceEnggData);
   }
 }

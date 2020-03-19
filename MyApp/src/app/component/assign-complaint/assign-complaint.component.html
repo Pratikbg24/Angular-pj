@@ -1,10 +1,7 @@
 
  <div class="container">   
        <div class="row">
-
-
-
- <div class='card'>
+<div class='card'>
        <div class='card-header'  id="r1">
    <b> {{pageTitle}}</b>
         </div>
@@ -12,7 +9,7 @@
          <div class='row'>
            <div class='col-md-1'><b>Filter By</b> </div>
            <div class='col-md-8'>
-             <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off"/>
+             <input style="margin-bottom: 17px;" class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off"/>
            </div>
          </div>
          <div class='row'
@@ -46,12 +43,75 @@
                 
                  </td>
                  <td>{{user.Machine_type}}</td>
+
                  <td>
-                     <button class='btn btn-primary'>Assign</button>
+                   
+               <div  id="customerModal" class="modal fade" role="dialog">
+                
+                <div >                
+                <div class="modal-dialog" >
+              
+                  <!-- Modal content-->
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h2 style="color: #337ab7;">Assign Engineer</h2>
+                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                      </div>
+                    <div class="modal-body" *ngFor="let item of serviceEnggData">
+                        <div class="alert alert-success fade show" >
+                        
+                        <div class="row" style="margin-top:8px">
+                          <div class="col-md-2"> 
+                          
+                          <label style="margin-top:12px" ><b>Id:</b></label>
+                          </div>
+                          <div class="col-md-10">
+                            <input type="text" name="engg_id" class="form-control"  id="engg_id" [(ngModel)]="item.u_id">
+                      
+                          </div>
+                           </div>
+
+                           <div class="row" style="margin-top: 15px;">
+                            <div class="col-md-2"> 
+                            
+                            <label style="margin-top:12px" ><b>Name:</b></label>
+                            </div>
+                            <div class="col-md-10">
+                              <input type="text" [(ngModel)]="item.u_name" name="engg_name" class="form-control"  id="engg_name">             
+                            </div>
+                             </div>
+
+                             <div class="row" style="margin-top: 15px;">
+                              <div class="col-md-2"> 
+                              
+                              <label style="margin-top:12px" ><b>Email:</b></label>
+                              </div>
+                              <div class="col-md-10">
+                                <input type="text" [(ngModel)]="item.u_email" name="Email" class="form-control"  id="Email">
+                          
+                              </div>
+                              
+                               </div>
+                             
+                               <button type="button" class="btn btn-primary btn-lg btn-block" style="margin-top: 12px;padding-top: 2px !important;padding-bottom: 2px !important;" data-dismiss="modal">ASSIGN TO ENGINEER</button>
+                    
+                            </div>
+                        
+                    </div>
+                  </div>
+
+                    <div class="modal-footer">
+                     
+                      <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
+                    </div>
+                  </div>                        
+                </div>
+              </div>
+                     <button class='btn btn-primary' data-toggle="modal" data-target="#customerModal ">Assign</button>
                  </td>
 
-               </tr>
-             </tbody>
+               </tr>     
+              </tbody>
            </table>
          </div>
        </div>
