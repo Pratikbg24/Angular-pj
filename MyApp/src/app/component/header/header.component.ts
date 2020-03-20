@@ -24,6 +24,11 @@ export class HeaderComponent implements OnInit {
     this.spinner.show();
     this.activeButton=event;
   }
+  
+ AssignComplaint(event) {
+    this.spinner.show();
+    this.activeButton=event;
+  }
   showButton(event){
     this.spinner.show();
     this.activeButton = event;

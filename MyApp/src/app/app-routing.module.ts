@@ -15,6 +15,7 @@ import { ServiceEnggListComponent } from './component/SERVICE-ENGG/service-engg-
 import { ServiceEnggEditComponent } from './component/SERVICE-ENGG/service-engg-edit/service-engg-edit.component';
 import { ViewCustomerComponent } from './component/CUSTOMERS/view-customer/view-customer.component';
 import { ViewServiceEngineerComponent } from './component/SERVICE-ENGG/view-service-engineer/view-service-engineer.component';
+import { AssignComplaintComponent } from './component/assign-complaint/assign-complaint.component';
 const routes: Routes = [
   {
     path: '',
@@ -30,10 +31,21 @@ const routes: Routes = [
 
       },
       {
+        path: 'app-assign-complaint',
+        component: AssignComplaintComponent,
+
+      },
+      {
+        path:'app-assign-complaint/view/:id',
+        component: AssignComplaintComponent
+      },
+      
+      {
         path: 'createserviceEngineer',
         component: ServiceEngineerComponent,
 
       },
+
       {
         path: 'serviceEngglist',
         component: UpdateServiceEnggComponent,
