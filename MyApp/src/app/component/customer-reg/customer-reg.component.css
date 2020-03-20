@@ -21,19 +21,29 @@ label{
     color: red
 }
 input.ng-touched.ng-invalid {
-    border: 1px solid red;
-    
+    border: 1px solid red;   
   }
- .card-header{
-     background-color:slateblue;
+
+select.ng-touched.ng-invalid {
+    border: 1px solid red;   
+  }
+  textarea.ng-touched.ng-invalid {
+    border: 1px solid red;   
+  }
+
+  
+ .loading{
+     color: white;
  }
- .btn{
-    background: #0066A2;
-    color: white;   
-    border-style: outset;    
-    border-color: #0066A2;    
-    height: 50px;    
-    width: 100px;    
-    font: bold 15px arial, sans-serif;    
-    text-shadow:none;
+ #RegisterButton{
+    float:right;
+    margin-top: 5px;
+    margin: 20px;
+    width: 30%;
+ }
+ #ResetForm{
+    float:right;
+    margin-top: 5px;
+    margin: 20px;
+    width: 30%;     
  }

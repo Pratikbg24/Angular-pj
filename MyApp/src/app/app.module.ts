@@ -20,10 +20,27 @@ import { ChartComponent } from './component/chart/chart.component';
 import { CustomerDasboardComponent } from './component/customer/customer-dasboard/customer-dasboard.component';
 import { HeaderComponent } from './component/header/header.component';
 import { FooterComponent } from './component/footer/footer.component';
+<<<<<<< HEAD
  import{ChartService} from './service/chart.service'; 
 import { from } from 'rxjs';
 import { AssignComplaintComponent } from './component/assign-complaint/assign-complaint.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+=======
+import { LoadingSpinnerService} from './service/loading-spinner.service'
+import { CustomerRegService} from './service/customer-reg.service'
+import { from } from 'rxjs';
+import { UpdateCustomerComponent } from './component/customer/update-customer/update-customer.component';
+import { SearchPipePipe } from './pipes/search-pipe.pipe';
+import { UpdateServiceEnggComponent } from './component/ServiceEngg/update-service-engg/update-service-engg.component';
+import { CustomerListComponent } from './component/CUSTOMERS/customer-list/customer-list.component';
+import { CustomerEditComponent } from './component/CUSTOMERS/customer-edit/customer-edit.component';
+import { ServiceEnggListComponent } from './component/SERVICE-ENGG/service-engg-list/service-engg-list.component';
+import { ServiceEnggEditComponent } from './component/SERVICE-ENGG/service-engg-edit/service-engg-edit.component';
+import { ViewCustomerComponent } from './component/CUSTOMERS/view-customer/view-customer.component';
+import { ViewServiceEngineerComponent } from './component/SERVICE-ENGG/view-service-engineer/view-service-engineer.component';
+  
+
+>>>>>>> somnath
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,14 +63,34 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
     FooterComponent,
 
+<<<<<<< HEAD
     AssignComplaintComponent,
 
 
+=======
+    UpdateCustomerComponent,
+>>>>>>> somnath
 
+    SearchPipePipe,
+  
+    UpdateServiceEnggComponent,
+
+    CustomerListComponent,
+
+    CustomerEditComponent,
+
+    ServiceEnggListComponent,
+
+    ServiceEnggEditComponent,
+
+    ViewCustomerComponent,
+
+    ViewServiceEngineerComponent
   ],
   imports: [
     FormsModule,
-    ReactiveFormsModule,
+    //ReactiveFormsModule,
+    ReactiveFormsModule.withConfig({warnOnNgModelWithFormControl: 'never'}),
     BrowserModule,
     NgxSpinnerModule,
     AppRoutingModule,
@@ -65,7 +102,12 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
   ],
   providers: [
     LoginService,
+<<<<<<< HEAD
     ChartService
+=======
+    LoadingSpinnerService,
+    CustomerRegService
+>>>>>>> somnath
   ],
   bootstrap: [AppComponent]
 })

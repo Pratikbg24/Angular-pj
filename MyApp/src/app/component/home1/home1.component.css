@@ -1,3 +1,8 @@
+.router-container{
+  margin-top: 120px;
+  margin-bottom: 80px;
+}
+
 #barchart2{
   height: auto;
   width: 30%;
@@ -69,12 +74,6 @@ margin-right: 10px !important;
   text-decoration: none;
   display: block;
 }
-
-.dropdown-menu a:hover {background-color: rgb(30, 135, 233);}
-
-.nav-item.dropdown :hover .dropdown-content {display: block;}
-
-.nav-item.dropdown :hover.nav-link.dropdown-toggle{background-color: #3e8e41;}
 
  
 .navbar-brand.badge {
