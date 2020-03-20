@@ -26,60 +26,60 @@ const routes: Routes = [
     component: Home1Component,
     children: [
       {
-        path: '',
+        path: '',pathMatch: 'full',
         component: ChartComponent
 
       },
       {
-        path: 'app-assign-complaint',
+        path: 'app-assign-complaint',pathMatch: 'full',
         component: AssignComplaintComponent,
 
       },
       {
-        path:'app-assign-complaint/view/:id',
+        path:'app-assign-complaint/view/:id',pathMatch: 'full',
         component: AssignComplaintComponent
       },
       
       {
-        path: 'createserviceEngineer',
+        path: 'createserviceEngineer',pathMatch: 'full',
         component: ServiceEngineerComponent,
 
       },
 
       {
-        path: 'serviceEngglist',
+        path: 'serviceEngglist',pathMatch: 'full',
         component: UpdateServiceEnggComponent,
       },
       {
-        path:'serviceEngglist/view/:id',
+        path:'serviceEngglist/view/:id',pathMatch: 'full',
         component:ViewServiceEngineerComponent
       },
       {
-        path: 'createcustomer',
+        path: 'createcustomer',pathMatch: 'full',
         component: CustomerRegComponent,
       },
       {
-        path:'updateCustomer1/edit/:id', 
+        path:'updateCustomer1/edit/:id', pathMatch: 'full',
         component: CustomerEditComponent        
       },
       {
-        path:'updateCustomer1',
+        path:'updateCustomer1',pathMatch: 'full',
         component:CustomerListComponent
         },
       {
-        path: 'customerdetails',
+        path: 'customerdetails',pathMatch: 'full',
         component: UpdateCustomerComponent
       },
       {
-          path:'customerdetails/view/:id',
+          path:'customerdetails/view/:id',pathMatch: 'full',
           component:ViewCustomerComponent
       },
       {
-        path :'updateserviceEngineer',
+        path :'updateserviceEngineer',pathMatch: 'full',
         component:ServiceEnggListComponent
       },
       {
-        path:'updateserviceEngineer/edit/:u_id',
+        path:'updateserviceEngineer/edit/:u_id',pathMatch: 'full',
         component:ServiceEnggEditComponent
       }
     ]
