@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { UpdateData } from '../models/update-data';
 import { Observable, throwError } from 'rxjs';
-import { retry, catchError } from 'rxjs/operators';
+import { retry,map, catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -42,13 +42,13 @@ export class UpdateServiceService {
   // Get single customer data by ID
   getItem(u_id:any): Observable<UpdateData> {
     return this.http
-      .get<UpdateData>(this.base_path + '/' + u_id)
+      .get<UpdateData>(this.base_path)
       .pipe(
         retry(2),
         catchError(this.handleError)
-      )
+      ) 
   }
- 
+  
   // Get customer data
   getList(): Observable<UpdateData> {
     return this.http

@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormArray, Validators, FormBuilder } from '@angular/forms';
 import { LoadingSpinnerService } from '../../../service/loading-spinner.service'
-import { ActivatedRoute,Router } from '@angular/router';
-import { UpdateData} from '../../../models/update-data';
-import { UpdateServiceService} from '../../../service/update-service.service'
+import { ActivatedRoute, Router, Params } from '@angular/router';
+import { UpdateData } from '../../../models/update-data';
+import { UpdateServiceService } from '../../../service/update-service.service'
 
 @Component({
   selector: 'app-customer-edit',
@@ -11,7 +11,6 @@ import { UpdateServiceService} from '../../../service/update-service.service'
   styleUrls: ['./customer-edit.component.css']
 })
 export class CustomerEditComponent implements OnInit {
-
 
   arr: FormArray
   formGroup: FormGroup
@@ -22,10 +21,10 @@ export class CustomerEditComponent implements OnInit {
   confirmfieldTextType: boolean;
   Machinelist: Array<any> = [];
   maxDate: Date;
-  showSuccessMsg:boolean=false;
-  showInvalidMsg:boolean=false;
-  u_id :number;
-  data:UpdateData;
+  showSuccessMsg: boolean = false;
+  showInvalidMsg: boolean = false;
+  u_id: any;
+  data: UpdateData;
 
   validation_messages = {
 
@@ -73,26 +72,28 @@ export class CustomerEditComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
     private spinner: LoadingSpinnerService,
-    private activatedRoute:ActivatedRoute,
-    private route:Router,
-    private updateservice:UpdateServiceService
-    ) {
-      this.data=new UpdateData();
+    private activatedRoute: ActivatedRoute,
+    private route: Router,
+    private updateservice: UpdateServiceService
+  ) {
+    this.data = new UpdateData();
     this.maxDate = new Date();
     this.maxDate.setDate(this.maxDate.getDate() + 0)
-      this.Machinelist=[
-        {name:"Computerised Embroidery Machines"},
-        {name:"Reconditioned Barudan Embroidery Machines"},
-        {name:"Circular Knitting Machines"},
-        {name:"Flat Knitting Machines"},
-        {name:"Chain Stitch Machines"},
-        {name:"Laser Cutting Machines"},
-        {name:"Dual Sequence Cording Machines"},
-        {name:"Cap Knitting Machines"},
-        {name:"Coller Knitting Machines"}
-      ]
+    this.Machinelist = [
+      { name: "Computerised Embroidery Machines" },
+      { name: "Reconditioned Barudan Embroidery Machines" },
+      { name: "Circular Knitting Machines" },
+      { name: "Flat Knitting Machines" },
+      { name: "Chain Stitch Machines" },
+      { name: "Laser Cutting Machines" },
+      { name: "Dual Sequence Cording Machines" },
+      { name: "Cap Knitting Machines" },
+      { name: "Coller Knitting Machines" }
+    ]
   }
   ngOnInit() {
+      this.getAllCustomer();
+      this.getById(this.u_id);
 
     this.formGroup = this.fb.group({
       name: ['', Validators.compose([
@@ -112,7 +113,7 @@ export class CustomerEditComponent implements OnInit {
         Validators.minLength(10)
       ])],
 
-      email: [{value:'', disabled: true}, Validators.compose([
+      email: [{ value: '', disabled: true }, Validators.compose([
         Validators.pattern("[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?")
       ])],
 
@@ -140,7 +141,7 @@ export class CustomerEditComponent implements OnInit {
     },
       {
         validators: this.passwordConfirming.bind(this)
-        });
+      });
   }
   passwordConfirming(formGroup: FormGroup) {
     const { value: password } = formGroup.get('password');
@@ -153,34 +154,54 @@ export class CustomerEditComponent implements OnInit {
       return { invalid: true };
     }
   }
-   get f() {
+  get f() {
     return this.formGroup.controls;
   }
+
   onSubmit() {
-    this.getOneItem();
+
     //console.log(this.formGroup.value)
     this.spinner.show();
     this.submitted = true;
-    this.showSuccessMsg=false;
-    this.showInvalidMsg=false;
+    this.showSuccessMsg = false;
+    this.showInvalidMsg = false;
     if (this.formGroup.invalid) {
       return;
     }
     this.formGroup.reset();
   }
-  getOneItem(){
-    //  console.log(this.activatedRoute.snapshot.params.u_id)
-    this.u_id=this.activatedRoute.snapshot.params["u_id"];
-    this.updateservice.getItem(this.u_id).subscribe(Response=>{
-      console.log(Response);
-     // this.data=Response;
+
+  getAllCustomer(){
+    this.updateservice.getList().subscribe((data1:any)=>{
+      console.log(data1);
+      this.data=data1 
     })
-  } 
-   update(){
-     this.updateservice.updateItem(this.u_id,this.data).subscribe(Response=>{
-       this.route.navigate(['/home1/updateCustomer1']);
-     })
-   }   
+  }
+
+  getById(u_id:any){
+    //let person = this.data.find(person => person.u_id === u_id)
+    this.updateservice.getList().subscribe((data1:any)=>{
+      console.log(data1);
+      console.log(this.)
+      this.data=data1 
+    })
+    console.log(this.data);
+    //this.data=person;
+  }
+
+  // getOneItem() {
+  //  // console.log(this.activatedRoute.snapshot.params.u_id)
+  //   this.u_id = this.activatedRoute.snapshot.params["u_id"];
+  //   this.updateservice.getItem(this.u_id).subscribe(Response => {
+  //     console.log(Response);
+  //     this.data = Response;
+  //   })
+  //  }
+  //  update(){
+  //    this.updateservice.updateItem(this.u_id,this.data).subscribe(Response=>{
+  //      this.route.navigate(['/home1/updateCustomer1']);
+  //    })
+  //  }   
 
   toggleFieldTextType(event: any) {
     if (event.target.id === 'btn11') {
@@ -189,5 +210,4 @@ export class CustomerEditComponent implements OnInit {
       this.confirmfieldTextType = !this.confirmfieldTextType
     }
   }
-
 }
