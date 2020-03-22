@@ -25,6 +25,7 @@ export class CustomerEditComponent implements OnInit {
   showInvalidMsg: boolean = false;
   u_id: any;
   data: UpdateData;
+  person: Array<any> = [];
 
   validation_messages = {
 
@@ -92,8 +93,9 @@ export class CustomerEditComponent implements OnInit {
     ]
   }
   ngOnInit() {
-      this.getAllCustomer();
-      this.getById(this.u_id);
+    //this.getById(this.u_id);
+     this.getOneItem(this.u_id);
+   //  console.log(this.data)
 
     this.formGroup = this.fb.group({
       name: ['', Validators.compose([
@@ -157,11 +159,9 @@ export class CustomerEditComponent implements OnInit {
   get f() {
     return this.formGroup.controls;
   }
-
   onSubmit() {
-
     //console.log(this.formGroup.value)
-    this.spinner.show();
+       this.spinner.show();
     this.submitted = true;
     this.showSuccessMsg = false;
     this.showInvalidMsg = false;
@@ -170,34 +170,37 @@ export class CustomerEditComponent implements OnInit {
     }
     this.formGroup.reset();
   }
-
-  getAllCustomer(){
-    this.updateservice.getList().subscribe((data1:any)=>{
-      console.log(data1);
-      this.data=data1 
-    })
-  }
-
-  getById(u_id:any){
-    //let person = this.data.find(person => person.u_id === u_id)
-    this.updateservice.getList().subscribe((data1:any)=>{
-      console.log(data1);
-      console.log(this.)
-      this.data=data1 
-    })
-    console.log(this.data);
-    //this.data=person;
-  }
+  
+    getOneItem(u_id:any){
+      const person= this.updateservice.getData(
+        this.formGroup.value.u_name, 
+        this.formGroup.value.u_mobile,
+        this.formGroup.value.u_altermobile,
+        this.formGroup.value.u_email,
+        this.formGroup.value.u_address,
+        this.formGroup.value.u_MachinePurchased,      
+        this.formGroup.value.u_dataOf_Purchased,
+        this.formGroup.value.u_password,
+        this.formGroup.value.u_cpassword)
+        .subscribe((data1:any) => {
+         console.log(data1)
+         this.person=data1
+         debugger;
+         console.log(person);
+        })   
+  
+    }  
+    
 
   // getOneItem() {
-  //  // console.log(this.activatedRoute.snapshot.params.u_id)
+  //   console.log(this.activatedRoute.snapshot.params.u_id)
   //   this.u_id = this.activatedRoute.snapshot.params["u_id"];
-  //   this.updateservice.getItem(this.u_id).subscribe(Response => {
-  //     console.log(Response);
-  //     this.data = Response;
+  //   this.updateservice.getItem(this.u_id,this.data).subscribe(res => {
+  //     console.log(res);
+  //     this.data = res;
   //   })
-  //  }
-  //  update(){
+  // }
+  // //  update(){
   //    this.updateservice.updateItem(this.u_id,this.data).subscribe(Response=>{
   //      this.route.navigate(['/home1/updateCustomer1']);
   //    })

@@ -152,14 +152,14 @@ export class ServiceEnggEditComponent implements OnInit {
     }
     this.formGroup.reset();
   }
-  getOneItem(){
-    //  console.log(this.activatedRoute.snapshot.params.u_id)
-    this.u_id=this.activatedRoute.snapshot.params["u_id"];
-    this.updateservice.getItem(this.u_id).subscribe(Response=>{
-      console.log(Response);
-     // this.data=Response;
-    })
-  } 
+  // getOneItem(){
+  //   //  console.log(this.activatedRoute.snapshot.params.u_id)
+  //   this.u_id=this.activatedRoute.snapshot.params["u_id"];
+  //   this.updateservice.getItem(this.u_id).subscribe(Response=>{
+  //     console.log(Response);
+  //    // this.data=Response;
+  //   })
+  // } 
    update(){
      this.updateservice.updateItem(this.u_id,this.data).subscribe(Response=>{
        this.route.navigate(['/home1/updateCustomer1']);

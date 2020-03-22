@@ -1,7 +1,4 @@
 export class UpdateData {
-  find(arg0: (cust: any) => boolean): any {
-    throw new Error("Method not implemented.");
-  }
     u_id:any;
     u_name:any;
     u_mobile:any;
