@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner'
 import { ChartService } from '../../service/chart.service'
 import { HttpClient } from '@angular/common/http';
+import { FormGroup, FormArray, Validators, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-assign-complaint',
@@ -17,7 +18,11 @@ searchThis() {
 
 export class AssignComplaintComponent implements OnInit {
 
-
+  arr: FormArray
+  formGroup: FormGroup
+  submitted = false
+  alert = false
+  invalid: boolean
  serviceEnggData: any = {
   engg_Id: null,
   engg_Name:null,
@@ -41,10 +46,14 @@ eng_EMail:[];
   c_date: [];
   
   searchText;
+  searchText1;
   machinType:[];
   data=[
 
   ]
+  showSuccessMsg:boolean=false;
+  showInvalidMsg:boolean=false;
+
 
   constructor(private route: ActivatedRoute,
     private router: Router,
@@ -105,13 +114,33 @@ eng_EMail:[];
        
     }) */
   }
+  onSubmit()
+  {
+      this.charts.assignComplaint(this.c_id,this.formGroup.value.u_id,status,)
+      .subscribe((data:any)=>{
+        console.log(data)
+        if(data.status === "success"){
+          this.showSuccessMsg=true;
+         }if(data.status === "error"){
+          console.log(data.message)
+          this.showInvalidMsg=true;  
+         }
+      })
+  }
   getAllServiceEngg(){
     this.charts.getList().subscribe((data:any)=>{
       this.serviceEnggData=data.data.filter((el:any)=>{
         return el.u_role === 3;
-    })
-  })
+  
 
-  console.log(this.serviceEnggData);
+      })
+  
+      console.log(this.c_id);
+    })
+
+ 
+
   }
+
+  
 }
