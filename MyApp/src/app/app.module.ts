@@ -36,6 +36,10 @@ import { ServiceEnggListComponent } from './component/SERVICE-ENGG/service-engg-
 import { ServiceEnggEditComponent } from './component/SERVICE-ENGG/service-engg-edit/service-engg-edit.component';
 import { ViewCustomerComponent } from './component/CUSTOMERS/view-customer/view-customer.component';
 import { ViewServiceEngineerComponent } from './component/SERVICE-ENGG/view-service-engineer/view-service-engineer.component';
+import { CustHeaderComponent } from './component/CUSTOMERS/cust-header/cust-header.component';
+import { CustFooterComponent } from './component/CUSTOMERS/cust-footer/cust-footer.component';
+import { CustHomeComponent } from './component/CUSTOMERS/cust-home/cust-home.component';
+import { CustRaiseComplaintComponent } from './component/CUSTOMERS/cust-raise-complaint/cust-raise-complaint.component';
   
 
 @NgModule({
@@ -79,7 +83,15 @@ import { ViewServiceEngineerComponent } from './component/SERVICE-ENGG/view-serv
 
     ViewCustomerComponent,
 
-    ViewServiceEngineerComponent
+    ViewServiceEngineerComponent,
+
+    CustHeaderComponent,
+
+    CustFooterComponent,
+
+    CustHomeComponent,
+
+    CustRaiseComplaintComponent
   ],
   imports: [
     FormsModule,
