@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormArray, Validators, FormBuilder } from '@angular/forms';
-import { LoadingSpinnerService } from '../../service/loading-spinner.service'
-import { ServiceEngineerService } from '../../service/service-engineer.service'
+import { LoadingSpinnerService } from '../../service/loading-spinner.service';
+import { ServiceEngineerService } from '../../service/service-engineer.service';
+import { NotificationServiceService } from '../../service/NOTIFICATION-ALERT/notification-service.service'
 @Component({
   selector: 'app-service-engineer',
   templateUrl: './service-engineer.component.html',
@@ -67,7 +68,8 @@ export class ServiceEngineerComponent implements OnInit {
 
   constructor(private fb: FormBuilder, 
     private spinner: LoadingSpinnerService,
-    private enggRegservice:ServiceEngineerService) {
+    private enggRegservice:ServiceEngineerService,
+    private noficationservice:NotificationServiceService) {
     this.maxDate = new Date();
     this.maxDate.setDate(this.maxDate.getDate() + 0);
     this.enggList=[
@@ -150,7 +152,8 @@ export class ServiceEngineerComponent implements OnInit {
       .subscribe((data:any) => {
         console.log(data)
         if(data.status === "success"){
-          this.showSuccessMsg=true;
+         this.showSuccessMsg=true;
+        //  console.log( this.noficationservice.success('! Record has been successfully deleted'))
          }if(data.status === "error"){
           console.log(data.message)
           this.showInvalidMsg=true;  

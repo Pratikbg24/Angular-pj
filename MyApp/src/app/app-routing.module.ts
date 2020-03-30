@@ -47,7 +47,7 @@ const routes: Routes = [
         component: CustomerRegComponent,
       },
       {
-        path:'updateCustomer1/edit/:id', 
+        path:'updateCustomer1/edit/:u_id', 
         component: CustomerEditComponent        
       },
       {

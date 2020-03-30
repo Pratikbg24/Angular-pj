@@ -7,8 +7,8 @@ export class UpdateData {
     u_address:any;
     u_MachinePurchased:any;
     u_EngineerType:any;
-    u_dateOf_Purchased:any;
-    u_joinDate:any;
+    u_dateOf_Purchased:Date;
+    u_joinDate:Date;
     u_password:any;
     u_cpassword:any;
     u_role:any;

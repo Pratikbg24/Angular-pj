@@ -68,6 +68,7 @@ export class ServiceEnggEditComponent implements OnInit {
       { type: 'minlength', message: '*Password minumum length 6 character.' }
     ]
   }
+  enggData: UpdateData;
 
   constructor(private fb: FormBuilder, 
     private spinner: LoadingSpinnerService,
@@ -85,7 +86,7 @@ export class ServiceEnggEditComponent implements OnInit {
     ]
   }
   ngOnInit() {
-
+    this.viewEngg();
     this.formGroup = this.fb.group({
       name: ['', Validators.compose([
         Validators.required,
@@ -152,15 +153,36 @@ export class ServiceEnggEditComponent implements OnInit {
     }
     this.formGroup.reset();
   }
-  // getOneItem(){
-  //   //  console.log(this.activatedRoute.snapshot.params.u_id)
-  //   this.u_id=this.activatedRoute.snapshot.params["u_id"];
-  //   this.updateservice.getItem(this.u_id).subscribe(Response=>{
-  //     console.log(Response);
-  //    // this.data=Response;
-  //   })
-  // } 
-   update(){
+
+  viewEngg() {
+    console.log(this.activatedRoute.snapshot.params.u_id)
+    this.u_id = this.activatedRoute.snapshot.params["u_id"];
+    this.updateservice.getItem(this.u_id).subscribe((result: any) => {
+      
+      this.formGroup.patchValue({
+        name:result.data[0].u_name,
+        Mobilenumber:result.data[0].u_mobile,
+        Alternatemobile:result.data[0].u_altermobile,
+        email:result.data[0].u_email,
+        Address:result.data[0].u_address,
+        DateOfjoining:result.data[0].u_joinDate,
+        password:result.data[0].u_password,
+        confirmPassword:result.data[0].u_cpassword,
+      })
+
+      console.log(this.u_id)
+      //console.log(result)
+      this.data=result
+     // console.log(this.data4)
+      this.enggData=this.data;
+      console.log(this.enggData)
+    })
+  }
+
+
+
+
+  update(){
      this.updateservice.updateItem(this.u_id,this.data).subscribe(Response=>{
        this.route.navigate(['/home1/updateCustomer1']);
      })

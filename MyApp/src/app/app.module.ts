@@ -1,17 +1,17 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import{LoginService}  from './service/login.service';
-import { NgxSpinnerModule} from 'ngx-spinner';
+import { LoginService }  from './service/login.service';
+import { NgxSpinnerModule } from 'ngx-spinner';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './component/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DatePipe } from '@angular/common'
 
-
-import { HttpClient, HttpClientModule } from "@angular/common/http";
+import { HttpClientModule } from "@angular/common/http";
 import { Home1Component } from './component/home1/home1.component';
 import { CustomerRegComponent } from './component/customer-reg/customer-reg.component';
-import { BsDatepickerModule} from 'ngx-bootstrap/datepicker';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceEngineerComponent } from './component/service-engineer/service-engineer.component';
 import { PageNotFoundComponent } from './component/page-not-found/page-not-found.component';
@@ -20,9 +20,8 @@ import { ChartComponent } from './component/chart/chart.component';
 import { CustomerDasboardComponent } from './component/customer/customer-dasboard/customer-dasboard.component';
 import { HeaderComponent } from './component/header/header.component';
 import { FooterComponent } from './component/footer/footer.component';
-import { LoadingSpinnerService} from './service/loading-spinner.service'
-import { CustomerRegService} from './service/customer-reg.service'
-import { from } from 'rxjs';
+import { LoadingSpinnerService } from './service/loading-spinner.service'
+import { CustomerRegService } from './service/customer-reg.service'
 import { UpdateCustomerComponent } from './component/customer/update-customer/update-customer.component';
 import { SearchPipePipe } from './pipes/search-pipe.pipe';
 import { UpdateServiceEnggComponent } from './component/ServiceEngg/update-service-engg/update-service-engg.component';
@@ -32,8 +31,12 @@ import { ServiceEnggListComponent } from './component/SERVICE-ENGG/service-engg-
 import { ServiceEnggEditComponent } from './component/SERVICE-ENGG/service-engg-edit/service-engg-edit.component';
 import { ViewCustomerComponent } from './component/CUSTOMERS/view-customer/view-customer.component';
 import { ViewServiceEngineerComponent } from './component/SERVICE-ENGG/view-service-engineer/view-service-engineer.component';
-  
-
+import { ConfirmDialogmodalComponent } from './component/CONFIRM-DIALOG/confirm-dialogmodal/confirm-dialogmodal.component';
+import { MatDialogModule } from '@angular/material/dialog'  
+import { UpdateServiceService } from '../../../../Angular-pj/MyApp/src/app/service/update-service.service';
+import { ConfirmDialogserviceService } from '../../../../Angular-pj/MyApp/src/app/service/CONFIRM-DIALOG/confirm-dialogservice.service' 
+import { NotificationServiceService } from '../.../../app/service/NOTIFICATION-ALERT/notification-service.service'
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 @NgModule({
   declarations: [
     AppComponent,
@@ -73,11 +76,12 @@ import { ViewServiceEngineerComponent } from './component/SERVICE-ENGG/view-serv
 
     ViewCustomerComponent,
 
-    ViewServiceEngineerComponent
+    ViewServiceEngineerComponent,
+
+    ConfirmDialogmodalComponent
   ],
   imports: [
     FormsModule,
-    //ReactiveFormsModule,
     ReactiveFormsModule.withConfig({warnOnNgModelWithFormControl: 'never'}),
     BrowserModule,
     NgxSpinnerModule,
@@ -85,11 +89,22 @@ import { ViewServiceEngineerComponent } from './component/SERVICE-ENGG/view-serv
     HttpClientModule,
     BsDatepickerModule.forRoot(),
     BrowserAnimationsModule,
+    MatDialogModule,
+    MatSnackBarModule
   ],
   providers: [
     LoginService,
     LoadingSpinnerService,
-    CustomerRegService
+    CustomerRegService,
+    DatePipe,
+    UpdateServiceService,
+    ConfirmDialogserviceService,
+    NotificationServiceService
+  ],
+  entryComponents:[
+    CustomerListComponent,
+    ServiceEnggListComponent,
+    ConfirmDialogmodalComponent
   ],
   bootstrap: [AppComponent]
 })

@@ -4,6 +4,8 @@ import { LoadingSpinnerService } from '../../../service/loading-spinner.service'
 import { ActivatedRoute, Router, Params } from '@angular/router';
 import { UpdateData } from '../../../models/update-data';
 import { UpdateServiceService } from '../../../service/update-service.service'
+import { DatePipe } from '@angular/common'
+import { from } from 'rxjs';
 
 @Component({
   selector: 'app-customer-edit',
@@ -24,12 +26,12 @@ export class CustomerEditComponent implements OnInit {
   showSuccessMsg: boolean = false;
   showInvalidMsg: boolean = false;
   u_id: any;
-  data: UpdateData;
-  person: Array<any> = [];
-
+  data4:any;
+  customerdata = new UpdateData();
+  
   validation_messages = {
 
-    'name': [
+    'u_name': [
       { type: 'required', message: '*Name is required' },
       { type: 'minlength', message: '*Name must be 3 character' }
     ],
@@ -71,15 +73,17 @@ export class CustomerEditComponent implements OnInit {
     ]
   }
 
+
   constructor(private fb: FormBuilder,
     private spinner: LoadingSpinnerService,
     private activatedRoute: ActivatedRoute,
     private route: Router,
-    private updateservice: UpdateServiceService
+    private updateservice: UpdateServiceService,
+    private datePipe:DatePipe
   ) {
-    this.data = new UpdateData();
-    this.maxDate = new Date();
-    this.maxDate.setDate(this.maxDate.getDate() + 0)
+  //  this.maxDate = this.datePipe.transform(new Date(),"dd-MM-yyyy");
+     this.maxDate = new Date();
+    this.maxDate.setDate(this.maxDate.getDate() + 0);
     this.Machinelist = [
       { name: "Computerised Embroidery Machines" },
       { name: "Reconditioned Barudan Embroidery Machines" },
@@ -93,16 +97,12 @@ export class CustomerEditComponent implements OnInit {
     ]
   }
   ngOnInit() {
-    //this.getById(this.u_id);
-     this.getOneItem(this.u_id);
-   //  console.log(this.data)
-
+    this.viewCustomer();
     this.formGroup = this.fb.group({
-      name: ['', Validators.compose([
+      u_name: ['', Validators.compose([
         Validators.required,
         Validators.minLength(3)
       ])],
-
       Mobilenumber: ['', Validators.compose([
         Validators.required,
         Validators.maxLength(10),
@@ -114,28 +114,22 @@ export class CustomerEditComponent implements OnInit {
         Validators.pattern('^[0-9]{10}$'),
         Validators.minLength(10)
       ])],
-
       email: [{ value: '', disabled: true }, Validators.compose([
         Validators.pattern("[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?")
       ])],
-
       Address: ['', Validators.compose([
         Validators.required
       ])],
-
       Machine_purchase: ['', Validators.compose([
         Validators.required
       ])],
       Datepurchased: ['', Validators.compose([
         Validators.required
       ])],
-
       password: ['', Validators.compose([
         Validators.required,
         Validators.minLength(6),
       ])],
-
-
       confirmPassword: ['', Validators.compose([
         Validators.required,
         Validators.minLength(6)
@@ -160,8 +154,7 @@ export class CustomerEditComponent implements OnInit {
     return this.formGroup.controls;
   }
   onSubmit() {
-    //console.log(this.formGroup.value)
-       this.spinner.show();
+    this.spinner.show();
     this.submitted = true;
     this.showSuccessMsg = false;
     this.showInvalidMsg = false;
@@ -170,41 +163,37 @@ export class CustomerEditComponent implements OnInit {
     }
     this.formGroup.reset();
   }
+  viewCustomer() {
+    console.log(this.activatedRoute.snapshot.params.u_id)
+    this.u_id = this.activatedRoute.snapshot.params["u_id"];
+    this.updateservice.getItem(this.u_id).subscribe((result: any) => {
+      
+      this.formGroup.patchValue({
+        u_name:result.data[0].u_name,
+        Mobilenumber:result.data[0].u_mobile,
+        Alternatemobile:result.data[0].u_altermobile,
+        email:result.data[0].u_email,
+        Address:result.data[0].u_address,
+        Machine_purchase:result.data[0].u_MachinePurchased,
+        Datepurchased:result.data[0].u_dateOf_Purchased,
+        password:result.data[0].u_password,
+        confirmPassword:result.data[0].u_cpassword,
+      })
+      console.log(this.u_id)
+      //console.log(result)
+      this.data4=result
+     // console.log(this.data4)
+      this.customerdata=this.data4;
+      console.log(this.customerdata)
+    })
+  }
   
-    getOneItem(u_id:any){
-      const person= this.updateservice.getData(
-        this.formGroup.value.u_name, 
-        this.formGroup.value.u_mobile,
-        this.formGroup.value.u_altermobile,
-        this.formGroup.value.u_email,
-        this.formGroup.value.u_address,
-        this.formGroup.value.u_MachinePurchased,      
-        this.formGroup.value.u_dataOf_Purchased,
-        this.formGroup.value.u_password,
-        this.formGroup.value.u_cpassword)
-        .subscribe((data1:any) => {
-         console.log(data1)
-         this.person=data1
-         debugger;
-         console.log(person);
-        })   
-  
-    }  
-    
-
-  // getOneItem() {
-  //   console.log(this.activatedRoute.snapshot.params.u_id)
-  //   this.u_id = this.activatedRoute.snapshot.params["u_id"];
-  //   this.updateservice.getItem(this.u_id,this.data).subscribe(res => {
-  //     console.log(res);
-  //     this.data = res;
-  //   })
-  // }
   // //  update(){
   //    this.updateservice.updateItem(this.u_id,this.data).subscribe(Response=>{
   //      this.route.navigate(['/home1/updateCustomer1']);
   //    })
   //  }   
+
 
   toggleFieldTextType(event: any) {
     if (event.target.id === 'btn11') {
