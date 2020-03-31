@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormArray, Validators, FormBuilder } from '@angular/forms';
 import { LoadingSpinnerService } from '../../../service/loading-spinner.service'
-
+import { ChartService } from '../../../service/chart.service'
 
 @Component({
   selector: 'app-cust-raise-complaint',
@@ -18,8 +18,8 @@ export class CustRaiseComplaintComponent implements OnInit {
   passwordTextField: boolean;
   enggList: Array<any> = [];
   maxDate: Date;
-  showSuccessMsg:boolean=false;
-  showInvalidMsg:boolean=false;
+  showSuccessMsg: boolean = false;
+  showInvalidMsg: boolean = false;
 
   validation_messages = {
 
@@ -27,7 +27,7 @@ export class CustRaiseComplaintComponent implements OnInit {
       { type: 'required', message: '*Name is required' },
       { type: 'minlength', message: '*Name must be 3 character' }
     ],
-    
+
     'EngineerType': [
       { type: 'required', message: '*Please select engineer type' },
     ],
@@ -36,23 +36,25 @@ export class CustRaiseComplaintComponent implements OnInit {
         type: 'required', message: '*Please select date'
       }
     ],
-    
+
   }
 
-  constructor(private fb: FormBuilder, 
+  constructor(private fb: FormBuilder,
+    private charts: ChartService,
     private spinner: LoadingSpinnerService,
-  ) {    this.maxDate = new Date();
+  ) {
+    this.maxDate = new Date();
     this.maxDate.setDate(this.maxDate.getDate() + 0);
-    this.enggList=[
-        {name:"Machanical"},
-        {name:"Electronic"},
-        {name:"Designing"}
+    this.enggList = [
+      { name: "Machanical" },
+      { name: "Electronic" },
+      { name: "Designing" }
     ]
 
- }
+  }
 
   ngOnInit() {
-      this.formGroup = this.fb.group({
+    this.formGroup = this.fb.group({
       name: ['', Validators.compose([
         Validators.required,
         Validators.minLength(3)
@@ -63,13 +65,13 @@ export class CustRaiseComplaintComponent implements OnInit {
       DateOfjoining: ['', Validators.compose([
         Validators.required
       ])],
-      })
-    }
+    })
+  }
 
-    get f() {
-      return this.formGroup.controls;
-    }
-    onSubmit() {
+  get f() {
+    return this.formGroup.controls;
+  }
+  onSubmit() {
       //console.log(this.formGroup.value)
      /*  this.enggRegservice.getData(
         this.formGroup.value.name, 
@@ -86,25 +88,25 @@ export class CustRaiseComplaintComponent implements OnInit {
            }       
          });    
       */ this.spinner.show();
-      this.submitted = true;
-      this.showSuccessMsg=false;
-      this.showInvalidMsg=false;
-      if (this.formGroup.invalid) {
-        return;
-      }
-      this.formGroup.reset();
+    this.submitted = true;
+    this.showSuccessMsg = false;
+    this.showInvalidMsg = false;
+    if (this.formGroup.invalid) {
+      return;
     }
-  
-  
-  
-    toggleFieldTextType(event: any) {
-      if (event.target.id === 'btn1') {
-        this.passwordTextField = !this.passwordTextField
-      } if (event.target.id === 'btn2') {
-        this.confirmTextField = !this.confirmTextField
-      }
+    this.formGroup.reset();
+  }
+
+
+
+  toggleFieldTextType(event: any) {
+    if (event.target.id === 'btn1') {
+      this.passwordTextField = !this.passwordTextField
+    } if (event.target.id === 'btn2') {
+      this.confirmTextField = !this.confirmTextField
     }
-  
+  }
+
 
 
 

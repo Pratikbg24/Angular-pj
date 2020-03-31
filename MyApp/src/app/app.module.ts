@@ -40,7 +40,9 @@ import { CustHeaderComponent } from './component/CUSTOMERS/cust-header/cust-head
 import { CustFooterComponent } from './component/CUSTOMERS/cust-footer/cust-footer.component';
 import { CustHomeComponent } from './component/CUSTOMERS/cust-home/cust-home.component';
 import { CustRaiseComplaintComponent } from './component/CUSTOMERS/cust-raise-complaint/cust-raise-complaint.component';
-  
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { PopupModalComponent } from './component/popup-modal/popup-modal.component';
+   
 
 @NgModule({
   declarations: [
@@ -91,7 +93,9 @@ import { CustRaiseComplaintComponent } from './component/CUSTOMERS/cust-raise-co
 
     CustHomeComponent,
 
-    CustRaiseComplaintComponent
+    CustRaiseComplaintComponent,
+
+    PopupModalComponent
   ],
   imports: [
     FormsModule,
@@ -104,7 +108,7 @@ import { CustRaiseComplaintComponent } from './component/CUSTOMERS/cust-raise-co
     BsDatepickerModule.forRoot(),
     BrowserAnimationsModule,
     Ng2SearchPipeModule,
- 
+    NgbModule
   ],
   providers: [
     LoginService,
