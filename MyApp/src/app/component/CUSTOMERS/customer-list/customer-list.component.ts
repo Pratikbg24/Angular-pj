@@ -13,6 +13,7 @@ export class CustomerListComponent implements OnInit {
   UpdateData: any
   u_email = "";
   u_id: UpdateData
+  alert = false
 
   constructor(private updateservice: UpdateServiceService,
     private confirmdialogservice: ConfirmDialogserviceService) {
@@ -33,20 +34,16 @@ export class CustomerListComponent implements OnInit {
     })
   }
   delete(item) {
-    this.confirmdialogservice.openConfirmDialog('Are you sure to delete this record ?')
-      .afterClosed().subscribe(res => {
-        if (res) {
-          this.updateservice.deleteItem(item.u_id).subscribe((result: any) => {
-            if (result.status === "success") {
-              alert("Record has been successfully deleted!")
-              this.getAllCustomers()
-            }
-             else {
-              alert(" Cannot delete !")
-            }
-          })
-          console.log('Agree clicked');
-        }
-      })
+    this.updateservice.deleteItem(item.u_id).subscribe((result: any) => {
+      if (result.status === "success") {
+        alert("Record has been successfully deleted!")
+        // this.alert=true;
+        this.getAllCustomers()
+      }
+      else {
+        alert(" Cannot delete !")
+      }
+    })
+    console.log('Agree clicked');
   }
 }

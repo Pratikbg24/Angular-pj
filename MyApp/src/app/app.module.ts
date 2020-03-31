@@ -35,7 +35,6 @@ import { ConfirmDialogmodalComponent } from './component/CONFIRM-DIALOG/confirm-
 import { MatDialogModule } from '@angular/material/dialog'  
 import { UpdateServiceService } from '../../../../Angular-pj/MyApp/src/app/service/update-service.service';
 import { ConfirmDialogserviceService } from '../../../../Angular-pj/MyApp/src/app/service/CONFIRM-DIALOG/confirm-dialogservice.service' 
-import { NotificationServiceService } from '../.../../app/service/NOTIFICATION-ALERT/notification-service.service'
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 @NgModule({
   declarations: [
@@ -98,8 +97,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     CustomerRegService,
     DatePipe,
     UpdateServiceService,
-    ConfirmDialogserviceService,
-    NotificationServiceService
+    ConfirmDialogserviceService
   ],
   entryComponents:[
     CustomerListComponent,

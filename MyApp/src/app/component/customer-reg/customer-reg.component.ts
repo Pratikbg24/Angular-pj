@@ -13,8 +13,8 @@ export class CustomerRegComponent implements OnInit {
   arr: FormArray
   formGroup: FormGroup
   submitted = false
-  alert = false
   invalid: boolean
+  alert = false
   passwordfieldTextType: boolean;
   confirmfieldTextType: boolean;
   Machinelist: Array<any> = [];
