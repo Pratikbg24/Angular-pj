@@ -90,6 +90,7 @@ export class ChartService {
 
 
   public createComplaint(data: any ) {
+    
     return this._http.post(AppSettings.baseUrl + 'complaint/newComplaint', data);
   }
 }
