@@ -71,26 +71,33 @@ export class CustRaiseComplaintComponent implements OnInit {
   get f() {
     return this.formGroup.controls;
   }
-  onSubmit() {
-      //console.log(this.formGroup.value)
-     /*  this.enggRegservice.getData(
-        this.formGroup.value.name, 
-        this.formGroup.value.EngineerType,      
-        this.formGroup.value.DateOfjoining,
-        )
-        .subscribe((data:any) => {
-          console.log(data)
-          if(data.status === "success"){
-            this.showSuccessMsg=true;
-           }if(data.status === "error"){
-            console.log(data.message)
-            this.showInvalidMsg=true;  
-           }       
-         });    
-      */ this.spinner.show();
+  onSubmit(values: any) {
+    //console.log(this.formGroup.value)
+    console.log(JSON.stringify(values));
+    let data = {
+      "c_desc": values.name,
+ //     "c_assignBy": this.navParams.get("user_id"),
+      "machine_type": values.machine_type,
+      "c_date": values.DateOfjoining,
+      "c_status": 1
+    }
+    this.charts.createComplaint(data).subscribe((result: any) => {
+      if(result.status === "success"){
+        this.showSuccessMsg=true;
+       }if(result.status === "error"){
+        console.log(result.message)
+        this.showInvalidMsg=true;  
+       }      
+
+    })
+
+   
+    /*  */      
+       
+    this.spinner.show();
     this.submitted = true;
-    this.showSuccessMsg = false;
-    this.showInvalidMsg = false;
+    this.showSuccessMsg=false;
+    this.showInvalidMsg=false;
     if (this.formGroup.invalid) {
       return;
     }
@@ -106,10 +113,6 @@ export class CustRaiseComplaintComponent implements OnInit {
       this.confirmTextField = !this.confirmTextField
     }
   }
-
-
-
-
 }
 
 

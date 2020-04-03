@@ -5,6 +5,7 @@ import { AppSettings } from '../../app/app.settings'
 import { Data } from '../data';
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -88,7 +89,7 @@ export class ChartService {
 
 
 
-  public createComplaint(data: any) {
+  public createComplaint(data: any ) {
     return this._http.post(AppSettings.baseUrl + 'complaint/newComplaint', data);
   }
 }

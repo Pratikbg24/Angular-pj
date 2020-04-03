@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 
-import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
-  
 @Component({
   selector: 'app-popup-modal',
   templateUrl: './popup-modal.component.html',
@@ -14,8 +12,8 @@ export class PopupModalComponent implements OnInit {
   
   closeResult: string;
   
-  constructor(private modalService: NgbModal) {}
-    
+  constructor() {}
+  /*   
   open(content) {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
@@ -31,8 +29,8 @@ export class PopupModalComponent implements OnInit {
       return 'by clicking on a backdrop';
     } else {
       return  `with: ${reason}`;
-    }
-  }
+    }} */
+  
 ngOnInit() {
   }
 
