@@ -78,6 +78,7 @@ export class CustRaiseComplaintComponent implements OnInit {
       "c_desc": values.name,
  //     "c_assignBy": this.navParams.get("user_id"),
       "machine_type": values.machine_type,
+      
       "c_date": values.DateOfjoining,
       "c_status": 1
     }
