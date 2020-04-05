@@ -1,30 +1,31 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import { UpdateServiceService } from '../../../service/update-service.service';
 import { UpdateData } from '../../../models/update-data';
-import { ConfirmDialogserviceService } from 'src/app/service/CONFIRM-DIALOG/confirm-dialogservice.service';
+import { ConfirmDialogmodalComponent } from '../../CONFIRM-DIALOG/confirm-dialogmodal/confirm-dialogmodal.component';
+
 @Component({
   selector: 'app-customer-list',
   templateUrl: './customer-list.component.html',
   styleUrls: ['./customer-list.component.css']
 })
 export class CustomerListComponent implements OnInit {
-
+   @ViewChild('myModal') myModal: ConfirmDialogmodalComponent;
+  // private modal:ConfirmDialogmodalComponent
   customersData: any;
   UpdateData: any
   u_email = "";
   u_id: UpdateData
-  alert = false
-
-  constructor(private updateservice: UpdateServiceService,
-    private confirmdialogservice: ConfirmDialogserviceService) {
+  alert = false;
+  
+  constructor(private updateservice: UpdateServiceService) {
     this.customersData = [];
   }
 
   ngOnInit() {
     this.getAllCustomers();
-
   }
-
+  
+  
   getAllCustomers() {
     //Get saved list of Customers
     this.updateservice.getList().subscribe((data: any) => {
@@ -46,4 +47,5 @@ export class CustomerListComponent implements OnInit {
     })
     console.log('Agree clicked');
   }
+
 }
