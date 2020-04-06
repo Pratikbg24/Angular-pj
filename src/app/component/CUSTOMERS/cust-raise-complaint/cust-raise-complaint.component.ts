@@ -88,6 +88,7 @@ export class CustRaiseComplaintComponent implements OnInit {
        }if(result.status === "error"){
         console.log(result.message)
         this.showInvalidMsg=true;  
+        
        }      
 
        
