@@ -8,7 +8,7 @@ import {ModalDirective} from 'ngx-bootstrap'
 })
 export class ConfirmDialogmodalComponent implements OnInit {
   // @ViewChild('childModal') public childdialog:CustomerListComponent;
-    @ViewChild('#myModal') public myModal:ConfirmDialogmodalComponent;
+    @ViewChild('#myModal') public myModal:ModalDirective;
 
 
   constructor(  ) { }

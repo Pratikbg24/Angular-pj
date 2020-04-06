@@ -9,23 +9,19 @@ import { ConfirmDialogmodalComponent } from '../../CONFIRM-DIALOG/confirm-dialog
   styleUrls: ['./customer-list.component.css']
 })
 export class CustomerListComponent implements OnInit {
-   @ViewChild('myModal') myModal: ConfirmDialogmodalComponent;
-  // private modal:ConfirmDialogmodalComponent
+  //  @ViewChild('myModal') myModal: ConfirmDialogmodalComponent;
+  private modal:ConfirmDialogmodalComponent
   customersData: any;
   UpdateData: any
   u_email = "";
   u_id: UpdateData
-  alert = false;
-  
+  alert = false;  
   constructor(private updateservice: UpdateServiceService) {
     this.customersData = [];
   }
-
   ngOnInit() {
     this.getAllCustomers();
-  }
-  
-  
+  }  
   getAllCustomers() {
     //Get saved list of Customers
     this.updateservice.getList().subscribe((data: any) => {
@@ -33,6 +29,9 @@ export class CustomerListComponent implements OnInit {
         return el.u_role === 1;
       })
     })
+  }
+  show(){
+    this.modal.show();
   }
   delete(item) {
     this.updateservice.deleteItem(item.u_id).subscribe((result: any) => {

@@ -10,13 +10,19 @@ h3{
 label{
     font-weight: bold;
     display: inline-block;
-
 }
 .p12{
     display: inline-block;
     color: red;
 }
-
+label[id="machine"]{
+    float: left;
+    margin-left: 0px  ;
+   padding-left: 0px;
+}
+#radiocontrol{
+    padding-left: 0px;
+}
 .error-message{
     color: red
 }
@@ -47,3 +53,23 @@ select.ng-touched.ng-invalid {
     margin: 20px;
     width: 30%;     
  }
+ /* machine Conditon */
+/* 
+ #new{
+     margin-left: 10px;    
+ }
+ #Recondition{
+     margin-left: 30%;
+ } */
+
+ input[type="radio"]{
+    margin: 0 20% 0 20%;
+  }
+ 
+  #newmachine{
+      font-weight: normal;
+  }
+  #reconditionmachine{
+      font-weight: normal;
+      margin-left: 100px;
+  }

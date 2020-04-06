@@ -33,11 +33,11 @@
         <td>{{item.u_email}}</td>
         <td>{{item.u_address}}</td>
         <td>{{item.u_MachinePurchased}}</td>
-        <td>{{item.u_dateOf_Purchased|date:'dd/mm/yyyy'}}</td>
+        <td>{{item.u_dateOf_Purchased|date:'mm/dd/yyyy'}}</td>
         <td>{{item.u_password}}</td>
         <td style="display: flex">
           <button type="button" class="btn btn-warning btn-sm" [routerLink]="['edit',item.u_id]">Edit</button>
-          <button type="button" class="btn btn-danger btn-sm ml-1" (click)="myModal.show()">Delete</button>
+          <button type="button" class="btn btn-danger btn-sm ml-1" (click)="show()">Delete</button>
         </td>
       </tr>
     </tbody>
@@ -50,6 +50,6 @@
   -->
 </div>
 
-<app-confirm-dialogmodal #myModal></app-confirm-dialogmodal>
+<!-- <app-confirm-dialogmodal #modal></app-confirm-dialogmodal> -->
 
 <router-outlet></router-outlet>
