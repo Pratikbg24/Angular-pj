@@ -31,11 +31,11 @@
           <div class="form-group">
             <label for="exampleInputEmail1">Password :</label>
             <div class="input-group">
-              <input [type]="PasswordfieldTextType ? 'text':'password'" name="password" formControlName="password"
+              <input [type]="fieldTextType ? 'text':'password'" name="password" formControlName="password"
                 class="form-control" id="password" placeholder="Enter password"/>
             <div class="input-group-prepend">
                 <span class="input-group-text">
-                  <i class="fa" [ngClass]="{'fa-eye-slash' : !PasswordfieldTextType,'fa-eye' : PasswordfieldTextType}" id="btn2"
+                  <i class="fa" [ngClass]="{'fa-eye-slash' : !fieldTextType,'fa-eye' : fieldTextType}" id="btn2"
                     (click)="toggleFieldTextType()"></i>
                 </span>
               </div>

@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../../service/login.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import {  FormGroup, FormBuilder, Validators,} from '@angular/forms';
-import { LoadingSpinnerService} from '../../service/loading-spinner.service'
+import {  FormGroup, FormBuilder, Validators,} from '@angular/forms'
+import { NgxSpinnerService} from 'ngx-spinner';
+import { from } from 'rxjs';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -11,9 +12,10 @@ import { LoadingSpinnerService} from '../../service/loading-spinner.service'
 export class LoginComponent implements OnInit {
   formGroup: FormGroup;
   returnUrls: string;
+  //loading = false;
   submitted = false;
   alert = false;
-  PasswordfieldTextType:boolean;
+  fieldTextType:boolean;
   validation_messages = {
     'email': [
       { type: 'required', message: 'Email is required.' },
@@ -30,8 +32,7 @@ export class LoginComponent implements OnInit {
     private fb: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
-    private spinner:LoadingSpinnerService
-     ) {
+    private spinner:NgxSpinnerService ) {
     this.router.navigate(['/']);
   }
 
@@ -52,23 +53,35 @@ export class LoginComponent implements OnInit {
 
 
   onSubmit() {
-     this.spinner.show();
+    //this.loading = true;
+    this.show();
     this.service.getData(this.formGroup.value.email, this.formGroup.value.password).subscribe((data:any) => {
+      // console.log(data)
       if (data.status === "success") {
-           this.spinner.show();
+      //  this.loading = true;
+          this.show();
+        //alert("success")
         this.router.navigate([this.returnUrls + "home1"]);
       }
       else {
         if (data.status === "error") {
-           this.spinner.show();
+        //  this.loading = true;
+          this.show();
           this.alert = true;
         }
+        //this.loading = false;
+        //this.formGroup.value.password.reset();
           this.formGroup.reset();
       }
     });    
   }
-  
+      show(){
+        this.spinner.show();
+        setTimeout(()=>{
+          this.spinner.hide();
+        },5000)
+      }
   toggleFieldTextType(){
-    this.PasswordfieldTextType = !this.PasswordfieldTextType;
+    this.fieldTextType = !this.fieldTextType;
   }
 }

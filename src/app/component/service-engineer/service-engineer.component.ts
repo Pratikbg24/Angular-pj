@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormArray, Validators, FormBuilder } from '@angular/forms';
-import { LoadingSpinnerService } from '../../service/loading-spinner.service'
-import { ServiceEngineerService } from '../../service/service-engineer.service'
+import { Router, ActivatedRoute } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { from } from 'rxjs';
 @Component({
   selector: 'app-service-engineer',
   templateUrl: './service-engineer.component.html',
@@ -12,13 +13,10 @@ export class ServiceEngineerComponent implements OnInit {
   formGroup: FormGroup
   submitted = false
   alert = false
-  invalid: boolean
   confirmTextField: boolean;
-  passwordTextField: boolean;
-  enggList: Array<any> = [];
+  passwordTextField:boolean;
+  Engg: any = ['Mechnical', 'Electronic', 'Designing']
   maxDate: Date;
-  showSuccessMsg:boolean=false;
-  showInvalidMsg:boolean=false;
 
   validation_messages = {
 
@@ -51,10 +49,10 @@ export class ServiceEngineerComponent implements OnInit {
     'Address': [
       { type: 'required', message: '*Address is required' },
     ],
-    'EngineerType': [
-      { type: 'required', message: '*Please select engineer type' },
+    'Engineer1': [
+      { type: 'required', message: '*Please select any one machine' },
     ],
-    'DateOfjoining': [
+    'Datepurchased': [
       {
         type: 'required', message: '*Please select date'
       }
@@ -65,17 +63,11 @@ export class ServiceEngineerComponent implements OnInit {
     ]
   }
 
-  constructor(private fb: FormBuilder, 
-    private spinner: LoadingSpinnerService,
-    private enggRegservice:ServiceEngineerService) {
+  constructor(private fb: FormBuilder, private spinner: NgxSpinnerService) {
     this.maxDate = new Date();
     this.maxDate.setDate(this.maxDate.getDate() + 0);
-    this.enggList=[
-        {name:"Machanical"},
-        {name:"Electronic"},
-        {name:"Designing"}
-    ]
   }
+
   ngOnInit() {
 
     this.formGroup = this.fb.group({
@@ -83,6 +75,7 @@ export class ServiceEngineerComponent implements OnInit {
         Validators.required,
         Validators.minLength(3)
       ])],
+
       Mobilenumber: ['', Validators.compose([
         Validators.required,
         Validators.maxLength(10),
@@ -94,23 +87,29 @@ export class ServiceEngineerComponent implements OnInit {
         Validators.pattern('^[0-9]{10}$'),
         Validators.minLength(10)
       ])],
+
       email: ['', Validators.compose([
         Validators.required,
         Validators.pattern("[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?")
       ])],
+
       Address: ['', Validators.compose([
         Validators.required
       ])],
-      EngineerType: ['', Validators.compose([
+
+      Engineer1: ['', Validators.compose([
         Validators.required
       ])],
-      DateOfjoining: ['', Validators.compose([
+      Datepurchased: ['', Validators.compose([
         Validators.required
       ])],
+
       password: ['', Validators.compose([
         Validators.required,
         Validators.minLength(6),
       ])],
+
+
       confirmPassword: ['', Validators.compose([
         Validators.required,
         Validators.minLength(6)
@@ -120,6 +119,8 @@ export class ServiceEngineerComponent implements OnInit {
         validators: this.passwordConfirming.bind(this)
       });
   }
+
+
   passwordConfirming(formGroup: FormGroup) {
 
     const { value: password } = formGroup.get('password');
@@ -129,50 +130,51 @@ export class ServiceEngineerComponent implements OnInit {
     }
     else {
       this.alert = false
-      return { invalid: true }
     }
   }
+  changeEngineer(e) {
+    console.log(e.value)
+    this.Engineer1.setValue(e.target.value, {
+      onlySelf: true
+    })
+  }
+
+  get Engineer1() {
+    return this.formGroup.get('Engineer1');
+  }
+
+
+
   get f() {
     return this.formGroup.controls;
   }
+
   onSubmit() {
-    //console.log(this.formGroup.value)
-    this.enggRegservice.getData(
-      this.formGroup.value.name, 
-      this.formGroup.value.Mobilenumber,
-      this.formGroup.value.Alternatemobile,
-      this.formGroup.value.email,
-      this.formGroup.value.Address,
-      this.formGroup.value.EngineerType,      
-      this.formGroup.value.DateOfjoining,
-      this.formGroup.value.password,
-      this.formGroup.value.confirmPassword)
-      .subscribe((data:any) => {
-        console.log(data)
-        if(data.status === "success"){
-          this.showSuccessMsg=true;
-         }if(data.status === "error"){
-          console.log(data.message)
-          this.showInvalidMsg=true;  
-         }       
-       });    
-    this.spinner.show();
+    console.log(this.formGroup.value)
+    console.log(this.formGroup)
+
+    this.show();
     this.submitted = true;
-    this.showSuccessMsg=false;
-    this.showInvalidMsg=false;
     if (this.formGroup.invalid) {
       return;
     }
+
     this.formGroup.reset();
   }
 
+  show() {
+    this.spinner.show();
+    setTimeout(() => {
+      this.spinner.hide();
+    }, 5000)
 
-
-  toggleFieldTextType(event: any) {
-    if (event.target.id === 'btn1') {
+  }
+  toggleFieldTextType(event:any) {
+    if(event.target.id === 'btn1'){
       this.passwordTextField = !this.passwordTextField
-    } if (event.target.id === 'btn2') {
+    }if(event.target.id === 'btn2'){
       this.confirmTextField = !this.confirmTextField
     }
   }
+
 }

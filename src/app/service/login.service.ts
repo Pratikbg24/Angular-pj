@@ -8,6 +8,7 @@ import { from } from 'rxjs';
 export class LoginService {
 
   constructor(private http: HttpClient) {
+
   }
   getData(username: any, pass: any) {
     let data = {
