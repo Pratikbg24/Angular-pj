@@ -16,10 +16,16 @@ import { ServiceEnggEditComponent } from './component/SERVICE-ENGG/service-engg-
 import { ViewCustomerComponent } from './component/CUSTOMERS/view-customer/view-customer.component';
 import { ViewServiceEngineerComponent } from './component/SERVICE-ENGG/view-service-engineer/view-service-engineer.component';
 import { AssignComplaintComponent } from './component/assign-complaint/assign-complaint.component';
+import {CustHomeComponent} from './component/CUSTOMERS/cust-home/cust-home.component'
 const routes: Routes = [
   {
     path: '',
     component: LoginComponent
+  },
+  {
+    path: 'app-cust-home',
+    component: CustHomeComponent,
+    
   },
   {
     path: 'home1',

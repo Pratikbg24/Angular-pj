@@ -89,7 +89,18 @@ export class ChartService {
 
 
 
-  public createComplaint(data: any ) {
+  public createComplaint(name:any,
+    EngineerType:any,
+    DateOfjoining:any,
+    c_status:any,
+    ) {
+      let data = {
+        "c_desc": name,
+   //     "c_assignBy": this.navParams.get("user_id"),
+        "machine_type": EngineerType,
+        "c_date": DateOfjoining,
+        "c_status": 1
+      }
     return this._http.post(AppSettings.baseUrl + 'complaint/newComplaint', data);
   }
 }
