@@ -1,159 +1,125 @@
-
 import { Component, OnInit } from '@angular/core';
 import { Chart } from 'chart.js';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner'
 import { format } from 'url';
+import { ChartService } from '../../service/chart.service'
+import { from } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { user } from '../../user.module';
+import { CompileShallowModuleMetadata } from '@angular/compiler';
+import { Data } from 'src/app/data';
 @Component({
   selector: 'app-chart',
   templateUrl: './chart.component.html',
   styleUrls: ['./chart.component.css']
 })
 export class ChartComponent implements OnInit {
-  PieChart = [];
-  PieChart2 = [];
-  PieChart3 = [];
-  pieChart4 = [];
-  // returnUrls:string;
 
+  date1:any[];
+  users:any[];
+  graphData:any={
+    userCount:0,
+    enggCount:0,
+    adminCount:0
+  };
+  engg:any[];
+  admin:any[];
+  chart:[];
   constructor(private route: ActivatedRoute,
     private router: Router,
-    private spinner: NgxSpinnerService) {
-    //this.router.navigate(['/']);
+    private charts: ChartService,
+    private spinner: NgxSpinnerService,
+    private httpCilent: HttpClient) {
+
 
   }
 
   ngOnInit() {
-    // this.returnUrls = this.route.snapshot.queryParams['returnUrls'] || '/';
+    this.charts.getData().subscribe((data:any)=>{
+      this.users=data.data.filter((el:any)=>{
+        return  el.u_role === 1
+      })
+      this.engg=data.data.filter((el:any)=>{
+        return  el.u_role === 3
+      })
+      this.admin=data.data.filter((el:any)=>{
+        return  el.u_role === 2
+      })
 
-    this.PieChart = new Chart('piechart', {
-      type: 'pie',
-      data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-        datasets: [{
-          label: '# of Votes',
-          data: [12, 19, 3, 5, 2, 3],
-          backgroundColor: [
-            'rgba(255, 99, 132, 0.2)',
-            'rgba(54, 162, 235, 0.2)',
-            'rgba(255, 206, 86, 0.2)',
-            'rgba(75, 192, 192, 0.2)',
-            'rgba(153, 102, 255, 0.2)',
-            'rgba(255, 159, 64, 0.2)'
-          ],
-          borderColor: [
-            'rgba(255, 99, 132, 1)',
-            'rgba(54, 162, 235, 1)',
-            'rgba(255, 206, 86, 1)',
-            'rgba(75, 192, 192, 1)',
-            'rgba(153, 102, 255, 1)',
-            'rgba(255, 159, 64, 1)'
-          ],
-          borderWidth: 1
-        }]
-      },
-      options: {
-        scales: {
-          yAxes: [{
-            ticks: {
-              beginAtZero: true
-            }
-          }]
+      this.date1  =data.data.filter((el:any)=>{
+          return el.u_joinDate
+       
+         })
+         let x=   this.date1;
+       
+         let allDate= []
+         this.date1.forEach(x => {
+
+         let jsdate =new Date(x*1000)
+         allDate.push(jsdate.toLocaleDateString('en',{year:'numeric',month:'short',day:'numeric'}))           
+         });
+         console.log(allDate)
+       
+
+
+      
+
+
+
+
+      this.graphData.userCount = this.users.length;
+      this.graphData.enggCount = this.engg.length;
+      this.graphData.adminCount = this.admin.length;
+
+      
+    this.chart=new Chart('canvas',{
+      type:'pie',
+      data:{
+        labels:["admin","engg","users"],
+        datasets:[
+        {
+          data:[this.graphData.adminCount,this.graphData.enggCount,this.graphData.userCount],
+                   borderColor: 'yellow',  
+                backgroundColor: [  
+                  "red",  
+                  "blue",  
+                  "green",  
+                ],
+                fill :true
         }
-      }
-    });
-
-    this.PieChart2 = new Chart('piechart2', {
-      type: 'bar',
-      data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-        datasets: [{
-          label: '# of Votes',
-          data: [12, 19, 3, 5, 2, 3],
-          backgroundColor: [
-            'rgba(255, 99, 132, 0.2)',
-            'rgba(54, 162, 235, 0.2)',
-            'rgba(255, 206, 86, 0.2)',
-            'rgba(75, 192, 192, 0.2)',
-            'rgba(153, 102, 255, 0.2)',
-            'rgba(255, 159, 64, 0.2)'
-          ],
-          borderColor: [
-            'rgba(255, 99, 132, 1)',
-            'rgba(54, 162, 235, 1)',
-            'rgba(255, 206, 86, 1)',
-            'rgba(75, 192, 192, 1)',
-            'rgba(153, 102, 255, 1)',
-            'rgba(255, 159, 64, 1)'
-          ],
-          borderWidth: 1
-        }]
+        ]
       },
-      options: {
-        scales: {
-          yAxes: [{
-            ticks: {
-              beginAtZero: true
-            }
-          }]
+      options:{
+        legend:{
+          display:true
+
         }
-      }
-    });
-
-    this.PieChart3 = new Chart('piechart3', {
-      type: 'pie',
-      data: {
-        labels: ["M", "T", "W", "T", "F", "S", "S"],
-        datasets: [{
-          backgroundColor: [
-            "#2ecc71",
-            "#3498db",
-            "#95a5a6",
-            "#9b59b6",
-            "#f1c40f",
-            "#e74c3c",
-            "#34495e"
-          ],
-          data: [12, 19, 3, 17, 28, 24, 7]
-        }]
-      }
-    });
-
-    this.pieChart4 = new Chart('piechart4', {
-      type: 'doughnut',
-      data: {
-        labels: ['OK', 'WARNING', 'CRITICAL', 'UNKNOWN'],
-        datasets: [{
-          label: '# of Tomatoes',
-          data: [12, 19, 3, 5],
-          backgroundColor: [
-            'rgba(255, 99, 132, 0.5)',
-            'rgba(54, 162, 235, 0.2)',
-            'rgba(255, 206, 86, 0.2)',
-            'rgba(75, 192, 192, 0.2)'
-          ],
-          borderColor: [
-            'rgba(255,99,132,1)',
-            'rgba(54, 162, 235, 1)',
-            'rgba(255, 206, 86, 1)',
-            'rgba(75, 192, 192, 1)'
-          ],
-          borderWidth: 1
-        }]
       },
-    });
+      scales: {  
+        xAxes: [{  
+          display: true  
+        }],  
+        yAxes: [{  
+          display: true  
+        }],  
+      }  
+    })
+    })
+    
+   
   }
   showEngineer() {
-     this.spinner.show();
+    this.spinner.show();
     setTimeout(() => {
       this.spinner.hide();
     }, 5000)
   }
   showCustomer() {
     this.spinner.show();
-   setTimeout(() => {
-     this.spinner.hide();
-   }, 5000)
- }
+    setTimeout(() => {
+      this.spinner.hide();
+    }, 5000)
+  }
 
 }

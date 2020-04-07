@@ -1,0 +1,49 @@
+
+@import url("https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
+
+h3{
+    text-align: center;
+}
+.card-body{
+    background-color: whitesmoke;
+}
+label{
+    font-weight: bold;
+    display: inline-block;
+
+}
+.p12{
+    display: inline-block;
+    color: red;
+}
+
+.error-message{
+    color: red
+}
+input.ng-touched.ng-invalid {
+    border: 1px solid red;   
+  }
+
+select.ng-touched.ng-invalid {
+    border: 1px solid red;   
+  }
+  textarea.ng-touched.ng-invalid {
+    border: 1px solid red;   
+  }
+
+  
+ .loading{
+     color: white;
+ }
+ #UpdateButton{
+    float:right;
+    margin-top: 5px;
+    margin: 20px;
+    width: 30%;
+ }
+ #Canclebutton{
+    float:right;
+    margin-top: 5px;
+    margin: 20px;
+    width: 30%;     
+ }
