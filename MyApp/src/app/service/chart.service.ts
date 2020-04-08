@@ -5,7 +5,6 @@ import { AppSettings } from '../../app/app.settings'
 import { Data } from '../data';
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
-
 @Injectable({
   providedIn: 'root'
 })
