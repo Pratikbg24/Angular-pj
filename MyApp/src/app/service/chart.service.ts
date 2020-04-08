@@ -73,15 +73,9 @@ export class ChartService {
   {
     return this._http.get("https://thawing-eyrie-14958.herokuapp.com/complaint/gelAllcomplaint");
   }
-
-  assignComplaint(status:any, complaint_ID:any, u_id:any)
+  assignComplaint(data:any)
   {
-    let data = {
-      "status": 3,
-     " complaintId": complaint_ID,
-     " assignTo": u_id
-    }
-    console.log(data);
+     console.log(data);
     let url="https://thawing-eyrie-14958.herokuapp.com/complaint/assignComplaint";
     return this._http.post(url+'complaint/assignComplaint',data);
   }
@@ -89,7 +83,18 @@ export class ChartService {
 
 
 
-  public createComplaint(data: any ) {
+  public createComplaint(name:any,
+    EngineerType:any,
+    DateOfjoining:any,
+    c_status:any,
+    ) {
+      let data = {
+        "c_desc": name,
+   //     "c_assignBy": this.navParams.get("user_id"),
+        "machine_type": EngineerType,
+        "c_date": DateOfjoining,
+        "c_status": 1
+      }
     return this._http.post(AppSettings.baseUrl + 'complaint/newComplaint', data);
   }
 }

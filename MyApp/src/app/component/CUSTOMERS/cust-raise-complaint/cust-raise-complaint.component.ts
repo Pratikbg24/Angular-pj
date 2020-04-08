@@ -46,9 +46,9 @@ export class CustRaiseComplaintComponent implements OnInit {
     this.maxDate = new Date();
     this.maxDate.setDate(this.maxDate.getDate() + 0);
     this.enggList = [
-      { name: "Machanical" },
-      { name: "Electronic" },
-      { name: "Designing" }
+      {key:1, name: "Machanical" },
+      {key:2, name: "Electronic" },
+      {key:3, name: "Designing" }
     ]
 
   }
@@ -72,16 +72,16 @@ export class CustRaiseComplaintComponent implements OnInit {
     return this.formGroup.controls;
   }
   onSubmit(values: any) {
-    //console.log(this.formGroup.value)
-    console.log(JSON.stringify(values));
-    let data = {
-      "c_desc": values.name,
- //     "c_assignBy": this.navParams.get("user_id"),
-      "machine_type": values.machine_type,
-      "c_date": values.DateOfjoining,
-      "c_status": 1
-    }
-    this.charts.createComplaint(data).subscribe((result: any) => {
+    
+    this.charts.createComplaint(
+
+
+      this.formGroup.value.name, 
+      this.formGroup.value.EngineerType,      
+      this.formGroup.value.DateOfjoining,
+      "c_status"
+
+    ).subscribe((result: any) => {
       if(result.status === "success"){
         this.showSuccessMsg=true;
        }if(result.status === "error"){
@@ -90,9 +90,6 @@ export class CustRaiseComplaintComponent implements OnInit {
        }      
 
     })
-
-   
-    /*  */      
        
     this.spinner.show();
     this.submitted = true;
@@ -102,16 +99,6 @@ export class CustRaiseComplaintComponent implements OnInit {
       return;
     }
     this.formGroup.reset();
-  }
-
-
-
-  toggleFieldTextType(event: any) {
-    if (event.target.id === 'btn1') {
-      this.passwordTextField = !this.passwordTextField
-    } if (event.target.id === 'btn2') {
-      this.confirmTextField = !this.confirmTextField
-    }
   }
 }
 
