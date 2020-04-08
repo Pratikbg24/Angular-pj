@@ -64,6 +64,22 @@ export class AssignComplaintComponent implements OnInit {
     this.serviceEnggData = [];
   }
 
+  asign(event: any) {
+    complaintData: event ;
+      this.ngOnInit()
+     }
+  
+  getItems(ev: any) {
+    const val = ev.target.value;
+    if (val && val.trim() != '') {
+      this.complaint = this.complaint.filter((item) => {
+        return parseInt(item.c_id) === parseInt(val) || (item.c_desc.toLowerCase().indexOf(val.toLowerCase())) > -1
+      })
+    }
+    if (val.length === 0) {
+      this.ngOnInit()
+    }
+  }
   ngOnInit() {
 
     this.getAllServiceEngg();
@@ -86,42 +102,15 @@ export class AssignComplaintComponent implements OnInit {
       this.c_date = data.data.filter((el: any) => {
         return el.c_date
       })
-      // this.Machine_type = data.data.filter((el: any) => {
-      //   return el.Machine_type == 1
-      // })
-
-
-
-
-
       this.Machine_type.u_Machinepurchesed = this.Machine_type.u_Machinepurchesed;
-
-
-
-    }
-
-
-    )
-    /* 
-    this.charts.getComplaintData().subscribe((data: any) => {
- 
-      this.charts.getMachineType().subscribe((result: any) => {
-          this.machinType = result.data;
-          this.machinType.forEach((ell: any) => {
-            if (el.Machine_type === ell.id) {
-              el.Machine_type = ell.Value;
-            }
-          })
-       
-    }) */
+    });
   }
+  
   assignengg(user: any) {
- 
-    
     let id=this.c_id[0].c_id;
     let data = {
       status: 3,
-      complaintId:id,
+      complaintId:this.c_id,
       assignTo: user.u_id,
     }
     this.charts.assignComplaint(data).subscribe((result: any) => {
