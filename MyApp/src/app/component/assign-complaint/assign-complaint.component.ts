@@ -116,7 +116,8 @@ export class AssignComplaintComponent implements OnInit {
     }) */
   }
   assignengg(user: any) {
-
+ 
+    
     let id=this.c_id[0].c_id;
     let data = {
       status: 3,
