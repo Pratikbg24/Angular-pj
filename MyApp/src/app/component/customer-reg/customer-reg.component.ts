@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormArray, Validators, FormBuilder } from '@angular/forms';
 import { LoadingSpinnerService } from '../../service/loading-spinner.service'
-import { CustomerRegService } from '../../service/customer-reg.service'
+import { CustomerRegService } from '../../service/customer-reg.service';
+import { BsDatepickerConfig } from 'ngx-bootstrap'
+import { NotificationServiceService} from '../../service/NOTIFICATION-ALERT/notification-service.service'
 @Component({
   selector: 'app-customer-reg',
   templateUrl: './customer-reg.component.html',
   styleUrls: ['./customer-reg.component.css']
 })
 export class CustomerRegComponent implements OnInit {
-
-
   arr: FormArray
   formGroup: FormGroup
   submitted = false
@@ -21,11 +21,8 @@ export class CustomerRegComponent implements OnInit {
   servicePeriod:Array<any>=[];
   warrentyperiod:Array<any>=[];
   maxDate: Date;
-  showSuccessMsg: boolean = false;
-  showInvalidMsg: boolean = false;
-
+   selection={}
   validation_messages = {
-
     'name': [
       { type: 'required', message: '*Name is required' },
       { type: 'minlength', message: '*Name must be 3 character' }
@@ -82,7 +79,11 @@ export class CustomerRegComponent implements OnInit {
   }
   constructor(private fb: FormBuilder,
     private spinner: LoadingSpinnerService,
-    private custRegservice: CustomerRegService) {
+    private custRegservice: CustomerRegService,
+    private dpconfig:BsDatepickerConfig,
+    private notificationservice:NotificationServiceService) {
+    this.dpconfig.dateInputFormat='DD-MM-YYYY';
+    this.dpconfig.isAnimated=true;
     this.maxDate = new Date();
     this.maxDate.setDate(this.maxDate.getDate() + 0)
     this.Machinelist = [
@@ -153,9 +154,8 @@ export class CustomerRegComponent implements OnInit {
       Machine_purchase: ['', Validators.compose([
         Validators.required
       ])],
-      machieCondition: ['', Validators.compose([
-        Validators.required
-      ])],
+      machieCondition: ['', Validators.required
+      ],
       Note: ['', Validators.compose([
         Validators.required
       ])],
@@ -171,7 +171,6 @@ export class CustomerRegComponent implements OnInit {
       Datepurchased: ['', Validators.compose([
         Validators.required
       ])],
-
       password: ['', Validators.compose([
         Validators.required,
         Validators.minLength(6),
@@ -203,7 +202,7 @@ export class CustomerRegComponent implements OnInit {
     return this.formGroup.get('machieCondition');
   }
   onSubmit() {
-    //console.log(this.formGroup.value)
+    console.log(this.formGroup.value)
     this.spinner.show();
     this.custRegservice.getData(
       this.formGroup.value.name,
@@ -223,15 +222,14 @@ export class CustomerRegComponent implements OnInit {
       .subscribe((data: any) => {
         console.log(data)
         if (data.status === "success") {
-          this.showSuccessMsg = true;
+          this.notificationservice.success("Registration Successfully ")
         } if (data.status === "error") {
           console.log(data.message)
-          this.showInvalidMsg = true;
+          this.notificationservice.error("The email address or mobile number you have entered is already registered");
+          
         }
       });
-    this.submitted = true;
-    this.showSuccessMsg = false;
-    this.showInvalidMsg = false;
+    this.submitted = true;    
     if (this.formGroup.invalid) {
       return;
     }

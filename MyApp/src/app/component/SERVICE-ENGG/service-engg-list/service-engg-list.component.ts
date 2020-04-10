@@ -1,7 +1,8 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { UpdateServiceService } from 'src/app/service/update-service.service';
 import { ConfirmDialogserviceService } from 'src/app/service/CONFIRM-DIALOG/confirm-dialogservice.service';
-import { UpdateData } from 'src/app/models/update-data';
+import { NotificationServiceService } from 'src/app/service/NOTIFICATION-ALERT/notification-service.service';
+declare var $ :any
 @Component({
   selector: 'app-service-engg-list',
   templateUrl: './service-engg-list.component.html',
@@ -12,9 +13,10 @@ export class ServiceEnggListComponent implements OnInit {
   serviceEnggData: any;
   DataList: any
   u_email = "";
-  u_id: UpdateData
+  u_id: any
   constructor(private updateservice: UpdateServiceService,
-    private confirmdialogservice: ConfirmDialogserviceService) {
+    private confirmdialogservice: ConfirmDialogserviceService,
+    private notificationservice: NotificationServiceService) {
     this.serviceEnggData = [];
   }
 
@@ -26,27 +28,29 @@ export class ServiceEnggListComponent implements OnInit {
     this.updateservice.getList().subscribe((data: any) => {
       this.serviceEnggData = data.data.filter((el: any) => {
         return el.u_role === 3;
+      });
+      this.u_id = data.data.filter((el:any)=>{
+        return el.u_id
       })
     })
   }
   delete(item: any) {
-    this.updateservice.deleteItem(item.u_id).subscribe((result: any) => {
+    let data={
+      "u_id":this.u_id
+    }
+    this.updateservice.deleteItem(data).subscribe((result: any) => {
       if (result.status === "success") {
-        //alert(" !Record has been successfully deleted")
+       this.notificationservice.warning("Record has been successfully deleted")
         this.getAllServiceEngg()
       } else {
-        alert(" !Record can not delete");
+        this.notificationservice.error("The record cannot be deleted")
       }
     })
     console.log('Agree clicked');
   }
+  openModal(item:any){
+     this.u_id = item.u_id
+  $("#deleteModal").modal('show');
+  }
+
 }
-
-
-  // getEngineerType(){
-  //   this.updateservice.machineType().subscribe((data:any)=>{
-  //     this.serviceEnggData=data;
-  //   })
-  // }
-
-

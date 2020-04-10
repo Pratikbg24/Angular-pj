@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { FormGroup, FormArray, Validators, FormBuilder } from '@angular/forms';
 import { LoadingSpinnerService } from '../../../service/loading-spinner.service'
 import { ActivatedRoute, Router, Params } from '@angular/router';
@@ -6,14 +6,15 @@ import { UpdateData } from '../../../models/update-data';
 import { UpdateServiceService } from '../../../service/update-service.service'
 import { DatePipe } from '@angular/common'
 import { from } from 'rxjs';
-
+import { BsDatepickerConfig } from 'ngx-bootstrap';
+import { CustomerListComponent } from '../customer-list/customer-list.component';
+import { NotificationServiceService } from 'src/app/service/NOTIFICATION-ALERT/notification-service.service';
 @Component({
   selector: 'app-customer-edit',
   templateUrl: './customer-edit.component.html',
   styleUrls: ['./customer-edit.component.css']
 })
 export class CustomerEditComponent implements OnInit {
-
   arr: FormArray
   formGroup: FormGroup
   submitted = false
@@ -22,15 +23,13 @@ export class CustomerEditComponent implements OnInit {
   passwordfieldTextType: boolean;
   confirmfieldTextType: boolean;
   Machinelist: Array<any> = [];
-  maxDate: Date;
-  showSuccessMsg: boolean = false;
-  showInvalidMsg: boolean = false;
+  servicePeriod: Array<any> = [];
+  warrentyperiod: Array<any> = [];
   u_id: any;
-  data4:any;
+  data4: any;
+  maxDate: any;
   customerdata = new UpdateData();
-  
   validation_messages = {
-
     'u_name': [
       { type: 'required', message: '*Name is required' },
       { type: 'minlength', message: '*Name must be 3 character' }
@@ -40,18 +39,15 @@ export class CustomerEditComponent implements OnInit {
       { type: 'maxlength', message: '*Mobile number maximum length should be only 10 number' },
       { type: 'pattern', message: '*Enter valid mobile number' },
       { type: 'minlength', message: '*Mobile number minumum lenght 10 number' }
-
     ],
     'Alternatemobile': [
       { type: 'maxlength', message: '*Maximum length 10 number' },
       { type: 'pattern', message: '*Enter valid mobile number' },
       { type: 'minlength', message: '*Minumum lenght 10 number' }
-
     ],
     'email': [
       { type: 'pattern', message: '*Enter valid email' }
     ],
-
     'password': [
       { type: 'required', message: '*Password is required' },
       { type: 'minlength', message: '*Password minumum length 6 Character.' }
@@ -61,6 +57,18 @@ export class CustomerEditComponent implements OnInit {
     ],
     'Machine_purchase': [
       { type: 'required', message: '*Please select any one machine' },
+    ],
+    'Note': [
+      { type: 'required', message: '*Note is required' },
+    ],
+    'Machineno': [
+      { type: 'required', message: '*Machine Number is required' }
+    ],
+    'servicePeriod': [
+      { type: 'required', message: '*Please select service period month' },
+    ],
+    'warrentPeriod': [
+      { type: 'required', message: '*Please select warrenty period month' },
     ],
     'Datepurchased': [
       {
@@ -72,17 +80,17 @@ export class CustomerEditComponent implements OnInit {
       { type: 'minlength', message: '*Password minumum length 6 character.' }
     ]
   }
-
-
   constructor(private fb: FormBuilder,
     private spinner: LoadingSpinnerService,
     private activatedRoute: ActivatedRoute,
     private route: Router,
     private updateservice: UpdateServiceService,
-    private datePipe:DatePipe
+    private dpconfig: BsDatepickerConfig,
+    private notificationservice: NotificationServiceService
   ) {
-  //  this.maxDate = this.datePipe.transform(new Date(),"dd-MM-yyyy");
-     this.maxDate = new Date();
+    this.dpconfig.dateInputFormat = 'DD-MM-YYYY';
+    this.dpconfig.isAnimated = true;
+    this.maxDate = new Date();
     this.maxDate.setDate(this.maxDate.getDate() + 0);
     this.Machinelist = [
       { name: "Computerised Embroidery Machines" },
@@ -94,6 +102,34 @@ export class CustomerEditComponent implements OnInit {
       { name: "Dual Sequence Cording Machines" },
       { name: "Cap Knitting Machines" },
       { name: "Coller Knitting Machines" }
+    ];
+    this.servicePeriod = [
+      { month: '1' },
+      { month: '2' },
+      { month: '3' },
+      { month: '4' },
+      { month: '5' },
+      { month: '6' },
+      { month: '7' },
+      { month: '8' },
+      { month: '9' },
+      { month: '10' },
+      { month: '11' },
+      { month: '12' }
+    ];
+    this.warrentyperiod = [
+      { totalmonth: '1' },
+      { totalmonth: '2' },
+      { totalmonth: '3' },
+      { totalmonth: '4' },
+      { totalmonth: '5' },
+      { totalmonth: '6' },
+      { totalmonth: '7' },
+      { totalmonth: '8' },
+      { totalmonth: '9' },
+      { totalmonth: '10' },
+      { totalmonth: '11' },
+      { totalmonth: '12' }
     ]
   }
   ngOnInit() {
@@ -121,6 +157,18 @@ export class CustomerEditComponent implements OnInit {
         Validators.required
       ])],
       Machine_purchase: ['', Validators.compose([
+        Validators.required
+      ])],
+      Note: ['', Validators.compose([
+        Validators.required
+      ])],
+      Machineno: ['', Validators.compose([
+        Validators.required
+      ])],
+      servicePeriod: ['', Validators.compose([
+        Validators.required
+      ])],
+      warrentPeriod: ['', Validators.compose([
         Validators.required
       ])],
       Datepurchased: ['', Validators.compose([
@@ -153,11 +201,33 @@ export class CustomerEditComponent implements OnInit {
   get f() {
     return this.formGroup.controls;
   }
-  onSubmit() {
+  onSubmit(formValue: any) {
+    let payload = {
+      "u_name": formValue.u_name,
+      "u_mobile": formValue.Mobilenumber,
+      "u_altermobile": formValue.Alternatemobile,
+      "u_email": formValue.email,
+      "u_address": formValue.Address,
+      "u_MachinePurchased": formValue.Machine_purchase,
+      "u_note": formValue.Note,
+      "u_MachineNo": formValue.Machineno,
+      "u_ServicePeriod": formValue.servicePeriod,
+      "u_WarrentyPeriod": formValue.warrentPeriod,
+      "u_dateOf_Purchased": formValue.Datepurchased,
+      "u_password": formValue.password,
+      "u_cpassword": formValue.confirmPassword
+    }
+    this.updateservice.updateItem(payload).subscribe((result: any) => {
+      if (result.status === "success") {
+        this.notificationservice.success("Record updated successfully")
+        // this.customerlist.getAllCustomers();
+      } if (result.status === "error") {
+        this.notificationservice.error(" Record not updated")
+        console.log(result.message)
+      }
+    })
     this.spinner.show();
     this.submitted = true;
-    this.showSuccessMsg = false;
-    this.showInvalidMsg = false;
     if (this.formGroup.invalid) {
       return;
     }
@@ -167,34 +237,29 @@ export class CustomerEditComponent implements OnInit {
     console.log(this.activatedRoute.snapshot.params.u_id)
     this.u_id = this.activatedRoute.snapshot.params["u_id"];
     this.updateservice.getItem(this.u_id).subscribe((result: any) => {
-      
       this.formGroup.patchValue({
-        u_name:result.data[0].u_name,
-        Mobilenumber:result.data[0].u_mobile,
-        Alternatemobile:result.data[0].u_altermobile,
-        email:result.data[0].u_email,
-        Address:result.data[0].u_address,
-        Machine_purchase:result.data[0].u_MachinePurchased,
-        Datepurchased:result.data[0].u_dateOf_Purchased,
-        password:result.data[0].u_password,
-        confirmPassword:result.data[0].u_cpassword,
+        u_name: result.data[0].u_name,
+        Mobilenumber: result.data[0].u_mobile,
+        Alternatemobile: result.data[0].u_altermobile,
+        email: result.data[0].u_email,
+        Address: result.data[0].u_address,
+        Machine_purchase: result.data[0].u_MachinePurchased,
+        Note: result.data[0].u_note,
+        Machineno: result.data[0].u_MachineNo,
+        servicePeriod: result.data[0].u_ServicePeriod,
+        warrentPeriod: result.data[0].u_WarrentyPeriod,
+        Datepurchased: result.data[0].u_dateOf_Purchased,
+        password: result.data[0].u_password,
+        confirmPassword: result.data[0].u_cpassword,
       })
       console.log(this.u_id)
       //console.log(result)
-      this.data4=result
-     // console.log(this.data4)
-      this.customerdata=this.data4;
+      this.data4 = result
+      // console.log(this.data4)
+      this.customerdata = this.data4;
       console.log(this.customerdata)
     })
   }
-  
-  // //  update(){
-  //    this.updateservice.updateItem(this.u_id,this.data).subscribe(Response=>{
-  //      this.route.navigate(['/home1/updateCustomer1']);
-  //    })
-  //  }   
-
-
   toggleFieldTextType(event: any) {
     if (event.target.id === 'btn11') {
       this.passwordfieldTextType = !this.passwordfieldTextType

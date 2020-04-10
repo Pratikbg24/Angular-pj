@@ -36,7 +36,7 @@ import { MatDialogModule } from '@angular/material/dialog'
 import { UpdateServiceService } from '../../../../Angular-pj/MyApp/src/app/service/update-service.service';
 import { ConfirmDialogserviceService } from '../../../../Angular-pj/MyApp/src/app/service/CONFIRM-DIALOG/confirm-dialogservice.service' 
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { ModalModule,BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { ModalModule } from 'ngx-bootstrap/modal';
 @NgModule({
   declarations: [
     AppComponent,
@@ -100,9 +100,9 @@ import { ModalModule,BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
     CustomerRegService,
     DatePipe,
     UpdateServiceService,
-    ConfirmDialogserviceService,
-    BsModalRef,
-    BsModalService
+    ConfirmDialogserviceService
+    // BsModalRef,
+    // BsModalService
   ],
   entryComponents:[
     CustomerListComponent,

@@ -13,7 +13,7 @@ export class UpdateServiceService {
   base_path ="https://thawing-eyrie-14958.herokuapp.com/users/getAnalysisData";
   base_path1="https://thawing-eyrie-14958.herokuapp.com/complaint/getMachineType";
   base_path2="https://thawing-eyrie-14958.herokuapp.com/";
-  base_path3="https://thawing-eyrie-14958.herokuapp.com/";
+  // base_path3="https://thawing-eyrie-14958.herokuapp.com/users/updateUserById";
   constructor( private http:HttpClient) { }
 
   // Http Options
@@ -65,21 +65,22 @@ export class UpdateServiceService {
   }
  
   // Update item by id
-  updateItem(u_id:any, item: UpdateData): Observable<UpdateData> {
+updateItem(u_id:any) {
+    let data={
+      "u_id":u_id
+    }   
     return this.http
-      .put<UpdateData>(this.base_path + '/' + u_id, JSON.stringify(item), this.httpOptions)
+      .post<UpdateData>(this.base_path2 + 'users/updateUserById',data)
       .pipe(
         retry(2),
         catchError(this.handleError)
       )
   }
-  // Delete item by id
-  deleteItem(u_id:any) {
-    let data={
-      "u_id":u_id
-    }   
+
+    // Delete item by id
+  deleteItem(data:any) {
     return this.http
-      .post<UpdateData>(this.base_path3 + 'users/deleteUserById',data)
+      .post<UpdateData>(this.base_path2 + 'users/deleteUserById',data)
       .pipe(
         retry(2),
         catchError(this.handleError)

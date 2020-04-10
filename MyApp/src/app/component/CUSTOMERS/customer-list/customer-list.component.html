@@ -7,9 +7,6 @@
   <div class="input-group">
     <input type="text" class="form-control" placeholder="Start searching for a customer Name or Mobilenumber or Email"
       name="search" [(ngModel)]="u_email" autocomplete="off">
-    <div class="input-group-append">
-      <button type="submit" class="btn btn-primary">Search</button>
-    </div>
   </div>
 
   <table class="table">
@@ -33,23 +30,34 @@
         <td>{{item.u_email}}</td>
         <td>{{item.u_address}}</td>
         <td>{{item.u_MachinePurchased}}</td>
-        <td>{{item.u_dateOf_Purchased|date:'mm/dd/yyyy'}}</td>
+        <td>{{item.u_dateOf_Purchased|date:'dd/MM/yyy'}}</td>
         <td>{{item.u_password}}</td>
         <td style="display: flex">
           <button type="button" class="btn btn-warning btn-sm" [routerLink]="['edit',item.u_id]">Edit</button>
-          <button type="button" class="btn btn-danger btn-sm ml-1" (click)="show()">Delete</button>
+          <button type="button" class="btn btn-danger btn-sm ml-1" (click)="openModal(item)">Delete</button>
         </td>
       </tr>
     </tbody>
   </table>
-  <!-- </div> -->
-  <!-- <div  *ngIf="alert " class="alert alert-warning alert-dismissible fade show">
-    <strong>Warning!</strong> Please enter a valid value in all the required fields before proceeding.
-    <button type="button" class="close" data-dismiss="alert">&times;</button>
 </div>
-  -->
-</div>
-
-<!-- <app-confirm-dialogmodal #modal></app-confirm-dialogmodal> -->
 
 <router-outlet></router-outlet>
+
+<div id="deleteModal" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-confirm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Are you sure?</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p>Do you really want to delete these records? This process cannot be undone.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-info" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal" name="delete"
+          (click)="delete(item)">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
