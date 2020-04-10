@@ -74,8 +74,7 @@ export class ChartService {
   }
   assignComplaint(data:any)
   {
-     console.log(data);
-    let url="https://thawing-eyrie-14958.herokuapp.com/complaint/assignComplaint";
+    let url="https://thawing-eyrie-14958.herokuapp.com/";
     return this._http.post(url+'complaint/assignComplaint',data);
   }
 

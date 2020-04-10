@@ -5,7 +5,7 @@ import { ChartService } from '../../service/chart.service'
 import { HttpClient } from '@angular/common/http';
 import { FormGroup, FormArray, Validators, FormBuilder } from '@angular/forms';
 import { user } from 'src/app/user.module';
-
+declare var $: any;
 @Component({
   selector: 'app-assign-complaint',
   templateUrl: './assign-complaint.component.html',
@@ -81,9 +81,11 @@ export class AssignComplaintComponent implements OnInit {
     }
   }
   ngOnInit() {
-
     this.getAllServiceEngg();
-
+    this.complaintInitialize()
+  }
+  complaintInitialize(){
+    this.complaint = [];
     this.charts.getComplaintData().subscribe((data: any) => {
       this.complaint = data.data.filter((el: any) => {
         this.charts.getMachineType().subscribe((result: any) => {
@@ -94,7 +96,7 @@ export class AssignComplaintComponent implements OnInit {
             }
           })
         })
-        return el.c_desc
+        return el.c_status === 1
       })
       this.c_id = data.data.filter((el: any) => {
         return el.c_id
@@ -105,19 +107,19 @@ export class AssignComplaintComponent implements OnInit {
       this.Machine_type.u_Machinepurchesed = this.Machine_type.u_Machinepurchesed;
     });
   }
+
+
+  assignEngg(user: any) {
   
-  assignengg(user: any) {
-    let id=this.c_id[0].c_id;
     let data = {
       status: 3,
       complaintId:this.c_id,
       assignTo: user.u_id,
     }
     this.charts.assignComplaint(data).subscribe((result: any) => {
-     
-      console.log(data)
       if (result.status === "success") {
         this.showSuccessMsg = true;
+        this.complaintInitialize();
       } if (result.status === "error") {
         console.log(result.message)
         this.showInvalidMsg = true;
@@ -129,12 +131,8 @@ export class AssignComplaintComponent implements OnInit {
     this.charts.getList().subscribe((data: any) => {
       this.serviceEnggData = data.data.filter((el: any) => {
         return el.u_role === 3;
-
       })
     })
-
-
-
   }
   getEngg(ev: any) {
     const val = ev.target.value;
@@ -148,5 +146,11 @@ export class AssignComplaintComponent implements OnInit {
       this.getAllServiceEngg();
     }
   }
+
+  openModal(item:any){
+    this.c_id=item.c_id;
+    $("#customerModal").modal('show');
+  }
+ 
 
 }
