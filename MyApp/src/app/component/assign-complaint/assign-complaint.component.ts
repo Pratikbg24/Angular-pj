@@ -1,11 +1,10 @@
-import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
+import { Component,Input,Output,EventEmitter, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner'
 import { ChartService } from '../../service/chart.service'
 import { HttpClient } from '@angular/common/http';
 import { FormGroup, FormArray, Validators, FormBuilder } from '@angular/forms';
-import { user } from 'src/app/user.module';
-declare var $: any;
+
 @Component({
   selector: 'app-assign-complaint',
   templateUrl: './assign-complaint.component.html',
@@ -24,16 +23,16 @@ export class AssignComplaintComponent implements OnInit {
   submitted = false
   alert = false
   invalid: boolean
-  serviceEnggData: any = {
-    engg_Id: null,
-    engg_Name: null,
-    eng_EMail: null,
-  }
-  engg_Id: [];
-  engg_Name: [];
-  eng_EMail: [];
-  DataList: any
-  u_email = "";
+ serviceEnggData: any = {
+  engg_Id: null,
+  engg_Name:null,
+  eng_EMail:null,
+}
+engg_Id: [];
+engg_Name:[];
+eng_EMail:[];
+  DataList:any
+  u_email="";
 
   pageTitle = 'Assign Complaints';
 
@@ -45,30 +44,29 @@ export class AssignComplaintComponent implements OnInit {
   }
 
   c_date: [];
-
+  
   searchText;
   searchText1;
-  machinType: [];
-  data = [
+  machinType:[];
+  data=[
 
   ]
-  showSuccessMsg: boolean = false;
-  showInvalidMsg: boolean = false;
+  showSuccessMsg:boolean=false;
+  showInvalidMsg:boolean=false;
 
 
   constructor(private route: ActivatedRoute,
     private router: Router,
     private charts: ChartService,
     private spinner: NgxSpinnerService,
-    private httpCilent: HttpClient) {
-    this.serviceEnggData = [];
-  }
+    private httpCilent: HttpClient) { 
+      this.serviceEnggData = [];
+    }
+
   ngOnInit() {
+
     this.getAllServiceEngg();
-    this.complaintInitialize()
-  }
-  complaintInitialize(){
-    this.complaint = [];
+
     this.charts.getComplaintData().subscribe((data: any) => {
       this.complaint = data.data.filter((el: any) => {
         this.charts.getMachineType().subscribe((result: any) => {
@@ -79,7 +77,7 @@ export class AssignComplaintComponent implements OnInit {
             }
           })
         })
-        return el.c_status === 1
+        return el.c_desc
       })
       this.c_id = data.data.filter((el: any) => {
         return el.c_id
@@ -87,53 +85,62 @@ export class AssignComplaintComponent implements OnInit {
       this.c_date = data.data.filter((el: any) => {
         return el.c_date
       })
+      // this.Machine_type = data.data.filter((el: any) => {
+      //   return el.Machine_type == 1
+      // })
+
+
+      
+
+
       this.Machine_type.u_Machinepurchesed = this.Machine_type.u_Machinepurchesed;
-    });
-  }
 
+      
 
-  assignEngg(user: any) {
-  
-    let data = {
-      status: 3,
-      complaintId:this.c_id,
-      assignTo: user.u_id,
     }
-    this.charts.assignComplaint(data).subscribe((result: any) => {
-      if (result.status === "success") {
-        this.showSuccessMsg = true;
-        this.complaintInitialize();
-      } if (result.status === "error") {
-        console.log(result.message)
-        this.showInvalidMsg = true;
-      }
-    })
 
+
+    )
+    /* 
+    this.charts.getComplaintData().subscribe((data: any) => {
+ 
+      this.charts.getMachineType().subscribe((result: any) => {
+          this.machinType = result.data;
+          this.machinType.forEach((ell: any) => {
+            if (el.Machine_type === ell.id) {
+              el.Machine_type = ell.Value;
+            }
+          })
+       
+    }) */
   }
-  getAllServiceEngg() {
-    this.charts.getList().subscribe((data: any) => {
-      this.serviceEnggData = data.data.filter((el: any) => {
-        return el.u_role === 3;
+  onSubmit()
+  {
+      this.charts.assignComplaint(this.c_id,this.formGroup.value.u_id,status,)
+      .subscribe((data:any)=>{
+        console.log(data)
+        if(data.status === "success"){
+          this.showSuccessMsg=true;
+         }if(data.status === "error"){
+          console.log(data.message)
+          this.showInvalidMsg=true;  
+         }
       })
-    })
   }
-  getEngg(ev: any) {
-    const val = ev.target.value;
-    if (val && val.trim() != '') {
-      this.serviceEnggData = this.serviceEnggData.filter((item) => {
-        return parseInt(item.u_id) === parseInt(val) || (item.u_email.toLowerCase().indexOf(val.toLowerCase())) > -1 ||
-          (item.u_name.toLowerCase().indexOf(val.toLowerCase())) > -1
-        })
-    } 
-    if (val.length === 0) {
-      this.getAllServiceEngg();
-    }
-  }
+  getAllServiceEngg(){
+    this.charts.getList().subscribe((data:any)=>{
+      this.serviceEnggData=data.data.filter((el:any)=>{
+        return el.u_role === 3;
+  
 
-  openModal(item:any){
-    this.c_id=item.c_id;
-    $("#customerModal").modal('show');
-  }
+      })
+  
+      console.log(this.c_id);
+    })
+
  
 
+  }
+
+  
 }
