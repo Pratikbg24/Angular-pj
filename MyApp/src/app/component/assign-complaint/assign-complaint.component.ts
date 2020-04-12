@@ -63,23 +63,6 @@ export class AssignComplaintComponent implements OnInit {
     private httpCilent: HttpClient) {
     this.serviceEnggData = [];
   }
-
-  asign(event: any) {
-    complaintData: event ;
-      this.ngOnInit()
-     }
-  
-  getItems(ev: any) {
-    const val = ev.target.value;
-    if (val && val.trim() != '') {
-      this.complaint = this.complaint.filter((item) => {
-        return parseInt(item.c_id) === parseInt(val) || (item.c_desc.toLowerCase().indexOf(val.toLowerCase())) > -1
-      })
-    }
-    if (val.length === 0) {
-      this.ngOnInit()
-    }
-  }
   ngOnInit() {
     this.getAllServiceEngg();
     this.complaintInitialize()
