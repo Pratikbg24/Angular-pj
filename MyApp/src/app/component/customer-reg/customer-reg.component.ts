@@ -21,7 +21,10 @@ export class CustomerRegComponent implements OnInit {
   servicePeriod:Array<any>=[];
   warrentyperiod:Array<any>=[];
   maxDate: Date;
-   selection={}
+  // public form = [
+  //   { key: "new", val: 'New', isChecked: false },
+  //   { key: "reCondition", val: 'Re Conditioned', isChecked: true }
+  // ];
   validation_messages = {
     'name': [
       { type: 'required', message: '*Name is required' },

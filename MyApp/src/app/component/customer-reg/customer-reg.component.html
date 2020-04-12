@@ -94,7 +94,6 @@
                                 <option *ngFor="let machine of Machinelist;let i=index" value="{{machine.name}}"
                                     [selected]="i == 0">{{machine.name}} </option>
                             </select>
-
                             <div class="validation-errors">
                                 <ng-container *ngFor="let validation of validation_messages.Machine_purchase">
                                     <div class="error-message text-danger"
@@ -104,22 +103,23 @@
                                 </ng-container>
                             </div>
                         </div>
-                        <div class="form-group" id="radiocontrol">
+                        <div class="form-group" id="radiocontrol" fromControlName="machieCondition" >
                             <label id="machine">Purchase Type<p class="p12">*</p></label><br><br>
                             <div class="form-control">
-                                <div class="custom-control custom-radio custom-control-inline">
-                                    <input id="new" type="radio" class="custom-control-input " name="machieCondition"
-                                        value="newMachine" fromControlName="machieCondition" />
-                                    <label id="newmachine" class="custom-control-label" for="new">New</label>
-                                </div>
+                              <div class="custom-control custom-radio custom-control-inline">
+                                    <input id="newmachine" type="radio" class="custom-control-input "
+                                        name="machieCondition" value="New"  />
+                                    <label id="reconditionmachine" class="custom-control-label"
+                                        for="newmachine">New</label>
+                                </div>                                
                                 <div class="custom-control custom-radio custom-control-inline">
                                     <input id="recondition" type="radio" class="custom-control-input "
-                                        name="machieCondition" value="reconditionMachine" fromControlName="machieCondition" />
+                                        name="machieCondition" value="Recondition" />
                                     <label id="reconditionmachine" class="custom-control-label"
                                         for="recondition">Recondition</label>
                                 </div>
-                                <div [ngClass]="{ 'is-invalid': submitted && f.machieCondition.errors?.invalid }"> 
-                                </div>
+                            </div>
+                            <div [ngClass]="{ 'is-invalid': submitted && f.machieCondition.errors?.invalid }">
                             </div>
                         </div>
                         <div class="validation-errors">
@@ -258,7 +258,7 @@
                             </ng-container>
                         </div>
                         <div class="form-group">
-                            <button type="submit" class="btn btn-primary" id="RegisterButton" 
+                            <button type="submit" class="btn btn-primary" id="RegisterButton"
                                 [disabled]="!formGroup.valid">
                                 Register
                             </button>
