@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../../service/login.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { FormControl, FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms'
-import { from } from 'rxjs';
-
+import {  FormGroup, FormBuilder, Validators,} from '@angular/forms';
+import { LoadingSpinnerService} from '../../service/loading-spinner.service'
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -12,9 +11,9 @@ import { from } from 'rxjs';
 export class LoginComponent implements OnInit {
   formGroup: FormGroup;
   returnUrls: string;
-  loading = false;
   submitted = false;
   alert = false;
+  PasswordfieldTextType:boolean;
   validation_messages = {
     'email': [
       { type: 'required', message: 'Email is required.' },
@@ -30,7 +29,9 @@ export class LoginComponent implements OnInit {
     private service: LoginService,
     private fb: FormBuilder,
     private route: ActivatedRoute,
-    private router: Router, ) {
+    private router: Router,
+    private spinner:LoadingSpinnerService
+     ) {
     this.router.navigate(['/']);
   }
 
@@ -50,34 +51,64 @@ export class LoginComponent implements OnInit {
   }
 
 
-  login() {
-  }
   onSubmit() {
-    this.loading = true;
-    this.service.getData(this.formGroup.value.email, this.formGroup.value.password).subscribe((data:any) => {
-      // console.log(data)
+     this.spinner.show();
+    /* this.service.getData(this.formGroup.value.email, this.formGroup.value.password).subscribe((data:any) => {
       if (data.status === "success") {
-        this.loading = true;
-        //alert("success")
+           this.spinner.show();
         this.router.navigate([this.returnUrls + "home1"]);
       }
       else {
         if (data.status === "error") {
-          this.loading = true;
+           this.spinner.show();
           this.alert = true;
         }
-        this.loading = false;
-        //this.formGroup.value.password.reset();
           this.formGroup.reset();
-
-        
       }
+    });  
+     */
+    
+    this.service.userLogin(this.formGroup.value.email,  this.formGroup.value.password).subscribe((data: any) => {
+      
+      if (data.status === "success" && data.data.u_role === 3) {
+        if (data.status === "success") {
+          this.spinner.show();
+       this.router.navigate([this.returnUrls + "home1"]);
+     }
+     }
+       if (data.status === "success" && data.data.u_role === 2) {
+        if (data.status === "success") {
+          this.spinner.show();
+       this.router.navigate([this.returnUrls + "home1"]);
+     }
+      } if (data.status === "success" && data.data.u_role === 1) {
+        if (data.status === "success") {
+          this.spinner.show();
+       this.router.navigate([this.returnUrls + "app-cust-home"]);
+     }
+     }
+     
+     else {
+      if (data.status === "error") {
+         this.spinner.show();
+        this.alert = true;
+      }
+        this.formGroup.reset();
+    } 
+    });
 
-    }
 
-    );
-    //   this.submitted = true;  
+
+
+
+
+
+
+
 
   }
-
+  
+  toggleFieldTextType(){
+    this.PasswordfieldTextType = !this.PasswordfieldTextType;
+  }
 }

@@ -1,0 +1,1 @@
+ng g c component/customer/[your_component_name]
