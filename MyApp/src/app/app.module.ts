@@ -31,12 +31,9 @@ import { ServiceEnggListComponent } from './component/SERVICE-ENGG/service-engg-
 import { ServiceEnggEditComponent } from './component/SERVICE-ENGG/service-engg-edit/service-engg-edit.component';
 import { ViewCustomerComponent } from './component/CUSTOMERS/view-customer/view-customer.component';
 import { ViewServiceEngineerComponent } from './component/SERVICE-ENGG/view-service-engineer/view-service-engineer.component';
-import { ConfirmDialogmodalComponent } from './component/CONFIRM-DIALOG/confirm-dialogmodal/confirm-dialogmodal.component';
-import { MatDialogModule } from '@angular/material/dialog'  
+import { ConfirmDialogmodalComponent } from './component/CONFIRM-DIALOG/confirm-dialogmodal/confirm-dialogmodal.component'; 
 import { UpdateServiceService } from '../../../../Angular-pj/MyApp/src/app/service/update-service.service';
 import { ConfirmDialogserviceService } from '../../../../Angular-pj/MyApp/src/app/service/CONFIRM-DIALOG/confirm-dialogservice.service' 
-import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { ModalModule } from 'ngx-bootstrap/modal';
 @NgModule({
   declarations: [
     AppComponent,
@@ -88,10 +85,8 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     AppRoutingModule,
     HttpClientModule,
     BsDatepickerModule.forRoot(),
-    BrowserAnimationsModule,
-    MatDialogModule,
-    MatSnackBarModule,
-    ModalModule.forRoot()
+    BrowserAnimationsModule
+
   
   ],
   providers: [

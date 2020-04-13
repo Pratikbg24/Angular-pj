@@ -79,7 +79,7 @@ export class CustomerEditComponent implements OnInit {
       { type: 'required', message: '*Password required' },
       { type: 'minlength', message: '*Password minumum length 6 character.' }
     ]
-  }
+  }  
   constructor(private fb: FormBuilder,
     private spinner: LoadingSpinnerService,
     private activatedRoute: ActivatedRoute,
