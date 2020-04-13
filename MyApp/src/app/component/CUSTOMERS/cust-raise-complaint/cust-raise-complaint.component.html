@@ -34,7 +34,11 @@
                             <!-- <input  class="custom-select" (change)="changeCity($event)" formControlName="Machine_purchase" placeholder="select Machine"> -->
                             <select class="form-control"  formControlName="EngineerType"  placeholder=" Choose Engineer">
                                 <option value="">Choose engg type</option>
+<<<<<<< HEAD
                                 <option *ngFor="let engg of enggList; let i= index" value="{{engg.key}}" [selected]="i == 0">{{engg.name}}</option>
+=======
+                                <option *ngFor="let engg of enggList; let i= index" value="{{engg.name}}" [selected]="i == 0">{{engg.name}}</option>
+>>>>>>> 1edb25d82ff76a9851b83f139b4f31a2612e6e4e
                             </select>
 
                             <div class="validation-errors">
