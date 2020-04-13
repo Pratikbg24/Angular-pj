@@ -5,6 +5,7 @@ import { AppSettings } from '../../app/app.settings'
 import { Data } from '../data';
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -72,9 +73,16 @@ export class ChartService {
   {
     return this._http.get("https://thawing-eyrie-14958.herokuapp.com/complaint/gelAllcomplaint");
   }
-  assignComplaint(data:any)
+
+  assignComplaint(status:any, complaint_ID:any, u_id:any)
   {
-    let url="https://thawing-eyrie-14958.herokuapp.com/";
+    let data = {
+      "status": 3,
+     " complaintId": complaint_ID,
+     " assignTo": u_id
+    }
+    console.log(data);
+    let url="https://thawing-eyrie-14958.herokuapp.com/complaint/assignComplaint";
     return this._http.post(url+'complaint/assignComplaint',data);
   }
 
