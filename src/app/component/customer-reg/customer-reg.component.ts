@@ -19,9 +19,10 @@ export class CustomerRegComponent implements OnInit {
   confirmfieldTextType: boolean;
   Machinelist: Array<any> = [];
   maxDate: Date;
-  showSuccessMsg:boolean=false;
-  showInvalidMsg:boolean=false;
-
+  // public form = [
+  //   { key: "new", val: 'New', isChecked: false },
+  //   { key: "reCondition", val: 'Re Conditioned', isChecked: true }
+  // ];
   validation_messages = {
 
     'name': [
@@ -116,6 +117,20 @@ export class CustomerRegComponent implements OnInit {
       Machine_purchase: ['', Validators.compose([
         Validators.required
       ])],
+      machieCondition: ['New', Validators.required
+      ],
+      Note: ['', Validators.compose([
+        Validators.required
+      ])],
+      Machineno: ['', Validators.compose([
+        Validators.required
+      ])],
+      servicePeriod: ['', Validators.compose([
+        Validators.required
+      ])],
+      warrentPeriod: ['', Validators.compose([
+        Validators.required
+      ])],
       Datepurchased: ['', Validators.compose([
         Validators.required
       ])],
@@ -165,15 +180,15 @@ export class CustomerRegComponent implements OnInit {
       .subscribe((data:any) => {
        console.log(data)
        if(data.status === "success"){
-        this.showSuccessMsg=true;
+       // this.showSuccessMsg=true;
        }if(data.status === "error"){
          console.log(data.message)
-         this.showInvalidMsg=true;
+      //   this.showInvalidMsg=true;
        }
        });
     this.submitted = true;
-    this.showSuccessMsg=false;
-    this.showInvalidMsg=false;
+  //  this.showSuccessMsg=false;
+    //this.showInvalidMsg=false;
     if (this.formGroup.invalid) {
       return;
     }

@@ -43,6 +43,9 @@ import { CustRaiseComplaintComponent } from './component/CUSTOMERS/cust-raise-co
 import { PopupModalComponent } from './component/popup-modal/popup-modal.component';
    
 
+//import { ConfirmDialogmodalComponent } from './component/CONFIRM-DIALOG/confirm-dialogmodal/confirm-dialogmodal.component'; 
+import { UpdateServiceService } from '../../../../Angular-pj/MyApp/src/app/service/update-service.service';
+//import { ConfirmDialogserviceService } from '../../../../Angular-pj/MyApp/src/app/service/CONFIRM-DIALOG/confirm-dialogservice.service' 
 @NgModule({
   declarations: [
     AppComponent,
@@ -107,6 +110,9 @@ import { PopupModalComponent } from './component/popup-modal/popup-modal.compone
     BsDatepickerModule.forRoot(),
     BrowserAnimationsModule,
     Ng2SearchPipeModule,
+    BrowserAnimationsModule
+
+  
   ],
   providers: [
     LoginService,
