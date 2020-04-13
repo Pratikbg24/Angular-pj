@@ -6,6 +6,7 @@ import { UpdateData} from '../../../models/update-data';
 import { UpdateServiceService} from '../../../service/update-service.service'
 import { NotificationServiceService } from 'src/app/service/NOTIFICATION-ALERT/notification-service.service';
 import { BsDatepickerConfig } from 'ngx-bootstrap';
+// import { LoadingSpinnerService } from '../../../service/loading-spinner.service'
 
 @Component({
   selector: 'app-service-engg-edit',
@@ -164,6 +165,7 @@ export class ServiceEnggEditComponent implements OnInit {
         this.notificationservice.error(" Record not updated")
         console.log(result.message)
       }
+      this.spinner.show();
     })
     this.spinner.show();
     this.submitted = true;
@@ -199,5 +201,4 @@ export class ServiceEnggEditComponent implements OnInit {
       this.confirmTextField = !this.confirmTextField
     }
   }
-  
 }

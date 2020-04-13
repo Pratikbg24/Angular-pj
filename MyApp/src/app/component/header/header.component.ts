@@ -18,11 +18,22 @@ export class HeaderComponent implements OnInit {
   createCustomer(event) {
     this.spinner.show();
     this.activeButton=event;
-
+  }
+  updateCustomer(){
+    this.spinner.show();
+  }
+  customerDetails(){
+    this.spinner.show();
   }
   serviceEngg(event) {
     this.spinner.show();
     this.activeButton=event;
+  }
+  serviceEnggDetail(){
+    this.spinner.show();
+  }
+  serviceEnggUpdate(){
+    this.spinner.show();
   }
   showButton(event){
     this.spinner.show();

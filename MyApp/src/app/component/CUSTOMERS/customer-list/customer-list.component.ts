@@ -4,6 +4,7 @@ import { BsModalRef } from 'ngx-bootstrap/modal';
 import { BsModalService } from 'ngx-bootstrap/modal' 
 import { from } from 'rxjs';
 import { NotificationServiceService } from 'src/app/service/NOTIFICATION-ALERT/notification-service.service';
+import { LoadingSpinnerService } from 'src/app/service/loading-spinner.service';
 declare var $: any;
 @Component({
   selector: 'app-customer-list',
@@ -17,7 +18,8 @@ export class CustomerListComponent implements OnInit {
   u_id:any;
   alert = false;  
   constructor(private updateservice: UpdateServiceService,
-    private notificationalert:NotificationServiceService) {
+    private notificationalert:NotificationServiceService,
+    private spinner:LoadingSpinnerService) {
     this.customersData = [];
   }
   ngOnInit() {
@@ -49,9 +51,14 @@ export class CustomerListComponent implements OnInit {
       }
     })
     console.log('Agree clicked');
+    this.spinner.show();
   }
   openModal(item:any){
     this.u_id = item.u_id
   $("#deleteModal").modal('show');
   }
+  customerEdit(){
+    this.spinner.show();
+  }
+
 }
