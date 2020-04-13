@@ -15,77 +15,59 @@ import { ServiceEnggListComponent } from './component/SERVICE-ENGG/service-engg-
 import { ServiceEnggEditComponent } from './component/SERVICE-ENGG/service-engg-edit/service-engg-edit.component';
 import { ViewCustomerComponent } from './component/CUSTOMERS/view-customer/view-customer.component';
 import { ViewServiceEngineerComponent } from './component/SERVICE-ENGG/view-service-engineer/view-service-engineer.component';
-import { AssignComplaintComponent } from './component/assign-complaint/assign-complaint.component';
-import {CustHomeComponent} from './component/CUSTOMERS/cust-home/cust-home.component'
 const routes: Routes = [
   {
     path: '',
     component: LoginComponent
   },
   {
-    path: 'app-cust-home',
-    component: CustHomeComponent,
-    
-  },
-  {
     path: 'home1',
     component: Home1Component,
     children: [
       {
-        path: '',pathMatch: 'full',
+        path: '',
         component: ChartComponent
 
       },
       {
-        path: 'app-assign-complaint',pathMatch: 'full',
-        component: AssignComplaintComponent,
-
-      },
-      {
-        path:'app-assign-complaint/view/:id',pathMatch: 'full',
-        component: AssignComplaintComponent
-      },
-      
-      {
-        path: 'createserviceEngineer',pathMatch: 'full',
+        path: 'createserviceEngineer',
         component: ServiceEngineerComponent,
 
       },
-
       {
-        path: 'serviceEngglist',pathMatch: 'full',
+        path: 'serviceEngglist',
         component: UpdateServiceEnggComponent,
       },
       {
-        path:'serviceEngglist/view/:id',pathMatch: 'full',
+        path:'serviceEngglist/view/:id',
         component:ViewServiceEngineerComponent
       },
       {
-        path: 'createcustomer',pathMatch: 'full',
+        path: 'createcustomer',
         component: CustomerRegComponent,
       },
       {
-        path:'updateCustomer1/edit/:id', pathMatch: 'full',
+        path:'updateCustomer1/edit/:u_id', 
         component: CustomerEditComponent        
       },
       {
-        path:'updateCustomer1',pathMatch: 'full',
+        path:'updateCustomer1',
         component:CustomerListComponent
         },
       {
-        path: 'customerdetails',pathMatch: 'full',
+        path: 'customerdetails',
         component: UpdateCustomerComponent
       },
       {
-          path:'customerdetails/view/:id',pathMatch: 'full',
+          path:'customerdetails/view/:id',
           component:ViewCustomerComponent
       },
       {
-        path :'updateserviceEngineer',pathMatch: 'full',
+        path :'updateserviceEngineer',
         component:ServiceEnggListComponent
       },
       {
-        path:'updateserviceEngineer/edit/:u_id',pathMatch: 'full',
+        path:'updateserviceEngineer/edit/:u_id',
         component:ServiceEnggEditComponent
       }
     ]

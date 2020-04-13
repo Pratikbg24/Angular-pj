@@ -77,6 +77,10 @@ export class ChartService {
     let url="https://thawing-eyrie-14958.herokuapp.com/";
     return this._http.post(url+'complaint/assignComplaint',data);
   }
+  
+  public getAllComplaint() {
+    return this._http.get(AppSettings.baseUrl + 'complaint/gelAllcomplaint');
+  }
 
 
 

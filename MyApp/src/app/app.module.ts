@@ -41,6 +41,7 @@ import { CustFooterComponent } from './component/CUSTOMERS/cust-footer/cust-foot
 import { CustHomeComponent } from './component/CUSTOMERS/cust-home/cust-home.component';
 import { CustRaiseComplaintComponent } from './component/CUSTOMERS/cust-raise-complaint/cust-raise-complaint.component';
 import { PopupModalComponent } from './component/popup-modal/popup-modal.component';
+import { ViewAllComplaintsComponent } from './component/view-all-complaints/view-all-complaints.component';
    
 
 @NgModule({
@@ -94,7 +95,9 @@ import { PopupModalComponent } from './component/popup-modal/popup-modal.compone
 
     CustRaiseComplaintComponent,
 
-    PopupModalComponent
+    PopupModalComponent,
+
+    ViewAllComplaintsComponent
   ],
   imports: [
     FormsModule,
