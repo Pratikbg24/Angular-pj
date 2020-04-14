@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UpdateServiceService} from '../../../service/update-service.service';
+import {LoadingSpinnerService } from '../../../service/loading-spinner.service'
 
 @Component({
   selector: 'app-update-customer',
@@ -12,15 +13,13 @@ export class UpdateCustomerComponent implements OnInit {
   UpdateData:any
   u_email="";
   
-  constructor(private updateservice:UpdateServiceService) {
+  constructor(private updateservice:UpdateServiceService,
+    private spinnerService:LoadingSpinnerService) {
     this.customersData = [];
    }
-
    ngOnInit() {
-    this.getAllCustomers();
-   
+    this.getAllCustomers(); 
   }
- 
   getAllCustomers() {
     //Get saved list of Customers
     this.updateservice.getList().subscribe((data:any) => {
@@ -31,9 +30,6 @@ export class UpdateCustomerComponent implements OnInit {
       //this.customersData = data;
     })
   }
- 
- 
- 
   delete(item) {
     //Delete item in Customer data
     this.updateservice.deleteItem(item.u_id).subscribe(Response => {
@@ -41,5 +37,8 @@ export class UpdateCustomerComponent implements OnInit {
         console.log(Response)
       this.getAllCustomers();
     });
+  }
+  spinner(){
+    this.spinnerService.show();
   }
 }

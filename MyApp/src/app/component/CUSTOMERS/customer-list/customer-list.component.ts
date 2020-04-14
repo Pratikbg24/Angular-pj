@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import { UpdateServiceService } from '../../../service/update-service.service';
 import { BsModalRef } from 'ngx-bootstrap/modal';
-import { BsModalService } from 'ngx-bootstrap/modal' 
 import { from } from 'rxjs';
 import { NotificationServiceService } from 'src/app/service/NOTIFICATION-ALERT/notification-service.service';
 import { LoadingSpinnerService } from 'src/app/service/loading-spinner.service';
@@ -36,7 +35,6 @@ export class CustomerListComponent implements OnInit {
       })
     })
   }
-  
   delete(item) {
     let data={
       "u_id":this.u_id

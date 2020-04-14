@@ -3,9 +3,6 @@
     <div class="input-group">
       <input type="text" class="form-control" placeholder="Start searching for a customer Name or Mobilenumber or Email" name="search" 
       [(ngModel)]="u_email" autocomplete="off">
-      <div class="input-group-append">
-          <button type="submit" class="btn btn-primary">Search</button>
-      </div>
   </div>
     
     <table class="table">
@@ -32,7 +29,7 @@
           <td>{{item.u_dateOf_Purchased |date:'dd/MM/yyyy'}}</td>
           <td>{{item.u_password}}</td>
           <td style="display: flex">
-              <button type="button" class="btn btn-success btn-md" [routerLink]="['view',item.u_id]">View</button>
+              <button type="button" class="btn btn-success btn-md" [routerLink]="['view',item.u_id]" (click)="spinner()">View</button>
           </td>
         </tr>
       </tbody>

@@ -59,7 +59,7 @@ const routes: Routes = [
         component: UpdateCustomerComponent
       },
       {
-          path:'customerdetails/view/:id',
+          path:'customerdetails/view/:u_id',
           component:ViewCustomerComponent
       },
       {
