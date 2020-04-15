@@ -15,17 +15,8 @@ export class CustHeaderComponent implements OnInit {
 
   ngOnInit() {
   }
-  createCustomer(event) {
-    this.spinner.show();
-    this.activeButton=event;
-
-  }
-  serviceEngg(event) {
-    this.spinner.show();
-    this.activeButton=event;
-  }
   
- AssignComplaint(event) {
+ loader(event) {
     this.spinner.show();
     this.activeButton=event;
   }

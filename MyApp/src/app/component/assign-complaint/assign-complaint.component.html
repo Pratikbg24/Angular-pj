@@ -1,3 +1,6 @@
+<ngx-spinner [fullScreen]="true" type="ball-clip-rotate-multiple" size="medium">
+  <p class="loading">Loading Awesomeness...</p>
+</ngx-spinner>
 <div class="container" *ngIf="complaint">
   <div class="row">
     <div class='card'>
@@ -85,7 +88,7 @@
                 <label style="margin-top:12px"><b>Id:</b></label>
               </div>
               <div class="col-md-10">
-                <input type="text" name="engg_id" class="form-control" id="engg_id" [(ngModel)]="item.u_id">
+                <input type="text" name="engg_id" class="form-control" id="engg_id" [(ngModel)]="item.u_id" disabled>
 
               </div>
             </div>
@@ -95,7 +98,7 @@
                 <label style="margin-top:12px"><b>Name:</b></label>
               </div>
               <div class="col-md-10">
-                <input type="text" [(ngModel)]="item.u_name" name="engg_name" class="form-control" id="engg_name">
+                <input type="text" [(ngModel)]="item.u_name" name="engg_name" class="form-control" id="engg_name" disabled>
               </div>
             </div>
 
@@ -105,7 +108,7 @@
                 <label style="margin-top:12px"><b>Email:</b></label>
               </div>
               <div class="col-md-10">
-                <input type="text" [(ngModel)]="item.u_email" name="Email" class="form-control" id="Email">
+                <input type="text" [(ngModel)]="item.u_email" name="Email" class="form-control" id="Email" disabled>
 
               </div>
 
@@ -118,7 +121,6 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>

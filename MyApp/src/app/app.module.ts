@@ -42,6 +42,7 @@ import { CustHomeComponent } from './component/CUSTOMERS/cust-home/cust-home.com
 import { CustRaiseComplaintComponent } from './component/CUSTOMERS/cust-raise-complaint/cust-raise-complaint.component';
 import { PopupModalComponent } from './component/popup-modal/popup-modal.component';
 import { ViewAllComplaintsComponent } from './component/view-all-complaints/view-all-complaints.component';
+import { ViewPreviousComplaintComponent } from './component/CUSTOMERS/view-previous-complaint/view-previous-complaint.component';
    
 
 @NgModule({
@@ -97,7 +98,9 @@ import { ViewAllComplaintsComponent } from './component/view-all-complaints/view
 
     PopupModalComponent,
 
-    ViewAllComplaintsComponent
+    ViewAllComplaintsComponent,
+
+    ViewPreviousComplaintComponent
   ],
   imports: [
     FormsModule,
