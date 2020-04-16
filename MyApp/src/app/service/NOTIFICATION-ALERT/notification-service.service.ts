@@ -19,6 +19,9 @@ export class NotificationServiceService {
     }
     setting(){
       toastr.options = {
+
+
+        
         "closeButton": false,
         "debug": false,
         "newestOnTop": false,
