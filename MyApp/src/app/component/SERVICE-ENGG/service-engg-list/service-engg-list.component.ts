@@ -16,8 +16,7 @@ export class ServiceEnggListComponent implements OnInit {
   u_email = "";
   u_id: any
   constructor(private updateservice: UpdateServiceService,
-    private confirmdialogservice: ConfirmDialogserviceService,
-    private notificationservice: NotificationServiceService,
+     private notificationservice: NotificationServiceService,
     private spinner: LoadingSpinnerService) {
     this.serviceEnggData = [];
   }

@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import { UpdateServiceService } from '../../../service/update-service.service';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import { from } from 'rxjs';
-//import { NotificationServiceService } from 'src/app/service/NOTIFICATION-ALERT/notification-service.service';
+import { NotificationServiceService } from 'src/app/service/NOTIFICATION-ALERT/notification-service.service';
 import { LoadingSpinnerService } from 'src/app/service/loading-spinner.service';
 declare var $: any;
 @Component({
