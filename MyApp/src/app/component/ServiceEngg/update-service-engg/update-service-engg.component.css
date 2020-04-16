@@ -5,8 +5,21 @@
 h3{
     text-align: center;
 }
-.btn{
-    border-radius: 10px;
+
+
+.btn {
+    color: #fff;
+    border-radius: 4px;
+    background: #60c7c1;
+    text-decoration: none;
+    transition: all 0.4s;
+    line-height: normal;
+    min-width: 120px;
+    border: none;
+    min-height: 40px;
+    border-radius: 3px;
+    margin: 0 5px;
+    outline: none !important;
 }
 
 .table{
