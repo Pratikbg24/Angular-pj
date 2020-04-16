@@ -53,7 +53,7 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
      this.spinner.show();
-    this.service.getData(this.formGroup.value.email, this.formGroup.value.password).subscribe((data:any) => {
+    /* this.service.getData(this.formGroup.value.email, this.formGroup.value.password).subscribe((data:any) => {
       if (data.status === "success") {
            this.spinner.show();
         this.router.navigate([this.returnUrls + "home1"]);
@@ -65,7 +65,47 @@ export class LoginComponent implements OnInit {
         }
           this.formGroup.reset();
       }
-    });    
+    });  
+     */
+    
+    this.service.userLogin(this.formGroup.value.email,  this.formGroup.value.password).subscribe((data: any) => {
+      
+      if (data.status === "success" && data.data.u_role === 3) {
+        if (data.status === "success") {
+          this.spinner.show();
+       this.router.navigate([this.returnUrls + "home1"]);
+     }
+     }
+       if (data.status === "success" && data.data.u_role === 2) {
+        if (data.status === "success") {
+          this.spinner.show();
+       this.router.navigate([this.returnUrls + "home1"]);
+     }
+      } if (data.status === "success" && data.data.u_role === 1) {
+        if (data.status === "success") {
+          this.spinner.show();
+       this.router.navigate([this.returnUrls + "app-cust-home"]);
+     }
+     }
+     
+     else {
+      if (data.status === "error") {
+         this.spinner.show();
+        this.alert = true;
+      }
+        this.formGroup.reset();
+    } 
+    });
+
+
+
+
+
+
+
+
+
+
   }
   
   toggleFieldTextType(){

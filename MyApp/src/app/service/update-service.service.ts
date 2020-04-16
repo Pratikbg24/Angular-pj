@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 import { UpdateData } from '../models/update-data';
 import { Observable, throwError } from 'rxjs';
 import { retry,map, catchError } from 'rxjs/operators';
+import { analyzeAndValidateNgModules } from '@angular/compiler';
 
 @Injectable({
   providedIn: 'root'
@@ -12,8 +13,8 @@ export class UpdateServiceService {
 
   base_path ="https://thawing-eyrie-14958.herokuapp.com/users/getAnalysisData";
   base_path1="https://thawing-eyrie-14958.herokuapp.com/complaint/getMachineType";
-  base_path2="https://thawing-eyrie-14958.herokuapp.com/";
-  // base_path3="https://thawing-eyrie-14958.herokuapp.com/users/updateUserById";
+  base_path2="https://thawing-eyrie-14958.herokuapp.com/users/getUserById";
+
   constructor( private http:HttpClient) { }
 
   // Http Options
@@ -41,19 +42,47 @@ export class UpdateServiceService {
   };
 
 
-  // Get single customer data by ID
-  getItem(id:any): Observable<UpdateData> {
-      let data={
-        "u_id":id
-      }    
-    return this.http
-      .post<UpdateData>(this.base_path2 + 'users/getUserById',data)
-      .pipe(
-        retry(2),
-        catchError(this.handleError)
-      )
-  }
+  // // Get single customer data by ID
+  // getItem(u_id:any,item: UpdateData): Observable<UpdateData> {
+  //   return this.http
+  //     .get<UpdateData>(this.base_path2 + '/' + u_id)
+  //     .pipe(
+  //       retry(2),
+  //       catchError(this.handleError)
+  //     )
+  // }
 
+  getData(
+    name:any,
+    Mobilenumber:any,
+    Alternatemobile:any,
+    email:any,
+    Address:any,
+    Machine_purchase:any,
+    Datepurchased:any,
+    password:any,
+    confirmPassword:any,
+   )
+   {
+     let data ={
+       "u_name":name,
+       "u_mobile":Mobilenumber,
+       "u_altermobile":Alternatemobile,
+       "u_email":email,
+       "u_address":Address,
+       "u_MachinePurchased":Machine_purchase,
+       "u_dataOf_Purchased":Datepurchased,
+       "u_password":password,
+       "u_cpassword":confirmPassword,
+       }
+       
+     console.log(data)
+     let url = "https://thawing-eyrie-14958.herokuapp.com/";
+     return this.http.post(url + 'users/getUserById',data)
+    }
+
+
+  
   // Get customer data
   getList(): Observable<UpdateData> {
     return this.http
@@ -65,28 +94,27 @@ export class UpdateServiceService {
   }
  
   // Update item by id
-updateItem(u_id:any) {
-    let data={
-      "u_id":u_id
-    }   
+  updateItem(u_id:any, item: UpdateData): Observable<UpdateData> {
     return this.http
-      .post<UpdateData>(this.base_path2 + 'users/updateUserById',data)
+      .put<UpdateData>(this.base_path + '/' + u_id, JSON.stringify(item), this.httpOptions)
+      .pipe(
+        retry(2),
+        catchError(this.handleError)
+      )
+  }
+ 
+  // Delete item by id
+  deleteItem(u_id) {
+    return this.http
+      .delete<UpdateData>(this.base_path + '/' + u_id, this.httpOptions)
       .pipe(
         retry(2),
         catchError(this.handleError)
       )
   }
 
-    // Delete item by id
-  deleteItem(data:any) {
-    return this.http
-      .post<UpdateData>(this.base_path2 + 'users/deleteUserById',data)
-      .pipe(
-        retry(2),
-        catchError(this.handleError)
-      )
-  }
   // Get Machine Type
+
   machineType(){
     return this.http
     .get<UpdateData>(this.base_path1)

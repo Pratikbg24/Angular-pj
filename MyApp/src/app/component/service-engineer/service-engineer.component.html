@@ -75,7 +75,8 @@
 
                         <div class="form-group">
                             <label>Address<p class="p12">*</p></label>
-                            <textarea class="form-control" formControlName="Address" placeholder="Enter Address"
+                            <textarea class="form-control" formControlName="Address"
+                                placeholder="Enter Address"
                                 [ngClass]="{ 'is-invalid': submitted && f.Address.errors?.invalid }"></textarea>
                         </div>
                         <div class="validation-errors">
@@ -90,10 +91,9 @@
                         <div class="form-group">
                             <label>Engineer Type<p class="p12">*</p></label>
                             <!-- <input  class="custom-select" (change)="changeCity($event)" formControlName="Machine_purchase" placeholder="select Machine"> -->
-                            <select class="form-control" formControlName="EngineerType" placeholder=" Choose Engineer">
+                            <select class="form-control"  formControlName="EngineerType"  placeholder=" Choose Engineer">
                                 <option value="">Choose engg type</option>
-                                <option *ngFor="let engg of enggList; let i= index" value="{{engg.name}}"
-                                    [selected]="i == 0">{{engg.name}}</option>
+                                <option *ngFor="let engg of enggList; let i= index" value="{{engg.name}}" [selected]="i == 0">{{engg.name}}</option>
                             </select>
 
                             <div class="validation-errors">
@@ -105,12 +105,12 @@
                                 </ng-container>
                             </div>
                         </div>
+
                         <div class="form-group">
                             <label>Date Of Joining<p class="p12">*</p></label>
                             <input type="text" class="form-control" formControlName="DateOfjoining"
-                            placeholder="DD/MM/YYYY" bsDatepicker #d="bsDatepicker" [bsConfig]="dpconfig"
-                                [maxDate]="maxDate"
-                                [ngClass]="{ 'is-invalid': submitted && f.DateOfjoining.errors?.invalid }">
+                                placeholder="MM/DD/YYYY" bsDatepicker [bsConfig]="{ isAnimated: true }"
+                                [maxDate]="maxDate" [ngClass]="{ 'is-invalid': submitted && f.DateOfjoining.errors?.invalid }">
                             <!-- <i class="fa fa-calendar"></i> -->
                         </div>
                         <div class="validation-errors">
@@ -171,9 +171,32 @@
                                 </div>
                             </ng-container>
                         </div>
+
+                        <div  id="serviceEnggModal" class="modal fade" role="dialog">
+                            <div class="modal-dialog">
+                          
+                              <!-- Modal content-->
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                  </div>
+                                <div class="modal-body">
+                                    <div class="alert alert-success fade show" *ngIf="showSuccessMsg" >
+                                        <strong>Success!</strong>Registration Successfully!
+                                    </div>
+                                    <div class="alert alert-danger fade show" *ngIf="showInvalidMsg">
+                                        <strong>Error! </strong>The email address or phone number you have entered is already registered!.
+                                    </div>                                                                        
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
+                                </div>
+                              </div>                        
+                            </div>
+                          </div>                    
+
                         <div class="form-group">
-                            <button type="submit" class="btn btn-primary" id="Registerbutton"
-                                [disabled]="!formGroup.valid">
+                            <button type="submit" class="btn btn-primary" id="Registerbutton" data-toggle="modal" data-target="#serviceEnggModal" [disabled]="!formGroup.valid">
                                 Register
                             </button>
                             <button type="reset" class="btn btn-secondary" id="ResetButton">

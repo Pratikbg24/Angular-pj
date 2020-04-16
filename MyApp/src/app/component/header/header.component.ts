@@ -35,10 +35,11 @@ export class HeaderComponent implements OnInit {
   serviceEnggUpdate(){
     this.spinner.show();
   }
+  assign_complaint(){
+    this.spinner.show();
+  }
   showButton(event){
     this.spinner.show();
     this.activeButton = event;
   }
-
-
 }

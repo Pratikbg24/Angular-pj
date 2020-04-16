@@ -18,4 +18,18 @@ export class LoginService {
     let url = "https://thawing-eyrie-14958.herokuapp.com/";
     return this.http.post(url + 'users/login', data)
   }
+  public userLogin(username: string, pass: string) {
+    var headers = new Headers();
+    headers.append('Access-Control-Allow-Origin', '*');
+    headers.append('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, PUT');
+    headers.append('Accept', 'application/json');
+    headers.append('content-type', 'application/json');
+
+    let data = {
+      "email": username,
+      "password": pass
+    }
+    let url = "https://thawing-eyrie-14958.herokuapp.com/";
+    return this.http.post(url + 'users/login', data)
+  }
 } 

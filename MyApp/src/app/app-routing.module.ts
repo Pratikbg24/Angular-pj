@@ -15,10 +15,31 @@ import { ServiceEnggListComponent } from './component/SERVICE-ENGG/service-engg-
 import { ServiceEnggEditComponent } from './component/SERVICE-ENGG/service-engg-edit/service-engg-edit.component';
 import { ViewCustomerComponent } from './component/CUSTOMERS/view-customer/view-customer.component';
 import { ViewServiceEngineerComponent } from './component/SERVICE-ENGG/view-service-engineer/view-service-engineer.component';
+import{AssignComplaintComponent} from './component/assign-complaint/assign-complaint.component'
+import{ViewAllComplaintsComponent}from './component/view-all-complaints/view-all-complaints.component'
+import{CustHomeComponent} from './component/CUSTOMERS/cust-home/cust-home.component'
+import{CustRaiseComplaintComponent} from './component/CUSTOMERS/cust-raise-complaint/cust-raise-complaint.component'
+import{ViewPreviousComplaintComponent} from './component/CUSTOMERS/view-previous-complaint/view-previous-complaint.component'
 const routes: Routes = [
   {
     path: '',
     component: LoginComponent
+  },
+  {
+      path:'app-cust-home',
+      component:CustHomeComponent,
+      children: [
+        {
+          path: 'app-cust-raise-complaint',
+          component: CustRaiseComplaintComponent,
+  
+        },
+        {
+          path: 'app-view-previous-complaint',
+          component: ViewPreviousComplaintComponent,
+  
+        },         
+      ]
   },
   {
     path: 'home1',
@@ -33,6 +54,14 @@ const routes: Routes = [
         path: 'createserviceEngineer',
         component: ServiceEngineerComponent,
 
+      },
+      {
+      path: 'app-view-all-complaints',
+      component:ViewAllComplaintsComponent,  
+      },
+      {
+        path: 'app-assign-complaint',
+        component: AssignComplaintComponent,
       },
       {
         path: 'serviceEngglist',

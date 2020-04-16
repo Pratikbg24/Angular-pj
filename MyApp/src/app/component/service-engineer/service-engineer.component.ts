@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormArray, Validators, FormBuilder } from '@angular/forms';
-import { LoadingSpinnerService } from '../../service/loading-spinner.service';
-import { ServiceEngineerService } from '../../service/service-engineer.service';
-import { NotificationServiceService } from '../../service/NOTIFICATION-ALERT/notification-service.service'
-import { BsDatepickerConfig } from 'ngx-bootstrap';
+import { LoadingSpinnerService } from '../../service/loading-spinner.service'
+import { ServiceEngineerService } from '../../service/service-engineer.service'
 @Component({
   selector: 'app-service-engineer',
   templateUrl: './service-engineer.component.html',
@@ -19,6 +17,9 @@ export class ServiceEngineerComponent implements OnInit {
   passwordTextField: boolean;
   enggList: Array<any> = [];
   maxDate: Date;
+  showSuccessMsg:boolean=false;
+  showInvalidMsg:boolean=false;
+
   validation_messages = {
 
     'name': [
@@ -64,19 +65,15 @@ export class ServiceEngineerComponent implements OnInit {
     ]
   }
 
-  constructor(private fb: FormBuilder,
+  constructor(private fb: FormBuilder, 
     private spinner: LoadingSpinnerService,
-    private enggRegservice: ServiceEngineerService,
-    private noficationservice: NotificationServiceService,
-    private dpconfig : BsDatepickerConfig) {
-    this.dpconfig.dateInputFormat='DD-MM-YYYY';
-    this.dpconfig.isAnimated=true;  
+    private enggRegservice:ServiceEngineerService) {
     this.maxDate = new Date();
     this.maxDate.setDate(this.maxDate.getDate() + 0);
-    this.enggList = [
-      { name: "Machanical" },
-      { name: "Electronic" },
-      { name: "Designing" }
+    this.enggList=[
+        {name:"Machanical"},
+        {name:"Electronic"},
+        {name:"Designing"}
     ]
   }
   ngOnInit() {
@@ -124,6 +121,7 @@ export class ServiceEngineerComponent implements OnInit {
       });
   }
   passwordConfirming(formGroup: FormGroup) {
+
     const { value: password } = formGroup.get('password');
     const { value: confirmPassword } = formGroup.get('confirmPassword');
     if (password === confirmPassword) {
@@ -140,31 +138,36 @@ export class ServiceEngineerComponent implements OnInit {
   onSubmit() {
     //console.log(this.formGroup.value)
     this.enggRegservice.getData(
-      this.formGroup.value.name,
+      this.formGroup.value.name, 
       this.formGroup.value.Mobilenumber,
       this.formGroup.value.Alternatemobile,
       this.formGroup.value.email,
       this.formGroup.value.Address,
-      this.formGroup.value.EngineerType,
+      this.formGroup.value.EngineerType,      
       this.formGroup.value.DateOfjoining,
       this.formGroup.value.password,
       this.formGroup.value.confirmPassword)
-      .subscribe((data: any) => {
+      .subscribe((data:any) => {
         console.log(data)
-        if (data.status === "success") {
-           this.noficationservice.success("Registration Successfully") 
-        } if (data.status === "error") {
-          this.noficationservice.error("The email address or mobile number you have entered is already registered")
+        if(data.status === "success"){
+          this.showSuccessMsg=true;
+         }if(data.status === "error"){
           console.log(data.message)
-        }
-      });
+          this.showInvalidMsg=true;  
+         }       
+       });    
     this.spinner.show();
     this.submitted = true;
+    this.showSuccessMsg=false;
+    this.showInvalidMsg=false;
     if (this.formGroup.invalid) {
       return;
     }
     this.formGroup.reset();
   }
+
+
+
   toggleFieldTextType(event: any) {
     if (event.target.id === 'btn1') {
       this.passwordTextField = !this.passwordTextField
