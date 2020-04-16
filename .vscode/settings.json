@@ -1,0 +1,7 @@
+{
+    "diffEditor.ignoreTrimWhitespace": false,
+    "editor.suggest.statusBar.visible": true,
+    "files.autoGuessEncoding": true,
+    "git.alwaysShowStagedChangesResourceGroup": true,
+    "git.enableCommitSigning": true
+}

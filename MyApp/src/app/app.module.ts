@@ -34,9 +34,9 @@ import { ServiceEnggListComponent } from './component/SERVICE-ENGG/service-engg-
 import { ServiceEnggEditComponent } from './component/SERVICE-ENGG/service-engg-edit/service-engg-edit.component';
 import { ViewCustomerComponent } from './component/CUSTOMERS/view-customer/view-customer.component';
 import { ViewServiceEngineerComponent } from './component/SERVICE-ENGG/view-service-engineer/view-service-engineer.component';
-import { ConfirmDialogmodalComponent } from './component/CONFIRM-DIALOG/confirm-dialogmodal/confirm-dialogmodal.component'; 
+//import { ConfirmDialogmodalComponent } from './component/CONFIRM-DIALOG/confirm-dialogmodal/confirm-dialogmodal.component'; 
 import { UpdateServiceService } from '../../../../Angular-pj/MyApp/src/app/service/update-service.service';
-import { ConfirmDialogserviceService } from '../../../../Angular-pj/MyApp/src/app/service/CONFIRM-DIALOG/confirm-dialogservice.service' 
+//import { ConfirmDialogserviceService } from '../../../../Angular-pj/MyApp/src/app/service/CONFIRM-DIALOG/confirm-dialogservice.service' 
 import { CustHeaderComponent } from './component/CUSTOMERS/cust-header/cust-header.component';
 import { CustFooterComponent } from './component/CUSTOMERS/cust-footer/cust-footer.component';
 import { CustHomeComponent } from './component/CUSTOMERS/cust-home/cust-home.component';

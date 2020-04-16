@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { UpdateServiceService } from 'src/app/service/update-service.service';
-import { ConfirmDialogserviceService } from 'src/app/service/CONFIRM-DIALOG/confirm-dialogservice.service';
+//import { ConfirmDialogserviceService } from 'src/app/service/CONFIRM-DIALOG/confirm-dialogservice.service';
 import { NotificationServiceService } from 'src/app/service/NOTIFICATION-ALERT/notification-service.service';
 import { LoadingSpinnerService } from '../../../service/loading-spinner.service'
 declare var $: any

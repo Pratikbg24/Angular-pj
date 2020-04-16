@@ -1,7 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
-<<<<<<< HEAD
-
 #toast-container > .toast-success {
     background-image: none;
     background-color: green;
@@ -20,7 +18,5 @@
     color: white;
     margin-top: 80px;
 }
-=======
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
->>>>>>> pratik
