@@ -3,5 +3,9 @@
     "editor.suggest.statusBar.visible": true,
     "files.autoGuessEncoding": true,
     "git.alwaysShowStagedChangesResourceGroup": true,
-    "git.enableCommitSigning": true
+    "git.enableCommitSigning": true,
+    "git.path":"C:\\git.exe",
+    "launch": {
+    
+    }
 }

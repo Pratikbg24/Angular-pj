@@ -44,6 +44,9 @@ import { CustRaiseComplaintComponent } from './component/CUSTOMERS/cust-raise-co
 import { PopupModalComponent } from './component/popup-modal/popup-modal.component';
 import { ViewAllComplaintsComponent } from './component/view-all-complaints/view-all-complaints.component';
 import { ViewPreviousComplaintComponent } from './component/CUSTOMERS/view-previous-complaint/view-previous-complaint.component';
+import { EnggHomeComponent } from './component/SERVICE-ENGINEER/engg-home/engg-home.component';
+import { EnggHeaderComponent } from './component/SERVICE-ENGINEER/engg-header/engg-header.component';
+import { EnggFooterComponent } from './component/SERVICE-ENGINEER/engg-footer/engg-footer.component';
    
   @NgModule({
   declarations: [
@@ -100,7 +103,13 @@ import { ViewPreviousComplaintComponent } from './component/CUSTOMERS/view-previ
 
     ViewAllComplaintsComponent,
 
-    ViewPreviousComplaintComponent
+    ViewPreviousComplaintComponent,
+
+    EnggHomeComponent,
+
+    EnggHeaderComponent,
+
+    EnggFooterComponent
   ],
   imports: [
     FormsModule,
