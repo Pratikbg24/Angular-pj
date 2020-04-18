@@ -5,16 +5,16 @@ import { ChartService } from '../../../service/chart.service'
 import { HttpClient } from '@angular/common/http';
 import { FormGroup, FormArray, Validators, FormBuilder } from '@angular/forms';
 import { AppSettings } from '../../../app.settings'
-import {GetuidService}  from '../../../service/getuid.service'
-
+import{user} from '../../../user.module'
+declare var $: any;
 
 @Component({
-  selector: 'app-view-previous-complaint',
-  templateUrl: './view-previous-complaint.component.html',
-  styleUrls: ['./view-previous-complaint.component.css']
+  selector: 'app-accept-complaint',
+  templateUrl: './accept-complaint.component.html',
+  styleUrls: ['./accept-complaint.component.css']
 })
-export class ViewPreviousComplaintComponent implements OnInit {
-  arr: FormArray
+export class AcceptComplaintComponent implements OnInit {
+ arr: FormArray
   formGroup: FormGroup
   submitted = false
   alert = false
@@ -32,7 +32,8 @@ export class ViewPreviousComplaintComponent implements OnInit {
     u_Machinepurchesed: null,
 
   }
-
+  Machinelist: Array<any> = [];
+ 
   c_date: [];
 
   searchText;
@@ -50,29 +51,17 @@ export class ViewPreviousComplaintComponent implements OnInit {
     private charts: ChartService,
     private spinner: NgxSpinnerService,
     private httpCilent: HttpClient) {
+
+      this.Machinelist = [
+        { name: "Pending" },
+        { name: "Close" },
+      ];
+     
    
   }
   ngOnInit() {
     this.initializeItems()
   }
- 
-  initializeItems(){
-    this.charts.getAllComplaint().subscribe((data: any) => {
-      this.complaint = data.data.filter(el => {
-        if (el.c_assignBy === this.navParams.get("user_id")) {
-          AppSettings.status.forEach((s_code:any)=>{
-            if(parseInt(el.c_status) === parseInt(s_code.id)){
-              el.c_status = s_code.value;
-            }
-          })
-          return el;
-        };
-      });
-    });
-  }
-
-
-
   getItems(ev: any) {
     // set val to the value of the searchbar
     const val = ev.target.value;
@@ -82,13 +71,30 @@ export class ViewPreviousComplaintComponent implements OnInit {
        if(parseInt(item.c_id) === parseInt(val)){
         return parseInt(item.c_id) === parseInt(val);
        }
-      });
+        
+      })
     }
     if(val.length === 0){
       this.initializeItems();   // Reset items back to all of the items
     }
   }
 
+  initializeItems(){
+    this.charts.getAllComplaint().subscribe((data: any) => {
+      this.complaint = data.data.filter(el => {
+        /* if (el.c_assignTo === this.navParams.get("user_id")) {
+          if (el.c_status === 3 || el.c_status === 1) {
+            return el;
+          }
+        };  */
+      });
+    });
+  }
+
+  openModal(item:any){
+    //this.c_id=item.c_id;
+    $("#customerModal").modal('show');
+  }
+ 
 
 }
-

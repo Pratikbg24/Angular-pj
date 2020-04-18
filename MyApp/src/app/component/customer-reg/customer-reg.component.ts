@@ -10,16 +10,16 @@ import { NotificationServiceService} from '../../service/NOTIFICATION-ALERT/noti
   styleUrls: ['./customer-reg.component.css']
 })
 export class CustomerRegComponent implements OnInit {
-  arr: FormArray
-  formGroup: FormGroup
-  submitted = false
-  invalid: boolean
-  alert = false
+  arr: FormArray;
+  formGroup: FormGroup;
+  submitted = false;
+  invalid: boolean;
+  alert = false;
   passwordfieldTextType: boolean;
   confirmfieldTextType: boolean;
   Machinelist: Array<any> = [];
-  servicePeriod:Array<any>=[];
-  warrentyperiod:Array<any>=[];
+  servicePeriod: Array<any> = [];
+  warrentyperiod: Array<any> = [];
   maxDate: Date;
   // public form = [
   //   { key: "new", val: 'New', isChecked: false },
