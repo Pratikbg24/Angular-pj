@@ -6,13 +6,17 @@ import { Observable, Subject } from 'rxjs';
   providedIn: 'root'
 })
 export class GetuidService {
-
   private subject = new Subject<any>();
 
-  get(uid: any) {
-    this.subject.next({ user_id: uid });
-}
-  getuid(): Observable<any> {
-    return this.subject.asObservable();
-}
+  sendMessage(message: string) {
+      this.subject.next({ text: message });
+  }
+
+  clearMessages() {
+      this.subject.next();
+  }
+
+  getMessage(): Observable<any> {
+      return this.subject.asObservable();
+  }
 }

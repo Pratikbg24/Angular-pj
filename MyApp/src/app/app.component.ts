@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { fromEvent, Observable, Subscription } from 'rxjs';
-
+import {GetuidService} from  './service/getuid.service'
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -10,13 +10,22 @@ export class AppComponent {
   onlineEvent: Observable<Event>;
   offlineEvent: Observable<Event>;
   subscriptions: Subscription[] = [];
+  messages: any[] = [];
+    subscription: Subscription;
 
   connectionStatusMessage: string;
   connectionStatus: string;
-  
-  constructor() {
+  constructor(private messageService: GetuidService) {
+    // subscribe to home component messages
+    this.subscription = this.messageService.getMessage().subscribe(message => {
+      if (message) {
+        this.messages.push(message);
+      } else {
+        // clear messages when empty message received
+        this.messages = [];
       }
-      ngOnInit(): void {
+    });
+}    ngOnInit(): void {
         /**
         * Get the online/offline status from browser window
         */

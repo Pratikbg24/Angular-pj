@@ -3,6 +3,7 @@ import { Chart } from 'chart.js';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner'
 import { format } from 'url';
+import { GetuidService } from '../../service/getuid.service'
 @Component({
   selector: 'app-home1',
   templateUrl: './home1.component.html',
@@ -10,10 +11,23 @@ import { format } from 'url';
 })
 export class Home1Component implements OnInit {
  
-  constructor() { }
+  constructor(  private messageService: GetuidService,) { }
 
   ngOnInit() {
     }
+    
+
+
+  sendMessage(): void {
+    // send message to subscribers via observable subject
+    this.messageService.sendMessage(sessionStorage.getItem('u_id'));
+
+  }
+
+  clearMessages(): void {
+    // clear messages
+    this.messageService.clearMessages();
+  }
 
 }
 

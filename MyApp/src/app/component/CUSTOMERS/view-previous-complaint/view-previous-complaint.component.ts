@@ -59,14 +59,14 @@ export class ViewPreviousComplaintComponent implements OnInit {
   initializeItems(){
     this.charts.getAllComplaint().subscribe((data: any) => {
       this.complaint = data.data.filter(el => {
-        if (el.c_assignBy === this.navParams.get("user_id")) {
+        /* if (el.c_assignBy === this.navParams.get("user_id")) {
           AppSettings.status.forEach((s_code:any)=>{
             if(parseInt(el.c_status) === parseInt(s_code.id)){
               el.c_status = s_code.value;
             }
           })
           return el;
-        };
+        }; */
       });
     });
   }
