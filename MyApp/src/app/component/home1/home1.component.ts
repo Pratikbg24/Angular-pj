@@ -14,13 +14,21 @@ export class Home1Component implements OnInit {
   constructor(  private messageService: GetuidService,) { }
 
   ngOnInit() {
-    }
+    window.localStorage.getItem('id');
+console.log(  window.localStorage.getItem('id')
+)
+
+  }
     
 
 
   sendMessage(): void {
+    
+    var id = window.localStorage.getItem('id');
+    console.log("ID="+id)
+
     // send message to subscribers via observable subject
-    this.messageService.sendMessage(sessionStorage.getItem('u_id'));
+    this.messageService.sendMessage(window.localStorage.getItem('id'));
 
   }
 
