@@ -63,7 +63,7 @@ export class LoginComponent implements OnInit {
     this.spinner.show();
     this.service.userLogin(this.formGroup.value.email, this.formGroup.value.password).subscribe((data: any) => {
       console.log(data);
-      window.localStorage.setItem("id", data.u_id) ;
+      window.localStorage.setItem("id", data.data.u_id) ;
       //  s   
 
     if (data.status === "success" && data.data.u_role === 3) {
