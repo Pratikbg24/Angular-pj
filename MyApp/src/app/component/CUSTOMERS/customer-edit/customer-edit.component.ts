@@ -7,7 +7,7 @@ import { UpdateServiceService } from '../../../service/update-service.service'
 import { DatePipe } from '@angular/common'
 import { from } from 'rxjs';
 import { BsDatepickerConfig } from 'ngx-bootstrap';
-import { CustomerListComponent } from '../customer-list/customer-list.component';
+//import { CustomerListComponent } from '../customer-list/customer-list.component';
 import { NotificationServiceService } from 'src/app/service/NOTIFICATION-ALERT/notification-service.service';
 @Component({
   selector: 'app-customer-edit',
