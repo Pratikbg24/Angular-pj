@@ -53,42 +53,55 @@ export class ViewPreviousComplaintComponent implements OnInit {
    
   }
   ngOnInit() {
-    this.initializeItems()
+    this.initializeItems();
+ 
+      
+    console.log("Complaint=")
+    
   }
  
   initializeItems(){
     this.charts.getAllComplaint().subscribe((data: any) => {
       this.complaint = data.data.filter(el => {
-        /* if (el.c_assignBy === this.navParams.get("user_id")) {
+       
+  
+        if (el.c_assignBy === window.localStorage.getItem('id')) {
           AppSettings.status.forEach((s_code:any)=>{
             if(parseInt(el.c_status) === parseInt(s_code.id)){
               el.c_status = s_code.value;
             }
+            
           })
           return el;
-        }; */
+        };
       });
     });
   }
 
-
-
   getItems(ev: any) {
     // set val to the value of the searchbar
-    const val = ev.target.value;
+      const val = ev.target.value;
     // if the value is an empty string don't filter the items
+    
     if (val && val.trim() != '') {
       this.complaint = this.complaint.filter((item) => {
        if(parseInt(item.c_id) === parseInt(val)){
-        return parseInt(item.c_id) === parseInt(val);
-       }
-      });
+        return parseInt(item.c_id) === parseInt(val)  ;
+       
+      
+      }
+      console.log("Complaint="+this.complaint)
+      console.log("Complaint="+this.c_date)
+      console.log("Complaint="+this.c_id)
+     
+     
+          
+      })
     }
     if(val.length === 0){
       this.initializeItems();   // Reset items back to all of the items
     }
   }
-
 
 }
 

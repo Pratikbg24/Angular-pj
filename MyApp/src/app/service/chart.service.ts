@@ -89,10 +89,11 @@ export class ChartService {
     EngineerType:any,
     DateOfjoining:any,
     c_status:any,
+    c_assignBy:any,
     ) {
       let data = {
         "c_desc": name,
-   //     "c_assignBy": this.navParams.get("user_id"),
+      "c_assignBy": window.localStorage.getItem('id'),
         "machine_type": EngineerType,
         "c_date": DateOfjoining,
         "c_status": 1

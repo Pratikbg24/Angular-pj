@@ -1,52 +1,49 @@
-@import url("https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
+.input-group {
+    width: 50%;
+    margin-left: 25%;
+}
+
 h3 {
     text-align: center;
 }
 
-.card-body {
-    background-color: whitesmoke;
+.btn {
+    border-radius: 10px;
 }
 
-label {
-    font-weight: bold;
-    display: inline-block;
+.table {
+    /* margin-left: 10px; */
+    /* margin-right: 10px; */
+    margin-top: 20px;
+    /* margin-bottom: 20px; */
+    /* overflow-x:scroll; */
 }
 
-.p12 {
-    display: inline-block;
-    color: red;
+.form-cpntrol {
+    margin: 10px;
+    margin-top: 20px;
 }
 
-.error-message {
-    color: red
+.btn {
+    color: #fff;
+    border-radius: 4px;
+    background: #60c7c1;
+    text-decoration: none;
+    transition: all 0.4s;
+    line-height: normal;
+    min-width: 120px;
+    border: none;
+    min-height: 40px;
+    border-radius: 3px;
+    margin: 0 5px;
+    outline: none !important;
 }
 
-input.ng-touched.ng-invalid {
-    border: 1px solid red;
+.btn-danger {
+    background: #f15e5e;
 }
 
-select.ng-touched.ng-invalid {
-    border: 1px solid red;
-}
-
-textarea.ng-touched.ng-invalid {
-    border: 1px solid red;
-}
-
-.loading {
-    color: white;
-}
-
-#UpdateButton {
-    float: right;
-    margin-top: 5px;
-    margin: 20px;
-    width: 30%;
-}
-
-#Canclebutton {
-    float: right;
-    margin-top: 5px;
-    margin: 20px;
-    width: 30%;
+.btn-danger:hover,
+.btn-danger:focus {
+    background: #ee3535;
 }

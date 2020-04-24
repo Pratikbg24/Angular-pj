@@ -1,4 +1,3 @@
-
 import { Component, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import { UpdateServiceService } from '../../../service/update-service.service';
 import { BsModalRef } from 'ngx-bootstrap/modal';

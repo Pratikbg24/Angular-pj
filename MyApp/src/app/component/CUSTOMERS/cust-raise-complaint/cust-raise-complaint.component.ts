@@ -79,13 +79,14 @@ export class CustRaiseComplaintComponent implements OnInit {
       this.formGroup.value.name, 
       this.formGroup.value.EngineerType,      
       this.formGroup.value.DateOfjoining,
-      "c_status"
+      "c_status",
+      "c_assignBy"
 
     ).subscribe((result: any) => {
       if(result.status === "success"){
         this.showSuccessMsg=true;
        }if(result.status === "error"){
-        console.log(result.message)
+       // console.log(result.message)
         this.showInvalidMsg=true;  
        }      
 
