@@ -1,25 +1,29 @@
-.input-group{
+.input-group {
     width: 50%;
-    margin-left:25%;
+    margin-left: 25%;
 }
-h3{
+
+h3 {
     text-align: center;
 }
-.btn{
+
+.btn {
     border-radius: 10px;
 }
 
-.table{
+.table {
     /* margin-left: 10px; */
     /* margin-right: 10px; */
     margin-top: 20px;
     /* margin-bottom: 20px; */
     /* overflow-x:scroll; */
 }
-.form-cpntrol{
+
+.form-cpntrol {
     margin: 10px;
     margin-top: 20px;
 }
+
 .btn {
     color: #fff;
     border-radius: 4px;
@@ -34,9 +38,12 @@ h3{
     margin: 0 5px;
     outline: none !important;
 }
+
 .btn-danger {
     background: #f15e5e;
 }
- .btn-danger:hover, .btn-danger:focus {
+
+.btn-danger:hover,
+.btn-danger:focus {
     background: #ee3535;
 }
