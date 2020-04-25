@@ -20,6 +20,9 @@ import{ViewAllComplaintsComponent}from './component/view-all-complaints/view-all
 import{CustHomeComponent} from './component/CUSTOMERS/cust-home/cust-home.component'
 import{CustRaiseComplaintComponent} from './component/CUSTOMERS/cust-raise-complaint/cust-raise-complaint.component'
 import{ViewPreviousComplaintComponent} from './component/CUSTOMERS/view-previous-complaint/view-previous-complaint.component'
+import {EnggHomeComponent} from './component/service-engineer/engg-home/engg-home.component'
+import{AcceptComplaintComponent} from './component/service-engineer/accept-complaint/accept-complaint.component'
+  import { from } from 'rxjs';
 const routes: Routes = [
   {
     path: '',
@@ -30,7 +33,7 @@ const routes: Routes = [
       component:CustHomeComponent,
       children: [
         {
-          path: 'app-cust-raise-complaint',
+          path:'app-cust-raise-complaint',
           component: CustRaiseComplaintComponent,
   
         },
@@ -41,6 +44,22 @@ const routes: Routes = [
         },         
       ]
   },
+  {
+    path:'app-engg-home',
+    component:EnggHomeComponent,
+    children: [
+      {
+        path:  'app-accept-complaint',
+        component: AcceptComplaintComponent,
+
+      },
+      {
+        path: 'app-view-previous-complaint',
+        component: ViewPreviousComplaintComponent,
+
+      },         
+    ]
+},
   {
     path: 'home1',
     component: Home1Component,

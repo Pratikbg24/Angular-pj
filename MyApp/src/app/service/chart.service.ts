@@ -81,7 +81,18 @@ export class ChartService {
   public getAllComplaint() {
     return this._http.get(AppSettings.baseUrl + 'complaint/gelAllcomplaint');
   }
+  
+  public getCustomerDetails(id: any) {
+    let data = {
+      "u_id": id
+    }
+    return this._http.post(AppSettings.baseUrl + 'users/getAll', data);
+  }
 
+
+  public updateComplaint(updatedate: any) {
+    return this._http.post(AppSettings.baseUrl + 'complaint/updateComplaint', updatedate);
+  }
 
 
 

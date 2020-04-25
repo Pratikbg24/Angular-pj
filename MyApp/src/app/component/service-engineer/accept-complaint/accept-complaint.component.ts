@@ -14,7 +14,22 @@ declare var $: any;
   styleUrls: ['./accept-complaint.component.css']
 })
 export class AcceptComplaintComponent implements OnInit {
- arr: FormArray
+ 
+  filterData = {
+    c_id:"",
+    c_assignBy: "",
+    c_name: "",
+    u_mobile:"",
+    u_altermobile:"",
+    e_desc:"",
+    u_email:"",
+    c_status:""
+  };
+  enggData = {};
+  complaintData = [];
+
+ 
+  arr: FormArray
   formGroup: FormGroup
   submitted = false
   alert = false
@@ -61,6 +76,15 @@ export class AcceptComplaintComponent implements OnInit {
   }
   ngOnInit() {
     this.initializeItems()
+  
+   // this.filterData = this.navParams.get('ObjData');
+    this.charts.getCustomerDetails(this.filterData.c_assignBy).subscribe((result:any) => {
+      this.filterData.c_name = result.data.u_name;
+      this.filterData.u_mobile=result.data.u_mobile;
+      this.filterData.u_altermobile=result.data.u_altermobile;
+      this.filterData.u_email=result.data.u_email;
+      this.filterData.e_desc=result.data.e_desc;
+    })
   }
   getItems(ev: any) {
     // set val to the value of the searchbar
@@ -82,19 +106,37 @@ export class AcceptComplaintComponent implements OnInit {
   initializeItems(){
     this.charts.getAllComplaint().subscribe((data: any) => {
       this.complaint = data.data.filter(el => {
-        /* if (el.c_assignTo === this.navParams.get("user_id")) {
+        if (el.c_assignTo === 2122) {
           if (el.c_status === 3 || el.c_status === 1) {
             return el;
           }
-        };  */
+        }; 
       });
     });
   }
 
+
+  addData(){
+    let data={
+      status:parseInt(this.filterData.c_status),
+      complaintId:this.filterData.c_id,
+      e_desc:this.filterData.e_desc
+    }
+    this.charts.updateComplaint(data).subscribe((result:any)=>{
+      if(result.status === "success"){
+        window.alert("Sucess")  
+      
+      }
+    })
+    console.log("UserData"+JSON.stringify(this.filterData))
+  }
+
+ 
   openModal(item:any){
-    //this.c_id=item.c_id;
+    this.c_id=item.c_id;
+    this.c_date=item.c_date;
+
     $("#customerModal").modal('show');
   }
- 
 
 }
