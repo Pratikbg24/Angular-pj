@@ -15,6 +15,7 @@ declare var $: any;
 })
 export class AcceptComplaintComponent implements OnInit {
  
+  assignData={}
   filterData = {
     c_id:"",
     c_assignBy: "",
@@ -133,9 +134,10 @@ export class AcceptComplaintComponent implements OnInit {
 
  
   openModal(item:any){
+    console.log(item)
     this.c_id=item.c_id;
     this.c_date=item.c_date;
-
+    this.assignData = item;
     $("#customerModal").modal('show');
   }
 

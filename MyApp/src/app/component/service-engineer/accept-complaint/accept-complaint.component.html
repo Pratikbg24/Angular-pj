@@ -73,31 +73,18 @@
                     <h2 style="color: #337ab7;">Complaint Details </h2>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
-                <!--  <div class='row' style="margin-top: 15px;">
-                    <div class='col-md-3' style="margin-left: 20px;margin-top: 5px; font-size: medium;"><b>Search Engineer</b>
-                    </div>
-                    <div class='col-md-8'>
-                        <input style="margin-bottom: 17px;" class="form-control" type="text" name="search" [(ngModel)]="searchText1" autocomplete="off" />
-                    </div>
-                </div>
--->
                 <div class="modal-body">
                     <div class="alert alert-success fade show">
-
                         <div class="row" style="margin-top:8px">
-
                             <div class="col-md-2">
-
                                 <label style="margin-top:12px"><b>Complaint Id:</b></label>
                             </div>
                             <div class="col-md-10">
-                                <input type="text" name="engg_id" class="form-control" id="engg_id" disabled>
-
+                                <input type="text" name="engg_id" [ngModel]="assignData.c_id" class="form-control" id="engg_id" disabled>
                             </div>
                         </div>
                         <div class="row" style="margin-top: 15px;">
                             <div class="col-md-2">
-
                                 <label style="margin-top:12px"><b>Customer Name:</b></label>
                             </div>
                             <div class="col-md-10">
@@ -143,7 +130,7 @@
                                 <label style="margin-top:12px"><b>Description:</b></label>
                             </div>
                             <div class="col-md-10">
-                                <input type="text" name="Email" class="form-control" id="Email" disabled>
+                                <input type="text" name="Email" [ngModel]="assignData.c_desc" class="form-control" id="Email" disabled>
 
                             </div>
 
@@ -205,7 +192,7 @@
                                 <label style="margin-top:12px "><b>Change Status:</b></label>
                             </div>
                             <div class="col-md-10 ">
-                                <select class="form-control " formControlName="Machine_purchase " placeholder="Change Status">
+                                <select class="form-control " placeholder="Change Status">
                                 <option *ngFor="let machine of Machinelist;let i=index " value="{{machine.name}} "
                                     [selected]="i==0 ">{{machine.name}} </option>
                             </select>
