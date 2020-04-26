@@ -7,7 +7,7 @@
         <div class="col-md-8 mx-auto">
             <div class="card">
                 <div class="card-header">
-                    <h3> Registration </h3>
+                    <h3> Customer Registration </h3>
                 </div>
                 <div class="card-body">
                     <form class="form" [formGroup]="formGroup" (ngSubmit)="onSubmit(fb)">
@@ -25,11 +25,10 @@
                                 </div>
                             </ng-container>
                         </div>
-
                         <div class="form-group">
                             <label>Mobile Number<p class="p12">*</p></label>
                             <input type="text" class="form-control" formControlName="Mobilenumber"
-                                placeholder="Enter Your Mobile Number"
+                                placeholder="Enter Your Mobile Number" maxlength="10"
                                 [ngClass]="{ 'is-invalid': submitted && f.Mobilenumber.errors?.invalid }">
                         </div>
                         <div class="validation-errors">
@@ -40,11 +39,10 @@
                                 </div>
                             </ng-container>
                         </div>
-
                         <div class="form-group">
                             <label>Alternate Mobile Number</label>
                             <input type="text" class="form-control" formControlName="Alternatemobile"
-                                placeholder="Enter Your Alternate Mobile Number"
+                                placeholder="Enter Your Alternate Mobile Number" maxlength="10"
                                 [ngClass]="{ 'is-invalid': submitted && f.Alternatemobile.errors?.invalid }">
                         </div>
                         <div class="validation-errors">
@@ -55,7 +53,6 @@
                                 </div>
                             </ng-container>
                         </div>
-
                         <div class="form-group">
                             <label>Email<p class="p12">*</p></label>
                             <input type="email" class="form-control" formControlName="email"
@@ -70,8 +67,6 @@
                                 </div>
                             </ng-container>
                         </div>
-
-
                         <div class="form-group">
                             <label>Address<p class="p12">*</p></label>
                             <textarea class="form-control" formControlName="Address" placeholder="Enter Your Address"
@@ -85,7 +80,6 @@
                                 </div>
                             </ng-container>
                         </div>
-
                         <div class="form-group">
                             <label>Machine Purchased<p class="p12">*</p></label>
                             <select class="form-control" formControlName="Machine_purchase"
@@ -103,30 +97,29 @@
                                 </ng-container>
                             </div>
                         </div>
-                        <div class="form-group" id="radiocontrol" fromControlName="machieCondition" >
-                            <label id="machine">Purchase Type<p class="p12">*</p></label><br><br>
+                        <div class="form-group">
+                            <label for="gender">Purchased Type:<p class="p12">*</p></label>
                             <div class="form-control">
-                              <div class="custom-control custom-radio custom-control-inline">
-                                    <input id="newmachine" type="radio" class="custom-control-input "
-                                        name="machieCondition" value="New"  />
-                                    <label id="reconditionmachine" class="custom-control-label"
-                                        for="newmachine">New</label>
-                                </div>                                
                                 <div class="custom-control custom-radio custom-control-inline">
-                                    <input id="recondition" type="radio" class="custom-control-input "
-                                        name="machieCondition" value="Recondition" />
-                                    <label id="reconditionmachine" class="custom-control-label"
-                                        for="recondition">Recondition</label>
+                                    <input  type="radio"  value="New" name="machieCondition" formControlName="machieCondition"
+                                        (change)="changeCondition($event)" >
+                                    <label id="New" for="New" >New</label>
+                                </div>
+                                <div class="custom-control custom-radio custom-control-inline">
+                                    <input  type="radio"  value="Re-condition" name="machieCondition"
+                                        formControlName="machieCondition" (change)="changeCondition($event)">
+                                    <label id="Re-condition" for="Re-condition" >Re-condition</label>
                                 </div>
                             </div>
-                            <div [ngClass]="{ 'is-invalid': submitted && f.machieCondition.errors?.invalid }">
+                            <div *ngIf="f.machieCondition.touched && f.machieCondition.invalid">
+                                <!-- <div *ngIf="f.machieCondition.errors.required">Name is required.</div> -->
                             </div>
                         </div>
                         <div class="validation-errors">
                             <ng-container *ngFor="let validation of validation_messages.machieCondition">
                                 <div class="error-message text-danger"
                                     *ngIf="formGroup.get('machieCondition').hasError(validation.type) && (formGroup.get('machieCondition').dirty || formGroup.get('machieCondition').touched)">
-                                    <span> {{ validation.message }}</span>
+                                    <span name="information-circle-outline"></span> {{ validation.message }}
                                 </div>
                             </ng-container>
                         </div>

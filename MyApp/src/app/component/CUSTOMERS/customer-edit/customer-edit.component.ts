@@ -6,7 +6,7 @@ import { UpdateData } from '../../../models/update-data';
 import { UpdateServiceService } from '../../../service/update-service.service'
 import { DatePipe } from '@angular/common'
 import { from } from 'rxjs';
-import { BsDatepickerConfig } from 'ngx-bootstrap';
+import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
 //import { CustomerListComponent } from '../customer-list/customer-list.component';
 import { NotificationServiceService } from 'src/app/service/NOTIFICATION-ALERT/notification-service.service';
 @Component({
@@ -58,6 +58,9 @@ export class CustomerEditComponent implements OnInit {
     'Machine_purchase': [
       { type: 'required', message: '*Please select any one machine' },
     ],
+    'machieCondition': [
+      { type: 'required', message: '*Please select purchase type' }
+    ],
     'Note': [
       { type: 'required', message: '*Note is required' },
     ],
@@ -88,7 +91,7 @@ export class CustomerEditComponent implements OnInit {
     private dpconfig: BsDatepickerConfig,
     private notificationservice: NotificationServiceService
   ) {
-    this.dpconfig.dateInputFormat = 'DD-MM-YYYY';
+    this.dpconfig.dateInputFormat = 'YYYY-MM-DD';
     this.dpconfig.isAnimated = true;
     this.maxDate = new Date();
     this.maxDate.setDate(this.maxDate.getDate() + 0);
@@ -159,6 +162,8 @@ export class CustomerEditComponent implements OnInit {
       Machine_purchase: ['', Validators.compose([
         Validators.required
       ])],
+      machieCondition: ['', Validators.required
+    ],
       Note: ['', Validators.compose([
         Validators.required
       ])],
@@ -201,14 +206,44 @@ export class CustomerEditComponent implements OnInit {
   get f() {
     return this.formGroup.controls;
   }
+    viewCustomer() {
+    console.log(this.activatedRoute.snapshot.params.u_id)
+    this.u_id = this.activatedRoute.snapshot.params["u_id"];
+    this.updateservice.getItem(this.u_id).subscribe((result: any) => {
+      this.formGroup.patchValue({
+        u_name: result.data[0].u_name,
+        Mobilenumber: result.data[0].u_mobile,
+        Alternatemobile: result.data[0].u_altermobile,
+        email: result.data[0].u_email,
+        Address: result.data[0].u_address,
+        Machine_purchase: result.data[0].u_MachinePurchased,
+        machieCondition:result.data[0].u_purchase_con,
+        Note: result.data[0].u_note,
+        Machineno: result.data[0].u_MachineNo,
+        servicePeriod: result.data[0].u_ServicePeriod,
+        warrentPeriod: result.data[0].u_WarrentyPeriod,
+        Datepurchased: result.data[0].u_dateOf_Purchased,
+        password: result.data[0].u_password,
+        confirmPassword: result.data[0].u_cpassword,
+      })
+      console.log(this.u_id)
+      //console.log(result)
+      this.data4 = result
+      // console.log(this.data4)
+      this.customerdata = this.data4;
+      console.log(this.customerdata)
+    })
+  }
   onSubmit(formValue: any) {
     let payload = {
+      "u_id" : this.activatedRoute.snapshot.params["u_id"],
       "u_name": formValue.u_name,
       "u_mobile": formValue.Mobilenumber,
       "u_altermobile": formValue.Alternatemobile,
       "u_email": formValue.email,
       "u_address": formValue.Address,
       "u_MachinePurchased": formValue.Machine_purchase,
+      "u_purchase_con":formValue.machieCondition,
       "u_note": formValue.Note,
       "u_MachineNo": formValue.Machineno,
       "u_ServicePeriod": formValue.servicePeriod,
@@ -233,38 +268,14 @@ export class CustomerEditComponent implements OnInit {
     }
     this.formGroup.reset();
   }
-  viewCustomer() {
-    console.log(this.activatedRoute.snapshot.params.u_id)
-    this.u_id = this.activatedRoute.snapshot.params["u_id"];
-    this.updateservice.getItem(this.u_id).subscribe((result: any) => {
-      this.formGroup.patchValue({
-        u_name: result.data[0].u_name,
-        Mobilenumber: result.data[0].u_mobile,
-        Alternatemobile: result.data[0].u_altermobile,
-        email: result.data[0].u_email,
-        Address: result.data[0].u_address,
-        Machine_purchase: result.data[0].u_MachinePurchased,
-        Note: result.data[0].u_note,
-        Machineno: result.data[0].u_MachineNo,
-        servicePeriod: result.data[0].u_ServicePeriod,
-        warrentPeriod: result.data[0].u_WarrentyPeriod,
-        Datepurchased: result.data[0].u_dateOf_Purchased,
-        password: result.data[0].u_password,
-        confirmPassword: result.data[0].u_cpassword,
-      })
-      console.log(this.u_id)
-      //console.log(result)
-      this.data4 = result
-      // console.log(this.data4)
-      this.customerdata = this.data4;
-      console.log(this.customerdata)
-    })
-  }
   toggleFieldTextType(event: any) {
     if (event.target.id === 'btn11') {
       this.passwordfieldTextType = !this.passwordfieldTextType
     } if (event.target.id === 'btn12') {
       this.confirmfieldTextType = !this.confirmfieldTextType
     }
+  }
+  changeCondition(e){
+    console.log(e.target.value);
   }
 }

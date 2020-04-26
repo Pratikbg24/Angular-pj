@@ -68,7 +68,7 @@ const routes: Routes = [
         component: UpdateServiceEnggComponent,
       },
       {
-        path:'serviceEngglist/view/:id',
+        path:'serviceEngglist/view/:u_id',
         component:ViewServiceEngineerComponent
       },
       {

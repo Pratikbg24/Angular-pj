@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormArray, Validators, FormBuilder } from '@angular/forms';
 import { LoadingSpinnerService } from '../../service/loading-spinner.service'
 import { CustomerRegService } from '../../service/customer-reg.service';
-import { BsDatepickerConfig } from 'ngx-bootstrap'
+import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker'
 import { NotificationServiceService} from '../../service/NOTIFICATION-ALERT/notification-service.service'
 @Component({
   selector: 'app-customer-reg',
@@ -157,7 +157,7 @@ export class CustomerRegComponent implements OnInit {
       Machine_purchase: ['', Validators.compose([
         Validators.required
       ])],
-      machieCondition: ['New', Validators.required
+      machieCondition: ['', Validators.required
       ],
       Note: ['', Validators.compose([
         Validators.required
@@ -228,8 +228,7 @@ export class CustomerRegComponent implements OnInit {
           this.notificationservice.success("Registration Successfully ")
         } if (data.status === "error") {
           console.log(data.message)
-          this.notificationservice.error("The email address or mobile number you have entered is already registered");
-          
+          this.notificationservice.error("The email address or mobile number you have entered is already registered");       
         }
       });
     this.submitted = true;    
@@ -244,5 +243,8 @@ export class CustomerRegComponent implements OnInit {
     } if (event.target.id === 'btn12') {
       this.confirmfieldTextType = !this.confirmfieldTextType
     }
+  }
+  changeCondition(e){
+    console.log(e.target.value);
   }
 }

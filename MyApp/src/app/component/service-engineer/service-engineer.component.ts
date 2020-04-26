@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormArray, Validators, FormBuilder } from '@angular/forms';
 import { LoadingSpinnerService } from '../../service/loading-spinner.service'
 import { ServiceEngineerService } from '../../service/service-engineer.service'
+import {NotificationServiceService } from '../../service/NOTIFICATION-ALERT/notification-service.service'
 @Component({
   selector: 'app-service-engineer',
   templateUrl: './service-engineer.component.html',
@@ -17,11 +18,7 @@ export class ServiceEngineerComponent implements OnInit {
   passwordTextField: boolean;
   enggList: Array<any> = [];
   maxDate: Date;
-  showSuccessMsg:boolean=false;
-  showInvalidMsg:boolean=false;
-
   validation_messages = {
-
     'name': [
       { type: 'required', message: '*Name is required' },
       { type: 'minlength', message: '*Name must be 3 character' }
@@ -31,19 +28,16 @@ export class ServiceEngineerComponent implements OnInit {
       { type: 'maxlength', message: '*Mobile number maximum length should be only 10 number' },
       { type: 'pattern', message: '*Enter valid mobile number' },
       { type: 'minlength', message: '*Mobile number minumum lenght 10 number' }
-
     ],
     'Alternatemobile': [
       { type: 'maxlength', message: '*Maximum length 10 number' },
       { type: 'pattern', message: '*Enter valid mobile number' },
       { type: 'minlength', message: '*Minumum lenght 10 number' }
-
     ],
     'email': [
       { type: 'required', message: '*Email is required' },
       { type: 'pattern', message: '*Enter valid email' }
     ],
-
     'password': [
       { type: 'required', message: '*Password is required' },
       { type: 'minlength', message: '*Password minumum length 6 Character.' }
@@ -64,10 +58,10 @@ export class ServiceEngineerComponent implements OnInit {
       { type: 'minlength', message: '*Password minumum length 6 character.' }
     ]
   }
-
   constructor(private fb: FormBuilder, 
     private spinner: LoadingSpinnerService,
-    private enggRegservice:ServiceEngineerService) {
+    private enggRegservice:ServiceEngineerService,
+    private notification:NotificationServiceService) {
     this.maxDate = new Date();
     this.maxDate.setDate(this.maxDate.getDate() + 0);
     this.enggList=[
@@ -77,7 +71,6 @@ export class ServiceEngineerComponent implements OnInit {
     ]
   }
   ngOnInit() {
-
     this.formGroup = this.fb.group({
       name: ['', Validators.compose([
         Validators.required,
@@ -121,7 +114,6 @@ export class ServiceEngineerComponent implements OnInit {
       });
   }
   passwordConfirming(formGroup: FormGroup) {
-
     const { value: password } = formGroup.get('password');
     const { value: confirmPassword } = formGroup.get('confirmPassword');
     if (password === confirmPassword) {
@@ -150,24 +142,19 @@ export class ServiceEngineerComponent implements OnInit {
       .subscribe((data:any) => {
         console.log(data)
         if(data.status === "success"){
-          this.showSuccessMsg=true;
-         }if(data.status === "error"){
+          this.notification.success("Registration Successfully!")
+        }if(data.status === "error"){
           console.log(data.message)
-          this.showInvalidMsg=true;  
+          this.notification.error("The email address or phone number you have entered is already registered!.")
          }       
        });    
     this.spinner.show();
     this.submitted = true;
-    this.showSuccessMsg=false;
-    this.showInvalidMsg=false;
     if (this.formGroup.invalid) {
       return;
     }
     this.formGroup.reset();
   }
-
-
-
   toggleFieldTextType(event: any) {
     if (event.target.id === 'btn1') {
       this.passwordTextField = !this.passwordTextField

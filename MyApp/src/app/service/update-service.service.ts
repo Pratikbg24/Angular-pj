@@ -15,14 +15,12 @@ export class UpdateServiceService {
   base_path2="https://thawing-eyrie-14958.herokuapp.com/";
   // base_path3="https://thawing-eyrie-14958.herokuapp.com/users/updateUserById";
   constructor( private http:HttpClient) { }
-
   // Http Options
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json'
     })
   }
- 
   // Handle API errors
   handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
@@ -39,12 +37,10 @@ export class UpdateServiceService {
     return throwError(
       'Something bad happened; please try again later.');
   };
-
-
   // Get single customer data by ID
-  getItem(id:any): Observable<UpdateData> {
+  getItem(u_id:any): Observable<UpdateData> {
       let data={
-        "u_id":id
+        "u_id":u_id
       }    
     return this.http
       .post<UpdateData>(this.base_path2 + 'users/getUserById',data)
@@ -53,7 +49,6 @@ export class UpdateServiceService {
         catchError(this.handleError)
       )
   }
-
   // Get customer data
   getList(): Observable<UpdateData> {
     return this.http
@@ -63,12 +58,11 @@ export class UpdateServiceService {
         catchError(this.handleError)
       )
   }
- 
   // Update item by id
-updateItem(u_id:any) {
-    let data={
-      "u_id":u_id
-    }   
+updateItem(data:any) {
+    // let data={
+    //   "u_id":u_id
+    // }   
     return this.http
       .post<UpdateData>(this.base_path2 + 'users/updateUserById',data)
       .pipe(
@@ -76,7 +70,6 @@ updateItem(u_id:any) {
         catchError(this.handleError)
       )
   }
-
     // Delete item by id
   deleteItem(data:any) {
     return this.http

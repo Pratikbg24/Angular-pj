@@ -5,7 +5,7 @@ import { ActivatedRoute,Router } from '@angular/router';
 import { UpdateData} from '../../../models/update-data';
 import { UpdateServiceService} from '../../../service/update-service.service'
 import { NotificationServiceService } from 'src/app/service/NOTIFICATION-ALERT/notification-service.service';
-import { BsDatepickerConfig } from 'ngx-bootstrap';
+import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
 // import { LoadingSpinnerService } from '../../../service/loading-spinner.service'
 
 @Component({
@@ -46,7 +46,6 @@ export class ServiceEnggEditComponent implements OnInit {
     'email': [
       { type: 'pattern', message: '*Enter valid email' }
     ],
-
     'password': [
       { type: 'required', message: '*Password is required' },
       { type: 'minlength', message: '*Password minumum length 6 Character.' }
@@ -68,7 +67,6 @@ export class ServiceEnggEditComponent implements OnInit {
     ]
   }
   enggData: UpdateData;
-
   constructor(private fb: FormBuilder, 
     private spinner: LoadingSpinnerService,
     private activatedRoute:ActivatedRoute,
@@ -77,7 +75,7 @@ export class ServiceEnggEditComponent implements OnInit {
     private notificationservice:NotificationServiceService,
     private dpconfig :BsDatepickerConfig
 ) {
-  this.dpconfig.dateInputFormat='DD-MM-YYYY';
+  this.dpconfig.dateInputFormat='YYYY-MM-DD';
     this.dpconfig.isAnimated=true;
     this.data=new UpdateData();
     this.maxDate = new Date();
@@ -146,9 +144,30 @@ export class ServiceEnggEditComponent implements OnInit {
   get f() {
     return this.formGroup.controls;
   }
+  viewEngg() {
+    console.log(this.activatedRoute.snapshot.params.u_id)
+    this.u_id = this.activatedRoute.snapshot.params["u_id"];
+    // console.log(this.u_id)
+    this.updateservice.getItem(this.u_id).subscribe((result: any) => {      
+      this.formGroup.patchValue({
+        name:result.data[0].u_name,
+        Mobilenumber:result.data[0].u_mobile,
+        Alternatemobile:result.data[0].u_altermobile,
+        email:result.data[0].u_email,
+        Address:result.data[0].u_address,
+        DateOfjoining:result.data[0].u_joinDate,  
+        password:result.data[0].u_password,
+        confirmPassword:result.data[0].u_cpassword,
+      })
+      console.log(this.u_id)
+      this.data=result
+      this.enggData=this.data;
+      console.log(this.enggData)
+    })
+  }
   onSubmit(formValue: any) {
     let payload = {
-      "u_name": formValue.u_name,
+      "u_name": formValue.name,
       "u_mobile": formValue.Mobilenumber,
       "u_altermobile": formValue.Alternatemobile,
       "u_email": formValue.email,
@@ -173,26 +192,6 @@ export class ServiceEnggEditComponent implements OnInit {
       return;
     }
     this.formGroup.reset();
-  }
-  viewEngg() {
-    console.log(this.activatedRoute.snapshot.params.u_id)
-    this.u_id = this.activatedRoute.snapshot.params["u_id"];
-    this.updateservice.getItem(this.u_id).subscribe((result: any) => {      
-      this.formGroup.patchValue({
-        name:result.data[0].u_name,
-        Mobilenumber:result.data[0].u_mobile,
-        Alternatemobile:result.data[0].u_altermobile,
-        email:result.data[0].u_email,
-        Address:result.data[0].u_address,
-        DateOfjoining:result.data[0].u_joinDate,  
-        password:result.data[0].u_password,
-        confirmPassword:result.data[0].u_cpassword,
-      })
-      console.log(this.u_id)
-      this.data=result
-      this.enggData=this.data;
-      console.log(this.enggData)
-    })
   }
   toggleFieldTextType(event: any) {
     if (event.target.id === 'btn1') {
