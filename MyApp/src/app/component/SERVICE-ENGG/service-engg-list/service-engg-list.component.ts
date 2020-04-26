@@ -48,7 +48,7 @@ export class ServiceEnggListComponent implements OnInit {
         this.notificationservice.error("The record cannot be deleted")
       }
     })
-    console.log('Agree clicked');
+    // console.log('Agree clicked');
     this.spinner.show();
   }
   openModal(item: any) {

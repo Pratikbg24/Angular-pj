@@ -3,6 +3,8 @@ import { FormGroup, FormArray, Validators, FormBuilder } from '@angular/forms';
 import { LoadingSpinnerService } from '../../service/loading-spinner.service'
 import { ServiceEngineerService } from '../../service/service-engineer.service'
 import {NotificationServiceService } from '../../service/NOTIFICATION-ALERT/notification-service.service'
+import {Router} from '@angular/router'
+import { BsDatepickerConfig} from 'ngx-bootstrap/datepicker'
 @Component({
   selector: 'app-service-engineer',
   templateUrl: './service-engineer.component.html',
@@ -60,8 +62,12 @@ export class ServiceEngineerComponent implements OnInit {
   }
   constructor(private fb: FormBuilder, 
     private spinner: LoadingSpinnerService,
+    private router:Router,
+    private dpconfig:BsDatepickerConfig,
     private enggRegservice:ServiceEngineerService,
     private notification:NotificationServiceService) {
+    this.dpconfig.dateInputFormat='DD-MM-YYYY';
+    this.dpconfig.isAnimated=true;
     this.maxDate = new Date();
     this.maxDate.setDate(this.maxDate.getDate() + 0);
     this.enggList=[
@@ -140,11 +146,12 @@ export class ServiceEngineerComponent implements OnInit {
       this.formGroup.value.password,
       this.formGroup.value.confirmPassword)
       .subscribe((data:any) => {
-        console.log(data)
-        if(data.status === "success"){
+        // console.log(data)
+        if(data.status === "success"){          
           this.notification.success("Registration Successfully!")
+          this.router.navigate(['/home1'])
         }if(data.status === "error"){
-          console.log(data.message)
+          // console.log(data.message)
           this.notification.error("The email address or phone number you have entered is already registered!.")
          }       
        });    
@@ -153,7 +160,7 @@ export class ServiceEngineerComponent implements OnInit {
     if (this.formGroup.invalid) {
       return;
     }
-    this.formGroup.reset();
+    // this.formGroup.reset();
   }
   toggleFieldTextType(event: any) {
     if (event.target.id === 'btn1') {

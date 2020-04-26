@@ -86,7 +86,7 @@ export class CustomerEditComponent implements OnInit {
   constructor(private fb: FormBuilder,
     private spinner: LoadingSpinnerService,
     private activatedRoute: ActivatedRoute,
-    private route: Router,
+    private router: Router,
     private updateservice: UpdateServiceService,
     private dpconfig: BsDatepickerConfig,
     private notificationservice: NotificationServiceService
@@ -156,27 +156,27 @@ export class CustomerEditComponent implements OnInit {
       email: [{ value: '', disabled: true }, Validators.compose([
         Validators.pattern("[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?")
       ])],
-      Address: ['', Validators.compose([
+      Address: [{ value: '', disabled: true }, Validators.compose([
         Validators.required
       ])],
-      Machine_purchase: ['', Validators.compose([
+      Machine_purchase: [{ value: '', disabled: true }, Validators.compose([
         Validators.required
       ])],
-      machieCondition: ['', Validators.required
-    ],
-      Note: ['', Validators.compose([
+      machieCondition: [{ value: '', disabled: true },Validators.compose([ Validators.required
+      ])],
+      Note: [{ value: '', disabled: true }, Validators.compose([
         Validators.required
       ])],
-      Machineno: ['', Validators.compose([
+      Machineno: [{ value: '', disabled: true }, Validators.compose([
         Validators.required
       ])],
-      servicePeriod: ['', Validators.compose([
+      servicePeriod: [{ value: '', disabled: true }, Validators.compose([
         Validators.required
       ])],
-      warrentPeriod: ['', Validators.compose([
+      warrentPeriod: [{ value: '', disabled: true }, Validators.compose([
         Validators.required
       ])],
-      Datepurchased: ['', Validators.compose([
+      Datepurchased: [{ value: '', disabled: true }, Validators.compose([
         Validators.required
       ])],
       password: ['', Validators.compose([
@@ -207,7 +207,7 @@ export class CustomerEditComponent implements OnInit {
     return this.formGroup.controls;
   }
     viewCustomer() {
-    console.log(this.activatedRoute.snapshot.params.u_id)
+    // console.log(this.activatedRoute.snapshot.params.u_id)
     this.u_id = this.activatedRoute.snapshot.params["u_id"];
     this.updateservice.getItem(this.u_id).subscribe((result: any) => {
       this.formGroup.patchValue({
@@ -226,12 +226,12 @@ export class CustomerEditComponent implements OnInit {
         password: result.data[0].u_password,
         confirmPassword: result.data[0].u_cpassword,
       })
-      console.log(this.u_id)
+      // console.log(this.u_id)
       //console.log(result)
       this.data4 = result
       // console.log(this.data4)
       this.customerdata = this.data4;
-      console.log(this.customerdata)
+      // console.log(this.customerdata)
     })
   }
   onSubmit(formValue: any) {
@@ -255,18 +255,18 @@ export class CustomerEditComponent implements OnInit {
     this.updateservice.updateItem(payload).subscribe((result: any) => {
       if (result.status === "success") {
         this.notificationservice.success("Record updated successfully")
-        // this.customerlist.getAllCustomers();
       } if (result.status === "error") {
         this.notificationservice.error(" Record not updated")
-        console.log(result.message)
+        // console.log(result.message)
       }
+        this.router.navigate(['/home1/updateCustomer1'])
     })
     this.spinner.show();
     this.submitted = true;
     if (this.formGroup.invalid) {
       return;
     }
-    this.formGroup.reset();
+   // this.formGroup.reset();
   }
   toggleFieldTextType(event: any) {
     if (event.target.id === 'btn11') {
@@ -276,6 +276,6 @@ export class CustomerEditComponent implements OnInit {
     }
   }
   changeCondition(e){
-    console.log(e.target.value);
+    // console.log(e.target.value);
   }
 }

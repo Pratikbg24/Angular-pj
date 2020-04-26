@@ -41,7 +41,7 @@ export class CustomerRegService {
       "u_role": 1,
       "u_roleType": null,
     }
-    console.log(data)
+    // console.log(data)
     let url = "https://thawing-eyrie-14958.herokuapp.com/";
     return this.http.post(url + 'users/createUser', data)
   }

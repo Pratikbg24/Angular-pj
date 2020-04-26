@@ -107,7 +107,7 @@
                         <div class="form-group">
                             <label>Date Of Joining<p class="p12">*</p></label>
                             <input type="text" class="form-control" formControlName="DateOfjoining"
-                                placeholder="MM/DD/YYYY" bsDatepicker [bsConfig]="{ isAnimated: true }"
+                                placeholder="DD/MM/YYYY" bsDatepicker  [bsConfig]="dpconfig"
                                 [maxDate]="maxDate" [ngClass]="{ 'is-invalid': submitted && f.DateOfjoining.errors?.invalid }">
                             <!-- <i class="fa fa-calendar"></i> -->
                         </div>

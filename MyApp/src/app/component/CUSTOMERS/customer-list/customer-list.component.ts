@@ -46,10 +46,10 @@ export class CustomerListComponent implements OnInit {
         this.getAllCustomers()
       }
       else {
-        alert(" Cannot delete !")
+        this.notificationalert.error("The record cannot be deleted")
       }
     })
-    console.log('Agree clicked');
+    // console.log('Agree clicked');
     this.spinner.show();
   }
   openModal(item:any){

@@ -21,3 +21,17 @@ img{
 .card-header{
     text-align: center;
 }
+.btn{
+    float:right;
+    margin-top: 5px;
+    margin: 20px;
+    width: 30%;
+    background-color:  #007bff;  
+}
+.fa{
+    font-size: 24px;
+    margin-right: 10px;
+    }
+.btn-primary:hover, .btn-primary:focus {
+     background: black;
+}

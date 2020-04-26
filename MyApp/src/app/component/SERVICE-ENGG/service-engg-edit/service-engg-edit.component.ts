@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormArray, Validators, FormBuilder } from '@angular/forms';
 import { LoadingSpinnerService } from '../../../service/loading-spinner.service'
-import { ActivatedRoute,Router } from '@angular/router';
-import { UpdateData} from '../../../models/update-data';
-import { UpdateServiceService} from '../../../service/update-service.service'
+import { ActivatedRoute, Router } from '@angular/router';
+import { UpdateData } from '../../../models/update-data';
+import { UpdateServiceService } from '../../../service/update-service.service'
 import { NotificationServiceService } from 'src/app/service/NOTIFICATION-ALERT/notification-service.service';
 import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
 // import { LoadingSpinnerService } from '../../../service/loading-spinner.service'
@@ -23,10 +23,10 @@ export class ServiceEnggEditComponent implements OnInit {
   passwordTextField: boolean;
   enggList: Array<any> = [];
   maxDate: Date;
-  showSuccessMsg:boolean=false;
-  showInvalidMsg:boolean=false;
-  u_id:number;
-  data:UpdateData;
+  showSuccessMsg: boolean = false;
+  showInvalidMsg: boolean = false;
+  u_id: number;
+  data: UpdateData;
   validation_messages = {
     'name': [
       { type: 'required', message: '*Name is required' },
@@ -53,9 +53,9 @@ export class ServiceEnggEditComponent implements OnInit {
     'Address': [
       { type: 'required', message: '*Address is required' },
     ],
-    'EngineerType': [
-      { type: 'required', message: '*Please select engineer type' },
-    ],
+    // 'EngineerType': [
+    //   { type: 'required', message: '*Please select engineer type' },
+    // ],
     'DateOfjoining': [
       {
         type: 'required', message: '*Please select date'
@@ -67,23 +67,23 @@ export class ServiceEnggEditComponent implements OnInit {
     ]
   }
   enggData: UpdateData;
-  constructor(private fb: FormBuilder, 
+  constructor(private fb: FormBuilder,
     private spinner: LoadingSpinnerService,
-    private activatedRoute:ActivatedRoute,
-    private route:Router,
-    private updateservice:UpdateServiceService,
-    private notificationservice:NotificationServiceService,
-    private dpconfig :BsDatepickerConfig
-) {
-  this.dpconfig.dateInputFormat='YYYY-MM-DD';
-    this.dpconfig.isAnimated=true;
-    this.data=new UpdateData();
+    private activatedRoute: ActivatedRoute,
+    private router: Router,
+    private updateservice: UpdateServiceService,
+    private notificationservice: NotificationServiceService,
+    private dpconfig: BsDatepickerConfig
+  ) {
+    this.dpconfig.dateInputFormat = 'YYYY-MM-DD';
+    this.dpconfig.isAnimated = true;
+    this.data = new UpdateData();
     this.maxDate = new Date();
     this.maxDate.setDate(this.maxDate.getDate() + 0);
-    this.enggList=[
-        {name:"Machanical"},
-        {name:"Electronic"},
-        {name:"Designing"}
+    this.enggList = [
+      { name: "Machanical" },
+      { name: "Electronic" },
+      { name: "Designing" }
     ]
   }
   ngOnInit() {
@@ -104,16 +104,16 @@ export class ServiceEnggEditComponent implements OnInit {
         Validators.pattern('^[0-9]{10}$'),
         Validators.minLength(10)
       ])],
-      email: [{value:'',disabled:true}, Validators.compose([
+      email: [{ value: '', disabled: true }, Validators.compose([
         Validators.pattern("[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?")
       ])],
-      Address: ['', Validators.compose([
+      Address: [{ value: '', disabled: true }, Validators.compose([
         Validators.required
       ])],
-      EngineerType: ['', Validators.compose([
-        Validators.required
-      ])],
-      DateOfjoining: ['', Validators.compose([
+      // EngineerType: ['', Validators.compose([
+      //   Validators.required
+      // ])],
+      DateOfjoining: [{ value: '', disabled: true }, Validators.compose([
         Validators.required
       ])],
       password: ['', Validators.compose([
@@ -145,34 +145,35 @@ export class ServiceEnggEditComponent implements OnInit {
     return this.formGroup.controls;
   }
   viewEngg() {
-    console.log(this.activatedRoute.snapshot.params.u_id)
+    // console.log(this.activatedRoute.snapshot.params.u_id)
     this.u_id = this.activatedRoute.snapshot.params["u_id"];
     // console.log(this.u_id)
-    this.updateservice.getItem(this.u_id).subscribe((result: any) => {      
+    this.updateservice.getItem(this.u_id).subscribe((result: any) => {
       this.formGroup.patchValue({
-        name:result.data[0].u_name,
-        Mobilenumber:result.data[0].u_mobile,
-        Alternatemobile:result.data[0].u_altermobile,
-        email:result.data[0].u_email,
-        Address:result.data[0].u_address,
-        DateOfjoining:result.data[0].u_joinDate,  
-        password:result.data[0].u_password,
-        confirmPassword:result.data[0].u_cpassword,
+        name: result.data[0].u_name,
+        Mobilenumber: result.data[0].u_mobile,
+        Alternatemobile: result.data[0].u_altermobile,
+        email: result.data[0].u_email,
+        Address: result.data[0].u_address,
+        DateOfjoining: result.data[0].u_joinDate,
+        password: result.data[0].u_password,
+        confirmPassword: result.data[0].u_cpassword,
       })
-      console.log(this.u_id)
-      this.data=result
-      this.enggData=this.data;
-      console.log(this.enggData)
+      // console.log(this.u_id)
+      this.data = result
+      this.enggData = this.data;
+      // console.log(this.enggData)
     })
   }
   onSubmit(formValue: any) {
     let payload = {
+      "u_id": this.activatedRoute.snapshot.params["u_id"],
       "u_name": formValue.name,
       "u_mobile": formValue.Mobilenumber,
       "u_altermobile": formValue.Alternatemobile,
       "u_email": formValue.email,
       "u_address": formValue.Address,
-      "u_joinDate":formValue.DateOfjoining,
+      "u_joinDate": formValue.DateOfjoining,
       "u_password": formValue.password,
       "u_cpassword": formValue.confirmPassword
     }
@@ -182,16 +183,15 @@ export class ServiceEnggEditComponent implements OnInit {
         // this.customerlist.getAllCustomers();
       } if (result.status === "error") {
         this.notificationservice.error(" Record not updated")
-        console.log(result.message)
+        // console.log(result.message)
       }
-      this.spinner.show();
+      this.router.navigate(['/home1/updateserviceEngineer'])      
     })
     this.spinner.show();
     this.submitted = true;
     if (this.formGroup.invalid) {
       return;
     }
-    this.formGroup.reset();
   }
   toggleFieldTextType(event: any) {
     if (event.target.id === 'btn1') {

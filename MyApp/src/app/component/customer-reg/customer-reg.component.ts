@@ -4,6 +4,7 @@ import { LoadingSpinnerService } from '../../service/loading-spinner.service'
 import { CustomerRegService } from '../../service/customer-reg.service';
 import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker'
 import { NotificationServiceService} from '../../service/NOTIFICATION-ALERT/notification-service.service'
+import { Router}from '@angular/router'
 @Component({
   selector: 'app-customer-reg',
   templateUrl: './customer-reg.component.html',
@@ -84,6 +85,7 @@ export class CustomerRegComponent implements OnInit {
     private spinner: LoadingSpinnerService,
     private custRegservice: CustomerRegService,
     private dpconfig:BsDatepickerConfig,
+    private router:Router,
     private notificationservice:NotificationServiceService) {
     this.dpconfig.dateInputFormat='DD-MM-YYYY';
     this.dpconfig.isAnimated=true;
@@ -205,7 +207,7 @@ export class CustomerRegComponent implements OnInit {
     return this.formGroup.get('machieCondition');
   }
   onSubmit() {
-    console.log(this.formGroup.value)
+    // console.log(this.formGroup.value)
     this.spinner.show();
     this.custRegservice.getData(
       this.formGroup.value.name,
@@ -223,11 +225,12 @@ export class CustomerRegComponent implements OnInit {
       this.formGroup.value.password,
       this.formGroup.value.confirmPassword)
       .subscribe((data: any) => {
-        console.log(data)
+        // console.log(data)
         if (data.status === "success") {
           this.notificationservice.success("Registration Successfully ")
+          this.router.navigate(['/home1'])
         } if (data.status === "error") {
-          console.log(data.message)
+          // console.log(data.message)
           this.notificationservice.error("The email address or mobile number you have entered is already registered");       
         }
       });
@@ -235,7 +238,6 @@ export class CustomerRegComponent implements OnInit {
     if (this.formGroup.invalid) {
       return;
     }
-    this.formGroup.reset();
   }
   toggleFieldTextType(event: any) {
     if (event.target.id === 'btn11') {
@@ -245,6 +247,6 @@ export class CustomerRegComponent implements OnInit {
     }
   }
   changeCondition(e){
-    console.log(e.target.value);
+    // console.log(e.target.value);
   }
 }

@@ -59,7 +59,7 @@ export class ChartComponent implements OnInit {
          let jsdate =new Date(x*1000)
          allDate.push(jsdate.toLocaleDateString('en',{year:'numeric',month:'short',day:'numeric'}))           
          });
-         console.log(allDate)
+        //  console.log(allDate)
        
 
 

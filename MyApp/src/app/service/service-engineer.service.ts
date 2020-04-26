@@ -33,7 +33,7 @@ export class ServiceEngineerService {
       "u_role":3,
       "u_roleType":1
       }
-      console.log(data)
+      // console.log(data)
       let url = "https://thawing-eyrie-14958.herokuapp.com/";
       return this.http.post(url + 'users/createUser',data)
     }
