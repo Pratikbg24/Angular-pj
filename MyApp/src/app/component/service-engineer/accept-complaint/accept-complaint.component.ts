@@ -58,6 +58,16 @@ export class AcceptComplaintComponent implements OnInit {
   ]
   showSuccessMsg: boolean = false;
   showInvalidMsg: boolean = false;
+validation_messages = {
+    'name': [
+      { type: 'required', message: '*Name is required' },
+      { type: 'minlength', message: '*Name must be 3 character' }
+    ],
+    'Machine_purchase': [
+      { type: 'required', message: '*Please select any one machine' },
+    ],
+  
+  }
 
 
   constructor(private route: ActivatedRoute,
@@ -132,8 +142,6 @@ export class AcceptComplaintComponent implements OnInit {
     this.c_date=item.c_date;
     this.assignData = item;
     var i=this.assignData.c_assignBy
-   // window.localStorage.setItem(" i",this.assignData.c_assignBy) ;
-    //var ii=  window.localStorage.getItem('i');
     this.charts.getCustomerDetails(i).subscribe((result:any) => {
       this.assignData.c_name = result.data.u_name;
       this.assignData.u_mobile=result.data.u_mobile;
