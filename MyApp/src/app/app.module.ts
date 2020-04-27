@@ -48,6 +48,7 @@ import { EnggHomeComponent } from './component/service-engineer/engg-home/engg-h
 import { EnggHeaderComponent } from './component/service-engineer/engg-header/engg-header.component';
 import { EnggFooterComponent } from './component/service-engineer/engg-footer/engg-footer.component';
 import { AcceptComplaintComponent } from './component/service-engineer/accept-complaint/accept-complaint.component';
+import { EnggViewPreviousComponent } from './component/service-engineer/engg-view-previous/engg-view-previous.component';
    
   @NgModule({
   declarations: [
@@ -112,7 +113,9 @@ import { AcceptComplaintComponent } from './component/service-engineer/accept-co
 
     EnggFooterComponent,
 
-    AcceptComplaintComponent
+    AcceptComplaintComponent,
+
+    EnggViewPreviousComponent
   ],
   imports: [
     FormsModule,

@@ -15,8 +15,7 @@ declare var $: any;
 })
 export class AcceptComplaintComponent implements OnInit {
  
-  assignData={}
-  filterData = {
+ assignData = {
     c_id:"",
     c_assignBy: "",
     c_name: "",
@@ -51,7 +50,6 @@ export class AcceptComplaintComponent implements OnInit {
   Machinelist: Array<any> = [];
  
   c_date: [];
-
   searchText;
   searchText1;
   machinType: [];
@@ -71,21 +69,16 @@ export class AcceptComplaintComponent implements OnInit {
       this.Machinelist = [
         { name: "Pending" },
         { name: "Close" },
+        { name: "Open" },
       ];
      
    
   }
   ngOnInit() {
-    this.initializeItems()
   
-   // this.filterData = this.navParams.get('ObjData');
-    this.charts.getCustomerDetails(this.filterData.c_assignBy).subscribe((result:any) => {
-      this.filterData.c_name = result.data.u_name;
-      this.filterData.u_mobile=result.data.u_mobile;
-      this.filterData.u_altermobile=result.data.u_altermobile;
-      this.filterData.u_email=result.data.u_email;
-      this.filterData.e_desc=result.data.e_desc;
-    })
+    this.initializeItems()
+    
+
   }
   getItems(ev: any) {
     // set val to the value of the searchbar
@@ -119,9 +112,9 @@ export class AcceptComplaintComponent implements OnInit {
 
   addData(){
     let data={
-      status:parseInt(this.filterData.c_status),
-      complaintId:this.filterData.c_id,
-      e_desc:this.filterData.e_desc
+      status:parseInt(this.assignData.c_status),
+      complaintId:this.assignData.c_id,
+      e_desc:this.assignData.e_desc
     }
     this.charts.updateComplaint(data).subscribe((result:any)=>{
       if(result.status === "success"){
@@ -129,7 +122,7 @@ export class AcceptComplaintComponent implements OnInit {
       
       }
     })
-    console.log("UserData"+JSON.stringify(this.filterData))
+    console.log("UserData"+JSON.stringify(this.assignData))
   }
 
  
@@ -138,6 +131,18 @@ export class AcceptComplaintComponent implements OnInit {
     this.c_id=item.c_id;
     this.c_date=item.c_date;
     this.assignData = item;
+    var i=this.assignData.c_assignBy
+   // window.localStorage.setItem(" i",this.assignData.c_assignBy) ;
+    //var ii=  window.localStorage.getItem('i');
+    this.charts.getCustomerDetails(i).subscribe((result:any) => {
+      this.assignData.c_name = result.data.u_name;
+      this.assignData.u_mobile=result.data.u_mobile;
+      this.assignData.u_altermobile=result.data.u_altermobile;
+      this.assignData.u_email=result.data.u_email;
+      this.assignData.e_desc=result.data.e_desc;
+
+})
+
     $("#customerModal").modal('show');
   }
 
