@@ -13,50 +13,40 @@
                         <!-- <div *ngIf="data"> -->
                         <div class="form-group">
                             <label for="u_name">Name<p class="p12">*</p></label>
-                            <input type="text" class="form-control" formControlName="u_name" name="u_name"
-                                placeholder="Enter Your Name"
-                                [ngClass]="{ 'is-invalid': submitted && f.u_name.errors?.invalid }" />
+                            <input type="text" class="form-control" formControlName="u_name" name="u_name" placeholder="Enter Your Name" [ngClass]="{ 'is-invalid': submitted && f.u_name.errors?.invalid }" />
                         </div>
                         <div class="validation-errors">
                             <ng-container *ngFor="let validation of validation_messages.u_name">
-                                <div class="error-message text-danger"
-                                    *ngIf="formGroup.get('u_name').hasError(validation.type) && (formGroup.get('u_name').dirty || formGroup.get('u_name').touched)">
+                                <div class="error-message text-danger" *ngIf="formGroup.get('u_name').hasError(validation.type) && (formGroup.get('u_name').dirty || formGroup.get('u_name').touched)">
                                     <span name="information-circle-outline"></span> {{ validation.message }}
                                 </div>
                             </ng-container>
                         </div>
                         <div class="form-group">
                             <label for="u_mobile">Mobile Number<p class="p12">*</p></label>
-                            <input type="text" class="form-control" formControlName="Mobilenumber"
-                                placeholder="Enter Your Mobile Number" maxlength="10"
-                                [ngClass]="{ 'is-invalid': submitted && f.Mobilenumber.errors?.invalid }">
+                            <input type="text" class="form-control" formControlName="Mobilenumber" placeholder="Enter Your Mobile Number" maxlength="10" [ngClass]="{ 'is-invalid': submitted && f.Mobilenumber.errors?.invalid }">
                         </div>
                         <div class="validation-errors">
                             <ng-container *ngFor="let validation of validation_messages.Mobilenumber">
-                                <div class="error-message text-danger"
-                                    *ngIf="formGroup.get('Mobilenumber').hasError(validation.type) && (formGroup.get('Mobilenumber').dirty || formGroup.get('Mobilenumber').touched)">
+                                <div class="error-message text-danger" *ngIf="formGroup.get('Mobilenumber').hasError(validation.type) && (formGroup.get('Mobilenumber').dirty || formGroup.get('Mobilenumber').touched)">
                                     <span name="information-circle-outline"></span> {{ validation.message }}
                                 </div>
                             </ng-container>
                         </div>
                         <div class="form-group">
                             <label for="u_altermobile">Alternate Mobile Number</label>
-                            <input type="text" class="form-control" formControlName="Alternatemobile"
-                                placeholder="Enter Your Alternate Mobile Number" maxlength="10"
-                                [ngClass]="{ 'is-invalid': submitted && f.Alternatemobile.errors?.invalid }">
+                            <input type="text" class="form-control" formControlName="Alternatemobile" placeholder="Enter Your Alternate Mobile Number" maxlength="10" [ngClass]="{ 'is-invalid': submitted && f.Alternatemobile.errors?.invalid }">
                         </div>
                         <div class="validation-errors">
                             <ng-container *ngFor="let validation of validation_messages.Alternatemobile">
-                                <div class="error-message text-danger"
-                                    *ngIf="formGroup.get('Alternatemobile').hasError(validation.type) && (formGroup.get('Alternatemobile').dirty || formGroup.get('Alternatemobile').touched)">
+                                <div class="error-message text-danger" *ngIf="formGroup.get('Alternatemobile').hasError(validation.type) && (formGroup.get('Alternatemobile').dirty || formGroup.get('Alternatemobile').touched)">
                                     <span name="information-circle-outline"></span> {{ validation.message }}
                                 </div>
                             </ng-container>
                         </div>
                         <div class="form-group">
                             <label for="u_email">Email<p class="p12">*</p></label>
-                            <input type="email" class="form-control" formControlName="email"
-                                placeholder="Enter Your Email">
+                            <input type="email" class="form-control" formControlName="email" placeholder="Enter Your Email">
                         </div>
                         <!-- <div class="validation-errors">
                                 <ng-container *ngFor="let validation of validation_messages.email">
@@ -68,13 +58,11 @@
                             </div> -->
                         <div class="form-group">
                             <label for="u_address">Address<p class="p12">*</p></label>
-                            <textarea class="form-control" formControlName="Address" placeholder="Enter Your Address"
-                                [ngClass]="{ 'is-invalid': submitted && f.Address.errors?.invalid }"></textarea>
+                            <textarea class="form-control" formControlName="Address" placeholder="Enter Your Address" [ngClass]="{ 'is-invalid': submitted && f.Address.errors?.invalid }"></textarea>
                         </div>
                         <div class="validation-errors">
                             <ng-container *ngFor="let validation of validation_messages.Address">
-                                <div class="error-message text-danger"
-                                    *ngIf="formGroup.get('Address').hasError(validation.type) && (formGroup.get('Address').dirty || formGroup.get('Address').touched)">
+                                <div class="error-message text-danger" *ngIf="formGroup.get('Address').hasError(validation.type) && (formGroup.get('Address').dirty || formGroup.get('Address').touched)">
                                     <span name="information-circle-outline"></span> {{ validation.message }}
                                 </div>
                             </ng-container>
@@ -88,8 +76,7 @@
                             </select>
                             <div class="validation-errors">
                                 <ng-container *ngFor="let validation of validation_messages.Machine_purchase">
-                                    <div class="error-message text-danger"
-                                        *ngIf="formGroup.get('Machine_purchase').hasError(validation.type) && (formGroup.get('Machine_purchase').dirty || formGroup.get('Machine_purchase').touched)">
+                                    <div class="error-message text-danger" *ngIf="formGroup.get('Machine_purchase').hasError(validation.type) && (formGroup.get('Machine_purchase').dirty || formGroup.get('Machine_purchase').touched)">
                                         <span name="information-circle-outline"></span> {{ validation.message }}
                                     </div>
                                 </ng-container>
@@ -99,13 +86,11 @@
                             <label for="gender">Purchased Type:<p class="p12">*</p></label>
                             <div class="form-control">
                                 <div class="custom-control custom-radio custom-control-inline ">
-                                    <input type="radio" value="New" name="machieCondition"
-                                        formControlName="machieCondition" (change)="changeCondition($event)">
+                                    <input type="radio" value="New" name="machieCondition" formControlName="machieCondition" (change)="changeCondition($event)">
                                     <label id="New" for="New">New</label>
                                 </div>
                                 <div class="custom-control custom-radio custom-control-inline ">
-                                    <input type="radio" value="Re-condition" name="machieCondition" 
-                                        formControlName="machieCondition" (change)="changeCondition($event)">
+                                    <input type="radio" value="Re-condition" name="machieCondition" formControlName="machieCondition" (change)="changeCondition($event)">
                                     <label id="Re-condition" for="Re-condition">Re-condition</label>
                                 </div>
                             </div>
@@ -115,35 +100,29 @@
                         </div>
                         <div class="validation-errors">
                             <ng-container *ngFor="let validation of validation_messages.machieCondition">
-                                <div class="error-message text-danger"
-                                    *ngIf="formGroup.get('machieCondition').hasError(validation.type) && (formGroup.get('machieCondition').dirty || formGroup.get('machieCondition').touched)">
+                                <div class="error-message text-danger" *ngIf="formGroup.get('machieCondition').hasError(validation.type) && (formGroup.get('machieCondition').dirty || formGroup.get('machieCondition').touched)">
                                     <span name="information-circle-outline"></span> {{ validation.message }}
                                 </div>
                             </ng-container>
                         </div>
                         <div class="form-group">
                             <label>Note<p class="p12">*</p></label>
-                            <textarea class="form-control" formControlName="Note" placeholder="Enter Your Note Here"
-                                [ngClass]="{ 'is-invalid': submitted && f.Note.errors?.invalid }"></textarea>
+                            <textarea class="form-control" formControlName="Note" placeholder="Enter Your Note Here" [ngClass]="{ 'is-invalid': submitted && f.Note.errors?.invalid }"></textarea>
                         </div>
                         <div class="validation-errors">
                             <ng-container *ngFor="let validation of validation_messages.Note">
-                                <div class="error-message text-danger"
-                                    *ngIf="formGroup.get('Note').hasError(validation.type) && (formGroup.get('Note').dirty || formGroup.get('Note').touched)">
+                                <div class="error-message text-danger" *ngIf="formGroup.get('Note').hasError(validation.type) && (formGroup.get('Note').dirty || formGroup.get('Note').touched)">
                                     <span name="information-circle-outline"></span> {{ validation.message }}
                                 </div>
                             </ng-container>
                         </div>
                         <div class="form-group">
                             <label>Machine No<p class="p12">*</p></label>
-                            <input type="text" class="form-control" formControlName="Machineno"
-                                placeholder="Enter Your Machine No"
-                                [ngClass]="{ 'is-invalid': submitted && f.Machineno.errors?.invalid }">
+                            <input type="text" class="form-control" formControlName="Machineno" placeholder="Enter Your Machine No" [ngClass]="{ 'is-invalid': submitted && f.Machineno.errors?.invalid }">
                         </div>
                         <div class="validation-errors">
                             <ng-container *ngFor="let validation of validation_messages.Machineno">
-                                <div class="error-message text-danger"
-                                    *ngIf="formGroup.get('Machineno').hasError(validation.type) && (formGroup.get('Machineno').dirty || formGroup.get('Machineno').touched)">
+                                <div class="error-message text-danger" *ngIf="formGroup.get('Machineno').hasError(validation.type) && (formGroup.get('Machineno').dirty || formGroup.get('Machineno').touched)">
                                     <span name="information-circle-outline"></span> {{ validation.message }}
                                 </div>
                             </ng-container>
@@ -157,8 +136,7 @@
                             </select>
                             <div class="validation-errors">
                                 <ng-container *ngFor="let validation of validation_messages.servicePeriod">
-                                    <div class="error-message text-danger"
-                                        *ngIf="formGroup.get('servicePeriod').hasError(validation.type) && (formGroup.get('servicePeriod').dirty || formGroup.get('servicePeriod').touched)">
+                                    <div class="error-message text-danger" *ngIf="formGroup.get('servicePeriod').hasError(validation.type) && (formGroup.get('servicePeriod').dirty || formGroup.get('servicePeriod').touched)">
                                         <span name="information-circle-outline"></span> {{ validation.message }}
                                     </div>
                                 </ng-container>
@@ -174,8 +152,7 @@
                             </select>
                             <div class="validation-errors">
                                 <ng-container *ngFor="let validation of validation_messages.warrentPeriod">
-                                    <div class="error-message text-danger"
-                                        *ngIf="formGroup.get('warrentPeriod').hasError(validation.type) && (formGroup.get('warrentPeriod').dirty || formGroup.get('warrentPeriod').touched)">
+                                    <div class="error-message text-danger" *ngIf="formGroup.get('warrentPeriod').hasError(validation.type) && (formGroup.get('warrentPeriod').dirty || formGroup.get('warrentPeriod').touched)">
                                         <span name="information-circle-outline"></span> {{ validation.message }}
                                     </div>
                                 </ng-container>
@@ -183,15 +160,11 @@
                         </div>
                         <div class="form-group">
                             <label for="u_dateOf_Purchased">Date Of Purchased<p class="p12">*</p></label>
-                            <input type="text" class="form-control" formControlName="Datepurchased"
-                                placeholder="YYYY/MM/DD" bsDatepicker #d="bsDatepicker" [bsConfig]="dpconfig"
-                                [maxDate]="maxDate"
-                                [ngClass]="{ 'is-invalid': submitted && f.Datepurchased.errors?.invalid }">
+                            <input type="text" class="form-control" formControlName="Datepurchased" placeholder="YYYY/MM/DD" bsDatepicker #d="bsDatepicker" [bsConfig]="dpconfig" [maxDate]="maxDate" [ngClass]="{ 'is-invalid': submitted && f.Datepurchased.errors?.invalid }">
                         </div>
                         <div class="validation-errors">
                             <ng-container *ngFor="let validation of validation_messages.Datepurchased">
-                                <div class="error-message text-danger"
-                                    *ngIf="formGroup.get('Datepurchased').hasError(validation.type) && (formGroup.get('Datepurchased').dirty || formGroup.get('Datepurchased').touched)">
+                                <div class="error-message text-danger" *ngIf="formGroup.get('Datepurchased').hasError(validation.type) && (formGroup.get('Datepurchased').dirty || formGroup.get('Datepurchased').touched)">
                                     <span name="information-circle-outline"></span> {{ validation.message }}
                                 </div>
                             </ng-container>
@@ -199,9 +172,7 @@
                         <div class="form-group">
                             <label for="u_password">Password<p class="p12">*</p></label>
                             <div class="input-group">
-                                <input [type]="passwordfieldTextType ? 'text':'password'" class="form-control"
-                                    formControlName="password" placeholder="Enter Your password"
-                                    [ngClass]="{ 'is-invalid': submitted && f.password.errors?.invalid }">
+                                <input [type]="passwordfieldTextType ? 'text':'password'" class="form-control" formControlName="password" placeholder="Enter Your password" [ngClass]="{ 'is-invalid': submitted && f.password.errors?.invalid }">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">
                                         <i class="fa"
@@ -213,8 +184,7 @@
                         </div>
                         <div class="validation-errors">
                             <ng-container *ngFor="let validation of validation_messages.password">
-                                <div class="error-message text-danger"
-                                    *ngIf="formGroup.get('password').hasError(validation.type) && (formGroup.get('password').dirty || formGroup.get('password').touched)">
+                                <div class="error-message text-danger" *ngIf="formGroup.get('password').hasError(validation.type) && (formGroup.get('password').dirty || formGroup.get('password').touched)">
                                     <span name="information-circle-outline"></span> {{ validation.message }}
                                 </div>
                             </ng-container>
@@ -222,9 +192,7 @@
                         <div class="form-group has-success has-feedback">
                             <label for="u_cpassword">Confirm Password<p class="p12">*</p></label>
                             <div class="input-group">
-                                <input [type]="confirmfieldTextType ? 'text':'password'" class="form-control"
-                                    formControlName="confirmPassword" placeholder="ConfirmPassword"
-                                    [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors ?.invalid }">
+                                <input [type]="confirmfieldTextType ? 'text':'password'" class="form-control" formControlName="confirmPassword" placeholder="ConfirmPassword" [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors ?.invalid }">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">
                                         <i class="fa"
@@ -235,19 +203,16 @@
                             </div>
                         </div>
                         <div class="validation-errors">
-                            <div *ngIf="!alert" class="alert alert-warning"><strong>Warning! </strong>Passwords must
-                                match
+                            <div *ngIf="!alert" class="alert alert-warning"><strong>Warning! </strong>Passwords must match
                             </div>
                             <ng-container *ngFor="let validation of validation_messages.confirmPassword">
-                                <div class="error-message text-danger"
-                                    *ngIf="formGroup.get('confirmPassword').hasError(validation.type) && (formGroup.get('confirmPassword').dirty || formGroup.get('confirmPassword').touched)">
+                                <div class="error-message text-danger" *ngIf="formGroup.get('confirmPassword').hasError(validation.type) && (formGroup.get('confirmPassword').dirty || formGroup.get('confirmPassword').touched)">
                                     <span name="information-circle-outline"></span> {{ validation.message }}
                                 </div>
                             </ng-container>
                         </div>
                         <div class="form-group">
-                            <button type="submit" class="btn btn-primary" id="UpdateButton"
-                                [disabled]="!formGroup.valid">
+                            <button type="submit" class="btn btn-primary" id="UpdateButton" [disabled]="!formGroup.valid">
                                 Update
                             </button>
                             <button class="btn btn-warning" id="Canclebutton" routerLink="/home1/updateCustomer1">

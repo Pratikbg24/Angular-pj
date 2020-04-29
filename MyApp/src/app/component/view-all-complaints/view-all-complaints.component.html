@@ -1,55 +1,89 @@
 <ngx-spinner [fullScreen]="true" type="ball-clip-rotate-multiple" size="medium">
-  <p class="loading">Loading Awesomeness...</p>
+    <p class="loading">Loading Awesomeness...</p>
 </ngx-spinner>
-
 <div class="container" *ngIf="complaint">
     <div class="row">
-      <div class='card'>
-        <div class='card-header' id="r1">
-          <b> {{pageTitle}}</b>
-        </div>
-        <div class='card-body'>
-          <div class='row'>
-            <div class='col-md-1' style="margin-left: 20px;margin-top: 5px; font-size: medium;"><b>Filter By</b> </div>
-            <div class='col-md-8'>
-              <input style="margin-bottom: 17px;" class="form-control" type="text" name="search" [(ngModel)]="searchText"
-                autocomplete="off" />
+        <div class='card'>
+            <div class='card-header' id="r1">
+                <b> {{pageTitle}}</b>
             </div>
-          </div>
-          <div class='row' *ngIf='listFilter'>
-            <div class='col-md-6'>
-              <h4> Filtered by: {{content}}</h4>
+            <div class='card-body'>
+                <div class='row' style="padding-top: 15px; border: 1px solid blueviolet;">
+                    <div class='col-md-2' style="margin-left: 20px;margin-top: 5px; font-size: medium;"><b>Search</b> </div>
+                    <div class='col-md-8'>
+                        <input style="margin-bottom: 17px;" class="abc" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" />
+                    </div>
+                    <div class='col-md-1 float-right'>
+                        <button class="fas fa-download"></button>
+
+                    </div>
+
+                </div>
+                <div class="row " style="margin-top: 10px; margin-bottom: 10px; ">
+                    <div class="col-md-2 ">
+                        <label style="margin-top:12px ;margin-left: 20px;font-size: medium;"><b>Start Date</b></label>
+                    </div>
+                    <div class="col-md-4">
+                        <input type="text" class="abc" placeholder="DD/MM/YYYY" bsDatepicker [bsConfig]="dpconfig" [maxDate]="maxDate" [ngClass]="{ 'is-invalid': submitted && f.Datepurchased.errors?.invalid }">
+                    </div>
+                </div>
+
+                <div class="row " style="margin-top: 10px; margin-bottom: 10px; ">
+                    <div class="col-md-2 ">
+                        <label style="margin-top:12px ;margin-left: 20px;font-size: medium;"><b>End Date</b></label>
+                    </div>
+                    <div class="col-md-4">
+                        <input type="text" class="abc" placeholder="DD/MM/YYYY" bsDatepicker [bsConfig]="dpconfig" [maxDate]="maxDate" [ngClass]="{ 'is-invalid': submitted && f.Datepurchased.errors?.invalid }">
+                    </div>
+                </div>
+                <div class="row " style="margin-top: 10px; margin-bottom: 10px; ">
+                    <div class="col-md-2 ">
+
+                        <label style="margin-top:12px ;margin-left: 20px;font-size: medium;"><b>Status:</b></label>
+                    </div>
+                    <div class="col-md-4">
+                        <select class="abc " placeholder="Change Status">
+                        <option *ngFor="let machine of Machinelist;let i=index " value="{{machine.name}} "
+                            [selected]="i==0 ">{{machine.name}} </option>
+                    </select>
+
+                    </div>
+
+                </div>
+                <div class='row' *ngIf='listFilter'>
+                    <div class='col-md-6'>
+                        <h4> Filtered by: {{content}}</h4>
+                    </div>
+                </div>
+                <div class='table-responsive'>
+                    <table class='table'>
+                        <thead>
+                            <tr>
+
+                                <th>Id</th>
+                                <th>Complaint</th>
+                                <th>Date</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let user of complaint | filter:searchText">
+                                <td>
+                                    {{user.c_id}}
+                                </td>
+                                <td>
+                                    {{user.c_desc}}
+                                </td>
+                                <td>
+                                    {{user.c_date}}
+
+                                </td>
+                                <td>{{user.c_status}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
-          </div>
-          <div class='table-responsive'>
-            <table class='table'>
-              <thead>
-                <tr>
-  
-                  <th>Id</th>
-                  <th>Complaint</th>
-                  <th>Date</th>
-                  <th>Status</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr *ngFor="let user of complaint | filter:searchText">
-                  <td>
-                    {{user.c_id}}
-                  </td>
-                  <td>
-                    {{user.c_desc}}
-                  </td>
-                  <td>
-                    {{user.c_date}}
-  
-                  </td>
-                  <td>{{user.c_status}}</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
         </div>
-      </div>
     </div>
-  </div>
+</div>

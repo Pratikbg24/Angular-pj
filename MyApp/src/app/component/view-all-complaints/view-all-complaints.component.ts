@@ -5,6 +5,8 @@ import { ChartService } from '../../service/chart.service'
 import { HttpClient } from '@angular/common/http';
 import { FormGroup, FormArray, Validators, FormBuilder } from '@angular/forms';
 import { AppSettings } from '../../app.settings'
+import { BsDatepickerConfig } from 'ngx-bootstrap'
+
 
 @Component({
   selector: 'app-view-all-complaints',
@@ -22,6 +24,9 @@ export class ViewAllComplaintsComponent implements OnInit {
     engg_Name: null,
     eng_EMail: null,
   }
+  Machinelist: Array<any> = [];
+  maxDate: Date;
+  
   pageTitle = 'All Complaints';
 
   complaint: any[];
@@ -30,6 +35,9 @@ export class ViewAllComplaintsComponent implements OnInit {
     u_Machinepurchesed: null,
 
   }
+  
+  //complaint;
+  complaintData;
 
   c_date: [];
 
@@ -42,16 +50,43 @@ export class ViewAllComplaintsComponent implements OnInit {
   showSuccessMsg: boolean = false;
   showInvalidMsg: boolean = false;
 
+  validation_messages = {
+    'Datepurchased': [
+      {
+        type: 'required', message: '*Please select date'
+      }
+    ],
+   
+  }
+ 
 
   constructor(private route: ActivatedRoute,
     private router: Router,
     private charts: ChartService,
+    private fb: FormBuilder,
+    private dpconfig:BsDatepickerConfig,
     private spinner: NgxSpinnerService,
     private httpCilent: HttpClient) {
+      this.dpconfig.dateInputFormat='DD-MM-YYYY';
+      this.dpconfig.isAnimated=true;
+      this.maxDate = new Date();
+      this.maxDate.setDate(this.maxDate.getDate() + 0)
+      this.Machinelist = [
+        { name: "Pending" },
+        { name: "Close" },
+      ];
+     
    
   }
   ngOnInit() {
     this.initializeItems()
+
+    this.formGroup = this.fb.group({
+      Datepurchased: ['', Validators.compose([
+        Validators.required
+      ])],
+   
+    })
   }
   getItems(ev: any) {
     const val = ev.target.value;
@@ -80,4 +115,21 @@ export class ViewAllComplaintsComponent implements OnInit {
       })
     })
   }
+  gOnChanges() {
+   this.charts.getAllComplaint().subscribe((result:any)=>{
+    this.complaintData = result.data
+    this.complaintData=this.complaintData.filter(result => result.value === this.complaint)
+
+    })
+  }
+  
+  onSelect(val){
+    console.log(val);
+    this.charts.getAllComplaint().subscribe((result:any)=>{
+      this.complaintData = result.data
+      this.complaintData=this.complaintData.filter(result => result.value ===val)
+  
+    })
+  }
+
 }

@@ -9,11 +9,11 @@ import {GetuidService}  from '../../../service/getuid.service'
 
 
 @Component({
-  selector: 'app-view-previous-complaint',
-  templateUrl: './view-previous-complaint.component.html',
-  styleUrls: ['./view-previous-complaint.component.css']
+  selector: 'app-engg-view-previous',
+  templateUrl: './engg-view-previous.component.html',
+  styleUrls: ['./engg-view-previous.component.css']
 })
-export class ViewPreviousComplaintComponent implements OnInit {
+export class EnggViewPreviousComponent implements OnInit {
   
 
   arr: FormArray
@@ -61,37 +61,17 @@ export class ViewPreviousComplaintComponent implements OnInit {
   }
  
   initializeItems(){
- 
     this.charts.getAllComplaint().subscribe((data: any) => {
-      this.complaint= data.data.filter(el => {
-        if (el.c_assignBy == window.localStorage.getItem('id')) {
-          AppSettings.status.forEach((s_code:any)=>{
-            if(parseInt(el.c_status) === parseInt(s_code.id)){
-              el.c_status = s_code.value;
-            }
-          })
-          return el;
+      console.log(JSON.stringify(data));
+      this.complaint = data.data.filter((el:any) => {
+        if (el.c_assignTo == window.localStorage.getItem('id')) {
+          if (el.c_status === 2) {
+            return el;
+          }
         };
       });
+      console.log(JSON.stringify(this.complaint));
     });
-  }
-  getItems(ev: any) {
-    // set val to the value of the searchbar
-    const val = ev.target.value;
-    // if the value is an empty string don't filter the items
-    if (val && val.trim() != '') {
-      this.complaint = this.complaint.filter((item) => {
-       if(parseInt(item.c_id) === parseInt(val)){
-        return parseInt(item.c_id) === parseInt(val);
-       }
-        
-      })
-    }
-    if(val.length === 0){
-      this.initializeItems();   // Reset items back to all of the items
-    }
-  }
 
- 
+ }
 }
-

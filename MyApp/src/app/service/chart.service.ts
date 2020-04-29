@@ -81,7 +81,18 @@ export class ChartService {
   public getAllComplaint() {
     return this._http.get(AppSettings.baseUrl + 'complaint/gelAllcomplaint');
   }
+  
+  public getCustomerDetails(id: any) {
+    let data = {
+      "u_id": id
+    }
+    return this._http.post(AppSettings.baseUrl + 'users/getAll', data);
+  }
 
+
+  public updateComplaint(updatedate: any) {
+    return this._http.post(AppSettings.baseUrl + 'complaint/updateComplaint', updatedate);
+  }
 
 
 
@@ -89,10 +100,11 @@ export class ChartService {
     EngineerType:any,
     DateOfjoining:any,
     c_status:any,
+    c_assignBy:any,
     ) {
       let data = {
         "c_desc": name,
-   //     "c_assignBy": this.navParams.get("user_id"),
+      "c_assignBy": window.localStorage.getItem('id'),
         "machine_type": EngineerType,
         "c_date": DateOfjoining,
         "c_status": 1
