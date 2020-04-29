@@ -22,7 +22,7 @@ import{CustRaiseComplaintComponent} from './component/CUSTOMERS/cust-raise-compl
 import{ViewPreviousComplaintComponent} from './component/CUSTOMERS/view-previous-complaint/view-previous-complaint.component'
 import {EnggHomeComponent} from './component/service-engineer/engg-home/engg-home.component'
 import{AcceptComplaintComponent} from './component/service-engineer/accept-complaint/accept-complaint.component'
-  import { from } from 'rxjs';
+import { EnggViewPreviousComponent } from './component/service-engineer/engg-view-previous/engg-view-previous.component';
 const routes: Routes = [
   {
     path: '',
@@ -54,8 +54,8 @@ const routes: Routes = [
 
       },
       {
-        path: 'app-view-previous-complaint',
-        component: ViewPreviousComplaintComponent,
+        path: 'app-engg-view-previous',
+        component: EnggViewPreviousComponent,
 
       },         
     ]

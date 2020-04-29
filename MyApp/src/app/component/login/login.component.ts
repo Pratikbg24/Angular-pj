@@ -69,7 +69,7 @@ export class LoginComponent implements OnInit {
     if (data.status === "success" && data.data.u_role === 3) {
         if (data.status === "success") {
           this.spinner.show();
-          this.router.navigate([this.returnUrls + "home1"]);
+          this.router.navigate([this.returnUrls + "app-engg-home"]);
         }
       }
       if (data.status === "success" && data.data.u_role === 2) {
