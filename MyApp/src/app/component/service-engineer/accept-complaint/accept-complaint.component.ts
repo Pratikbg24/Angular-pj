@@ -110,7 +110,7 @@ validation_messages = {
   initializeItems(){
     this.charts.getAllComplaint().subscribe((data: any) => {
       this.complaint = data.data.filter(el => {
-        if (el.c_assignTo === 2122) {
+        if (el.c_assignTo == window.localStorage.getItem('id') ) {
           if (el.c_status === 3 || el.c_status === 1) {
             return el;
           }
