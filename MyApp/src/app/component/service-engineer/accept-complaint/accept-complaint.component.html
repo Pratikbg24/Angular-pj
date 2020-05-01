@@ -10,7 +10,7 @@
             </div>
             <div class='card-body'>
                 <div class='row'>
-                    <div class='col-md-1' style="margin-left: 20px;margin-top: 5px; font-size: medium;"><b>Filter By</b> </div>
+                    <div class='col-md-1' style="margin-left: 21px;margin-top: 5px; font-size: medium;"><b>Filter By</b> </div>
                     <div class='col-md-8'>
                         <input style="margin-bottom: 17px;" class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" />
                     </div>
@@ -62,8 +62,6 @@
 </div>
 
 
-
-
 <div id="customerModal" class="modal fade" role="dialog">
     <div>
         <div class="modal-dialog">
@@ -74,135 +72,155 @@
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body">
-                    <div class="alert alert-success fade show">
-                        <div class="row" style="margin-top:8px">
-                            <div class="col-md-2">
-                                <label style="margin-top:12px"><b>Complaint Id:</b></label>
+
+                    <form class="form" (ngSubmit)="onSubmit(fb)">
+
+
+                        <div class="alert alert-success fade show">
+                            <div class="row" style="margin-top:8px">
+                                <div class="col-md-2">
+                                    <label style="margin-top:12px"><b>Complaint Id:</b></label>
+                                </div>
+                                <div class="col-md-10">
+                                    <input type="text" name="engg_id" [ngModel]="assignData.c_id" class="form-control" id="engg_id" disabled>
+                                </div>
                             </div>
-                            <div class="col-md-10">
-                                <input type="text" name="engg_id" [ngModel]="assignData.c_id" class="form-control" id="engg_id" disabled>
+                            <div class="row" style="margin-top: 15px;">
+                                <div class="col-md-2">
+                                    <label style="margin-top:12px"><b>Customer Name:</b></label>
+                                </div>
+                                <div class="col-md-10">
+                                    <input type="text" name="engg_name" [ngModel]="assignData.c_name" class="form-control" id="engg_name" disabled>
+                                </div>
                             </div>
+
+                            <div class="row" style="margin-top: 15px;">
+                                <div class="col-md-2">
+
+                                    <label style="margin-top:12px"><b>Mobile Number:</b></label>
+                                </div>
+                                <div class="col-md-10">
+                                    <input type="text" name="engg_name" [ngModel]="assignData.u_mobile" class="form-control" id="engg_name" disabled>
+                                </div>
+                            </div>
+
+                            <div class="row" style="margin-top: 15px;">
+                                <div class="col-md-2">
+
+                                    <label style="margin-top:12px"><b>Alternative Mobile Number:</b></label>
+                                </div>
+                                <div class="col-md-10">
+                                    <input type="text" name="engg_name" [ngModel]="assignData.u_altermobile" class="form-control" id="engg_name" disabled>
+                                </div>
+                            </div>
+
+                            <div class="row" style="margin-top: 15px;">
+                                <div class="col-md-2">
+
+                                    <label style="margin-top:12px"><b>Email:</b></label>
+                                </div>
+                                <div class="col-md-10">
+                                    <input type="text" name="Email" [ngModel]="assignData.u_email" class="form-control" id="Email" disabled>
+
+                                </div>
+
+                            </div>
+
+                            <div class="row" style="margin-top: 15px;">
+                                <div class="col-md-2">
+
+                                    <label style="margin-top:12px"><b>Description:</b></label>
+                                </div>
+                                <div class="col-md-10">
+                                    <input type="text" name="Email" [ngModel]="assignData.c_desc" class="form-control" id="Email" disabled>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="row" style="margin-top: 15px;">
+                                <div class="col-md-2">
+
+                                    <label style="margin-top:12px"><b>Complaint Date:</b></label>
+                                </div>
+                                <div class="col-md-10">
+                                    <input type="text" name="Email" [ngModel]="assignData.c_date" class="form-control" id="Email" disabled>
+
+                                </div>
+
+                            </div>
+
+                            <div class="row" style="margin-top: 15px;">
+                                <div class="col-md-2">
+
+                                    <label style="margin-top:12px"><b>Photos:</b></label>
+                                </div>
+                                <div class="col-md-10">
+                                    <input type="text" name="Email" placeholder="N/A" class="form-control" id="Email" disabled>
+
+                                </div>
+
+                            </div>
+
+                            <div class="row" style="margin-top: 15px;">
+                                <div class="col-md-2">
+
+                                    <label style="margin-top:12px"><b>Status:</b></label>
+                                </div>
+                                <div class="col-md-10">
+                                    <input type="text" name="Email" [ngModel]="assignData.c_status" class="form-control" id="Email" disabled>
+
+                                </div>
+
+                            </div>
+
+                            <div class="row" style="margin-top: 15px;">
+                                <div class="col-md-2">
+
+                                    <label style="margin-top:12px"><b>Comments:</b></label>
+                                </div>
+                                <div class="col-md-10">
+                                    <input type="text" class="form-control" formControlName="name" placeholder="Enter Description" [ngClass]="{ 'is-invalid': submitted && f.name.errors?.invalid }">
+
+                                </div>
+                                <div class="validation-errors">
+                                    <ng-container *ngFor="let validation of validation_messages.name">
+                                        <div class="error-message text-danger" *ngIf="formGroup.get('name').hasError(validation.type) && (formGroup.get('name').dirty || formGroup.get('name').touched)">
+                                            <span name="information-circle-outline"></span> {{ validation.message }}
+                                        </div>
+                                    </ng-container>
+                                </div>
+
+                            </div>
+
+
+                            <div class="row " style="margin-top: 15px; ">
+                                <div class="col-md-2 ">
+
+                                    <label style="margin-top:12px "><b>Change Status:</b></label>
+                                </div>
+                                <div class="col-md-10 ">
+                                    <select class="form-control" formControlName="EngineerType" placeholder=" Change Status">
+                                    <option *ngFor="let engg of enggList; let i= index" value="{{engg.name}}" [selected]="i == 0">{{engg.name}}</option>
+
+                                </select>
+
+                                </div>
+                                <div class="validation-errors">
+                                    <ng-container *ngFor="let validation of validation_messages.EngineerType">
+                                        <div class="error-message text-danger" *ngIf="formGroup.get('EngineerType').hasError(validation.type) && (formGroup.get('EngineerType').dirty || formGroup.get('EngineerType').touched)">
+                                            <span name="information-circle-outline"></span> {{ validation.message }}
+                                        </div>
+                                    </ng-container>
+                                </div>
+
+                            </div>
+                            <button type="button " class="btn btn-primary btn-lg btn-block " style="margin-top: 12px;padding-top: 2px !important;padding-bottom: 2px !important; " data-dismiss="modal " (click)="addData()">ADD DATA</button>
                         </div>
-                        <div class="row" style="margin-top: 15px;">
-                            <div class="col-md-2">
-                                <label style="margin-top:12px"><b>Customer Name:</b></label>
-                            </div>
-                            <div class="col-md-10">
-                                <input type="text" name="engg_name" [ngModel]="assignData.c_name" class="form-control" id="engg_name" disabled>
-                            </div>
-                        </div>
-
-                        <div class="row" style="margin-top: 15px;">
-                            <div class="col-md-2">
-
-                                <label style="margin-top:12px"><b>Mobile Number:</b></label>
-                            </div>
-                            <div class="col-md-10">
-                                <input type="text" name="engg_name" [ngModel]="assignData.u_mobile" class="form-control" id="engg_name" disabled>
-                            </div>
-                        </div>
-
-                        <div class="row" style="margin-top: 15px;">
-                            <div class="col-md-2">
-
-                                <label style="margin-top:12px"><b>Alternative Mobile Number:</b></label>
-                            </div>
-                            <div class="col-md-10">
-                                <input type="text" name="engg_name" [ngModel]="assignData.u_altermobile" class="form-control" id="engg_name" disabled>
-                            </div>
-                        </div>
-
-                        <div class="row" style="margin-top: 15px;">
-                            <div class="col-md-2">
-
-                                <label style="margin-top:12px"><b>Email:</b></label>
-                            </div>
-                            <div class="col-md-10">
-                                <input type="text" name="Email" [ngModel]="assignData.u_email" class="form-control" id="Email" disabled>
-
-                            </div>
-
-                        </div>
-
-                        <div class="row" style="margin-top: 15px;">
-                            <div class="col-md-2">
-
-                                <label style="margin-top:12px"><b>Description:</b></label>
-                            </div>
-                            <div class="col-md-10">
-                                <input type="text" name="Email" [ngModel]="assignData.c_desc" class="form-control" id="Email" disabled>
-
-                            </div>
-
-                        </div>
-
-
-                        <div class="row" style="margin-top: 15px;">
-                            <div class="col-md-2">
-
-                                <label style="margin-top:12px"><b>Complaint Date:</b></label>
-                            </div>
-                            <div class="col-md-10">
-                                <input type="text" name="Email" [ngModel]="assignData.c_date" class="form-control" id="Email" disabled>
-
-                            </div>
-
-                        </div>
-
-                        <div class="row" style="margin-top: 15px;">
-                            <div class="col-md-2">
-
-                                <label style="margin-top:12px"><b>Photos:</b></label>
-                            </div>
-                            <div class="col-md-10">
-                                <input type="text" name="Email" placeholder="N/A" class="form-control" id="Email" disabled>
-
-                            </div>
-
-                        </div>
-
-                        <div class="row" style="margin-top: 15px;">
-                            <div class="col-md-2">
-
-                                <label style="margin-top:12px"><b>Status:</b></label>
-                            </div>
-                            <div class="col-md-10">
-                                <input type="text" name="Email" [ngModel]="assignData.c_status" class="form-control" id="Email" disabled>
-
-                            </div>
-
-                        </div>
-
-                        <div class="row" style="margin-top: 15px;">
-                            <div class="col-md-2">
-
-                                <label style="margin-top:12px"><b>Comments:</b></label>
-                            </div>
-                            <div class="col-md-10">
-                                <input type="text" name="comment " class="form-control " id="Email ">
-
-                            </div>
-
-                        </div>
-
-
-                        <div class="row " style="margin-top: 15px; ">
-                            <div class="col-md-2 ">
-
-                                <label style="margin-top:12px "><b>Change Status:</b></label>
-                            </div>
-                            <div class="col-md-10 ">
-                                <select class="form-control " placeholder="Change Status">
-                                <option *ngFor="let machine of Machinelist;let i=index " value="{{machine.name}} "
-                                    [selected]="i==0 ">{{machine.name}} </option>
-                            </select>
-
-                            </div>
-
-                        </div>
-                        <button type="button " class="btn btn-primary btn-lg btn-block " style="margin-top: 12px;padding-top: 2px !important;padding-bottom: 2px !important; " data-dismiss="modal " (click)="addData()">ADD DATA</button>
-                    </div>
+                    </form>
                 </div>
+
             </div>
             <div class="modal-footer ">
             </div>

@@ -47,8 +47,7 @@ export class AcceptComplaintComponent implements OnInit {
     u_Machinepurchesed: null,
 
   }
-  Machinelist: Array<any> = [];
- 
+  enggList: Array<any> = [];
   c_date: [];
   searchText;
   searchText1;
@@ -59,35 +58,46 @@ export class AcceptComplaintComponent implements OnInit {
   showSuccessMsg: boolean = false;
   showInvalidMsg: boolean = false;
 validation_messages = {
-    'name': [
-      { type: 'required', message: '*Name is required' },
-      { type: 'minlength', message: '*Name must be 3 character' }
-    ],
-    'Machine_purchase': [
-      { type: 'required', message: '*Please select any one machine' },
-    ],
-  
+  'name': [
+    { type: 'required', message: '*Name is required' },
+    { type: 'minlength', message: '*Name must be 3 character' }
+  ],
+
+  'EngineerType': [
+    { type: 'required', message: '*Please select engineer type' },
+  ],
+ 
   }
 
 
   constructor(private route: ActivatedRoute,
+    private fb: FormBuilder,
     private router: Router,
     private charts: ChartService,
     private spinner: NgxSpinnerService,
     private httpCilent: HttpClient) {
 
-      this.Machinelist = [
-        { name: "Pending" },
-        { name: "Close" },
-        { name: "Open" },
-      ];
-     
+      this.enggList = [
+        {key:1, name: "Pending" },
+        {key:2, name: "Close" },
+        {key:3, name: "Open" }
+      ]
+  
    
   }
   ngOnInit() {
   
     this.initializeItems()
-    
+    this.formGroup = this.fb.group({
+      name: ['', Validators.compose([
+        Validators.required,
+        Validators.minLength(3)
+      ])],
+      EngineerType: ['', Validators.compose([
+        Validators.required
+      ])],
+    })
+ 
 
   }
   getItems(ev: any) {
@@ -110,7 +120,7 @@ validation_messages = {
   initializeItems(){
     this.charts.getAllComplaint().subscribe((data: any) => {
       this.complaint = data.data.filter(el => {
-        if (el.c_assignTo === 2122) {
+        if (el.c_assignTo == window.localStorage.getItem('id') ) {
           if (el.c_status === 3 || el.c_status === 1) {
             return el;
           }
