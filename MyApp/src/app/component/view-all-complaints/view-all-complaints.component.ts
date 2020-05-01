@@ -5,7 +5,7 @@ import { ChartService } from '../../service/chart.service'
 import { HttpClient } from '@angular/common/http';
 import { FormGroup, FormArray, Validators, FormBuilder } from '@angular/forms';
 import { AppSettings } from '../../app.settings'
-import { BsDatepickerConfig } from 'ngx-bootstrap'
+import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker'
 
 
 @Component({
