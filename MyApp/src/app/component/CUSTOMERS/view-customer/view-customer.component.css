@@ -1,7 +1,4 @@
-.input-group{
-    width: 50%;
-    margin-left:25%;
-}
+
 p{
     margin-left: 10px;
 }
@@ -15,9 +12,6 @@ img{
 .container{
     margin-left: 100px;
 }
-/* #row1{
-    margin-left: 5;
-} */
 .card-header{
     text-align: center;
 }
@@ -26,12 +20,12 @@ img{
     margin-top: 5px;
     margin: 20px;
     width: 30%;
-    background-color:  #007bff;  
+    /* background-color:  #007bff;   */
 }
 .fa{
     font-size: 24px;
     margin-right: 10px;
     }
-.btn-primary:hover, .btn-primary:focus {
+/* .btn-primary:hover, .btn-primary:focus {
      background: black;
-}
+} */

@@ -1,6 +1,5 @@
 
-h2
-	{
+h2{
 		width:auto;
 		background-color:whitesmoke;
 		padding: 20px 25px;
@@ -41,7 +40,8 @@ h2
 		font-weight: bold;
 	}
 	b{
-		color:black;
+		color:white;
+		/* color: black; */
     }
     a, a:hover{
         color:#333
@@ -52,25 +52,25 @@ button
     font-size: 16px;
 	/* background: linear-gradient(#b3d9ff 5%, #E9F3F6  100%);
 	border: 1px solid #e5a900; */
-	color: #4E4D4B;
 	font-weight: bold;
 	cursor: pointer;
 	border-radius: 5px;
-    outline:none;
-   
+    outline:none;   
 }
 	a{
 		color: blue;
 		width: 100%;
-		margin-top: 20px;
-		
+		margin-top: 20px;		
 	}
 	#btn1
 	{
 		width: 100% ;
 		float:left;
-		background-color:orange;
-	border: 1px solid black;	}
+		/* color: white; */
+		/* background-color:orange; */
+		background-color: #008000;
+		/* background: linear-gradient(#52cfeb, #42A2BC); */
+		border: 1px solid black;	}
 	.row
 	{
 		display: -ms-flexbox;
@@ -80,13 +80,7 @@ button
 		margin-right: -19px!important;
 		margin-left: -15px!important;
 	 }
-/* button{
-background-color:chocolate;
-} */
-
-
-
-input[type=checkbox], input[type=radio] {
+/* input[type=checkbox], input[type=radio] {
     box-sizing: border-box!important;
     padding: 20px!important;
 }
@@ -103,8 +97,7 @@ input[type=checkbox], input[type=radio] {
     position: relative;
     display: block;
     padding-left: 2.00rem!important;
-}
-
+} */
 .error-message{
     color: red
 }
@@ -112,7 +105,38 @@ input.ng-touched.ng-invalid {
     border: 1px solid red;
     
   }
-
 .loading{
 	color: white;
-}  
+}
+  /* Forget Password */
+.modal-header{
+	padding: 35px 50px;
+}
+.modal-header,h4{
+background-color: #5cb85c;
+color: white !important;
+text-align: center;
+align-items: center;
+font-size: 30px;
+}
+.close{
+	font-size: 30px;
+	color: white !important;
+	text-align: center;
+	margin-left: -90px;
+	margin-top: -70px;
+}
+h4{
+	margin-left: 50px;
+}
+
+
+.modal-footer{
+	background-color: #f9f9f9;
+}
+.modal-body{
+	padding: 40px 50px;
+}
+.btn-danger{
+	width: 30%;
+}

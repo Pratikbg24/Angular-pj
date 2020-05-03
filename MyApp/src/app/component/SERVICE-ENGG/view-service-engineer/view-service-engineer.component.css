@@ -29,12 +29,12 @@ img{
     margin-top: 5px;
     margin: 20px;
     width: 30%;
-    background-color:  #007bff;
+    /* background-color:  #007bff; */
     
 }
-.btn-primary:hover, .btn-primary:focus {
+/* .btn-primary:hover, .btn-primary:focus {
     background: black;
-}
+} */
 .fa{
     font-size: 24px;
     margin-right: 10px;

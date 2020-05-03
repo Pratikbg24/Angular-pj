@@ -151,7 +151,7 @@ export class CustomerRegComponent implements OnInit {
       ])],
       email: ['', Validators.compose([
         Validators.required,
-        Validators.pattern("[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?")
+        Validators.pattern("[a-z_A-Z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z_A-Z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z_A-Z0-9](?:[a-z_A-Z0-9-]*[a-z_A-Z0-9])?\.)+[a-z_A-Z0-9](?:[a-z_A-Z0-9-]*[a-z_A-Z0-9])?")
       ])],
       Address: ['', Validators.compose([
         Validators.required
@@ -213,7 +213,7 @@ export class CustomerRegComponent implements OnInit {
       this.formGroup.value.name,
       this.formGroup.value.Mobilenumber,
       this.formGroup.value.Alternatemobile,
-      this.formGroup.value.email,
+      this.formGroup.value.email.toLowerCase(),
       this.formGroup.value.Address,
       this.formGroup.value.Machine_purchase,
       this.formGroup.value.machieCondition,

@@ -13,7 +13,7 @@
           <th scope="col">Mobile</th>
           <th scope="col">Email</th>
           <th scope="col">Address</th>
-          <th scope="col">EnggType</th>
+          <!-- <th scope="col">EnggType</th> -->
           <th scope="col">JoiningDate</th>
           <th scope="col">Password</th>
         </tr>
@@ -25,11 +25,11 @@
           <td>{{item.u_mobile}}</td>
           <td>{{item.u_email}}</td>
           <td>{{item.u_address}}</td>
-          <td>{{item.u_EngineerType}}</td>
+          <!-- <td>{{item.u_EngineerType}}</td> -->
           <td>{{item.u_joinDate |date:'dd/MM/yyyy'}}</td>
           <td>{{item.u_password}}</td>
           <td style="display: flex">
-              <button type="button" class="btn btn-success btn-md" [routerLink]="['view',item.u_id]">View</button>
+              <button type="button" class="btn btn-primary btn-md" [routerLink]="['view',item.u_id]" (click)="loader()">View</button>
             
           </td>
         </tr>

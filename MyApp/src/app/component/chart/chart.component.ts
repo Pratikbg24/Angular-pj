@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Chart } from 'chart.js';
 import { Router, ActivatedRoute } from '@angular/router';
-import { NgxSpinnerService } from 'ngx-spinner'
+import { LoadingSpinnerService} from '../../service/loading-spinner.service'
 import { format } from 'url';
 import { ChartService } from '../../service/chart.service'
 import { from } from 'rxjs';
@@ -23,18 +23,18 @@ export class ChartComponent implements OnInit {
     enggCount:0,
     adminCount:0
   };
+  userCount1:number[];
+  enggCount1:number[];
+  adminCount1:number[];
   engg:any[];
   admin:any[];
   chart:[];
   constructor(private route: ActivatedRoute,
     private router: Router,
     private charts: ChartService,
-    private spinner: NgxSpinnerService,
+    private spinner: LoadingSpinnerService,
     private httpCilent: HttpClient) {
-
-
   }
-
   ngOnInit() {
     this.charts.getData().subscribe((data:any)=>{
       this.users=data.data.filter((el:any)=>{
@@ -46,33 +46,27 @@ export class ChartComponent implements OnInit {
       this.admin=data.data.filter((el:any)=>{
         return  el.u_role === 2
       })
-
       this.date1  =data.data.filter((el:any)=>{
-          return el.u_joinDate
-       
+          return el.u_joinDate       
          })
-         let x=   this.date1;
-       
+         let x=   this.date1;       
          let allDate= []
          this.date1.forEach(x => {
-
          let jsdate =new Date(x*1000)
          allDate.push(jsdate.toLocaleDateString('en',{year:'numeric',month:'short',day:'numeric'}))           
          });
         //  console.log(allDate)
-       
-
-
-      
-
-
-
-
       this.graphData.userCount = this.users.length;
       this.graphData.enggCount = this.engg.length;
       this.graphData.adminCount = this.admin.length;
+        //  User Count 
+      this.userCount1=this.graphData.userCount      
+      console.log(this.userCount1);
+      this.enggCount1=this.graphData.enggCount
+      console.log(this.enggCount1);
+      this.adminCount1=this.graphData.adminCount
+      console.log(this.adminCount1);
 
-      
     this.chart=new Chart('canvas',{
       type:'pie',
       data:{
@@ -93,7 +87,6 @@ export class ChartComponent implements OnInit {
       options:{
         legend:{
           display:true
-
         }
       },
       scales: {  
@@ -106,20 +99,11 @@ export class ChartComponent implements OnInit {
       }  
     })
     })
-    
-   
   }
   showEngineer() {
     this.spinner.show();
-    setTimeout(() => {
-      this.spinner.hide();
-    }, 5000)
   }
   showCustomer() {
     this.spinner.show();
-    setTimeout(() => {
-      this.spinner.hide();
-    }, 5000)
   }
-
 }
