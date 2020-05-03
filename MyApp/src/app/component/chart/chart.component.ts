@@ -29,6 +29,18 @@ export class ChartComponent implements OnInit {
   engg:any[];
   admin:any[];
   chart:[];
+  statusOpen:number[];
+  statusClosed:number[];
+  statusPending:number[];
+  countData:any={
+    openCount:0,
+    closedCount:0,
+    pendingCount:0  
+  };
+  openCount1:number[];
+  closedCount1:number[];
+  pendingCount1:number[];
+
   constructor(private route: ActivatedRoute,
     private router: Router,
     private charts: ChartService,
@@ -61,12 +73,11 @@ export class ChartComponent implements OnInit {
       this.graphData.adminCount = this.admin.length;
         //  User Count 
       this.userCount1=this.graphData.userCount      
-      console.log(this.userCount1);
+      //console.log(this.userCount1);
       this.enggCount1=this.graphData.enggCount
-      console.log(this.enggCount1);
+      //console.log(this.enggCount1);
       this.adminCount1=this.graphData.adminCount
-      console.log(this.adminCount1);
-
+      //console.log(this.adminCount1);     
     this.chart=new Chart('canvas',{
       type:'pie',
       data:{
@@ -86,8 +97,17 @@ export class ChartComponent implements OnInit {
       },
       options:{
         legend:{
-          display:true
-        }
+          display:true,
+          position:'right'
+        },
+        title: {
+          display: true,
+          text: 'Custom Chart Title',
+          position:'bottom',
+          fontSize:20,
+          padding:20,
+          fontStyle:'bold'
+      }
       },
       scales: {  
         xAxes: [{  
@@ -99,6 +119,71 @@ export class ChartComponent implements OnInit {
       }  
     })
     })
+
+ //  Complaint Status
+ this.charts.getAllComplaint().subscribe((data:any)=>{
+  this.statusOpen=data.data.filter((el:any)=>{
+    return  el.c_status === 1
+  })
+  // Open Status Count
+  this.countData.openCount=this.statusOpen.length;
+  this.openCount1=this.countData.openCount
+  console.log(this.openCount1)
+  this.statusClosed=data.data.filter((el:any)=>{
+    return  el.c_status === 2
+  })
+  // Closed Status Count
+  this.countData.closedCount=this.statusClosed.length;
+  this.closedCount1=this.countData.closedCount
+  console.log(this.closedCount1)
+  this.statusPending=data.data.filter((el:any)=>{
+    return  el.c_status === 3
+  })
+  this.countData.pendingCount=this.statusPending.length;
+  this.pendingCount1=this.countData.pendingCount
+  console.log(this.pendingCount1)
+
+this.chart=new Chart('complaintsStatusCart',{
+  type:'doughnut',
+  data:{
+    labels:["open","pending","closed"],
+    datasets:[
+    {
+      data:[this.countData.openCount,this.countData.pendingCount,this.countData.closedCount],
+               borderColor: 'yellow',  
+            backgroundColor: [  
+              "green",  
+              "orange",  
+              "Red",  
+            ],
+            fill :true
+    }
+    ]
+  },
+  options:{
+    legend:{
+      display:true,
+      position:'right'
+    },
+    title: {
+      display: true,
+      text: 'Customer Complaint Status',
+      position:'bottom',
+      fontSize:20,
+      padding:20,
+      fontStyle:'bold'
+  }
+  },
+  scales: {  
+    xAxes: [{  
+      display: true  
+    }],  
+    yAxes: [{  
+      display: true  
+    }],  
+  }  
+})
+});
   }
   showEngineer() {
     this.spinner.show();

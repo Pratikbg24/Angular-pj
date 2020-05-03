@@ -1,6 +1,9 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+<body>
 <div class="container">
-  <div class="row">
+  <div class="row row1">
     <div class="col-md-3 offset-md-3 ">
       <div class="box box1">
         <span class="count"> {{userCount1}}</span><span><i class="fa fa-users" aria-hidden="true"></i></span><br>
@@ -23,35 +26,46 @@
   <!--second Row  -->
   <div class="row">
     <div class="col-md-6">
-      <div class="piechartBox bargraph">
-        Adding service engginear,customer
-        <!--  Display date -->
-        <div class="setdate" *ngFor='let user of users'>
-          <h2>
-            {{user.u_joinDate}}
-          </h2>
+      <div class=" panel panel-default">
+        <div class="panel-body">
+          <div class="chart-container">
+            <canvas id="complaintsStatusCart"></canvas>
+          </div>
+          <!--  Display date -->
+          <!-- <div class="setdate" *ngFor='let user of users'>
+            <h2>
+              {{user.u_joinDate}}
+            </h2>
+          </div> -->
         </div>
       </div>
     </div>
     <div class="col-md-6">
-      <div class="piechartBox">
-        <div class="chart-container">
-          <canvas id="canvas"></canvas>
-        </div>
-      </div>
-    </div>
-    </div>
-    <!-- Third Row -->
-    <div class="row">
-      <div class="col-md-4 offset-md-4">
-        <div class="status">
-          Pending Status
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="status">
-        Closed Status  
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="chart-container">
+            <canvas id="canvas"></canvas>
+          </div>
         </div>
       </div>
     </div>
   </div>
+  <!-- Third Row -->
+  <!-- <div class="row">
+    <div class="col-md-4 offset-md-4">
+      <div class="panel panel-default status">
+        <div class="panel-body">
+          Pending Status
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="panel panel-default status">
+        <div class="panel-body">
+          Closed Status
+        </div>
+      </div>
+    </div>
+  </div> -->
+</div>
+</body>
