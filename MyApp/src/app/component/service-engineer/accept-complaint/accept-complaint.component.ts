@@ -66,11 +66,19 @@ validation_messages = {
     'Machine_purchase': [
       { type: 'required', message: '*Please select any one machine' },
     ],
-  
+    'comments': [
+      { type: 'required', message: '*Comment is required' }
+      // { type: 'minlength', message: '*Name must be 3 character' }
+    ],
+    'Status': [
+      { type: 'required', message: '*Please select any one machine' },
+    ]
+
   }
 
 
   constructor(private route: ActivatedRoute,
+    private fb: FormBuilder,
     private router: Router,
     private charts: ChartService,
     private spinner: NgxSpinnerService,
@@ -80,15 +88,20 @@ validation_messages = {
         { name: "Pending" },
         { name: "Close" },
         { name: "Open" },
-      ];
-     
-   
+      ];   
   }
   ngOnInit() {
-  
     this.initializeItems()
-    
+    this.formGroup=this.fb.group({
+      comments: ['', Validators.compose([
+        Validators.required
+        // Validators.minLength(3)
+      ])],
+      Status: ['', Validators.compose([
+        Validators.required
+      ])]
 
+    })
   }
   getItems(ev: any) {
     // set val to the value of the searchbar
@@ -128,8 +141,7 @@ validation_messages = {
     }
     this.charts.updateComplaint(data).subscribe((result:any)=>{
       if(result.status === "success"){
-        window.alert("Sucess")  
-      
+        window.alert("Sucess")      
       }
     })
     console.log("UserData"+JSON.stringify(this.assignData))
@@ -148,9 +160,7 @@ validation_messages = {
       this.assignData.u_altermobile=result.data.u_altermobile;
       this.assignData.u_email=result.data.u_email;
       this.assignData.e_desc=result.data.e_desc;
-
 })
-
     $("#customerModal").modal('show');
   }
 

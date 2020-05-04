@@ -12,3 +12,10 @@ thead {
 .container{
   margin-bottom: 30px !important;
 }
+input.ng-touched.ng-invalid {
+  border: 1px solid red;   
+}
+
+select.ng-touched.ng-invalid {
+  border: 1px solid red;   
+}
