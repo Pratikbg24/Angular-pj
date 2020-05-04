@@ -85,10 +85,11 @@ validation_messages = {
     private httpCilent: HttpClient) {
 
       this.Machinelist = [
-        { name: "Pending" },
-        { name: "Close" },
-        { name: "Open" },
-      ];   
+        {key:1, name: "Open" },
+        {key:2 ,name: "Close" },
+        {key:3 ,name: "Pending" },
+        
+             ];   
   }
   ngOnInit() {
     this.initializeItems()
@@ -134,17 +135,20 @@ validation_messages = {
 
 
   addData(){
-    let data={
-      status:parseInt(this.assignData.c_status),
-      complaintId:this.assignData.c_id,
-      e_desc:this.assignData.e_desc
-    }
-    this.charts.updateComplaint(data).subscribe((result:any)=>{
+    this.charts.updateComplaint(
+    this.formGroup.value.Status,
+      this.assignData.c_id,
+      this.formGroup.value.comments
+
+
+    ).subscribe((result:any)=>{
       if(result.status === "success"){
-        window.alert("Sucess")      
+        console.log("res0"+result)      
+      }
+      else{
+        console.log("Error")      
       }
     })
-    console.log("UserData"+JSON.stringify(this.assignData))
   }
 
  

@@ -90,8 +90,17 @@ export class ChartService {
   }
 
 
-  public updateComplaint(updatedate: any) {
-    return this._http.post(AppSettings.baseUrl + 'complaint/updateComplaint', updatedate);
+  public updateComplaint(c_status: any,
+    c_id:any,
+    e_desc:any
+    ) {
+    let data={
+      "status":c_status,
+     " complaintId":c_id,
+     " e_desc":e_desc
+    }
+    
+    return this._http.post(AppSettings.baseUrl + 'complaint/updateComplaint', data);
   }
 
 
