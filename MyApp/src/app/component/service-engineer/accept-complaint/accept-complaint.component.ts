@@ -5,7 +5,6 @@ import { ChartService } from '../../../service/chart.service'
 import { HttpClient } from '@angular/common/http';
 import { FormGroup, FormArray, Validators, FormBuilder } from '@angular/forms';
 import { AppSettings } from '../../../app.settings'
-import{user} from '../../../user.module'
 declare var $: any;
 
 @Component({
@@ -14,8 +13,7 @@ declare var $: any;
   styleUrls: ['./accept-complaint.component.css']
 })
 export class AcceptComplaintComponent implements OnInit {
- 
- assignData = {
+  assignData = {
     c_id:"",
     c_assignBy: "",
     c_name: "",
@@ -27,8 +25,6 @@ export class AcceptComplaintComponent implements OnInit {
   };
   enggData = {};
   complaintData = [];
-
- 
   arr: FormArray
   formGroup: FormGroup
   submitted = false
@@ -40,12 +36,10 @@ export class AcceptComplaintComponent implements OnInit {
     eng_EMail: null,
   }
   pageTitle = 'All Complaints';
-
-  complaint: any[];
+   complaint: any[];
   c_id: any[];
   Machine_type: any = {
-    u_Machinepurchesed: null,
-
+  u_Machinepurchesed: null,
   }
   Machinelist: Array<any> = [];
  
@@ -68,7 +62,6 @@ validation_messages = {
     ],
     'comments': [
       { type: 'required', message: '*Comment is required' }
-      // { type: 'minlength', message: '*Name must be 3 character' }
     ],
     'Status': [
       { type: 'required', message: '*Please select any one machine' },
@@ -96,7 +89,6 @@ validation_messages = {
     this.formGroup=this.fb.group({
       comments: ['', Validators.compose([
         Validators.required
-        // Validators.minLength(3)
       ])],
       Status: ['', Validators.compose([
         Validators.required
@@ -105,9 +97,7 @@ validation_messages = {
     })
   }
   getItems(ev: any) {
-    // set val to the value of the searchbar
     const val = ev.target.value;
-    // if the value is an empty string don't filter the items
     if (val && val.trim() != '') {
       this.complaint = this.complaint.filter((item) => {
        if(parseInt(item.c_id) === parseInt(val)){
@@ -117,7 +107,7 @@ validation_messages = {
       })
     }
     if(val.length === 0){
-      this.initializeItems();   // Reset items back to all of the items
+      this.initializeItems();  
     }
   }
 
@@ -138,12 +128,10 @@ validation_messages = {
     this.charts.updateComplaint(
       parseInt( this.formGroup.value.Status),
       this.assignData.c_id,
-      this.formGroup.value.comments
-
-
-    ).subscribe((result:any)=>{
+      this.formGroup.value.comments).subscribe((result:any)=>{
       if (result.status === "success") {
         this.showSuccessMsg = true;
+        this.spinner.show();
         this.initializeItems();
       } if (result.status === "error") {
         console.log(result.message)

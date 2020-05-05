@@ -1,5 +1,5 @@
 <ngx-spinner [fullScreen]="true" type="ball-clip-rotate-multiple" size="medium">
-    <p class="loading">Loading Awesomeness...</p>
+    <p class="loading"></p>
 </ngx-spinner>
 
 <!-- Navigation -->
@@ -9,14 +9,14 @@
         <div class="collapse navbar-collapse float-left" id="ftco-nav">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="navbar-brand" routerLink="/app-engg-home" (click)="showButton(2)" [class.phase-active]="activeButton === 2"> <i class="fas fa-home"></i>Service Engineer Home</a>
+                    <a class="navbar-brand" routerLink="/app-engg-home" (click)="showButton(2)" [class.phase-active]="activeButton === 2"> <i class="fas fa-home"></i>Ticketing Tool</a>
                 </li>
                 <li class="nav-item">
                     <a class="notification" routerLink="app-accept-complaint" (click)="loader()">
                         <i class="fas fa-chalkboard-teacher"></i>Accept Complaint</a>
                 </li>
                 <li class="nav-item">
-                    <a class="notification" id="a1" routerLink="app-engg-view-previous" (click)="loader()"> <i class="far fa-clipboard"></i> View Privios Complaint</a>
+                    <a class="notification" id="a1" routerLink="app-engg-view-previous" (click)="loader()"> <i class="far fa-clipboard"></i> View Previous Complaint</a>
 
                 </li>
 
