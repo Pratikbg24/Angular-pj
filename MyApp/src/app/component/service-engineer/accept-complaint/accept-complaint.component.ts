@@ -136,17 +136,18 @@ validation_messages = {
 
   addData(){
     this.charts.updateComplaint(
-    this.formGroup.value.Status,
+      parseInt( this.formGroup.value.Status),
       this.assignData.c_id,
       this.formGroup.value.comments
 
 
     ).subscribe((result:any)=>{
-      if(result.status === "success"){
-        console.log("res0"+result)      
-      }
-      else{
-        console.log("Error")      
+      if (result.status === "success") {
+        this.showSuccessMsg = true;
+        this.initializeItems();
+      } if (result.status === "error") {
+        console.log(result.message)
+        this.showInvalidMsg = true;
       }
     })
   }
