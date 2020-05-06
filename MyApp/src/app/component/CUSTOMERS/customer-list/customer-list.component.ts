@@ -59,5 +59,7 @@ export class CustomerListComponent implements OnInit {
   customerEdit(){
     this.spinner.show();
   }
-
+  viewCustomer(){
+    this.spinner.show();
+  }
 }

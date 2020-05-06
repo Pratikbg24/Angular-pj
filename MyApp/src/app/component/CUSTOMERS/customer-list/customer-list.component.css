@@ -10,8 +10,10 @@ h3 {
     border-radius: 10px;
 }
 .table {
-    margin-left: 0px;
+    /* margin-left: 20px; */
+    /* margin-right: 20px; */
     margin-top: 20px;
+    border: 1px solid black;
     /* table-layout: fixed; */
     }
 .table td,th{
@@ -57,7 +59,7 @@ h3 {
 .btn-danger:focus {
     background: #ee3535;
 }
-.container{
+/* .container{
     margin: 30px;
     margin-left: 40px;
-}
+} */

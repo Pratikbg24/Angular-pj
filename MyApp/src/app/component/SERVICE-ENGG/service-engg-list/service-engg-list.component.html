@@ -12,8 +12,12 @@
                 <th scope="col">Mobile</th>
                 <th scope="col">Email</th>
                 <th scope="col">Address</th>
-                <th scope="col">DateOfJoining</th>
+                <th scope="col">Join Date</th>
                 <th scope="col">Password</th>
+                <th scope="col">Edit Engineer</th>
+                <th scope="col">Delete Engineer</th>
+                <th scope="col">View Engineer</th>
+
             </tr>
         </thead>
         <tbody>
@@ -25,11 +29,10 @@
                 <td>{{item.u_address}}</td>
                 <!-- <td>{{item.u_EngineerType}}</td> -->
                 <td>{{item.u_joinDate |date:'dd/MM/yyy'}}</td>
-                <td>{{item.u_password}}</td>
-                <td style="display: flex">
-                    <button type="button" class="btn btn-primary btn-sm" [routerLink]="['edit',item.u_id]" (click)="editServiceEngg()">Edit</button>
-                    <button type="button" class="btn btn-danger btn-sm ml-1" (click)="openModal(item)">Delete</button>
-                </td>
+                <td>{{item.u_password}}</td>                
+                <td>    <button type="button" class="btn btn-primary btn-sm" [routerLink]="['edit',item.u_id]" (click)="editServiceEngg()">Edit</button></td>
+                 <td>   <button type="button" class="btn btn-danger btn-sm ml-1" (click)="openModal(item)">Delete</button></td>
+                  <td>  <button type="button" class="btn btn-primary btn-md" [routerLink]="['view',item.u_id]" (click)="loader()">View</button></td>
             </tr>
         </tbody>
     </table>

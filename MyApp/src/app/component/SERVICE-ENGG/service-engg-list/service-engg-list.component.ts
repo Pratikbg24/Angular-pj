@@ -58,4 +58,7 @@ export class ServiceEnggListComponent implements OnInit {
   editServiceEngg() {
     this.spinner.show();
   }
+  loader(){
+  this.spinner.show()
+  }
 }

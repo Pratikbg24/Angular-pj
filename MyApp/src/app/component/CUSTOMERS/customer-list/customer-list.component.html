@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<div class="container">
+<div class="container-fluid">
     <h3>List All Customer</h3>
     <div class="row">
         <input type="text" class="form-control" placeholder="Start searching for a customer Name or Mobilenumber or Email" name="search" [(ngModel)]="u_email" autocomplete="off">
@@ -17,8 +17,11 @@
                 <th scope="col">Email</th>
                 <th scope="col">Address</th>
                 <th scope="col">Machine Purchased</th>
-                <th scope="col">DateOfPurchased</th>
+                <th scope="col">Purchase Date</th>
                 <th scope="col">Password</th>
+                <th scope="col">Edit Customer</th>
+                <th scope="col">Delete Customer</th>
+                <th scope="col">View Customer</th>
             </tr>
         </thead>
         <tbody>
@@ -31,10 +34,9 @@
                 <td>{{item.u_MachinePurchased}}</td>
                 <td>{{item.u_dateOf_Purchased|date:'dd/MM/yyy'}}</td>
                 <td>{{item.u_password}}</td>
-                <td style="display: flex">
-                    <button type="button" class="btn btn-primary btn-sm" [routerLink]="['edit',item.u_id]" (click)="customerEdit()">Edit</button>
-                    <button type="button" class="btn btn-danger btn-sm ml-1" (click)="openModal(item)">Delete</button>
-                </td>
+                <td><button type="button" class="btn btn-primary btn-sm" [routerLink]="['edit',item.u_id]" (click)="customerEdit()">Edit</button></td>
+                <td><button type="button" class="btn btn-danger btn-sm ml-1" (click)="openModal(item)">Delete</button></td>
+                <td><button type="button" class="btn btn-primary btn-md" [routerLink]="['view',item.u_id]" (click)="viewCustomer()">View</button></td>
             </tr>
         </tbody>
     </table>
@@ -59,3 +61,5 @@
         </div>
     </div>
 </div>
+
+

@@ -32,7 +32,7 @@ Viewserviceengg:any
   }
   back(){
     this.spinner.show()
-    this.router.navigate(['/home1/customerdetails'])
+    this.router.navigate(['/home1/updateserviceEngineer'])
   }
 
 }
