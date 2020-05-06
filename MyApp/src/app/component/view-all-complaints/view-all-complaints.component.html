@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
 <ngx-spinner [fullScreen]="true" type="ball-clip-rotate-multiple" size="medium">
 
 </ngx-spinner>
@@ -14,7 +16,36 @@
                         <input style="margin-bottom: 17px;" class="abc" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" />
                     </div>
                     <div class='col-md-1 float-right'>
-                        <button class="fas fa-download"></button>
+                        <!-- Forget Password  -->
+                        <div class="modal fade" id="myModal" role="dialog">
+                            <div class="modal-dialog">
+                                <form class="form" [formGroup]="formGroup">
+
+                                    <!-- Modal content-->
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h4><span></span> Download Data</h4>
+                                            <button class="close" data-dismiss="modal">&times;</button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="form-group">
+                                                <label for="usrname"><span><i class="fas fa-envelope"></i></span> Email</label>
+                                                <input type="email" class="form-control" formControlName="email" placeholder="Enter Your Email" [ngClass]="{ 'is-invalid': submitted && f.email.errors?.invalid }">
+                                            </div>
+                                            <div class="validation-errors">
+                                                <ng-container *ngFor="let validation of validation_messages.email">
+                                                    <div class="error-message text-danger" *ngIf="formGroup.get('email').hasError(validation.type) && (formGroup.get('email').dirty || formGroup.get('email').touched)">
+                                                        <span name="information-circle-outline"></span> {{ validation.message }}
+                                                    </div>
+                                                </ng-container>
+                                            </div>
+                                            <button type="submit" id="button1" data-dismiss="modal" class="btn btn-success btn-block" (click)=" excelToMail()"><span><i class="fas fa-sign-in-alt"></i></span> Submit</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <button id="button2" class="fas fa-download" (click)="openModal()" data-toggle="modal"></button>
 
                     </div>
 
@@ -75,7 +106,7 @@
                                     {{user.c_desc}}
                                 </td>
                                 <td>
-                                    {{user.c_date}}
+                                    {{user.c_date | date:'dd/MM/yyy'}}
 
                                 </td>
                                 <td>{{user.c_status}}</td>

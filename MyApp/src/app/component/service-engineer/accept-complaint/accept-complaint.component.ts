@@ -4,7 +4,8 @@ import { NgxSpinnerService } from 'ngx-spinner'
 import { ChartService } from '../../../service/chart.service'
 import { HttpClient } from '@angular/common/http';
 import { FormGroup, FormArray, Validators, FormBuilder } from '@angular/forms';
-import { AppSettings } from '../../../app.settings'
+import { NotificationServiceService } from 'src/app/service/NOTIFICATION-ALERT/notification-service.service';
+
 declare var $: any;
 
 @Component({
@@ -71,6 +72,7 @@ validation_messages = {
 
 
   constructor(private route: ActivatedRoute,
+    private notificationservice: NotificationServiceService,
     private fb: FormBuilder,
     private router: Router,
     private charts: ChartService,
@@ -130,13 +132,14 @@ validation_messages = {
       this.assignData.c_id,
       this.formGroup.value.comments).subscribe((result:any)=>{
       if (result.status === "success") {
-        this.showSuccessMsg = true;
-        this.spinner.show();
+        this.notificationservice.success("Complaint Update successfully")
         this.initializeItems();
+    
       } if (result.status === "error") {
-        console.log(result.message)
-        this.showInvalidMsg = true;
-      }
+        this.notificationservice.error(" Complaint not Update")
+        this.initializeItems();
+        // console.log(result.message)
+      }  
     })
   }
 

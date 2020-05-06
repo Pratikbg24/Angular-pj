@@ -4,7 +4,8 @@ import { NgxSpinnerService } from 'ngx-spinner'
 import { ChartService } from '../../service/chart.service'
 import { HttpClient } from '@angular/common/http';
 import { FormGroup, FormArray, Validators, FormBuilder } from '@angular/forms';
-import { user } from 'src/app/user.module';
+import { NotificationServiceService } from 'src/app/service/NOTIFICATION-ALERT/notification-service.service';
+
 declare var $: any;
 @Component({
   selector: 'app-assign-complaint',
@@ -60,6 +61,7 @@ export class AssignComplaintComponent implements OnInit {
     private router: Router,
     private charts: ChartService,
     private spinner: NgxSpinnerService,
+    private notificationservice: NotificationServiceService,
     private httpCilent: HttpClient) {
     this.serviceEnggData = [];
   }
@@ -101,13 +103,12 @@ export class AssignComplaintComponent implements OnInit {
     }
     this.charts.assignComplaint(data).subscribe((result: any) => {
       if (result.status === "success") {
-        this.showSuccessMsg = true;
-        this.complaintInitialize();
+        this.notificationservice.success("Assign Complaint successfully")
+        this.complaintInitialize()
       } if (result.status === "error") {
-        console.log(result.message)
-        this.showInvalidMsg = true;
-      }
-    })
+        this.notificationservice.error(" Complaint not Assigned")
+        this.complaintInitialize()
+      }    })
 
   }
   getAllServiceEngg() {

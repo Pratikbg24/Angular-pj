@@ -120,4 +120,13 @@ export class ChartService {
       }
     return this._http.post(AppSettings.baseUrl + 'complaint/newComplaint', data);
   }
+  public downloadAllComplait(email:any,result:any)
+  {
+    let data = {
+      "email": email,
+    "data": result,
+     }
+    return this._http.post(AppSettings.baseUrl + 'users/excelToMail', data);
+
+  }
 }
