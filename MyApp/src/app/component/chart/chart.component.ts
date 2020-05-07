@@ -102,7 +102,7 @@ export class ChartComponent implements OnInit {
         },
         title: {
           display: true,
-          text: 'Custom Chart Title',
+          text: 'Custom Chart ',
           position:'bottom',
           fontSize:20,
           padding:20,
