@@ -120,21 +120,18 @@ export class ChartComponent implements OnInit {
 
   this.countData.openCount=this.statusOpen.length;
   this.openCount1=this.countData.openCount
-  console.log(this.openCount1)
   this.statusClosed=data.data.filter((el:any)=>{
     return  el.c_status === 2
   })
 
   this.countData.closedCount=this.statusClosed.length;
   this.closedCount1=this.countData.closedCount
-  console.log(this.closedCount1)
-  this.statusPending=data.data.filter((el:any)=>{
+   this.statusPending=data.data.filter((el:any)=>{
     return  el.c_status === 3
   })
   this.countData.pendingCount=this.statusPending.length;
   this.pendingCount1=this.countData.pendingCount
-  console.log(this.pendingCount1)
-
+ 
 this.chart=new Chart('complaintsStatusCart',{
   type:'doughnut',
   data:{
@@ -183,4 +180,12 @@ this.chart=new Chart('complaintsStatusCart',{
   showCustomer() {
     this.spinner.show();
   }
+    userCount(){
+      this.spinner.show();
+      this.router.navigate(['/home1/updateCustomer1'])
+    }
+    enggCount(){
+      this.spinner.show();
+      this.router.navigate(['/home1/updateserviceEngineer'])
+    }
 }
