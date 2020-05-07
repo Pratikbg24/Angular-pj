@@ -155,7 +155,6 @@ export class ViewAllComplaintsComponent implements OnInit {
       } if (result.status === "error") {
         this.notificationservice.error(" Complaint not Update")
         this.initializeItems();
-        // console.log(result.message)
       }  
     })
   }

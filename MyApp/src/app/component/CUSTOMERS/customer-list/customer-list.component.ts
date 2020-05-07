@@ -26,7 +26,6 @@ export class CustomerListComponent implements OnInit {
     this.getAllCustomers();
   }  
   getAllCustomers() {
-    //Get saved list of Customers
     this.updateservice.getList().subscribe((data: any) => {
       this.customersData = data.data.filter((el: any) => {
         return el.u_role === 1;
@@ -49,7 +48,6 @@ export class CustomerListComponent implements OnInit {
         this.notificationalert.error("The record cannot be deleted")
       }
     })
-    // console.log('Agree clicked');
     this.spinner.show();
   }
   openModal(item:any){

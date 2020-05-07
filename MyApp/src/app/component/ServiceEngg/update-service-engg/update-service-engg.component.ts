@@ -17,7 +17,6 @@ export class UpdateServiceEnggComponent implements OnInit {
   }
   ngOnInit() {
     this.getAllServiceEngg();
-    // this.getEngineerType();
   }
   getAllServiceEngg(){
     this.updateservice.getList().subscribe((data:any)=>{
@@ -26,11 +25,6 @@ export class UpdateServiceEnggComponent implements OnInit {
       })
     })
   }
-  // getEngineerType(){
-  //   this.updateservice.machineType().subscribe((data:any)=>{
-  //     this.serviceEnggData=data;
-  //   })
-  // }
   loader(){
     this.spinner.show();
   }

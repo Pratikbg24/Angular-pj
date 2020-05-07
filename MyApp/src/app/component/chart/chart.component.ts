@@ -67,17 +67,17 @@ export class ChartComponent implements OnInit {
          let jsdate =new Date(x*1000)
          allDate.push(jsdate.toLocaleDateString('en',{year:'numeric',month:'short',day:'numeric'}))           
          });
-        //  console.log(allDate)
+     
       this.graphData.userCount = this.users.length;
       this.graphData.enggCount = this.engg.length;
       this.graphData.adminCount = this.admin.length;
-        //  User Count 
+     
       this.userCount1=this.graphData.userCount      
-      //console.log(this.userCount1);
+     
       this.enggCount1=this.graphData.enggCount
-      //console.log(this.enggCount1);
+     
       this.adminCount1=this.graphData.adminCount
-      //console.log(this.adminCount1);     
+      
     this.chart=new Chart('canvas',{
       type:'pie',
       data:{
@@ -120,19 +120,19 @@ export class ChartComponent implements OnInit {
     })
     })
 
- //  Complaint Status
+
  this.charts.getAllComplaint().subscribe((data:any)=>{
   this.statusOpen=data.data.filter((el:any)=>{
     return  el.c_status === 1
   })
-  // Open Status Count
+
   this.countData.openCount=this.statusOpen.length;
   this.openCount1=this.countData.openCount
   console.log(this.openCount1)
   this.statusClosed=data.data.filter((el:any)=>{
     return  el.c_status === 2
   })
-  // Closed Status Count
+
   this.countData.closedCount=this.statusClosed.length;
   this.closedCount1=this.countData.closedCount
   console.log(this.closedCount1)

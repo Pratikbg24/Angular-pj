@@ -5,17 +5,12 @@ import { ChartService } from '../../../service/chart.service'
 import { HttpClient } from '@angular/common/http';
 import { FormGroup, FormArray, Validators, FormBuilder } from '@angular/forms';
 import { AppSettings } from '../../../app.settings'
-import {GetuidService}  from '../../../service/getuid.service'
-
-
 @Component({
   selector: 'app-engg-view-previous',
   templateUrl: './engg-view-previous.component.html',
   styleUrls: ['./engg-view-previous.component.css']
 })
 export class EnggViewPreviousComponent implements OnInit {
-  
-
   arr: FormArray
   formGroup: FormGroup
   submitted = false
@@ -51,10 +46,7 @@ export class EnggViewPreviousComponent implements OnInit {
     private charts: ChartService,
     private spinner: NgxSpinnerService,
     private httpCilent: HttpClient) {
-      
-    
-   
-   
+ 
   }
   ngOnInit() {
    this.initializeItems();

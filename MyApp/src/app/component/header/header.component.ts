@@ -9,8 +9,7 @@ import { LoginComponent } from '../login/login.component';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-
-    activeButton
+   activeButton
   constructor(private spinner: LoadingSpinnerService) { }
 
   ngOnInit() {

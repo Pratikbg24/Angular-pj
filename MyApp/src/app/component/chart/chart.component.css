@@ -1,58 +1,65 @@
-.box{
-margin-top: 20px;
-  margin-right: 0px;
-  border-radius: 5px;
-  background-color: #E5E4E2;
-  color: black;
+.box {
+    margin-top: 20px;
+    margin-right: 0px;
+    border-radius: 5px;
+    background-color: #E5E4E2;
+    color: black;
 }
-.row1{
-  margin-top: 0px;
+
+.row1 {
+    margin-top: 0px;
 }
-.chart-container{
- /* margin-left: 10px; */
-  height:35vh; 
-  width:35vw;
-  position: relative;
-  /* height: auto; */
-  /* width: auto; */
-  margin-top: 30px !important;
-  margin-bottom: 80px;
-  float: left;
-  margin-left: 0px;
+
+.chart-container {
+    height: 35vh;
+    width: 35vw;
+    position: relative;
+    margin-top: 30px !important;
+    margin-bottom: 80px;
+    float: left;
+    margin-left: 0px;
 }
-.fa{
-  font-size: 30px;
-  margin-left: 100px;
-  margin-top: 10px;
-  color:white;
+
+.fa {
+    font-size: 30px;
+    margin-left: 100px;
+    margin-top: 10px;
+    color: white;
 }
-.h4{
-  text-align: center;
+
+.h4 {
+    text-align: center;
 }
-.count{
-  font-size: 20px;
-  font-weight: bold;  
-  margin-left: 70px;
+
+.count {
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 70px;
 }
-.lable{
-  margin-left: 60px;
+
+.lable {
+    margin-left: 60px;
 }
-.box1{
-  background-color: #3EA055;
+
+.box1 {
+    background-color: #3EA055;
 }
-.box2{
-  background-color: #2B60DE;
+
+.box2 {
+    background-color: #2B60DE;
 }
-.box3{
-  background-color: orange;
+
+.box3 {
+    background-color: orange;
 }
-.panel{
-  margin-top: 20px;
-  /* height: 100%; */
-  border-radius: 5px;
+
+.panel {
+    margin-top: 20px;
+    border-radius: 5px;
 }
-.status{
-  margin-top: 50px;
-  height: 50%;
-  border-radius: 5px;
+
+.status {
+    margin-top: 50px;
+    height: 50%;
+    border-radius: 5px;
 }

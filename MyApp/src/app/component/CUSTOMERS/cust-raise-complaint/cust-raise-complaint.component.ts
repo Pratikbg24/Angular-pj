@@ -28,8 +28,7 @@ export class CustRaiseComplaintComponent implements OnInit {
       { type: 'required', message: '*Name is required' },
       { type: 'minlength', message: '*Name must be 3 character' }
     ],
-
-    'EngineerType': [
+   'EngineerType': [
       { type: 'required', message: '*Please select engineer type' },
     ],
     'DateOfjoining': [
@@ -76,9 +75,7 @@ export class CustRaiseComplaintComponent implements OnInit {
   onSubmit(values: any) {
     
     this.charts.createComplaint(
-
-
-      this.formGroup.value.name, 
+   this.formGroup.value.name, 
       this.formGroup.value.EngineerType,      
       this.formGroup.value.DateOfjoining,
       "c_status",
@@ -89,7 +86,6 @@ export class CustRaiseComplaintComponent implements OnInit {
         this.notificationservice.success("Raise Complaint successfully")
       } if (result.status === "error") {
         this.notificationservice.error(" Complaint not Raise")
-        // console.log(result.message)
       }  
     })
        

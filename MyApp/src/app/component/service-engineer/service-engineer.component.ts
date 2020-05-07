@@ -134,7 +134,6 @@ export class ServiceEngineerComponent implements OnInit {
     return this.formGroup.controls;
   }
   onSubmit() {
-    //console.log(this.formGroup.value)
     this.enggRegservice.getData(
       this.formGroup.value.name, 
       this.formGroup.value.Mobilenumber,
@@ -146,12 +145,10 @@ export class ServiceEngineerComponent implements OnInit {
       this.formGroup.value.password,
       this.formGroup.value.confirmPassword)
       .subscribe((data:any) => {
-        // console.log(data)
         if(data.status === "success"){          
           this.notification.success("Registration Successfully!")
           this.router.navigate(['/home1'])
         }if(data.status === "error"){
-          // console.log(data.message)
           this.notification.error("The email address or phone number you have entered is already registered!.")
          }       
        });    
@@ -160,7 +157,7 @@ export class ServiceEngineerComponent implements OnInit {
     if (this.formGroup.invalid) {
       return;
     }
-    // this.formGroup.reset();
+   
   }
   toggleFieldTextType(event: any) {
     if (event.target.id === 'btn1') {

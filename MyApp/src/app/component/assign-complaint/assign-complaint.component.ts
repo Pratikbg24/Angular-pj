@@ -12,12 +12,6 @@ declare var $: any;
   templateUrl: './assign-complaint.component.html',
   styleUrls: ['./assign-complaint.component.css']
 })
-/* 
-@Output() searchcriteria = new EventEmitter<String>();
-searchThis() {
-    this.searchcriteria.emit(this.searchword)
-} */
-
 export class AssignComplaintComponent implements OnInit {
 
   arr: FormArray
@@ -55,8 +49,6 @@ export class AssignComplaintComponent implements OnInit {
   ]
   showSuccessMsg: boolean = false;
   showInvalidMsg: boolean = false;
-
-
   constructor(private route: ActivatedRoute,
     private router: Router,
     private charts: ChartService,
@@ -92,8 +84,6 @@ export class AssignComplaintComponent implements OnInit {
       this.Machine_type.u_Machinepurchesed = this.Machine_type.u_Machinepurchesed;
     });
   }
-
-
   assignEngg(user: any) {
   
     let data = {

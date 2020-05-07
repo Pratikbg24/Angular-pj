@@ -1,4 +1,3 @@
-<!-- <header><h1>Customer Overview</h1></header> -->
 <div class="container">
     <div *ngFor="let iteam of Viewcustomers">
         <div class="col-md-8 mx-auto">
@@ -8,11 +7,10 @@
                 </div>
                 <div class="card-body">
                     <div class="row" id="row1">
-                    <div class="col-md-4">
-                        <img src="assets/Image/customer.png" alt="image">
+                        <div class="col-md-4">
+                            <img src="assets/Image/customer.png" alt="image">
+                        </div>
                     </div>
-                </div>
-                <!-- <div class="row" id="row1"> -->
                     <div class="row">
                         <h6>Id:</h6>
                         <p>{{iteam.u_id}}</p>
@@ -69,8 +67,7 @@
                         <h6>Confirm Password:</h6>
                         <p>{{iteam.u_cpassword}}</p>
                     </div>
-                    <!-- </div> -->
-                    <button class="btn btn-primary" (click)="back()"><i class="fa fa-arrow-left"></i>Back</button> 
+                    <button class="btn btn-primary" (click)="back()"><i class="fa fa-arrow-left"></i>Back</button>
                 </div>
             </div>
         </div>
