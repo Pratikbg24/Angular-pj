@@ -1,12 +1,8 @@
-.box{
-margin-top: 20px;
-  margin-right: 0px;
+.btn{
+  margin-top: 20px;
   border-radius: 5px;
-  background-color: #E5E4E2;
   color: black;
-}
-.row1{
-  margin-top: 0px;
+  position: relative;
 }
 .charts{
  /* margin-left: 10px; */
@@ -36,8 +32,9 @@ margin-top: 20px;
 }
 .lable{
   margin-left: 60px;
+  float:left
 }
-.box1{
+/* .box1{
   background-color: #3EA055;
 }
 .box2{
@@ -45,7 +42,7 @@ margin-top: 20px;
 }
 .box3{
   background-color: orange;
-}
+} */
 .panel{
   margin-top: 20px;
   /* height: 100%; */
