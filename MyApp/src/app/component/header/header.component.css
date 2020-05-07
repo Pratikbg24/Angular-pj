@@ -1,24 +1,13 @@
   #p1{
     text-align: center;
   }
-  /* #topheader{
-    background-color: black;
-    color: green;
-  } */
-    nav
-  {
+    nav {
     padding-top: 15px !important;
     padding-bottom: 15px !important;  
   } 
-  /* .navbar{
-    background-color: #82c341;
-    color: #000000;
-  } */
-
   .fas{
   margin-left: 10px !important;
-  margin-right: 10px !important;
-  
+  margin-right: 10px !important;  
   }
    .nav-link.dropdown-toggle {
     background-color: #343a40;
@@ -27,25 +16,19 @@
     font-size: 16px;
     border: none;
   }
-  
   .nav-item.dropdown {
     position: relative;
     display: inline-block;
   }
-  .dropdown-menu a {
-    
+  .dropdown-menu a { 
     color: black;
     padding: 12px 16px;
     text-decoration: none;
     display: block;
   }
-  
   .dropdown-menu a:hover {background-color: rgb(30, 135, 233);}
-  
   .nav-item.dropdown :hover .dropdown-content {display: block;}
-  
   .nav-item.dropdown :hover.nav-link.dropdown-toggle{background-color: #3e8e41;}
-  
   .container{
     margin-left: 0px !important;
     margin-right: 0px !important;
@@ -63,7 +46,6 @@
     background: #3e8e41;
   }
   .notification {
-   
     color: white;
     text-decoration: none;
      padding: 8px 10px;
@@ -71,11 +53,9 @@
     display: inline-block;
     border-radius: 2px;
   }
-  
   .notification:hover {
     background: #3e8e41;
   }
-  
   .fas .badge {
     position: absolute;
     top: -10px;
@@ -91,7 +71,6 @@
   .loading{
     color: white;
   }
-
    .phase-active{
     background-color: #3e8e41; 
     border-radius: 1px;
@@ -100,14 +79,3 @@
    .active{
     background-color: #3e8e41; 
    }
-
-   /* #topheader .navbar-nav li > a:focus { 
-    background-color: #005596; 
-    color: #fff;
-    box-shadow: 0 0 1px 2px hsla(0,0%,100%,.8); 
-} 
-  #topheader .navbar-nav li.active > a { 
-    background-color: #3990E0; 
-    color: white;
-    box-shadow: 0 0 1px 2px hsla(0,0%,100%,.8); 
-}  */
