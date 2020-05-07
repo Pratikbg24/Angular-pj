@@ -6,7 +6,6 @@ import { UpdateData } from '../../../models/update-data';
 import { UpdateServiceService } from '../../../service/update-service.service'
 import { NotificationServiceService } from 'src/app/service/NOTIFICATION-ALERT/notification-service.service';
 import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
-// import { LoadingSpinnerService } from '../../../service/loading-spinner.service'
 
 @Component({
   selector: 'app-service-engg-edit',
@@ -53,9 +52,6 @@ export class ServiceEnggEditComponent implements OnInit {
     'Address': [
       { type: 'required', message: '*Address is required' },
     ],
-    // 'EngineerType': [
-    //   { type: 'required', message: '*Please select engineer type' },
-    // ],
     'DateOfjoining': [
       {
         type: 'required', message: '*Please select date'
@@ -110,9 +106,6 @@ export class ServiceEnggEditComponent implements OnInit {
       Address: [{ value: '', disabled: true }, Validators.compose([
         Validators.required
       ])],
-      // EngineerType: ['', Validators.compose([
-      //   Validators.required
-      // ])],
       DateOfjoining: [{ value: '', disabled: true }, Validators.compose([
         Validators.required
       ])],
@@ -145,9 +138,7 @@ export class ServiceEnggEditComponent implements OnInit {
     return this.formGroup.controls;
   }
   viewEngg() {
-    // console.log(this.activatedRoute.snapshot.params.u_id)
     this.u_id = this.activatedRoute.snapshot.params["u_id"];
-    // console.log(this.u_id)
     this.updateservice.getItem(this.u_id).subscribe((result: any) => {
       this.formGroup.patchValue({
         name: result.data[0].u_name,
@@ -159,10 +150,8 @@ export class ServiceEnggEditComponent implements OnInit {
         password: result.data[0].u_password,
         confirmPassword: result.data[0].u_cpassword,
       })
-      // console.log(this.u_id)
       this.data = result
       this.enggData = this.data;
-      // console.log(this.enggData)
     })
   }
   onSubmit(formValue: any) {
@@ -180,10 +169,8 @@ export class ServiceEnggEditComponent implements OnInit {
     this.updateservice.updateItem(payload).subscribe((result: any) => {
       if (result.status === "success") {
         this.notificationservice.success("Record updated successfully")
-        // this.customerlist.getAllCustomers();
       } if (result.status === "error") {
         this.notificationservice.error(" Record not updated")
-        // console.log(result.message)
       }
       this.router.navigate(['/home1/updateserviceEngineer'])      
     })

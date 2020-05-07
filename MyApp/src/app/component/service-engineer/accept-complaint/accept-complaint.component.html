@@ -1,6 +1,5 @@
 <ngx-spinner [fullScreen]="true" type="ball-clip-rotate-multiple" size="medium">
 </ngx-spinner>
-<!-- <div [formGroup]="formGroup"> -->
 <div class="container" *ngIf="complaint">
     <div class="row">
         <div class='card'>
@@ -53,11 +52,9 @@
         </div>
     </div>
 </div>
-<!-- Modal  -->
 <div id="customerModal" class="modal fade" role="dialog">
     <div>
         <div class="modal-dialog">
-            <!-- Modal content-->
             <div class="modal-content">
                 <div class="modal-header">
                     <h2 style="color: #337ab7;">Complaint Details </h2>
@@ -172,8 +169,6 @@
                                 </div>
                             </div>
                         </div>
-
-
                         <button type="submit " data-dismiss="modal" class="btn btn-primary btn-lg btn-block " style="margin-top: 12px;padding-top: 2px !important;padding-bottom: 2px !important; " (click)="addData()" [disabled]="!formGroup.valid">ADD DATA</button>
                     </div>
                 </div>

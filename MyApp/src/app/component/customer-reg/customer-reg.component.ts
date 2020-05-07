@@ -22,10 +22,6 @@ export class CustomerRegComponent implements OnInit {
   servicePeriod: Array<any> = [];
   warrentyperiod: Array<any> = [];
   maxDate: Date;
-  // public form = [
-  //   { key: "new", val: 'New', isChecked: false },
-  //   { key: "reCondition", val: 'Re Conditioned', isChecked: true }
-  // ];
   validation_messages = {
     'name': [
       { type: 'required', message: '*Name is required' },
@@ -207,7 +203,6 @@ export class CustomerRegComponent implements OnInit {
     return this.formGroup.get('machieCondition');
   }
   onSubmit() {
-    // console.log(this.formGroup.value)
     this.spinner.show();
     this.custRegservice.getData(
       this.formGroup.value.name,
@@ -225,12 +220,10 @@ export class CustomerRegComponent implements OnInit {
       this.formGroup.value.password,
       this.formGroup.value.confirmPassword)
       .subscribe((data: any) => {
-        // console.log(data)
         if (data.status === "success") {
           this.notificationservice.success("Registration Successfully ")
           this.router.navigate(['/home1'])
         } if (data.status === "error") {
-          // console.log(data.message)
           this.notificationservice.error("The email address or mobile number you have entered is already registered");       
         }
       });
@@ -247,6 +240,5 @@ export class CustomerRegComponent implements OnInit {
     }
   }
   changeCondition(e){
-    // console.log(e.target.value);
   }
 }

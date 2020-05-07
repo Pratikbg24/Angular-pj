@@ -10,12 +10,11 @@
     margin-top: 0px;
 }
 
-.chart-container {
-    height: 35vh;
-    width: 35vw;
+.charts {
+    height: 40vh;
+    width: 30vw;
     position: relative;
     margin-top: 30px !important;
-    margin-bottom: 80px;
     float: left;
     margin-left: 0px;
 }
@@ -55,11 +54,5 @@
 
 .panel {
     margin-top: 20px;
-    border-radius: 5px;
-}
-
-.status {
-    margin-top: 50px;
-    height: 50%;
     border-radius: 5px;
 }

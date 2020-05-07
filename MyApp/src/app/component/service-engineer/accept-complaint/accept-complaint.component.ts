@@ -5,7 +5,6 @@ import { ChartService } from '../../../service/chart.service'
 import { HttpClient } from '@angular/common/http';
 import { FormGroup, FormArray, Validators, FormBuilder } from '@angular/forms';
 import { NotificationServiceService } from 'src/app/service/NOTIFICATION-ALERT/notification-service.service';
-
 declare var $: any;
 
 @Component({
@@ -124,8 +123,6 @@ validation_messages = {
       });
     });
   }
-
-
   addData(){
     this.charts.updateComplaint(
       parseInt( this.formGroup.value.Status),
@@ -138,7 +135,6 @@ validation_messages = {
       } if (result.status === "error") {
         this.notificationservice.error(" Complaint not Update")
         this.initializeItems();
-        // console.log(result.message)
       }  
     })
   }

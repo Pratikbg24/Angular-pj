@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { LoadingSpinnerService } from '../../service/loading-spinner.service'
-import { from } from 'rxjs';
-import { LoginComponent } from '../login/login.component';
-
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -11,7 +8,6 @@ import { LoginComponent } from '../login/login.component';
 export class HeaderComponent implements OnInit {
    activeButton
   constructor(private spinner: LoadingSpinnerService) { }
-
   ngOnInit() {
   }
   createCustomer(event) {

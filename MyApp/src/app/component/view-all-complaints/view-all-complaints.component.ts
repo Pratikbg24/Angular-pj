@@ -63,8 +63,6 @@ export class ViewAllComplaintsComponent implements OnInit {
     ],
    
   }
- 
-
   constructor(private route: ActivatedRoute,
     private router: Router,
     private charts: ChartService,
@@ -82,8 +80,6 @@ export class ViewAllComplaintsComponent implements OnInit {
         { name: "Pending" },
         { name: "Close" },
       ];
-     
-   
   }
   ngOnInit() {
     this.initializeItems()
@@ -106,13 +102,11 @@ export class ViewAllComplaintsComponent implements OnInit {
        if(parseInt(item.c_id) === parseInt(val)){
         return parseInt(item.c_id) === parseInt(val);
        }
-        
       })
     }
     if(val.length === 0){
       this.initializeItems();       }
   }
-  
   initializeItems() {
     this.charts.getAllComplaint().subscribe((result: any) => {
       this.complaint = result.data;
@@ -149,11 +143,11 @@ export class ViewAllComplaintsComponent implements OnInit {
       this.complaint
     ).subscribe((result:any)=>{
       if (result.status === "success") {
-        this.notificationservice.success("Complaint Update successfully")
+        this.notificationservice.success("Complaint Data Send to Mail successfully")
         this.initializeItems();
     
       } if (result.status === "error") {
-        this.notificationservice.error(" Complaint not Update")
+        this.notificationservice.error(" Complaint Data is not Send to Mail ")
         this.initializeItems();
       }  
     })
@@ -161,6 +155,4 @@ export class ViewAllComplaintsComponent implements OnInit {
   openModal(item:any){
     $("#myModal").modal('show');
   }
- 
-
 }

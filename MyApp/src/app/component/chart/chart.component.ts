@@ -2,20 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { Chart } from 'chart.js';
 import { Router, ActivatedRoute } from '@angular/router';
 import { LoadingSpinnerService} from '../../service/loading-spinner.service'
-import { format } from 'url';
 import { ChartService } from '../../service/chart.service'
-import { from } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { user } from '../../user.module';
-import { CompileShallowModuleMetadata } from '@angular/compiler';
-import { Data } from 'src/app/data';
 @Component({
   selector: 'app-chart',
   templateUrl: './chart.component.html',
   styleUrls: ['./chart.component.css']
 })
 export class ChartComponent implements OnInit {
-
   date1:any[];
   users:any[];
   graphData:any={
@@ -102,7 +96,7 @@ export class ChartComponent implements OnInit {
         },
         title: {
           display: true,
-          text: 'Custom Chart Title',
+          text: 'Custom Chart ',
           position:'bottom',
           fontSize:20,
           padding:20,
@@ -119,8 +113,6 @@ export class ChartComponent implements OnInit {
       }  
     })
     })
-
-
  this.charts.getAllComplaint().subscribe((data:any)=>{
   this.statusOpen=data.data.filter((el:any)=>{
     return  el.c_status === 1

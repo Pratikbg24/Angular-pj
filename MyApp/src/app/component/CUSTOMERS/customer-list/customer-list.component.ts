@@ -1,4 +1,3 @@
-
 import { Component, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import { UpdateServiceService } from '../../../service/update-service.service';
 import { BsModalRef } from 'ngx-bootstrap/modal';
@@ -57,5 +56,7 @@ export class CustomerListComponent implements OnInit {
   customerEdit(){
     this.spinner.show();
   }
-
+  viewCustomer(){
+    this.spinner.show();
+  }
 }

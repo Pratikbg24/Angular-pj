@@ -41,19 +41,9 @@ thead {
     transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
 
-
-/*
-button,
-input {
-    overflow: visible;
-}
-*/
-
 #button1 {
     width: 100%;
     font-size: 16px;
-    /* background: linear-gradient(#b3d9ff 5%, #E9F3F6  100%);
-	border: 1px solid #e5a900; */
     font-weight: bold;
     cursor: pointer;
     border-radius: 5px;
@@ -62,9 +52,6 @@ input {
 
 .modal-header,
 h4 {
-    /* background-color: #5cb85c;
-    color: white !important;
-   */
     text-align: center;
     align-items: center;
     font-size: 20px;

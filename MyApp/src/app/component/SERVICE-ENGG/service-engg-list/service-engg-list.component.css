@@ -8,11 +8,14 @@ h3 {
 .btn {
     border-radius: 10px;
 }
+.dropdown-menu{
+    text-align: center;
+    min-width: 0;
+}
 .table {
         margin-top: 20px;
         width: 100%;
-        }
-        
+        }        
 .table td,th{
     border: 1px solid #ddd;
     padding: 8px;
@@ -56,7 +59,3 @@ thead, th {
 .btn-danger:focus {
     background: #ee3535;
 }
-/* .container{
-    margin: 30px;
-    margin-left: 40px;
-} */

@@ -40,7 +40,7 @@ const routes: Routes = [
           path: 'app-view-previous-complaint',
           component: ViewPreviousComplaintComponent,
   
-        },         
+        },
       ]
   },
   {
@@ -55,8 +55,7 @@ const routes: Routes = [
       {
         path: 'app-engg-view-previous',
         component: EnggViewPreviousComponent,
-
-      },         
+      },
     ]
 },
   {
@@ -86,7 +85,7 @@ const routes: Routes = [
         component: UpdateServiceEnggComponent,
       },
       {
-        path:'serviceEngglist/view/:u_id',
+        path:'updateserviceEngineer/view/:u_id',
         component:ViewServiceEngineerComponent
       },
       {
@@ -106,7 +105,7 @@ const routes: Routes = [
         component: UpdateCustomerComponent
       },
       {
-          path:'customerdetails/view/:u_id',
+          path:'updateCustomer1/view/:u_id',
           component:ViewCustomerComponent
       },
       {
