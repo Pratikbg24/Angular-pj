@@ -4,19 +4,14 @@ import { NgxSpinnerService } from 'ngx-spinner'
 import { ChartService } from '../../service/chart.service'
 import { HttpClient } from '@angular/common/http';
 import { FormGroup, FormArray, Validators, FormBuilder } from '@angular/forms';
-import { user } from 'src/app/user.module';
+import { NotificationServiceService } from 'src/app/service/NOTIFICATION-ALERT/notification-service.service';
+
 declare var $: any;
 @Component({
   selector: 'app-assign-complaint',
   templateUrl: './assign-complaint.component.html',
   styleUrls: ['./assign-complaint.component.css']
 })
-/* 
-@Output() searchcriteria = new EventEmitter<String>();
-searchThis() {
-    this.searchcriteria.emit(this.searchword)
-} */
-
 export class AssignComplaintComponent implements OnInit {
 
   arr: FormArray
@@ -24,7 +19,8 @@ export class AssignComplaintComponent implements OnInit {
   submitted = false
   alert = false
   invalid: boolean
-  serviceEnggData: any = {
+  serviceEnggData: any = 
+  {
     engg_Id: null,
     engg_Name: null,
     eng_EMail: null,
@@ -34,32 +30,26 @@ export class AssignComplaintComponent implements OnInit {
   eng_EMail: [];
   DataList: any
   u_email = "";
-
   pageTitle = 'Assign Complaints';
-
   complaint: any[];
   c_id: any[];
-  Machine_type: any = {
+  Machine_type: any = 
+  {
     u_Machinepurchesed: null,
-
   }
-
   c_date: [];
-
   searchText;
   searchText1;
   machinType: [];
-  data = [
-
-  ]
+  data = []
   showSuccessMsg: boolean = false;
   showInvalidMsg: boolean = false;
-
-
+  
   constructor(private route: ActivatedRoute,
     private router: Router,
     private charts: ChartService,
     private spinner: NgxSpinnerService,
+    private notificationservice: NotificationServiceService,
     private httpCilent: HttpClient) {
     this.serviceEnggData = [];
   }
@@ -67,6 +57,7 @@ export class AssignComplaintComponent implements OnInit {
     this.getAllServiceEngg();
     this.complaintInitialize()
   }
+  
   complaintInitialize(){
     this.complaint = [];
     this.charts.getComplaintData().subscribe((data: any) => {
@@ -90,8 +81,7 @@ export class AssignComplaintComponent implements OnInit {
       this.Machine_type.u_Machinepurchesed = this.Machine_type.u_Machinepurchesed;
     });
   }
-
-
+  
   assignEngg(user: any) {
   
     let data = {
@@ -101,15 +91,14 @@ export class AssignComplaintComponent implements OnInit {
     }
     this.charts.assignComplaint(data).subscribe((result: any) => {
       if (result.status === "success") {
-        this.showSuccessMsg = true;
-        this.complaintInitialize();
+        this.notificationservice.success("Assign Complaint successfully")
+        this.complaintInitialize()
       } if (result.status === "error") {
-        console.log(result.message)
-        this.showInvalidMsg = true;
-      }
-    })
-
+        this.notificationservice.error(" Complaint not Assigned")
+        this.complaintInitialize()
+      }    })
   }
+
   getAllServiceEngg() {
     this.charts.getList().subscribe((data: any) => {
       this.serviceEnggData = data.data.filter((el: any) => {
@@ -117,6 +106,7 @@ export class AssignComplaintComponent implements OnInit {
       })
     })
   }
+
   getEngg(ev: any) {
     const val = ev.target.value;
     if (val && val.trim() != '') {
@@ -130,10 +120,8 @@ export class AssignComplaintComponent implements OnInit {
     }
   }
 
-  openModal(item:any){
-    this.c_id=item.c_id;
+  openModal(item: any){
+    this.c_id = item.c_id;
     $("#customerModal").modal('show');
   }
- 
-
 }

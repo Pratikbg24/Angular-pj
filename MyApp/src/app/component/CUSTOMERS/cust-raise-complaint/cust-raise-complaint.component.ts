@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormArray, Validators, FormBuilder } from '@angular/forms';
 import { LoadingSpinnerService } from '../../../service/loading-spinner.service'
 import { ChartService } from '../../../service/chart.service'
+import { NotificationServiceService } from 'src/app/service/NOTIFICATION-ALERT/notification-service.service';
 
 @Component({
   selector: 'app-cust-raise-complaint',
@@ -27,8 +28,7 @@ export class CustRaiseComplaintComponent implements OnInit {
       { type: 'required', message: '*Name is required' },
       { type: 'minlength', message: '*Name must be 3 character' }
     ],
-
-    'EngineerType': [
+   'EngineerType': [
       { type: 'required', message: '*Please select engineer type' },
     ],
     'DateOfjoining': [
@@ -41,6 +41,7 @@ export class CustRaiseComplaintComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
     private charts: ChartService,
+    private notificationservice: NotificationServiceService,
     private spinner: LoadingSpinnerService,
   ) {
     this.maxDate = new Date();
@@ -74,22 +75,18 @@ export class CustRaiseComplaintComponent implements OnInit {
   onSubmit(values: any) {
     
     this.charts.createComplaint(
-
-
-      this.formGroup.value.name, 
+   this.formGroup.value.name, 
       this.formGroup.value.EngineerType,      
       this.formGroup.value.DateOfjoining,
       "c_status",
       "c_assignBy"
 
     ).subscribe((result: any) => {
-      if(result.status === "success"){
-        this.showSuccessMsg=true;
-       }if(result.status === "error"){
-       // console.log(result.message)
-        this.showInvalidMsg=true;  
-       }      
-
+      if (result.status === "success") {
+        this.notificationservice.success("Raise Complaint successfully")
+      } if (result.status === "error") {
+        this.notificationservice.error(" Complaint not Raise")
+      }  
     })
        
     this.spinner.show();

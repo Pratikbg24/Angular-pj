@@ -1,8 +1,6 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <ngx-spinner [fullScreen]="true" type="ball-clip-rotate-multiple" size="medium">
-    <p class="loading">Loading Awesomeness...</p>
 </ngx-spinner>
-
 <div class="container">
     <div class="row">
         <div class="col-md-8 mx-auto">
@@ -64,27 +62,9 @@
                                 </div>
                             </ng-container>
                         </div>
-                        <!-- 
-                        <div class="form-group">
-                            <label>Engineer Type<p class="p12">*</p></label>
-                            <select class="form-control" formControlName="EngineerType" placeholder=" Choose Engineer">
-                                <option value="">Choose engg type</option>
-                                <option *ngFor="let engg of enggList; let i= index" value="{{engg.name}}"
-                                    [selected]="i == 0">{{engg.name}}</option>
-                            </select>
-
-                            <div class="validation-errors">
-                                <ng-container *ngFor="let validation of validation_messages.EngineerType">
-                                    <div class="error-message text-danger" *ngIf="formGroup.get('EngineerType').hasError(validation.type) && (formGroup.get('EngineerType').dirty || formGroup.get('EngineerType').touched)">
-                                        <span name="information-circle-outline"></span> {{ validation.message }}
-                                    </div>
-                                </ng-container>
-                            </div>
-                        </div> -->
                         <div class="form-group">
                             <label>Date Of Joining<p class="p12">*</p></label>
                             <input type="text" class="form-control" formControlName="DateOfjoining" placeholder="DD/MM/YYYY" bsDatepicker #d="bsDatepicker" [bsConfig]="dpconfig" [maxDate]="maxDate" [ngClass]="{ 'is-invalid': submitted && f.DateOfjoining.errors?.invalid }">
-                            <!-- <i class="fa fa-calendar"></i> -->
                         </div>
                         <div class="validation-errors">
                             <ng-container *ngFor="let validation of validation_messages.DateOfjoining">
@@ -93,7 +73,6 @@
                                 </div>
                             </ng-container>
                         </div>
-
                         <div class="form-group">
                             <label>Password<p class="p12">*</p></label>
                             <div class="input-group">

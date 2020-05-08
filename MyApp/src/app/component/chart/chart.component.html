@@ -1,13 +1,54 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 
-
-<div class="chart-container"  style="float: left; height:30vh; width:50vw;margin-top: 100px !important;">    
-   <canvas id="canvas"></canvas>    
- </div>
-
-
- <div *ngFor='let user of users' style="text-align: center;">
-  <h2>
-         {{user.u_joinDate}}    </h2>
-</div>
-
-
+<body>
+  <div class="container">
+    <div class="row row1">
+      <div class="col-md-3 offset-md-3 ">
+        <button class="btn btn-success" (click)="userCount()">
+          <span class="count"> {{userCount1}}</span><span><i class="fa fa-users" aria-hidden="true"></i></span><br>
+          <span class="lable">Users</span>
+        </button>
+      </div>
+      <div class="col-md-3">
+        <button class="btn btn-primary"  (click)="enggCount()">
+          <span class="count">{{enggCount1}}</span><span><i class="fa fa-users" aria-hidden="true"></i></span><br>
+          <span class="lable">Engineers</span>
+        </button>
+      </div>
+      <div class="col-md-3">
+        <button class="btn btn-warning">
+          <span class="count">{{adminCount1}}</span><span><i class="fa fa-users" aria-hidden="true"></i></span><br>
+          <span class="lable">Admin</span>
+        </button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class=" panel panel-default">
+          <div class="panel-body">
+            <div class="chart-container">
+              <canvas id="complaintsStatusCart"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div class="chart-container">
+              <canvas id="canvas"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </body>
+  
+  
+  
+  
+  
+  
+  

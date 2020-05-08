@@ -1,5 +1,4 @@
 <ngx-spinner [fullScreen]="true" type="ball-clip-rotate-multiple" size="medium">
-    <p class="loading">Loading Awesomeness...</p>
 </ngx-spinner>
 
 <div class="container">
@@ -7,7 +6,7 @@
         <div class="col-md-8 mx-auto">
             <div class="card">
                 <div class="card-header">
-                    <h3> Customer Registration </h3>
+                    <h3> Add New Customer </h3>
                 </div>
                 <div class="card-body">
                     <form class="form" [formGroup]="formGroup" (ngSubmit)="onSubmit(fb)">
@@ -84,7 +83,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="gender">Purchased Type:<p class="p12">*</p></label>
+                            <label for="gender">Purchased Type<p class="p12">*</p></label>
                             <div class="form-control">
                                 <div class="custom-control custom-radio custom-control-inline">
                                     <input type="radio" value="New" name="machieCondition" formControlName="machieCondition" (change)="changeCondition($event)">
@@ -96,7 +95,6 @@
                                 </div>
                             </div>
                             <div *ngIf="f.machieCondition.touched && f.machieCondition.invalid">
-                                <!-- <div *ngIf="f.machieCondition.errors.required">Name is required.</div> -->
                             </div>
                         </div>
                         <div class="validation-errors">
@@ -217,7 +215,7 @@
                                 Register
                             </button>
                             <button type="reset" class="btn btn-secondary" id="ResetForm">
-                                ResetForm
+                                Reset
                             </button>
                         </div>
                     </form>

@@ -1,5 +1,4 @@
 <ngx-spinner [fullScreen]="true" type="ball-clip-rotate-multiple" size="medium">
-    <p class="loading">Loading Awesomeness...</p>
 </ngx-spinner>
 <div class="container">
     <div class="row">
@@ -10,7 +9,6 @@
                 </div>
                 <div class="card-body">
                     <form class="form" [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value)">
-                        <!-- <div *ngIf="data"> -->
                         <div class="form-group">
                             <label for="u_name">Name<p class="p12">*</p></label>
                             <input type="text" class="form-control" formControlName="u_name" name="u_name" placeholder="Enter Your Name" [ngClass]="{ 'is-invalid': submitted && f.u_name.errors?.invalid }" />
@@ -48,14 +46,6 @@
                             <label for="u_email">Email<p class="p12">*</p></label>
                             <input type="email" class="form-control" formControlName="email" placeholder="Enter Your Email">
                         </div>
-                        <!-- <div class="validation-errors">
-                                <ng-container *ngFor="let validation of validation_messages.email">
-                                    <div class="error-message text-danger"
-                                        *ngIf="formGroup.get('email').hasError(validation.type) && (formGroup.get('email').dirty || formGroup.get('email').touched)">
-                                        <span name="information-circle-outline"></span> {{ validation.message }}
-                                    </div>
-                                </ng-container>
-                            </div> -->
                         <div class="form-group">
                             <label for="u_address">Address<p class="p12">*</p></label>
                             <textarea class="form-control" formControlName="Address" placeholder="Enter Your Address" [ngClass]="{ 'is-invalid': submitted && f.Address.errors?.invalid }"></textarea>
@@ -84,7 +74,7 @@
                         </div>
                         <div class="form-group">
                             <label for="gender">Purchased Type:<p class="p12">*</p></label>
-                            <div class="form-control">
+                            <div class="form-control" aria-disabled="true" id="radio12">
                                 <div class="custom-control custom-radio custom-control-inline ">
                                     <input type="radio" value="New" name="machieCondition" formControlName="machieCondition" (change)="changeCondition($event)">
                                     <label id="New" for="New">New</label>
@@ -95,7 +85,6 @@
                                 </div>
                             </div>
                             <div *ngIf="f.machieCondition.touched && f.machieCondition.invalid">
-                                <!-- <div *ngIf="f.machieCondition.errors.required">Name is required.</div> -->
                             </div>
                         </div>
                         <div class="validation-errors">
@@ -219,7 +208,6 @@
                                 Cancle
                             </button>
                         </div>
-                        <!-- </div> -->
                     </form>
                 </div>
             </div>

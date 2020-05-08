@@ -6,7 +6,8 @@ import { HttpClient } from '@angular/common/http';
 import { FormGroup, FormArray, Validators, FormBuilder } from '@angular/forms';
 import { AppSettings } from '../../app.settings'
 import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker'
-
+import { NotificationServiceService } from 'src/app/service/NOTIFICATION-ALERT/notification-service.service';
+declare var $: any;
 
 @Component({
   selector: 'app-view-all-complaints',
@@ -56,14 +57,17 @@ export class ViewAllComplaintsComponent implements OnInit {
         type: 'required', message: '*Please select date'
       }
     ],
+    'email': [
+      { type: 'required', message: '*Email is required' },
+      { type: 'pattern', message: '*Enter valid email' }
+    ],
    
   }
- 
-
   constructor(private route: ActivatedRoute,
     private router: Router,
     private charts: ChartService,
     private fb: FormBuilder,
+    private notificationservice: NotificationServiceService,
     private dpconfig:BsDatepickerConfig,
     private spinner: NgxSpinnerService,
     private httpCilent: HttpClient) {
@@ -72,11 +76,10 @@ export class ViewAllComplaintsComponent implements OnInit {
       this.maxDate = new Date();
       this.maxDate.setDate(this.maxDate.getDate() + 0)
       this.Machinelist = [
+        { name: "Open" },
         { name: "Pending" },
         { name: "Close" },
       ];
-     
-   
   }
   ngOnInit() {
     this.initializeItems()
@@ -85,7 +88,11 @@ export class ViewAllComplaintsComponent implements OnInit {
       Datepurchased: ['', Validators.compose([
         Validators.required
       ])],
-   
+      email: ['', Validators.compose([
+        Validators.required,
+        Validators.pattern("[a-z_A-Z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z_A-Z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z_A-Z0-9](?:[a-z_A-Z0-9-]*[a-z_A-Z0-9])?\.)+[a-z_A-Z0-9](?:[a-z_A-Z0-9-]*[a-z_A-Z0-9])?")
+      ])],
+    
     })
   }
   getItems(ev: any) {
@@ -95,13 +102,11 @@ export class ViewAllComplaintsComponent implements OnInit {
        if(parseInt(item.c_id) === parseInt(val)){
         return parseInt(item.c_id) === parseInt(val);
        }
-        
       })
     }
     if(val.length === 0){
       this.initializeItems();       }
   }
-  
   initializeItems() {
     this.charts.getAllComplaint().subscribe((result: any) => {
       this.complaint = result.data;
@@ -131,5 +136,23 @@ export class ViewAllComplaintsComponent implements OnInit {
   
     })
   }
-
+  excelToMail()
+  {
+    this.charts.downloadAllComplait(
+      this.formGroup.value.email,
+      this.complaint
+    ).subscribe((result:any)=>{
+      if (result.status === "success") {
+        this.notificationservice.success("Complaint Data Send to Mail successfully")
+        this.initializeItems();
+    
+      } if (result.status === "error") {
+        this.notificationservice.error(" Complaint Data is not Send to Mail ")
+        this.initializeItems();
+      }  
+    })
+  }
+  openModal(item:any){
+    $("#myModal").modal('show');
+  }
 }

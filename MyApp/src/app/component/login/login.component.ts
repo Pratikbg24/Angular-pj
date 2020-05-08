@@ -62,10 +62,7 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     this.spinner.show();
     this.service.userLogin(this.formGroup.value.email, this.formGroup.value.password).subscribe((data: any) => {
-      console.log(data);
-      window.localStorage.setItem("id", data.data.u_id) ;
-      //  s   
-
+     
     if (data.status === "success" && data.data.u_role === 3) {
         if (data.status === "success") {
           this.spinner.show();
@@ -91,21 +88,10 @@ export class LoginComponent implements OnInit {
         }
         this.formGroup.reset();
       }
-/*
-      console.log(this.activatedRoute.snapshot.params.u_id)
-      this.u_id = this.activatedRoute.snapshot.params["u_id"];
-      console.log("Login Id="+this.u_id)
-     
-      
-\
-*/ 
-   window.localStorage.setItem("u_id",JSON.stringify( data.u_id)) ;
-  //  sessionStorage.setItem('u_id', data.id);
-
+window.localStorage.setItem("id", data.data.u_id) ;
     });
-  }
-
-  toggleFieldTextType() {
+  } 
+   toggleFieldTextType() {
     this.PasswordfieldTextType = !this.PasswordfieldTextType;
   }
 

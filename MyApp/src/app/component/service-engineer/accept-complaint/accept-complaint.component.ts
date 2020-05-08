@@ -4,8 +4,7 @@ import { NgxSpinnerService } from 'ngx-spinner'
 import { ChartService } from '../../../service/chart.service'
 import { HttpClient } from '@angular/common/http';
 import { FormGroup, FormArray, Validators, FormBuilder } from '@angular/forms';
-import { AppSettings } from '../../../app.settings'
-import{user} from '../../../user.module'
+import { NotificationServiceService } from 'src/app/service/NOTIFICATION-ALERT/notification-service.service';
 declare var $: any;
 
 @Component({
@@ -14,8 +13,7 @@ declare var $: any;
   styleUrls: ['./accept-complaint.component.css']
 })
 export class AcceptComplaintComponent implements OnInit {
- 
- assignData = {
+  assignData = {
     c_id:"",
     c_assignBy: "",
     c_name: "",
@@ -27,8 +25,6 @@ export class AcceptComplaintComponent implements OnInit {
   };
   enggData = {};
   complaintData = [];
-
- 
   arr: FormArray
   formGroup: FormGroup
   submitted = false
@@ -40,12 +36,10 @@ export class AcceptComplaintComponent implements OnInit {
     eng_EMail: null,
   }
   pageTitle = 'All Complaints';
-
-  complaint: any[];
+   complaint: any[];
   c_id: any[];
   Machine_type: any = {
-    u_Machinepurchesed: null,
-
+  u_Machinepurchesed: null,
   }
   Machinelist: Array<any> = [];
  
@@ -66,34 +60,45 @@ validation_messages = {
     'Machine_purchase': [
       { type: 'required', message: '*Please select any one machine' },
     ],
-  
+    'comments': [
+      { type: 'required', message: '*Comment is required' }
+    ],
+    'Status': [
+      { type: 'required', message: '*Please select any one machine' },
+    ]
+
   }
 
 
   constructor(private route: ActivatedRoute,
+    private notificationservice: NotificationServiceService,
+    private fb: FormBuilder,
     private router: Router,
     private charts: ChartService,
     private spinner: NgxSpinnerService,
     private httpCilent: HttpClient) {
 
       this.Machinelist = [
-        { name: "Pending" },
-        { name: "Close" },
-        { name: "Open" },
-      ];
-     
-   
+        {key:1, name: "Open" },
+        {key:2 ,name: "Close" },
+        {key:3 ,name: "Pending" },
+        
+             ];   
   }
   ngOnInit() {
-  
     this.initializeItems()
-    
+    this.formGroup=this.fb.group({
+      comments: ['', Validators.compose([
+        Validators.required
+      ])],
+      Status: ['', Validators.compose([
+        Validators.required
+      ])]
 
+    })
   }
   getItems(ev: any) {
-    // set val to the value of the searchbar
     const val = ev.target.value;
-    // if the value is an empty string don't filter the items
     if (val && val.trim() != '') {
       this.complaint = this.complaint.filter((item) => {
        if(parseInt(item.c_id) === parseInt(val)){
@@ -103,7 +108,7 @@ validation_messages = {
       })
     }
     if(val.length === 0){
-      this.initializeItems();   // Reset items back to all of the items
+      this.initializeItems();  
     }
   }
 
@@ -118,21 +123,20 @@ validation_messages = {
       });
     });
   }
-
-
   addData(){
-    let data={
-      status:parseInt(this.assignData.c_status),
-      complaintId:this.assignData.c_id,
-      e_desc:this.assignData.e_desc
-    }
-    this.charts.updateComplaint(data).subscribe((result:any)=>{
-      if(result.status === "success"){
-        window.alert("Sucess")  
-      
-      }
+    this.charts.updateComplaint(
+      parseInt( this.formGroup.value.Status),
+      this.assignData.c_id,
+      this.formGroup.value.comments).subscribe((result:any)=>{
+      if (result.status === "success") {
+        this.notificationservice.success("Complaint Update successfully")
+        this.initializeItems();
+    
+      } if (result.status === "error") {
+        this.notificationservice.error(" Complaint not Update")
+        this.initializeItems();
+      }  
     })
-    console.log("UserData"+JSON.stringify(this.assignData))
   }
 
  
@@ -148,9 +152,7 @@ validation_messages = {
       this.assignData.u_altermobile=result.data.u_altermobile;
       this.assignData.u_email=result.data.u_email;
       this.assignData.e_desc=result.data.e_desc;
-
 })
-
     $("#customerModal").modal('show');
   }
 

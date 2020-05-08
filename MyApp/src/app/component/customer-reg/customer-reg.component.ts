@@ -22,10 +22,6 @@ export class CustomerRegComponent implements OnInit {
   servicePeriod: Array<any> = [];
   warrentyperiod: Array<any> = [];
   maxDate: Date;
-  // public form = [
-  //   { key: "new", val: 'New', isChecked: false },
-  //   { key: "reCondition", val: 'Re Conditioned', isChecked: true }
-  // ];
   validation_messages = {
     'name': [
       { type: 'required', message: '*Name is required' },
@@ -151,7 +147,7 @@ export class CustomerRegComponent implements OnInit {
       ])],
       email: ['', Validators.compose([
         Validators.required,
-        Validators.pattern("[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?")
+        Validators.pattern("[a-z_A-Z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z_A-Z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z_A-Z0-9](?:[a-z_A-Z0-9-]*[a-z_A-Z0-9])?\.)+[a-z_A-Z0-9](?:[a-z_A-Z0-9-]*[a-z_A-Z0-9])?")
       ])],
       Address: ['', Validators.compose([
         Validators.required
@@ -207,13 +203,12 @@ export class CustomerRegComponent implements OnInit {
     return this.formGroup.get('machieCondition');
   }
   onSubmit() {
-    // console.log(this.formGroup.value)
     this.spinner.show();
     this.custRegservice.getData(
       this.formGroup.value.name,
       this.formGroup.value.Mobilenumber,
       this.formGroup.value.Alternatemobile,
-      this.formGroup.value.email,
+      this.formGroup.value.email.toLowerCase(),
       this.formGroup.value.Address,
       this.formGroup.value.Machine_purchase,
       this.formGroup.value.machieCondition,
@@ -225,12 +220,10 @@ export class CustomerRegComponent implements OnInit {
       this.formGroup.value.password,
       this.formGroup.value.confirmPassword)
       .subscribe((data: any) => {
-        // console.log(data)
         if (data.status === "success") {
           this.notificationservice.success("Registration Successfully ")
           this.router.navigate(['/home1'])
         } if (data.status === "error") {
-          // console.log(data.message)
           this.notificationservice.error("The email address or mobile number you have entered is already registered");       
         }
       });
@@ -247,6 +240,5 @@ export class CustomerRegComponent implements OnInit {
     }
   }
   changeCondition(e){
-    // console.log(e.target.value);
   }
 }

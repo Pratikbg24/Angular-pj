@@ -6,7 +6,6 @@ import { ServiceEngineerComponent } from './component/service-engineer/service-e
 import { CustomerRegComponent } from './component/customer-reg/customer-reg.component';
 import { PageNotFoundComponent } from './component/page-not-found/page-not-found.component';
 import { ChartComponent } from "./component/chart/chart.component"
-//import { CustomerDetailComponent } from './component/customer-detail/customer-detail.component';
 import { UpdateCustomerComponent } from './component/customer/update-customer/update-customer.component';
 import { UpdateServiceEnggComponent } from './component/ServiceEngg/update-service-engg/update-service-engg.component';
 import { CustomerListComponent } from './component/CUSTOMERS/customer-list/customer-list.component';
@@ -41,7 +40,7 @@ const routes: Routes = [
           path: 'app-view-previous-complaint',
           component: ViewPreviousComplaintComponent,
   
-        },         
+        },
       ]
   },
   {
@@ -56,8 +55,7 @@ const routes: Routes = [
       {
         path: 'app-engg-view-previous',
         component: EnggViewPreviousComponent,
-
-      },         
+      },
     ]
 },
   {
@@ -87,7 +85,7 @@ const routes: Routes = [
         component: UpdateServiceEnggComponent,
       },
       {
-        path:'serviceEngglist/view/:u_id',
+        path:'updateserviceEngineer/view/:u_id',
         component:ViewServiceEngineerComponent
       },
       {
@@ -107,7 +105,7 @@ const routes: Routes = [
         component: UpdateCustomerComponent
       },
       {
-          path:'customerdetails/view/:u_id',
+          path:'updateCustomer1/view/:u_id',
           component:ViewCustomerComponent
       },
       {

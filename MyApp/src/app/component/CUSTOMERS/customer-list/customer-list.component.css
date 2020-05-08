@@ -1,33 +1,49 @@
-.input-group {
-    width: 50%;
-    margin-left: 25%;
+.row{
+    width: 70%;
+    margin-left: 10%;
 }
-
 h3 {
     text-align: center;
+    margin-left: 12%;
 }
-
 .btn {
     border-radius: 10px;
+    margin: 5px;
 }
-
+.dropdown-menu{
+    text-align: center;
+    min-width: 0;
+}
 .table {
-    /* margin-left: 10px; */
-    /* margin-right: 10px; */
     margin-top: 20px;
-    /* margin-bottom: 20px; */
-    /* overflow-x:scroll; */
+    border: 1px solid black;
+    }
+.table td,th{
+    border: 1px solid #ddd;
+    padding: 8px;
 }
-
-.form-cpntrol {
+.table tr:nth-child(even){
+    background-color: #f2f2f2;
+}
+.table tr:hover {
+    background-color: #ddd;
+}
+.table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4CAF50;
+    color: white;
+  }
+.form-control {
     margin: 10px;
+    margin-left: 30%;
     margin-top: 20px;
+    align-items: center;
 }
-
 .btn {
     color: #fff;
     border-radius: 4px;
-    background: #60c7c1;
     text-decoration: none;
     transition: all 0.4s;
     line-height: normal;
@@ -38,11 +54,9 @@ h3 {
     margin: 0 5px;
     outline: none !important;
 }
-
 .btn-danger {
     background: #f15e5e;
 }
-
 .btn-danger:hover,
 .btn-danger:focus {
     background: #ee3535;

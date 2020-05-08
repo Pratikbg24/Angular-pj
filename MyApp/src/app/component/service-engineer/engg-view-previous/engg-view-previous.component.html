@@ -1,5 +1,5 @@
 <ngx-spinner [fullScreen]="true" type="ball-clip-rotate-multiple" size="medium">
-    <p class="loading">Loading Awesomeness...</p>
+    <p class="loading"></p>
 </ngx-spinner>
 
 <div class="container" *ngIf="complaint">
@@ -40,8 +40,7 @@
                                     {{user.c_desc}}
                                 </td>
                                 <td>
-                                    {{user.c_date}}
-
+                                    {{user.c_date | date:'dd/MM/yyy'}}
                                 </td>
                                 <td>{{user.e_desc}}</td>
                             </tr>

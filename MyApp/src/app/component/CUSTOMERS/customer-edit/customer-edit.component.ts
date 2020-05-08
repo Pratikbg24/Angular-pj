@@ -8,7 +8,6 @@ import { UpdateServiceService } from '../../../service/update-service.service'
 import { DatePipe } from '@angular/common'
 import { from } from 'rxjs';
 import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
-//import { CustomerListComponent } from '../customer-list/customer-list.component';
 import { NotificationServiceService } from 'src/app/service/NOTIFICATION-ALERT/notification-service.service';
 @Component({
   selector: 'app-customer-edit',
@@ -208,7 +207,6 @@ export class CustomerEditComponent implements OnInit {
     return this.formGroup.controls;
   }
     viewCustomer() {
-    // console.log(this.activatedRoute.snapshot.params.u_id)
     this.u_id = this.activatedRoute.snapshot.params["u_id"];
     this.updateservice.getItem(this.u_id).subscribe((result: any) => {
       this.formGroup.patchValue({
@@ -227,12 +225,8 @@ export class CustomerEditComponent implements OnInit {
         password: result.data[0].u_password,
         confirmPassword: result.data[0].u_cpassword,
       })
-      // console.log(this.u_id)
-      //console.log(result)
       this.data4 = result
-      // console.log(this.data4)
       this.customerdata = this.data4;
-      // console.log(this.customerdata)
     })
   }
   onSubmit(formValue: any) {
@@ -258,7 +252,6 @@ export class CustomerEditComponent implements OnInit {
         this.notificationservice.success("Record updated successfully")
       } if (result.status === "error") {
         this.notificationservice.error(" Record not updated")
-        // console.log(result.message)
       }
         this.router.navigate(['/home1/updateCustomer1'])
     })
@@ -267,7 +260,6 @@ export class CustomerEditComponent implements OnInit {
     if (this.formGroup.invalid) {
       return;
     }
-   // this.formGroup.reset();
   }
   toggleFieldTextType(event: any) {
     if (event.target.id === 'btn11') {
@@ -277,6 +269,5 @@ export class CustomerEditComponent implements OnInit {
     }
   }
   changeCondition(e){
-    // console.log(e.target.value);
   }
 }

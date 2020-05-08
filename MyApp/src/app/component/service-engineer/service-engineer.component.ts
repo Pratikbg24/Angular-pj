@@ -95,7 +95,7 @@ export class ServiceEngineerComponent implements OnInit {
       ])],
       email: ['', Validators.compose([
         Validators.required,
-        Validators.pattern("[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?")
+        Validators.pattern("[a-z_A-Z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z_A-Z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z_A-Z0-9](?:[a-z_A-Z0-9-]*[a-z_A-Z0-9])?\.)+[a-z_A-Z0-9](?:[a-z_A-Z0-9-]*[a-z_A-Z0-9])?")
       ])],
       Address: ['', Validators.compose([
         Validators.required
@@ -134,24 +134,21 @@ export class ServiceEngineerComponent implements OnInit {
     return this.formGroup.controls;
   }
   onSubmit() {
-    //console.log(this.formGroup.value)
     this.enggRegservice.getData(
       this.formGroup.value.name, 
       this.formGroup.value.Mobilenumber,
       this.formGroup.value.Alternatemobile,
-      this.formGroup.value.email,
+      this.formGroup.value.email.toLowerCase(),
       this.formGroup.value.Address,
       this.formGroup.value.EngineerType,      
       this.formGroup.value.DateOfjoining,
       this.formGroup.value.password,
       this.formGroup.value.confirmPassword)
       .subscribe((data:any) => {
-        // console.log(data)
         if(data.status === "success"){          
           this.notification.success("Registration Successfully!")
           this.router.navigate(['/home1'])
         }if(data.status === "error"){
-          // console.log(data.message)
           this.notification.error("The email address or phone number you have entered is already registered!.")
          }       
        });    
@@ -160,7 +157,7 @@ export class ServiceEngineerComponent implements OnInit {
     if (this.formGroup.invalid) {
       return;
     }
-    // this.formGroup.reset();
+   
   }
   toggleFieldTextType(event: any) {
     if (event.target.id === 'btn1') {

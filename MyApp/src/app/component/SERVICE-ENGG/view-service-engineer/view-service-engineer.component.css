@@ -1,46 +1,37 @@
-.input-group{
+.input-group {
     width: 50%;
-    margin-left:25%;
+    margin-left: 25%;
 }
-p{
+
+p {
     margin-left: 10px;
 }
-/* .row{
-    margin-left: 200px;
-} */
-#row1{
+
+#row1 {
     margin-left: 100px;
 }
-img{
+
+img {
     width: 130px;
     height: 130px;
 }
-.container{
+
+.container {
     margin-left: 100px;
 }
-/* #row1{
-    margin-left: 5;
-} */
-.card-header{
+
+.card-header {
     text-align: center;
 }
-.btn{
-    float:right;
+
+.btn {
+    float: right;
     margin-top: 5px;
     margin: 20px;
     width: 30%;
-    background-color:  #007bff;
-    
 }
-.btn-primary:hover, .btn-primary:focus {
-    background: black;
-}
-.fa{
+
+.fa {
     font-size: 24px;
     margin-right: 10px;
-    }
-/* #back{
-    float: right;
-    width: 40%;
-    margin-right: 0;
-} */
+}

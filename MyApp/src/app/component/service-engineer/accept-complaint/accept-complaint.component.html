@@ -1,7 +1,5 @@
 <ngx-spinner [fullScreen]="true" type="ball-clip-rotate-multiple" size="medium">
-    <p class="loading">Loading Awesomeness...</p>
 </ngx-spinner>
-
 <div class="container" *ngIf="complaint">
     <div class="row">
         <div class='card'>
@@ -10,7 +8,8 @@
             </div>
             <div class='card-body'>
                 <div class='row'>
-                    <div class='col-md-1' style="margin-left: 21px;margin-top: 5px; font-size: medium;"><b>Filter By</b> </div>
+                    <div class='col-md-1' style="margin-left: 21px;margin-top: 5px; font-size: medium;"><b>Filter By</b>
+                    </div>
                     <div class='col-md-8'>
                         <input style="margin-bottom: 17px;" class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" />
                     </div>
@@ -24,12 +23,10 @@
                     <table class='table'>
                         <thead>
                             <tr>
-
                                 <th>Id</th>
                                 <th>Complaint</th>
                                 <th>Date</th>
                                 <th>Status</th>
-
                             </tr>
                         </thead>
                         <tbody>
@@ -41,18 +38,13 @@
                                     {{user.c_desc}}
                                 </td>
                                 <td>
-                                    {{user.c_date}}
-
+                                    {{user.c_date | date:'dd/MM/yyy'}}
                                 </td>
                                 <td>{{user.c_status}}</td>
-
-
                                 <td>
                                     <button class='btn btn-primary' (click)="openModal(user)">View</button>
                                 </td>
-
                             </tr>
-
                         </tbody>
                     </table>
                 </div>
@@ -60,14 +52,9 @@
         </div>
     </div>
 </div>
-
-
-
-
 <div id="customerModal" class="modal fade" role="dialog">
     <div>
         <div class="modal-dialog">
-            <!-- Modal content-->
             <div class="modal-content">
                 <div class="modal-header">
                     <h2 style="color: #337ab7;">Complaint Details </h2>
@@ -80,7 +67,7 @@
                                 <label style="margin-top:12px"><b>Complaint Id:</b></label>
                             </div>
                             <div class="col-md-10">
-                                <input type="text" name="engg_id" [ngModel]="assignData.c_id" class="form-control" id="engg_id" disabled>
+                                <input type="text" name="c_id" [ngModel]="assignData.c_id" class="form-control" id="c_id" disabled>
                             </div>
                         </div>
                         <div class="row" style="margin-top: 15px;">
@@ -91,39 +78,30 @@
                                 <input type="text" name="engg_name" [ngModel]="assignData.c_name" class="form-control" id="engg_name" disabled>
                             </div>
                         </div>
-
                         <div class="row" style="margin-top: 15px;">
                             <div class="col-md-2">
-
                                 <label style="margin-top:12px"><b>Mobile Number:</b></label>
                             </div>
                             <div class="col-md-10">
                                 <input type="text" name="engg_name" [ngModel]="assignData.u_mobile" class="form-control" id="engg_name" disabled>
                             </div>
                         </div>
-
                         <div class="row" style="margin-top: 15px;">
                             <div class="col-md-2">
-
                                 <label style="margin-top:12px"><b>Alternative Mobile Number:</b></label>
                             </div>
                             <div class="col-md-10">
                                 <input type="text" name="engg_name" [ngModel]="assignData.u_altermobile" class="form-control" id="engg_name" disabled>
                             </div>
                         </div>
-
                         <div class="row" style="margin-top: 15px;">
                             <div class="col-md-2">
-
                                 <label style="margin-top:12px"><b>Email:</b></label>
                             </div>
                             <div class="col-md-10">
                                 <input type="text" name="Email" [ngModel]="assignData.u_email" class="form-control" id="Email" disabled>
-
                             </div>
-
                         </div>
-
                         <div class="row" style="margin-top: 15px;">
                             <div class="col-md-2">
 
@@ -131,80 +109,69 @@
                             </div>
                             <div class="col-md-10">
                                 <input type="text" name="Email" [ngModel]="assignData.c_desc" class="form-control" id="Email" disabled>
-
                             </div>
-
                         </div>
-
-
                         <div class="row" style="margin-top: 15px;">
                             <div class="col-md-2">
-
                                 <label style="margin-top:12px"><b>Complaint Date:</b></label>
                             </div>
                             <div class="col-md-10">
                                 <input type="text" name="Email" [ngModel]="assignData.c_date" class="form-control" id="Email" disabled>
-
                             </div>
-
                         </div>
-
                         <div class="row" style="margin-top: 15px;">
                             <div class="col-md-2">
-
                                 <label style="margin-top:12px"><b>Photos:</b></label>
                             </div>
                             <div class="col-md-10">
                                 <input type="text" name="Email" placeholder="N/A" class="form-control" id="Email" disabled>
-
                             </div>
-
                         </div>
-
                         <div class="row" style="margin-top: 15px;">
                             <div class="col-md-2">
-
                                 <label style="margin-top:12px"><b>Status:</b></label>
                             </div>
                             <div class="col-md-10">
                                 <input type="text" name="Email" [ngModel]="assignData.c_status" class="form-control" id="Email" disabled>
-
                             </div>
-
                         </div>
-
-                        <div class="row" style="margin-top: 15px;">
+                        <div class="row" [formGroup]="formGroup" style="margin-top: 15px;">
                             <div class="col-md-2">
-
                                 <label style="margin-top:12px"><b>Comments:</b></label>
                             </div>
                             <div class="col-md-10">
-                                <input type="text" name="comment " class="form-control " id="Email ">
-
+                                <input type="text" name="comments " formControlName="comments" placeholder="Write your comments" class="form-control " id="Email" [ngClass]="{ 'is-invalid': submitted && f.comments.errors?.invalid }">
                             </div>
-
                         </div>
-
-
-                        <div class="row " style="margin-top: 15px; ">
+                        <div class="validation-errors">
+                            <ng-container *ngFor="let validation of validation_messages.comments">
+                                <div class="error-message text-danger" *ngIf="formGroup.get('comments').hasError(validation.type) && (formGroup.get('comments').dirty || formGroup.get('comments').touched)">
+                                    <span name="information-circle-outline"></span> {{ validation.message }}
+                                </div>
+                            </ng-container>
+                        </div>
+                        <div class="row " [formGroup]="formGroup" style="margin-top: 15px; ">
                             <div class="col-md-2 ">
-
                                 <label style="margin-top:12px "><b>Change Status:</b></label>
                             </div>
                             <div class="col-md-10 ">
-                                <select class="form-control " placeholder="Change Status">
-                                <option *ngFor="let machine of Machinelist;let i=index " value="{{machine.name}} "
-                                    [selected]="i==0 ">{{machine.name}} </option>
-                            </select>
-
+                                <select class="form-control " placeholder="Change Status" formControlName="Status">
+                                    <option value="">Choose your Status</option>
+                                    <option *ngFor="let machine of Machinelist;let i=index " value="{{machine.key}} "
+                                        [selected]="i==0 ">{{machine.name}} </option>
+                                </select>
+                                <div class="validation-errors">
+                                    <ng-container *ngFor="let validation of validation_messages.Status">
+                                        <div class="error-message text-danger" *ngIf="formGroup.get('Status').hasError(validation.type) && (formGroup.get('Status').dirty || formGroup.get('Status').touched)">
+                                            <span name="information-circle-outline"></span> {{ validation.message }}
+                                        </div>
+                                    </ng-container>
+                                </div>
                             </div>
-
                         </div>
-                        <button type="button " class="btn btn-primary btn-lg btn-block " style="margin-top: 12px;padding-top: 2px !important;padding-bottom: 2px !important; " data-dismiss="modal " (click)="addData()">ADD DATA</button>
+                        <button type="submit " data-dismiss="modal" class="btn btn-primary btn-lg btn-block " style="margin-top: 12px;padding-top: 2px !important;padding-bottom: 2px !important; " (click)="addData()" [disabled]="!formGroup.valid">ADD DATA</button>
                     </div>
                 </div>
-            </div>
-            <div class="modal-footer ">
             </div>
         </div>
     </div>

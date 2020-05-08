@@ -16,19 +16,7 @@ export class AppComponent {
   connectionStatusMessage: string;
   connectionStatus: string;
   constructor(private messageService: GetuidService) {
-    // subscribe to home component messages
-    this.subscription = this.messageService.getMessage().subscribe(message => {
-      if (message) {
-        this.messages.push(message);
-      } else {
-        // clear messages when empty message received
-        this.messages = [];
-      }
-    });
 }    ngOnInit(): void {
-        /**
-        * Get the online/offline status from browser window
-        */
         this.onlineEvent = fromEvent(window, 'online');
         this.offlineEvent = fromEvent(window, 'offline');
     

@@ -1,6 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { UpdateServiceService } from 'src/app/service/update-service.service';
-//import { ConfirmDialogserviceService } from 'src/app/service/CONFIRM-DIALOG/confirm-dialogservice.service';
 import { NotificationServiceService } from 'src/app/service/NOTIFICATION-ALERT/notification-service.service';
 import { LoadingSpinnerService } from '../../../service/loading-spinner.service'
 declare var $: any
@@ -16,7 +15,6 @@ export class ServiceEnggListComponent implements OnInit {
   u_email = "";
   u_id: any
   constructor(private updateservice: UpdateServiceService,
-   // private confirmdialogservice: ConfirmDialogserviceService,
     private notificationservice: NotificationServiceService,
     private spinner: LoadingSpinnerService) {
     this.serviceEnggData = [];
@@ -24,7 +22,6 @@ export class ServiceEnggListComponent implements OnInit {
 
   ngOnInit() {
     this.getAllServiceEngg();
-    // this.getEngineerType();
   }
   getAllServiceEngg() {
     this.updateservice.getList().subscribe((data: any) => {
@@ -48,7 +45,6 @@ export class ServiceEnggListComponent implements OnInit {
         this.notificationservice.error("The record cannot be deleted")
       }
     })
-    // console.log('Agree clicked');
     this.spinner.show();
   }
   openModal(item: any) {
@@ -57,5 +53,8 @@ export class ServiceEnggListComponent implements OnInit {
   }
   editServiceEngg() {
     this.spinner.show();
+  }
+  loader(){
+  this.spinner.show()
   }
 }

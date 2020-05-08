@@ -5,17 +5,12 @@ import { ChartService } from '../../../service/chart.service'
 import { HttpClient } from '@angular/common/http';
 import { FormGroup, FormArray, Validators, FormBuilder } from '@angular/forms';
 import { AppSettings } from '../../../app.settings'
-import {GetuidService}  from '../../../service/getuid.service'
-
-
 @Component({
   selector: 'app-view-previous-complaint',
   templateUrl: './view-previous-complaint.component.html',
   styleUrls: ['./view-previous-complaint.component.css']
 })
 export class ViewPreviousComplaintComponent implements OnInit {
-  
-
   arr: FormArray
   formGroup: FormGroup
   submitted = false
@@ -44,25 +39,17 @@ export class ViewPreviousComplaintComponent implements OnInit {
   ]
   showSuccessMsg: boolean = false;
   showInvalidMsg: boolean = false;
-
-
   constructor(private route: ActivatedRoute,
     private router: Router,
     private charts: ChartService,
     private spinner: NgxSpinnerService,
-    private httpCilent: HttpClient) {
-      
-    
-   
-   
+    private httpCilent: HttpClient) { 
   }
   ngOnInit() {
    this.initializeItems();
   }
- 
-  initializeItems(){
- 
-    this.charts.getAllComplaint().subscribe((data: any) => {
+    initializeItems(){
+  this.charts.getAllComplaint().subscribe((data: any) => {
       this.complaint= data.data.filter(el => {
         if (el.c_assignBy == window.localStorage.getItem('id')) {
           AppSettings.status.forEach((s_code:any)=>{
@@ -76,22 +63,16 @@ export class ViewPreviousComplaintComponent implements OnInit {
     });
   }
   getItems(ev: any) {
-    // set val to the value of the searchbar
     const val = ev.target.value;
-    // if the value is an empty string don't filter the items
     if (val && val.trim() != '') {
       this.complaint = this.complaint.filter((item) => {
        if(parseInt(item.c_id) === parseInt(val)){
         return parseInt(item.c_id) === parseInt(val);
        }
-        
-      })
+     })
     }
     if(val.length === 0){
-      this.initializeItems();   // Reset items back to all of the items
+      this.initializeItems();   
     }
   }
-
- 
 }
-

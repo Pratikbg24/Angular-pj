@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
-
 @Injectable({
   providedIn: 'root'
 })
@@ -41,7 +39,6 @@ export class CustomerRegService {
       "u_role": 1,
       "u_roleType": null,
     }
-    // console.log(data)
     let url = "https://thawing-eyrie-14958.herokuapp.com/";
     return this.http.post(url + 'users/createUser', data)
   }
