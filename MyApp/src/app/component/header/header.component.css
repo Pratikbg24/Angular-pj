@@ -33,7 +33,7 @@
   }
   
   .dropdown-menu a:hover {
-      background-color: rgb(128, 161, 252);
+      background-color: #32c4b1;
   }
   
   .nav-item.dropdown :hover .dropdown-content {
@@ -41,7 +41,7 @@
   }
   
   .nav-item.dropdown :hover.nav-link.dropdown-toggle {
-      background-color: rgb(128, 161, 252) !important;
+      background-color:  #32c4b1 !important;
   }
   
   .container {
@@ -64,7 +64,7 @@
   }
   
   .navbar-brand:hover {
-      background-color: rgb(128, 161, 252)!important;
+      background-color: #32c4b1 !important;
   }
   
   .notification {
@@ -78,7 +78,7 @@
   }
   
   .notification:hover {
-      background-color: rgb(128, 161, 252) !important;
+      background-color: #32c4b1 !important;
   }
   
   .Logout {
@@ -93,7 +93,7 @@
   }
   
   .Logout:hover {
-      background-color: rgb(128, 161, 252) !important;
+      background-color: #32c4b1 !important;
   }
   
   .fas .badge {
