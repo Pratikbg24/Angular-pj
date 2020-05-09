@@ -15,6 +15,7 @@ declare var $: any;
   styleUrls: ['./view-all-complaints.component.css']
 })
 export class ViewAllComplaintsComponent implements OnInit {
+  c_status: string;
   arr: FormArray
   formGroup: FormGroup
   submitted = false
@@ -120,23 +121,7 @@ export class ViewAllComplaintsComponent implements OnInit {
       })
     })
   }
-  gOnChanges() {
-   this.charts.getAllComplaint().subscribe((result:any)=>{
-    this.complaintData = result.data
-    this.complaintData=this.complaintData.filter(result => result.value === this.complaint)
-
-    })
-  }
-  
-  onSelect(val){
-    console.log(val);
-    this.charts.getAllComplaint().subscribe((result:any)=>{
-      this.complaintData = result.data
-      this.complaintData=this.complaintData.filter(result => result.value ===val)
-  
-    })
-  }
-  excelToMail()
+excelToMail()
   {
     this.charts.downloadAllComplait(
       this.formGroup.value.email,

@@ -13,8 +13,8 @@
   }
   
   .nav-link.dropdown-toggle {
-      background-color: #343a40;
-      color: white;
+      background-color: #82c341 !important;
+      color: #000000 !important;
       padding: 16px;
       font-size: 16px;
       border: none;
@@ -33,7 +33,7 @@
   }
   
   .dropdown-menu a:hover {
-      background-color: rgb(30, 135, 233);
+      background-color: #32c4b1;
   }
   
   .nav-item.dropdown :hover .dropdown-content {
@@ -41,7 +41,7 @@
   }
   
   .nav-item.dropdown :hover.nav-link.dropdown-toggle {
-      background-color: #3e8e41;
+      background-color:  #32c4b1 !important;
   }
   
   .container {
@@ -49,21 +49,27 @@
       margin-right: 0px !important;
   }
   
+  nav {
+      background-color: #82c341 !important;
+      color: #000000 !important;
+  }
+  
   .navbar-brand {
-      color: white;
       text-decoration: none;
       padding: 12px 23px;
       position: relative;
       display: inline-block;
       border-radius: 2px;
+      color: #000000 !important;
   }
   
   .navbar-brand:hover {
-      background: #3e8e41;
+      background-color: #32c4b1 !important;
   }
   
   .notification {
-      color: white;
+      background-color: #82c341!important;
+      color: #000000 !important;
       text-decoration: none;
       padding: 8px 10px;
       position: relative;
@@ -72,7 +78,22 @@
   }
   
   .notification:hover {
-      background: #3e8e41;
+      background-color: #32c4b1 !important;
+  }
+  
+  .Logout {
+      background-color: #82c341!important;
+      color: #000000 !important;
+      text-decoration: none;
+      padding: 8px 10px;
+      margin-left: 15px !important;
+      position: relative;
+      display: inline-block;
+      border-radius: 1px;
+  }
+  
+  .Logout:hover {
+      background-color: #32c4b1 !important;
   }
   
   .fas .badge {

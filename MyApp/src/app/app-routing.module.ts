@@ -32,7 +32,7 @@ const routes: Routes = [
       component:CustHomeComponent,
       children: [
         {
-          path:'app-cust-raise-complaint',
+          path:'',
           component: CustRaiseComplaintComponent,
   
         },

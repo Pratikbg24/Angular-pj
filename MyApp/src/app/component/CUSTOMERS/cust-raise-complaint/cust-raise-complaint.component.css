@@ -1,44 +1,84 @@
-
 @import url("https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
-
-h3{
+h3 {
     text-align: center;
 }
-.card-body{
+
+.card-body {
     background-color: whitesmoke;
 }
-label{
+
+label {
     font-weight: bold;
     display: inline-block;
 }
+
 input.ng-touched.ng-invalid {
-    border: 1px solid red;   
-  }
+    border: 1px solid red;
+}
 
 select.ng-touched.ng-invalid {
-    border: 1px solid red;   
-  }
-  textarea.ng-touched.ng-invalid {
-    border: 1px solid red;   
-  }
-.p12{
+    border: 1px solid red;
+}
+
+textarea.ng-touched.ng-invalid {
+    border: 1px solid red;
+}
+
+.p12 {
     display: inline-block;
     color: red;
 }
- .loading{
-     color: white;
- }
 
- #Registerbutton{
-    float:right;
+.loading {
+    color: white;
+}
+
+#Registerbutton {
+    float: right;
     margin-top: 5px;
     margin: 20px;
     width: 30%;
- }
- #ResetButton{
-    float:right;
+}
+
+#ResetButton {
+    float: right;
     margin-top: 5px;
     margin: 20px;
     width: 30%;
-     
- }
+}
+
+.btn {
+    margin-left: 20px;
+    margin-top: 20px !important;
+    border-radius: 5px !important;
+    color: black !important;
+    position: relative !important;
+}
+
+#b1 {
+    margin-left: 20px;
+    margin-top: 20px !important;
+    border-radius: 5px !important;
+    color: black !important;
+    position: relative !important;
+    padding-top: 25px !important;
+    padding-bottom: 25px !important;
+    text-align: center !important;
+}
+
+.count {
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 70px;
+}
+
+.fas {
+    font-size: 30px;
+    margin-left: 25px;
+    margin-top: 10px;
+    color: white;
+}
+
+#r1 {
+    margin-bottom: 30px;
+}
