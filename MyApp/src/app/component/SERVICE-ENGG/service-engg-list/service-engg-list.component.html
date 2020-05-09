@@ -34,12 +34,11 @@
                                 Action
                             </button>
                             <div class="dropdown-menu">
-                                <button type="button" class="btn btn-primary btn-sm" [routerLink]="['edit',item.u_id]"
-                                    (click)="editServiceEngg()" style="margin-top: 5;margin-bottom: 5px;">Edit</button>
-                                <button type="button" class="btn btn-danger btn-sm ml-1" (click)="openModal(item)"
-                                    style="margin-top: 5;margin-bottom: 5px;">Delete</button>
-                                <button type="button" class="btn btn-primary btn-md" [routerLink]="['view',item.u_id]"
-                                    (click)="loader()" style="margin-top: 5px">View</button>
+                                <a class="dropdown-item viewItem" [routerLink]="['edit',item.u_id]"
+                                    (click)="editServiceEngg()">Edit</a>
+                                <a class="dropdown-item deleteItem" (click)="openModal(item)">Delete</a>
+                                <a class="dropdown-item viewItem" [routerLink]="['view',item.u_id]"
+                                    (click)="loader()">View</a>
                             </div>
                         </div>
                     </td>
