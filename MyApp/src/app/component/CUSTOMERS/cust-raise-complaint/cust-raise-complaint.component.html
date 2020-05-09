@@ -3,6 +3,33 @@
 </ngx-spinner>
 
 <div class="container">
+    <div class="row" id="r1">
+
+        <div class="col-md-3 ">
+            <button class="btn btn-info" id="b1">
+             <span class="lable">Complaint Status </span>
+          </button>
+        </div>
+        <div class="col-md-3">
+            <button class="btn btn-primary" (click)="userCount()">
+            <span class="count"> {{openCount1}}</span><span><i class="fas fa-clipboard"></i> </span><br>
+            <span class="lable">Open</span>
+          </button>
+        </div>
+        <div class="col-md-3">
+            <button class="btn btn-success" (click)="enggCount()">
+            <span class="count">{{closedCount1}}</span><span><i class="fas fa-clipboard"></i> </span><br>
+            <span class="lable">Close</span>
+          </button>
+        </div>
+        <div class="col-md-3">
+            <button class="btn btn-warning">
+            <span class="count">{{pendingCount1}}</span><span><i class="fas fa-clipboard"></i> </span><br>
+            <span class="lable">Pending</span>
+          </button>
+        </div>
+    </div>
+
     <div class="row">
         <div class="col-md-8 mx-auto">
             <div class="card">

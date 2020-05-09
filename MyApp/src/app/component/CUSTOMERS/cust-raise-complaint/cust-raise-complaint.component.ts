@@ -21,6 +21,17 @@ export class CustRaiseComplaintComponent implements OnInit {
   maxDate: Date;
   showSuccessMsg: boolean = false;
   showInvalidMsg: boolean = false;
+  statusOpen:number[];
+  statusClosed:number[];
+  statusPending:number[];
+  countData:any={
+    openCount:0,
+    closedCount:0,
+    pendingCount:0  
+  };
+  openCount1:number[];
+  closedCount1:number[];
+  pendingCount1:number[];
 
   validation_messages = {
 
@@ -67,6 +78,31 @@ export class CustRaiseComplaintComponent implements OnInit {
         Validators.required
       ])],
     })
+
+    
+ this.charts.getAllComplaint().subscribe((data:any)=>{
+
+  this.statusOpen=data.data.filter((el:any)=>{
+    return  el.c_status === 1
+  })
+  this.countData.openCount=this.statusOpen.length;
+  this.openCount1=this.countData.openCount
+  
+  this.statusClosed=data.data.filter((el:any)=>{
+    return  el.c_status === 2
+  })
+
+  this.countData.closedCount=this.statusClosed.length;
+  this.closedCount1=this.countData.closedCount
+
+  this.statusPending=data.data.filter((el:any)=>{
+    return  el.c_status === 3
+  })
+  this.countData.pendingCount=this.statusPending.length;
+  this.pendingCount1=this.countData.pendingCount
+ 
+})
+
   }
 
   get f() {

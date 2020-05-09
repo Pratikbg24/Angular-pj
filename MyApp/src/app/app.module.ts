@@ -47,6 +47,7 @@ import { EnggHeaderComponent } from './component/service-engineer/engg-header/en
 import { EnggFooterComponent } from './component/service-engineer/engg-footer/engg-footer.component';
 import { AcceptComplaintComponent } from './component/service-engineer/accept-complaint/accept-complaint.component';
 import { EnggViewPreviousComponent } from './component/service-engineer/engg-view-previous/engg-view-previous.component';
+import { SearchPipe1Pipe } from './pipes/search-pipe1.pipe';
    
   @NgModule({
   declarations: [
@@ -113,7 +114,9 @@ import { EnggViewPreviousComponent } from './component/service-engineer/engg-vie
 
     AcceptComplaintComponent,
 
-    EnggViewPreviousComponent
+    EnggViewPreviousComponent,
+
+    SearchPipe1Pipe
   ],
   imports: [
     FormsModule,
