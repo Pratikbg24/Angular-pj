@@ -34,3 +34,47 @@
   margin-top: 20px;
   border-radius: 5px;
 }
+.row .form-control{
+  color: #555;
+	letter-spacing: 1px;
+	height: 37px;
+	padding: 2px 15px 2px 35px;
+  border-radius: 50px;
+  /* margin-bottom: 5px; */
+  margin-top: 5px;
+}
+.row .form-control::placeholder{
+  color: rgba(0, 0, 0, 0.7);
+	font-size: 14px;
+	text-transform: capitalize;
+}
+.panel-heading{
+  border-bottom: 1px solid #ddd;
+  background-color: #F5F5F5;
+}
+.col-md-2{
+  margin-left: 20px;
+  margin-bottom: 5px;
+  margin-top: 15px;
+  font-size: medium;
+  text-align: center;
+}
+.col-md-8{
+  margin-bottom: 5px;
+  margin-top: 5px;
+   width: 100%;
+}
+.table-responsive{
+  margin-top: 10px;
+}
+  .panel12{
+  width: 100%;
+}
+.row123{
+  background-color: #F5F5F5;
+}
+b{
+  text-align: center;
+  margin-bottom: 5px;
+  margin-top: 5px;
+}

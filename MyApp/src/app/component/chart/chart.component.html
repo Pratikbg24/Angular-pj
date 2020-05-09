@@ -3,7 +3,7 @@
 
 <body>
   <div class="container">
-    <div class="row row1">
+    <div class=" row row1">
       <div class="col-md-3 offset-md-3 ">
         <button class="btn btn-success" (click)="userCount()">
           <span class="count"> {{userCount1}}</span><span><i class="fa fa-users" aria-hidden="true"></i></span><br>
@@ -26,7 +26,7 @@
     <div class="row">
       <div class="col-md-6">
         <div class=" panel panel-default">
-          <div class="panel-body">
+          <div class="panel-body"> 
             <div class="chart-container">
               <canvas id="complaintsStatusCart"></canvas>
             </div>
@@ -43,12 +43,89 @@
         </div>
       </div>
     </div>
-  </div>
+      <div class="panel panel-default panel12">
+        <div class="panel-heading">
+          <h3>Complaint Status</h3>
+        </div>
+        <div class="panel-body">
+        <div class="col-md-4 ">
+          <button class="btn btn-success"  (click)="initializeItems1()">
+            <span class="count"> {{openCount1}}</span><span><i class="fa fa-users" aria-hidden="true"></i></span><br>
+            <span class="lable">Open Complaint</span>
+          </button>
+        </div>
+        <div class="col-md-4">
+          <button class="btn btn-danger"  (click)="enggCount()">
+            <span class="count">{{closedCount1}}</span><span><i class="fa fa-users" aria-hidden="true"></i></span><br>
+            <span class="lable">Close Complaint</span>
+          </button>
+        </div>
+        <div class="col-md-4">
+          <button class="btn btn-warning">
+            <span class="count">{{pendingCount1}}</span><span><i class="fa fa-users" aria-hidden="true"></i></span><br>
+            <span class="lable">Pending Complaint</span>
+          </button>
+        </div>
+      </div>
+      </div>
+
+
+
+
+
+     <div class="panel panel-default">
+      <div class="panel-heading"> 
+        <div class="row row123 ">
+          <div class='col-md-2'><b>Search</b> 
+          </div>
+          <div class='col-md-8'>
+              <input class="form-control"
+               type="text" name="search" [(ngModel)]="searchText" autocomplete="off" 
+               placeholder="Enter your complaint name or complaint status"/>
+               </div>
+            </div>
+         </div>
+         <div class="panel-body">
+        <div class='table-responsive'>
+          <table class='table'>
+              <thead>
+                  <tr>
+                      <th>Id</th>
+                      <th>Complaint</th>
+                      <th>Date</th>
+                      <th>Status</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr *ngFor="let user of complaint | filter:searchText">
+                      <td>
+                          {{user.c_id}}
+                      </td>
+                      <td>
+                          {{user.c_desc}}
+                      </td>
+                      <td>
+                          {{user.c_date | date:'dd/MM/yyy'}}
+                      </td>
+                      <td>
+                        <button 
+                        *ngIf="user.c_status === 'Open'"
+                        class="btn btn-success">Open
+                        </button>
+                        <button 
+                        *ngIf="user.c_status === 'Close'"
+                        class="btn btn-danger">Close
+                        </button>
+                        <button 
+                        *ngIf="user.c_status === 'Pending'"
+                        class="btn btn-warning">Pending
+                        </button>
+                      </td>
+                    </tr>
+                </tbody>
+              </table>
+            </div>       
+          </div>
+       </div> 
+    </div>
   </body>
-  
-  
-  
-  
-  
-  
-  

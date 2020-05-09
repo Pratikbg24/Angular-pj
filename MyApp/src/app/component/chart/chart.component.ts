@@ -4,6 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { LoadingSpinnerService} from '../../service/loading-spinner.service'
 import { ChartService } from '../../service/chart.service'
 import { HttpClient } from '@angular/common/http';
+import { AppSettings } from 'src/app/app.settings';
 @Component({
   selector: 'app-chart',
   templateUrl: './chart.component.html',
@@ -34,7 +35,8 @@ export class ChartComponent implements OnInit {
   openCount1:number[];
   closedCount1:number[];
   pendingCount1:number[];
-
+  complaint:any[];
+  u1: any;
   constructor(private route: ActivatedRoute,
     private router: Router,
     private charts: ChartService,
@@ -42,6 +44,7 @@ export class ChartComponent implements OnInit {
     private httpCilent: HttpClient) {
   }
   ngOnInit() {
+    this.initializeItems()
     this.charts.getData().subscribe((data:any)=>{
       this.users=data.data.filter((el:any)=>{
         return  el.u_role === 1
@@ -174,6 +177,28 @@ this.chart=new Chart('complaintsStatusCart',{
 })
 });
   }
+  initializeItems() {
+    this.charts.getAllComplaint().subscribe((result: any) => {
+      this.complaint = result.data;
+      this.complaint = this.complaint.filter((ele: any) => {
+        AppSettings.status.forEach((e: any) => {
+          if (parseInt(e.id) === parseInt(ele.c_status)) {
+            ele.c_status = e.value;
+          }
+        });
+        return ele
+      })
+    })
+  }
+  initializeItems1() {
+    this.charts.getAllComplaint().subscribe((data:any)=>{
+      this.u1=data.data.filter((el:any)=>{
+        return  el.c_status === 1
+      })
+      console.log(this.u1)
+    })
+  }
+
   showEngineer() {
     this.spinner.show();
   }
