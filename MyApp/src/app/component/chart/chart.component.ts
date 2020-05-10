@@ -190,13 +190,20 @@ this.chart=new Chart('complaintsStatusCart',{
       })
     })
   }
-  initializeItems1() {
-    this.charts.getAllComplaint().subscribe((data:any)=>{
-      this.u1=data.data.filter((el:any)=>{
-        return  el.c_status === 1
-      })
-      console.log(this.u1)
-    })
+  openComplaint() {
+    this.complaint= this.complaint.filter(data => {
+      return data.c_status === 'Open' 
+    });   
+    }
+  closeComplaint() {
+    this.complaint= this.complaint.filter(data => {
+      return data.c_status === 'Close' 
+    });   
+  }
+  pendingComplaint() {
+    this.complaint= this.complaint.filter(data => {
+      return data.c_status === 'Pending' 
+    });   
   }
 
   showEngineer() {

@@ -61,19 +61,19 @@
     <div class="card-body">
     <div class="row">
     <div class="col-md-4 ">
-      <button class="btn btn-success" (click)="userCount()">
+      <button class="btn btn-success" (click)="openComplaint()">
         <span class="count userCount"> {{openCount1}}</span><span><i class="fas fa-clipboard" aria-hidden="true"></i></span><br>
         <span class="lable lable1">Open Complaint</span>
       </button>
     </div>
     <div class="col-md-4">
-      <button class="btn btn-danger"  (click)="enggCount()">
+      <button class="btn btn-danger"  (click)="closeComplaint()">
         <span class="count">{{closedCount1}}</span><span><i class="fas fa-clipboard" aria-hidden="true"></i></span><br>
         <span class="lable">Closed Complaint</span>
       </button>
     </div>
     <div class="col-md-4">
-      <button class="btn btn-warning">
+      <button class="btn btn-warning" (click)="pendingComplaint()">
         <span class="count">{{pendingCount1}}</span><span><i class="fas fa-clipboard" aria-hidden="true"></i></span><br>
         <span class="lable">Pending Complaint</span>
       </button>
