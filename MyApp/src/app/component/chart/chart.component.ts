@@ -36,6 +36,7 @@ export class ChartComponent implements OnInit {
   closedCount1:number[];
   pendingCount1:number[];
   complaint:any[];
+  filterData:any[];
   u1: any;
   constructor(private route: ActivatedRoute,
     private router: Router,
@@ -188,20 +189,25 @@ this.chart=new Chart('complaintsStatusCart',{
         });
         return ele
       })
+      this.filterData=this.complaint;
     })
+   
   }
   openComplaint() {
-    this.complaint= this.complaint.filter(data => {
+    
+    this.filterData= this.complaint.filter(data => {
       return data.c_status === 'Open' 
     });   
     }
   closeComplaint() {
-    this.complaint= this.complaint.filter(data => {
+    
+    this.filterData= this.complaint.filter(data => {
       return data.c_status === 'Close' 
     });   
   }
   pendingComplaint() {
-    this.complaint= this.complaint.filter(data => {
+    
+    this.filterData= this.complaint.filter(data => {
       return data.c_status === 'Pending' 
     });   
   }
