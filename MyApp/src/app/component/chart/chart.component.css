@@ -2,7 +2,11 @@
   margin-top: 20px;
   border-radius: 5px;
   color: black;
+  width: 100%;
   position: relative;
+}
+.col-md-6{
+  margin-top:10px;
 }
 .charts{
   height:40vh; 
@@ -12,25 +16,57 @@
   float: left;
   margin-left: 0px;
 }
-.fa{
+.chart-container{
+  margin-top: 30px;
+}
+.fas{
   font-size: 30px;
-  margin-left: 100px;
   margin-top: 10px;
+  float: right;
   color:white;
 }
-.h4{
+.fa{
+  font-size: 30px;
+  margin-top: 10px;
+  float: right;
+  color:white;
+}
+.row .form-control{
+  color: #555;
+	letter-spacing: 1px;
+	height: 37px;
+	padding: 2px 15px 2px 35px;
+  border-radius: 50px;
+  margin-top: 5px;
+}
+.row .form-control::placeholder{
+  color: rgba(0, 0, 0, 0.7);
+	font-size: 14px;
+	text-transform: capitalize;
+}
+.col-md-2{
+  margin-left: 20px;
+  margin-bottom: 5px;
+  margin-top: 15px;
+  font-size: medium;
   text-align: center;
 }
-.count{
-  font-size: 20px;
-  font-weight: bold;  
-  margin-left: 70px;
+.col-md-8{
+  margin-bottom: 5px;
+  margin-top: 5px;
+   width: 100%;
+}
+.table-responsive{
+  margin-top: 10px;
 }
 .lable{
-  margin-left: 60px;
-  float:left
+  font-weight: bold;  
 }
-.panel{
-  margin-top: 20px;
-  border-radius: 5px;
+.count{
+  font-size: 20px;}
+.mb-4{
+  margin-top: 25px;
+}
+.card-body{
+  padding-top: 0px;
 }

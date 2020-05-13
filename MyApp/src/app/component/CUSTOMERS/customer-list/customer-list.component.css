@@ -13,6 +13,14 @@ h3 {
 .dropdown-menu{
     text-align: center;
     min-width: 0;
+    padding: 0px;
+    padding-top: 0px;
+}
+.dropdown-menu .viewItem:hover {
+    background-color: rgb(152, 125, 226);
+}
+.dropdown-menu .deleteItem:hover{
+    background-color: rgb(246, 70, 70);
 }
 .table {
     margin-top: 20px;
@@ -40,24 +48,4 @@ h3 {
     margin-left: 30%;
     margin-top: 20px;
     align-items: center;
-}
-.btn {
-    color: #fff;
-    border-radius: 4px;
-    text-decoration: none;
-    transition: all 0.4s;
-    line-height: normal;
-    min-width: 120px;
-    border: none;
-    min-height: 40px;
-    border-radius: 3px;
-    margin: 0 5px;
-    outline: none !important;
-}
-.btn-danger {
-    background: #f15e5e;
-}
-.btn-danger:hover,
-.btn-danger:focus {
-    background: #ee3535;
 }
