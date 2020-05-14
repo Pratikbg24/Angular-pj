@@ -14,7 +14,7 @@ const CACHE_KEY = 'httpRepoCache'
 export class LoginComponent implements OnInit {
   formGroup: FormGroup;
   u_id:number;
-  
+  model: any = {};  
   returnUrls: string;
   submitted = false;
   alert = false;
@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
       { type: 'required', message: 'password is required.' },
       { type: "minlength", message: "Minimum length should be 6" },
       { type: "maxlength", message: "Maximum lenght should be only 20 character" }
-    ]
+    ],
   }
   constructor(
   
@@ -54,7 +54,7 @@ export class LoginComponent implements OnInit {
       password: ['', Validators.compose([
         Validators.required,
         Validators.minLength(5),
-        Validators.maxLength(20)])]
+        Validators.maxLength(20)])],
     })
   }
 
@@ -94,5 +94,7 @@ window.localStorage.setItem("id", data.data.u_id) ;
    toggleFieldTextType() {
     this.PasswordfieldTextType = !this.PasswordfieldTextType;
   }
-
+    submitdata(){
+    
+    }
 }
