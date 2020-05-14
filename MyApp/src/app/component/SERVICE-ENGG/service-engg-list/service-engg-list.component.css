@@ -1,6 +1,5 @@
 .row{
-    width: 70%;
-    margin-left: 5%;
+    width: 100%;
 }
 h3 {
     text-align: center;
@@ -38,9 +37,22 @@ thead, th {
     background-color: #4CAF50;
     color: white;
   }
-.form-control {
-    margin: 10px;
-    margin-left: 30%;
+  .form-control {
     margin-top: 20px;
+    border-radius: 20px;
+    background-color: #edeeee;
     align-items: center;
+    border-bottom:groove;
+    border: groove;
+}
+.fromicon{
+    margin-left: 20%;
+}
+.fa{
+    color: white;
+}
+span.input-group-text{
+    background-color: royalblue;
+    border-bottom: groove;
+    border: groove;
 }

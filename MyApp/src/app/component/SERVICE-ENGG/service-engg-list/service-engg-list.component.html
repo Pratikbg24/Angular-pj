@@ -2,11 +2,20 @@
     <div class="container">
         <h3>Service Engineer List</h3>
         <div class="row">
+            <div class="col-md-8 offset-md-3 fromicon">
+             <div class="input-group form-group">   
             <input type="text" class="form-control"
-                placeholder="Start searching for a Service Engineer Name or Mobilenumber or Email" name="search"
+                placeholder="Start searching for a Engineer Name or Mobile number or Email" name="search"
                 [(ngModel)]="u_email" autocomplete="off">
+                <div class="input-group-append">
+                    <span class="input-group-text form-control">
+                        <i class="fa fa-search" aria-hidden="true"></i>
+                    </span>
+                </div>
+                </div>
+                </div>
         </div>
-        <table class="table">
+            <table class="table">
             <thead>
                 <tr>
                     <th scope="col">Id</th>

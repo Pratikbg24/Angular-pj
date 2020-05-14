@@ -1,10 +1,8 @@
 .row{
-    width: 70%;
-    margin-left: 10%;
+    width: 100%;
 }
 h3 {
     text-align: center;
-    margin-left: 12%;
 }
 .btn {
     border-radius: 10px;
@@ -41,12 +39,25 @@ h3 {
     color: white;
   }
 .form-control {
-    margin: 10px;
-    margin-left: 30%;
     margin-top: 20px;
+    border-radius: 20px;
+    background-color: #edeeee;
     align-items: center;
+    border-bottom:groove;
+    border: groove;
+}
+.fa-search{
+    color: white;
 }
 button .close{
     padding: 0px;
     border: none;
+}
+span.input-group-text{
+    background-color: royalblue;
+    border-bottom: groove;
+    border: groove;
+}
+.searchicon{
+    margin-left: 20%;
 }
