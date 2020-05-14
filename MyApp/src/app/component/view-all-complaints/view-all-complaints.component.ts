@@ -7,6 +7,8 @@ import { FormGroup, FormArray, Validators, FormBuilder } from '@angular/forms';
 import { AppSettings } from '../../app.settings'
 import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker'
 import { NotificationServiceService } from 'src/app/service/NOTIFICATION-ALERT/notification-service.service';
+import { filter } from 'rxjs/operators';
+import { SearchPipe1Pipe } from 'src/app/pipes/search-pipe1.pipe';
 declare var $: any;
 
 @Component({
@@ -128,10 +130,12 @@ excelToMail()
       this.complaint
     ).subscribe((result:any)=>{
       if (result.status === "success") {
+        this.spinner.show();
         this.notificationservice.success("Complaint Data Send to Mail successfully")
         this.initializeItems();
     
-      } if (result.status === "error") {
+      } if (result.status === "error") {   
+        this.spinner.show();
         this.notificationservice.error(" Complaint Data is not Send to Mail ")
         this.initializeItems();
       }  

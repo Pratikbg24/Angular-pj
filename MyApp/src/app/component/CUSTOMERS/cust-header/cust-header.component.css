@@ -33,7 +33,7 @@ nav {
 }
 
 .dropdown-menu a:hover {
-    background-color: rgb(128, 161, 252);
+    background-color: #32c4b1;
 }
 
 .nav-item.dropdown :hover .dropdown-content {
@@ -41,7 +41,7 @@ nav {
 }
 
 .nav-item.dropdown :hover.nav-link.dropdown-toggle {
-    background-color: rgb(128, 161, 252) !important;
+    background-color: #32c4b1 !important;
 }
 
 .container {
@@ -64,7 +64,7 @@ nav {
 }
 
 .navbar-brand:hover {
-    background-color: rgb(128, 161, 252)!important;
+    background-color: #32c4b1 !important;
 }
 
 .notification {
@@ -75,15 +75,13 @@ nav {
     position: relative;
     display: inline-block;
     border-radius: 2px;
-    margin-top: 10px;
 }
 
 .notification:hover {
-    background-color: rgb(128, 161, 252) !important;
+    background-color: #32c4b1 !important;
 }
 
 .Logout {
-    margin-top: 10px;
     background-color: #82c341!important;
     color: #000000 !important;
     text-decoration: none;
@@ -95,7 +93,7 @@ nav {
 }
 
 .Logout:hover {
-    background-color: rgb(128, 161, 252) !important;
+    background-color: #32c4b1 !important;
 }
 
 .fas .badge {
@@ -116,20 +114,8 @@ i {
     color: white;
 }
 
-.phase-active {
-    background-color: #3e8e41;
-    border-radius: 1px;
-    box-shadow: 0 0 1px 2px hsla(0, 0%, 100%, .8);
-}
-
 .active {
     background-color: #3e8e41;
-}
-
-.phase-active {
-    background-color: #3e8e41;
-    border-radius: 1px;
-    box-shadow: 0 0 1px 2px hsla(0, 0%, 100%, .8);
 }
 
 .active {
