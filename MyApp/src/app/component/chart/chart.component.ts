@@ -5,6 +5,7 @@ import { LoadingSpinnerService} from '../../service/loading-spinner.service'
 import { ChartService } from '../../service/chart.service'
 import { HttpClient } from '@angular/common/http';
 import { AppSettings } from 'src/app/app.settings';
+declare var $: any;
 @Component({
   selector: 'app-chart',
   templateUrl: './chart.component.html',
@@ -12,6 +13,7 @@ import { AppSettings } from 'src/app/app.settings';
 })
 export class ChartComponent implements OnInit {
   date1:any[];
+  searchText;
   users:any[];
   graphData:any={
     userCount:0,
@@ -225,5 +227,9 @@ this.chart=new Chart('complaintsStatusCart',{
     enggCount(){
       this.spinner.show();
       this.router.navigate(['/home1/updateserviceEngineer'])
+    }
+    openModal(item:any){
+      // this.u_id = item.u_id
+    $("#deleteModal").modal('show');
     }
 }

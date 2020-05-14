@@ -15,10 +15,7 @@ h3 {
     padding-top: 0px;
 }
 .dropdown-menu .viewItem:hover {
-    background-color: rgb(152, 125, 226);
-}
-.dropdown-menu .deleteItem:hover{
-    background-color: rgb(246, 70, 70);
+    background-color: #32c4b1;
 }
 .table {
         margin-top: 20px;

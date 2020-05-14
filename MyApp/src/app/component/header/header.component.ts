@@ -7,7 +7,8 @@ import { LoadingSpinnerService } from '../../service/loading-spinner.service'
 })
 export class HeaderComponent implements OnInit {
    activeButton
-  constructor(private spinner: LoadingSpinnerService) { }
+  constructor(private spinner: LoadingSpinnerService) {
+   }
   ngOnInit() {
   }
   createCustomer(event) {
