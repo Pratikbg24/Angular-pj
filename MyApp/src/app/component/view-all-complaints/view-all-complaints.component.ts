@@ -39,7 +39,8 @@ export class ViewAllComplaintsComponent implements OnInit {
     u_Machinepurchesed: null,
 
   }
-  
+  filterData:any[];
+ value:any
   //complaint;
   complaintData;
 
@@ -66,6 +67,10 @@ export class ViewAllComplaintsComponent implements OnInit {
     ],
    
   }
+options =['Open', 'Close','Pending']
+
+selected;
+selectedData;
   constructor(private route: ActivatedRoute,
     private router: Router,
     private charts: ChartService,
@@ -83,6 +88,7 @@ export class ViewAllComplaintsComponent implements OnInit {
         { name: "Pending" },
         { name: "Close" },
       ];
+   
   }
   ngOnInit() {
     this.initializeItems()
@@ -108,7 +114,8 @@ export class ViewAllComplaintsComponent implements OnInit {
       })
     }
     if(val.length === 0){
-      this.initializeItems();       }
+      this.initializeItems(); 
+          }
   }
   initializeItems() {
     this.charts.getAllComplaint().subscribe((result: any) => {
@@ -121,25 +128,32 @@ export class ViewAllComplaintsComponent implements OnInit {
         });
         return ele
       })
+      this.selectedData = this.complaint;
     })
   }
+ 
+onSelect(val){
+  console.log(val);
+  this.selectedData = this.complaint.filter(x => x.c_status == val)
+}
 excelToMail()
   {
     this.charts.downloadAllComplait(
       this.formGroup.value.email,
-      this.complaint
+      this.selectedData
     ).subscribe((result:any)=>{
       if (result.status === "success") {
-        this.spinner.show();
-        this.notificationservice.success("Complaint Data Send to Mail successfully")
+        this.notificationservice.success(" Mail Send  successfully")
         this.initializeItems();
     
       } if (result.status === "error") {   
-        this.spinner.show();
-        this.notificationservice.error(" Complaint Data is not Send to Mail ")
+        this.notificationservice.error("Mail not Send !!!")
         this.initializeItems();
       }  
     })
+    this.spinner.show();
+    this.submitted = true;
+
   }
   openModal(item:any){
     $("#myModal").modal('show');
