@@ -19,6 +19,7 @@ export class CustRaiseComplaintComponent implements OnInit {
   confirmTextField: boolean;
   passwordTextField: boolean;
   enggList: Array<any> = [];
+  priorityList: Array<any> = [];
   maxDate: Date;
   showSuccessMsg: boolean = false;
   showInvalidMsg: boolean = false;
@@ -38,8 +39,11 @@ export class CustRaiseComplaintComponent implements OnInit {
   validation_messages = {
 
     'name': [
-      { type: 'required', message: '*Name is required' },
-      { type: 'minlength', message: '*Name must be 3 character' }
+      { type: 'required', message: '*Please describe your issue here' },
+      { type: 'minlength', message: '*The description must be above 3 character' }
+    ],
+    'priority': [
+      { type: 'required', message: '*Choose the priority of the request'}
     ],
     'EngineerType': [
       { type: 'required', message: '*Please select engineer type' },
@@ -59,11 +63,18 @@ export class CustRaiseComplaintComponent implements OnInit {
   ) {
     this.maxDate = new Date();
     this.maxDate.setDate(this.maxDate.getDate() + 0);
+    this.priorityList = [
+      { key: 1, name: "1" },
+      { key: 2, name: "2" },
+      { key: 3, name: "3" },
+      { key: 4, name: "4" },
+      { key: 5, name: "5" }
+    ];
     this.enggList = [
       { key: 1, name: "Machanical" },
       { key: 2, name: "Electronic" },
       { key: 3, name: "Designing" }
-    ]
+    ];
 
   }
 
@@ -72,6 +83,9 @@ export class CustRaiseComplaintComponent implements OnInit {
       name: ['', Validators.compose([
         Validators.required,
         Validators.minLength(3)
+      ])],
+      priority: ['', Validators.compose([
+        Validators.required
       ])],
       EngineerType: ['', Validators.compose([
         Validators.required
@@ -91,6 +105,7 @@ export class CustRaiseComplaintComponent implements OnInit {
 
     this.charts.createComplaint(
       this.formGroup.value.name,
+      this.formGroup.value.priority,
       this.formGroup.value.EngineerType,
       this.formGroup.value.DateOfjoining,
       "c_status",
@@ -144,6 +159,9 @@ export class CustRaiseComplaintComponent implements OnInit {
               }
             })
             this.countData.openCount = this.statusOpen.length;
+            // if(this.countData.openCount < 1) {
+            //   return null;
+            // }
             this.openCount1 = this.countData.openCount;
           }
 
