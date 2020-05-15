@@ -6,7 +6,9 @@ h2 {
     text-align: center;
     border-radius: 15px 15px 0 0;
 }
-
+#indicate{
+    color:red
+}
 .bg {
     height: 100%;
     background-position: center;
@@ -86,7 +88,6 @@ a {
 input.ng-touched.ng-invalid {
     border: 1px solid red;
 }
-
 .loading {
     color: white;
 }

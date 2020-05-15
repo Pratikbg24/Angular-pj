@@ -45,6 +45,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
+
                     <a href="#" class="Logout">
                         <span>Setting</span>
                         <i class="fas fa-cog"></i>
@@ -63,3 +64,20 @@
         <span class="oi oi-menu"></span> <b>Menu</b>
     </button>
 </nav>
+
+<div id="logoutModal" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-confirm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Are you sure?</h4>
+                <span><button class="close" data-dismiss="modal" >&times;</button></span>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to Log out.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger deletebtn" data-dismiss="modal" name="delete" >Logout</button>
+            </div>
+        </div>
+    </div>
+</div>
