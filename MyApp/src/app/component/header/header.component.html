@@ -1,3 +1,8 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
 <ngx-spinner [fullScreen]="true" type="ball-clip-rotate-multiple" size="medium">
 </ngx-spinner>
 <nav class="navbar navbar-expand-sm navbar-dark fixed-top row " id="topheader">
@@ -39,10 +44,9 @@
         <div class="collapse navbar-collapse float-right" id="ftco-nav">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a href="#" class="notification">
-                        <span>Notification</span>
-                        <i class="fas fa-bell">  <span class="badge">3</span></i>
-                    </a>
+                    <button type="button" (click)="notification()" id="myBtn" class="btn notification">
+                        Notifications <span class="badge badge-light">{{openCount1}}</span>
+                      </button>
                 </li>
                 <li class="nav-item">
 
@@ -52,7 +56,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="Logout">
+                    <a href="#logoutModal" data-toggle="modal" data-target="#logoutModal" class="Logout">
                         <span>Logout</span>
                         <i class="fas fa-sign-out-alt"></i>
                     </a>
@@ -63,8 +67,8 @@
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="oi oi-menu"></span> <b>Menu</b>
     </button>
-</nav>
-
+</nav>      
+               
 <div id="logoutModal" class="modal fade" role="dialog">
     <div class="modal-dialog modal-confirm">
         <div class="modal-content">
@@ -76,8 +80,26 @@
                 <p>Are you sure you want to Log out.</p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger deletebtn" data-dismiss="modal" name="delete" >Logout</button>
+                <button type="button" class="btn btn-danger deletebtn" routerLink="" data-dismiss="modal" name="delete" >Logout</button>
             </div>
         </div>
     </div>
 </div>
+
+<div class="toast">
+    <div class="toast-header">
+      Toast Header
+    </div>
+    <div class="toast-body">
+      Some text inside the toast body
+    </div>
+  </div>
+
+<script>
+    $(document).ready(function(){
+      $("#myBtn").click(function(){
+        $('.toast').toast('show');
+      });
+    });
+</script>
+    
