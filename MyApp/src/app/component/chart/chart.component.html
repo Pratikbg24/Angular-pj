@@ -107,7 +107,7 @@
                   </tr>
               </thead>
               <tbody>
-                  <tr *ngFor="let user of filterData | filter:searchText">
+                  <tr *ngFor="let user of filterData| filter:searchText">
                       <td>
                           {{user.c_id}}
                       </td>
@@ -120,6 +120,9 @@
                       <td>
                       {{user.c_status}}
                       </td>
+                      <td>
+                      <a  href="#deleteModal" data-toggle="modal" data-target="#deleteModal" (click)="openModal()" ><i class="fa fa-trash delete" aria-hidden="true"></i></a>
+                      </td>
                     </tr>
                 </tbody>
               </table>
@@ -129,3 +132,20 @@
        </div>
        </div>
       </body>
+
+      <div id="deleteModal" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-confirm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Are you sure?</h4>
+                    <span><button class="close" data-dismiss="modal" >&times;</button></span>
+                </div>
+                <div class="modal-body">
+                    <p>Do you really want to delete these records? This process cannot be undone.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger deletebtn" data-dismiss="modal" name="delete">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>

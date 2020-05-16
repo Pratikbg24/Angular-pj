@@ -31,6 +31,11 @@
   float: right;
   color:white;
 }
+.fa-trash{
+  color: red;
+  margin: 0px;
+  font-size: 20px;
+}
 .row .form-control{
   color: #555;
 	letter-spacing: 1px;
@@ -69,4 +74,13 @@
 }
 .card-body{
   padding-top: 0px;
+}
+.deletebtn{
+  width: 80px;
+  float: right;
+  color:white;
+}
+.modal-header .close{
+  padding: none;
+  margin: none;
 }

@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { LoadingSpinnerService } from '../../../service/loading-spinner.service'
 import { from } from 'rxjs';
 import { LoginComponent } from '../../login/login.component';
+import { CustRaiseComplaintComponent } from '../cust-raise-complaint/cust-raise-complaint.component';
 
 @Component({
   selector: 'app-cust-header',
@@ -10,7 +11,8 @@ import { LoginComponent } from '../../login/login.component';
 })
 export class CustHeaderComponent implements OnInit {
 
-  activeButton
+  activeButton;
+
   constructor(private spinner: LoadingSpinnerService) { }
 
   ngOnInit() {
@@ -23,6 +25,10 @@ export class CustHeaderComponent implements OnInit {
   showButton(event){
     this.spinner.show();
     this.activeButton = event;
+  }
+
+  ondisplay() {
+
   }
 
 }

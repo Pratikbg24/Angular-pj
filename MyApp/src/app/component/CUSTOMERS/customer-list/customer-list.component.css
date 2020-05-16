@@ -1,10 +1,8 @@
 .row{
-    width: 70%;
-    margin-left: 10%;
+    width: 100%;
 }
 h3 {
     text-align: center;
-    margin-left: 12%;
 }
 .btn {
     border-radius: 10px;
@@ -17,10 +15,7 @@ h3 {
     padding-top: 0px;
 }
 .dropdown-menu .viewItem:hover {
-    background-color: rgb(152, 125, 226);
-}
-.dropdown-menu .deleteItem:hover{
-    background-color: rgb(246, 70, 70);
+    background-color: #32c4b1
 }
 .table {
     margin-top: 20px;
@@ -44,8 +39,25 @@ h3 {
     color: white;
   }
 .form-control {
-    margin: 10px;
-    margin-left: 30%;
     margin-top: 20px;
+    border-radius: 20px;
+    background-color: #edeeee;
     align-items: center;
+    border-bottom:groove;
+    border: groove;
+}
+.fa-search{
+    color: white;
+}
+button .close{
+    padding: 0px;
+    border: none;
+}
+span.input-group-text{
+    background-color: royalblue;
+    border-bottom: groove;
+    border: groove;
+}
+.searchicon{
+    margin-left: 20%;
 }

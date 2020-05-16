@@ -1,6 +1,5 @@
 .row{
-    width: 70%;
-    margin-left: 5%;
+    width: 100%;
 }
 h3 {
     text-align: center;
@@ -15,10 +14,7 @@ h3 {
     padding-top: 0px;
 }
 .dropdown-menu .viewItem:hover {
-    background-color: rgb(152, 125, 226);
-}
-.dropdown-menu .deleteItem:hover{
-    background-color: rgb(246, 70, 70);
+    background-color: #32c4b1;
 }
 .table {
         margin-top: 20px;
@@ -41,9 +37,22 @@ thead, th {
     background-color: #4CAF50;
     color: white;
   }
-.form-control {
-    margin: 10px;
-    margin-left: 30%;
+  .form-control {
     margin-top: 20px;
+    border-radius: 20px;
+    background-color: #edeeee;
     align-items: center;
+    border-bottom:groove;
+    border: groove;
+}
+.fromicon{
+    margin-left: 20%;
+}
+.fa{
+    color: white;
+}
+span.input-group-text{
+    background-color: royalblue;
+    border-bottom: groove;
+    border: groove;
 }

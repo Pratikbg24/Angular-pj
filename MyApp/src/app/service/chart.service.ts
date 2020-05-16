@@ -92,6 +92,7 @@ export class ChartService {
   }
   public createComplaint(name:any,
     EngineerType:any,
+    priority: any,
     DateOfjoining:any,
     c_status:any,
     c_assignBy:any,
@@ -100,6 +101,7 @@ export class ChartService {
         "c_desc": name,
       "c_assignBy": window.localStorage.getItem('id'),
         "machine_type": EngineerType,
+        "priority": priority,
         "c_date": DateOfjoining,
         "c_status": 1
       }
