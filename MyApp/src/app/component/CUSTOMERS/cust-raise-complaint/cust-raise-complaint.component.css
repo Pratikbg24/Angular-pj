@@ -66,10 +66,24 @@ textarea.ng-touched.ng-invalid {
     text-align: center !important;
 }
 
+.box {
+    box-sizing: border-box;
+    height: 75px;
+    padding: 5px;
+    border: 1px solid #ccc;
+}
+
+.label {
+    text-align: center;
+    font-weight: bold;
+    margin: auto;
+}
+
 .count {
     font-size: 20px;
     font-weight: bold;
-    margin-left: 70px;
+    /* margin-left: 70px; */
+    text-align: center;
 }
 
 .fas {
@@ -77,8 +91,44 @@ textarea.ng-touched.ng-invalid {
     margin-left: 25px;
     margin-top: 10px;
     color: white;
+    margin-right: 10px;
 }
 
 #r1 {
     margin-bottom: 30px;
 }
+
+form.searchbox input[type=text] {
+    padding: 10px;
+    font-size: 17px;
+    border: 1px solid grey;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    float: left;
+    width: 85%;
+    background: #F4F6F7;
+  }
+ 
+  form.searchbox button {
+    float: left;
+    width: 15%;
+    padding: 10px;
+    background: #F5B041;
+    color: white;
+    font-size: 17px;
+    border: 1px solid grey;
+    border-left: none;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    cursor: pointer;
+  }
+  
+  form.searchbox button:hover {
+    background: #F39C12;
+  }
+  
+  form.searchbox::after {
+    content: "";
+    clear: both;
+    display: table;
+  }

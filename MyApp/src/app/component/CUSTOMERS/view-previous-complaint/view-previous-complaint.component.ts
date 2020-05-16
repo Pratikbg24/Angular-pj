@@ -26,8 +26,7 @@ export class ViewPreviousComplaintComponent implements OnInit {
   complaint: any[];
   c_id: any[];
   Machine_type: any = {
-    u_Machinepurchesed: null,
-
+    u_Machinepurchesed: null
   }
   c_date: [];
 
@@ -50,7 +49,7 @@ export class ViewPreviousComplaintComponent implements OnInit {
   }
     initializeItems(){
   this.charts.getAllComplaint().subscribe((data: any) => {
-      this.complaint= data.data.filter(el => {
+      this.complaint= data.data.filter((el:any) => {
         if (el.c_assignBy == window.localStorage.getItem('id')) {
           AppSettings.status.forEach((s_code:any)=>{
             if(parseInt(el.c_status) === parseInt(s_code.id)){
