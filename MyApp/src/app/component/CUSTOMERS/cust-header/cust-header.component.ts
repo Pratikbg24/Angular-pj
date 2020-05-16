@@ -1,8 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { LoadingSpinnerService } from '../../../service/loading-spinner.service'
-import { from } from 'rxjs';
-import { LoginComponent } from '../../login/login.component';
-import { CustRaiseComplaintComponent } from '../cust-raise-complaint/cust-raise-complaint.component';
+import { ChartService } from '../../../service/chart.service'
+import { NotificationServiceService } from 'src/app/service/NOTIFICATION-ALERT/notification-service.service';
+import { AppSettings } from '../../../app.settings'
+
 
 @Component({
   selector: 'app-cust-header',
@@ -12,12 +13,14 @@ import { CustRaiseComplaintComponent } from '../cust-raise-complaint/cust-raise-
 export class CustHeaderComponent implements OnInit {
 
   activeButton;
+  complaint: any[];
+  @Input() openCount1: number[];
 
-  constructor(private spinner: LoadingSpinnerService) { }
+  constructor(private spinner: LoadingSpinnerService,
+              private charts: ChartService,
+              private notificationservice: NotificationServiceService) { }
 
-  ngOnInit() {
-  }
-  
+
  loader(event) {
     this.spinner.show();
     this.activeButton=event;
@@ -27,9 +30,13 @@ export class CustHeaderComponent implements OnInit {
     this.activeButton = event;
   }
 
-  ondisplay() {
-
+  ondisplay(){
+    
   }
 
+  ngOnInit() {
+    // this.initializeItems();
+   }
+  
 }
 
