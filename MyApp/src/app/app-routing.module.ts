@@ -22,27 +22,31 @@ import{ViewPreviousComplaintComponent} from './component/CUSTOMERS/view-previous
 import {EnggHomeComponent} from './component/service-engineer/engg-home/engg-home.component'
 import{AcceptComplaintComponent} from './component/service-engineer/accept-complaint/accept-complaint.component'
 import { EnggViewPreviousComponent } from './component/service-engineer/engg-view-previous/engg-view-previous.component';
+import { CustNotificationComponent } from './component/CUSTOMERS/cust-notification/cust-notification.component';
 const routes: Routes = [
   {
     path: '',
     component: LoginComponent
   },
+  // { path: 'app-cust-home', loadChildren: '' },
   {
-      path:'app-cust-home',
-      component:CustHomeComponent,
-      children: [
+    path: 'app-cust-home',
+    component: CustHomeComponent,
+    children: [
         {
-          path:'',
-          component: CustRaiseComplaintComponent,
-  
+            path: '',
+            component: CustRaiseComplaintComponent
         },
         {
-          path: 'app-view-previous-complaint',
-          component: ViewPreviousComplaintComponent,
-  
+            path: 'app-view-previous-complaint',
+            component: ViewPreviousComplaintComponent
         },
-      ]
-  },
+        {
+            path: 'app-cust-notification',
+            component: CustNotificationComponent
+        }
+    ]
+},
   {
     path:'app-engg-home',
     component:EnggHomeComponent,

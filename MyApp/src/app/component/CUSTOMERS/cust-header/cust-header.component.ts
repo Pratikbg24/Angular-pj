@@ -10,10 +10,9 @@ import { AppSettings } from '../../../app.settings'
   templateUrl: './cust-header.component.html',
   styleUrls: ['./cust-header.component.css']
 })
-export class CustHeaderComponent implements OnInit {
+export class CustHeaderComponent {
 
   activeButton;
-  complaint: any[];
   @Input() openCount1: number[];
 
   constructor(private spinner: LoadingSpinnerService,
@@ -30,13 +29,5 @@ export class CustHeaderComponent implements OnInit {
     this.activeButton = event;
   }
 
-  ondisplay(){
-    
-  }
-
-  ngOnInit() {
-    // this.initializeItems();
-   }
-  
 }
 
