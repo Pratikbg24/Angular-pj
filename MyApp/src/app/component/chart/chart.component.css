@@ -22,13 +22,13 @@
   font-size: 30px;
   margin-top: 10px;
   float: right;
-  color:white;
+  color:black;
 }
 .fa{
   font-size: 30px;
   margin-top: 10px;
   float: right;
-  color:white;
+  color:black;
 }
 .fa-trash{
   color: red;
@@ -40,23 +40,11 @@
 	font-size: 14px;
 	text-transform: capitalize;
 }
-.col-md-3{
-  margin-top: 20px;
-}
-.col-md-2{
-  margin-left: 20px;
-  margin-bottom: 5px;
-  margin-top: 15px;
-  font-size: medium;
-  text-align: center;
-}
 .col-md-4{
   margin-top: 20px;
 }
-.col-md-8{
-  margin-bottom: 5px;
-  margin-top: 5px;
-   width: 100%;
+.btnCard{
+  margin-bottom: 20px;
 }
 .complainttable{
   margin-top: 30px;
@@ -64,13 +52,29 @@
 .table-responsive{
   margin-top: 10px;
 }
-.lable{
-    font-weight: bold;
-    font-size: 20px;
-    margin-left: 80px; 
+label {
+  font-weight: bold;
+  display: inline-block;
 }
-.count{
-  font-size: 20px;}
+.label {
+  text-align: center;
+  font-weight: bold;
+  margin: auto;
+}
+.box {
+  box-sizing: border-box;
+  height: 75px;
+  padding: 5px;
+  border: 1px solid #ccc;
+}
+#r1 {
+  margin-bottom: 30px;
+}
+.count {
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+}
 
 .card-body{
   padding-top: 0px;

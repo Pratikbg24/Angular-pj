@@ -1,0 +1,32 @@
+.container{
+    position: absolute;
+}   
+  .fas {
+      margin-left: 10px !important;
+      margin-right: 10px !important;
+  }  
+  .notification {
+      background-color: #82c341!important;
+      color: #000000 !important;
+      text-decoration: none;
+      padding: 8px 10px;
+      position: relative;
+      display: inline-block;
+      border-radius: 2px;
+  }
+  
+  .notification:hover {
+      background-color: #32c4b1 !important;
+  }
+  .fas .badge {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    padding: 5px 10px;
+    border-radius: 50%;
+    background-color: red;
+    color: white;
+}
+  i {
+      font-size: x-large;
+  }

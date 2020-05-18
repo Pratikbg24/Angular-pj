@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { LoadingSpinnerService } from '../../service/loading-spinner.service'
 import { ChartService}from '../../service/chart.service'
 import { NotificationServiceService}from '../../service/NOTIFICATION-ALERT/notification-service.service'
+declare var $:any
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -34,8 +35,16 @@ export class HeaderComponent implements OnInit {
     })
   }
     notification(){
-     this.alert = true
-      // this.notify.success(this.Opencomplaint)
+      $('.toast') .toast('show');
+      $('.toast').toast({
+        'autohide': true,
+        'delay':10000
+      });
+        // $('.toast').toast('hide'); 
+
+      // $('#myHideBtn').toast('hide');
+
+     // this.notify.success(this.Opencomplaint)
     }
 
   createCustomer(event) {
