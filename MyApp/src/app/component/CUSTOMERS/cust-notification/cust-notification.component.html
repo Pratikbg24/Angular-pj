@@ -1,0 +1,42 @@
+<ngx-spinner [fullScreen]="true" type="ball-clip-rotate-multiple" size="medium">
+</ngx-spinner>
+
+<div class="container" *ngIf="unassignedData">
+    <div class="row">
+        <div class='card'>
+            <div class='card-header' id="r1">
+                <b> {{pageTitle}}</b>
+            </div>
+            <div class='card-body'>
+                <div class='table-responsive'>
+                    <table class='table'>
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Complaint</th>
+                                <th>Date</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let user of unassignedData | filter:searchText">
+                                <td>
+                                    {{user.c_id}}
+                                </td>
+                                <td>
+                                    {{user.c_desc}}
+                                </td>
+                                <td>
+                                    {{ user.c_date | date:'dd/MM/yyy'}}
+                                </td>
+                                <td>
+                                    {{user.c_status}}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

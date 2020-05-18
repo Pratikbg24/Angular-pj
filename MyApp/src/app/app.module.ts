@@ -48,6 +48,7 @@ import { EnggFooterComponent } from './component/service-engineer/engg-footer/en
 import { AcceptComplaintComponent } from './component/service-engineer/accept-complaint/accept-complaint.component';
 import { EnggViewPreviousComponent } from './component/service-engineer/engg-view-previous/engg-view-previous.component';
 import { SearchPipe1Pipe } from './pipes/search-pipe1.pipe';
+import { CustNotificationComponent } from './component/CUSTOMERS/cust-notification/cust-notification.component';
    
   @NgModule({
   declarations: [
@@ -116,7 +117,9 @@ import { SearchPipe1Pipe } from './pipes/search-pipe1.pipe';
 
     EnggViewPreviousComponent,
 
-    SearchPipe1Pipe
+    SearchPipe1Pipe,
+
+    CustNotificationComponent
   ],
   imports: [
     FormsModule,

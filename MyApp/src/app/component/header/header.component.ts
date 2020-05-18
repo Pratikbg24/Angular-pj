@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { LoadingSpinnerService } from '../../service/loading-spinner.service'
 @Component({
   selector: 'app-header',
@@ -6,7 +6,7 @@ import { LoadingSpinnerService } from '../../service/loading-spinner.service'
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-   activeButton
+   activeButton;
   constructor(private spinner: LoadingSpinnerService) {
    }
   ngOnInit() {
