@@ -64,11 +64,11 @@ export class CustRaiseComplaintComponent implements OnInit {
     this.maxDate = new Date();
     this.maxDate.setDate(this.maxDate.getDate() + 0);
     this.priorityList = [
-      { key: 1, name: "1" },
-      { key: 2, name: "2" },
-      { key: 3, name: "3" },
-      { key: 4, name: "4" },
-      { key: 5, name: "5" }
+      { key: 1, name: "1-Critical" },
+      { key: 2, name: "2-High" },
+      { key: 3, name: "3-Moderate" },
+      { key: 4, name: "4-Low" },
+      { key: 5, name: "5-Least" }
     ];
     this.enggList = [
       { key: 1, name: "Machanical" },
@@ -150,23 +150,17 @@ export class CustRaiseComplaintComponent implements OnInit {
     this.charts.getAllComplaint().subscribe((data: any) => {
       this.complaint = data.data.filter((el: any) => {
         if (el.c_assignBy == window.localStorage.getItem('id')) {
-          // AppSettings.status.forEach((s_code:any)=>{
           if (parseInt(el.c_status) === 1) {
-            // el.c_status = s_code.value;
             this.statusOpen = data.data.filter((el: any) => {
               if (el.c_assignBy == window.localStorage.getItem('id')) {
                 return el.c_status === 1
               }
             })
             this.countData.openCount = this.statusOpen.length;
-            // if(this.countData.openCount < 1) {
-            //   return null;
-            // }
             this.openCount1 = this.countData.openCount;
           }
 
           if (parseInt(el.c_status) === 2) {
-            // el.c_status = s_code.value;
             this.statusClosed = data.data.filter((el: any) => {
               if (el.c_assignBy == window.localStorage.getItem('id')) {
                 return el.c_status === 2
@@ -177,7 +171,6 @@ export class CustRaiseComplaintComponent implements OnInit {
           }
 
           if (parseInt(el.c_status) === 3) {
-            // el.c_status = s_code.value;
             this.statusPending = data.data.filter((el: any) => {
               if (el.c_assignBy == window.localStorage.getItem('id')) {
                 return el.c_status === 3

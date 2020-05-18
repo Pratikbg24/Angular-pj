@@ -2,30 +2,25 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <ngx-spinner [fullScreen]="true" type="ball-clip-rotate-multiple" size="medium">
 </ngx-spinner>
+<app-cust-header [openCount1]="openCount1"></app-cust-header>
 
 <div class="container">
     <div class="row" id="r1">
-
-        <!-- <div class="col-md-3 ">
-            <button class="btn btn-info" id="b1">
-             <span class="lable">Complaint Status </span>
-          </button>
-        </div> -->
         <div class="col-md-4 mx-auto" *ngIf="openCount1 > 0">
             <div class="box">
-                <p class="label">Unassigned <span><i class="fas fa-clipboard" style="color:black; float:right"></i> </span></p>
+                <p class="label">Unassigned <span><i class="fas fa-folder-open" style="color:black; float:right"></i> </span></p>
                 <p class="count"> {{openCount1}}</p><br>
             </div>
         </div>
         <div class="col-md-4 mx-auto" *ngIf="openCount1 > 0">
             <div class="box">
-                <p class="label">Closed <span><i class="fas fa-clipboard" style="color:black; float:right"></i> </span></p>
+                <p class="label">Closed <span><i class="fas fa-clone" style="color:black; float:right"></i> </span></p>
                 <p class="count"> {{closedCount1}}</p><br>
             </div>
         </div>
         <div class="col-md-4 mx-auto" *ngIf="openCount1 > 0">
             <div class="box">
-                <p class="label">Pending<span><i class="fas fa-clipboard" style="color:black; float:right"></i> </span></p>
+                <p class="label">Pending<span><i class="fas fa-pencil-square-o" style="color:black; float:right"></i> </span></p>
                 <p class="count">{{pendingCount1}}</p><br>
             </div>
         </div>
