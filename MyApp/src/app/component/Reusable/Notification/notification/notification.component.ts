@@ -16,6 +16,7 @@ export class NotificationComponent implements OnInit {
   constructor(private getcomplaint:ChartService) { }
 
   ngOnInit() {
+    $('.toast') .toast('hide');
     this.initializeItems()
   }
   initializeItems() {
