@@ -1,8 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { LoadingSpinnerService } from '../../service/loading-spinner.service'
-import { ChartService}from '../../service/chart.service'
-import { NotificationServiceService}from '../../service/NOTIFICATION-ALERT/notification-service.service'
-declare var $:any
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
