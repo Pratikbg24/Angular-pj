@@ -180,6 +180,7 @@ this.chart=new Chart('complaintsStatusCart',{
 })
 });
   }
+  
   initializeItems() {
     this.charts.getAllComplaint().subscribe((result: any) => {
       this.complaint = result.data;
@@ -193,7 +194,6 @@ this.chart=new Chart('complaintsStatusCart',{
       })
       this.filterData=this.complaint;
     })
-   
   }
   openComplaint() {
     
