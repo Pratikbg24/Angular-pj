@@ -27,19 +27,19 @@
   <div class="row" id="r1">
     <div class="col-md-4 mx-auto" *ngIf="openCount1 > 0">
         <button class=" btn box" (click)="openComplaint()">
-            <p class="label" >Unassigned <span><i class="fas fa-clipboard" ></i> </span></p>
+            <p class="label" >Unassigned <span><i class="fas fa-folder-open" ></i> </span></p>
             <p class="count"> {{openCount1}}</p><br>
         </button>
     </div>
     <div class="col-md-4 mx-auto" *ngIf="closedCount1 > 0">
         <button class=" btn box" (click)="closeComplaint()">
-            <p class="label"  >Closed <span><i class="fas fa-clipboard"></i> </span></p>
+            <p class="label"  >Closed <span><i class="fas fa-clone"></i> </span></p>
             <p class="count"> {{closedCount1}}</p><br>
         </button>
     </div>
     <div class="col-md-4 mx-auto" *ngIf="pendingCount1 > 0">
         <button class=" btn box" (click)="pendingComplaint()">
-            <p class="label" >Pending<span><i class="fas fa-clipboard"></i> </span></p>
+            <p class="label" >Pending<span><i class="fas fa-pencil-square-o"></i> </span></p>
             <p class="count">{{pendingCount1}}</p><br>
         </button>
     </div>

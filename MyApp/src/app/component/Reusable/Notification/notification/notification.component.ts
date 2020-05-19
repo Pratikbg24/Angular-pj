@@ -33,5 +33,7 @@ export class NotificationComponent implements OnInit {
     $('.toast') .toast('show');
     this.showMyContainer=!this.showMyContainer
   }
-
+    carddissmiss(){
+      $('.toast') .toast('hide');
+    }
 }
