@@ -12,13 +12,13 @@
                 <p class="count"> {{openCount1}}</p><br>
             </div>
         </div>
-        <div class="col-md-4 mx-auto" *ngIf="openCount1 > 0">
+        <div class="col-md-4 mx-auto" *ngIf="closedCount1 > 0">
             <div class="box">
                 <p class="label">Closed <span><i class="fas fa-clone" style="color:black; float:right"></i> </span></p>
                 <p class="count"> {{closedCount1}}</p><br>
             </div>
         </div>
-        <div class="col-md-4 mx-auto" *ngIf="openCount1 > 0">
+        <div class="col-md-4 mx-auto" *ngIf="pendingCount1 > 0">
             <div class="box">
                 <p class="label">Pending<span><i class="fas fa-pencil-square-o" style="color:black; float:right"></i> </span></p>
                 <p class="count">{{pendingCount1}}</p><br>
