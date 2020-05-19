@@ -47,23 +47,26 @@
                     </div>
 
                 </div>
-                <div class="row " style="margin-top: 10px; margin-bottom: 10px; ">
-                    <div class="col-md-2 ">
-                        <label style="margin-top:12px ;margin-left: 20px;font-size: medium;"><b>Start Date</b></label>
-                    </div>
-                    <div class="col-md-4">
-                        <input type="text" class="abc" placeholder="DD/MM/YYYY" bsDatepicker [bsConfig]="dpconfig" [maxDate]="maxDate" [ngClass]="{ 'is-invalid': submitted && f.Datepurchased.errors?.invalid }">
-                    </div>
-                </div>
+                <form class="form" [formGroup]="formGroup">
 
-                <div class="row " style="margin-top: 10px; margin-bottom: 10px; ">
-                    <div class="col-md-2 ">
-                        <label style="margin-top:12px ;margin-left: 20px;font-size: medium;"><b>End Date</b></label>
+                    <div class="row " style="margin-top: 10px; margin-bottom: 10px; ">
+                        <div class="col-md-2 ">
+                            <label style="margin-top:12px ;margin-left: 20px;font-size: medium;"><b>Start Date</b></label>
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <input type="text" (ngModelChange)="onSelect(selected)" formControlName="Datepurchased" class="abc" placeholder="DD/MM/YYYY" bsDatepicker [bsConfig]="dpconfig" [maxDate]="maxDate" [ngClass]="{ 'is-invalid': submitted && f.Datepurchased.errors?.invalid }">
+                        </div>
                     </div>
-                    <div class="col-md-4">
-                        <input type="text" class="abc" placeholder="DD/MM/YYYY" bsDatepicker [bsConfig]="dpconfig" [maxDate]="maxDate" [ngClass]="{ 'is-invalid': submitted && f.Datepurchased.errors?.invalid }">
+
+                    <div class="row " style="margin-top: 10px; margin-bottom: 10px; ">
+                        <div class="col-md-2 ">
+                            <label style="margin-top:12px ;margin-left: 20px;font-size: medium;"><b>End Date</b></label>
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <input type="text" class="abc" (ngModelChange)="onSelect(selected)" formControlName="Datepurchased1" placeholder="DD/MM/YYYY" bsDatepicker [bsConfig]="dpconfig" [maxDate]="maxDate" [ngClass]="{ 'is-invalid': submitted && f.Datepurchased.errors?.invalid }">
+                        </div>
                     </div>
-                </div>
+                </form>
                 <div class="row " style="margin-top: 10px; margin-bottom: 10px; ">
                     <div class="col-md-2 ">
 
@@ -104,7 +107,7 @@
                                     {{x.c_desc}}
                                 </td>
                                 <td>
-                                    {{x.c_date | date:'dd/MM/yyy'}}
+                                    {{x.c_date | date:'MM/dd/yyy'}}
 
                                 </td>
                                 <td>{{x.c_status}}</td>

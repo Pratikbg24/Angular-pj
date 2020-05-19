@@ -30,7 +30,7 @@ export class ViewAllComplaintsComponent implements OnInit {
   }
   Machinelist: Array<any> = [];
   maxDate: Date;
-  
+
   pageTitle = 'All Complaints';
 
   complaint: any[];
@@ -39,8 +39,8 @@ export class ViewAllComplaintsComponent implements OnInit {
     u_Machinepurchesed: null,
 
   }
-  filterData:any[];
- value:any
+  filterData: any[];
+  value: any
   //complaint;
   complaintData;
 
@@ -65,57 +65,60 @@ export class ViewAllComplaintsComponent implements OnInit {
       { type: 'required', message: '*Email is required' },
       { type: 'pattern', message: '*Enter valid email' }
     ],
-   
-  }
-options =['Open', 'Close','Pending']
 
-selected;
-selectedData;
+  }
+  options = ['Open', 'Close', 'Pending']
+
+  selected;
+  selectedData;
   constructor(private route: ActivatedRoute,
     private router: Router,
     private charts: ChartService,
     private fb: FormBuilder,
     private notificationservice: NotificationServiceService,
-    private dpconfig:BsDatepickerConfig,
+    private dpconfig: BsDatepickerConfig,
     private spinner: NgxSpinnerService,
     private httpCilent: HttpClient) {
-      this.dpconfig.dateInputFormat='DD-MM-YYYY';
-      this.dpconfig.isAnimated=true;
-      this.maxDate = new Date();
-      this.maxDate.setDate(this.maxDate.getDate() + 0)
-      this.Machinelist = [
-        { name: "Open" },
-        { name: "Pending" },
-        { name: "Close" },
-      ];
-   
+    this.dpconfig.dateInputFormat = 'DD-MM-YYYY';
+    this.dpconfig.isAnimated = true;
+    this.maxDate = new Date();
+    this.maxDate.setDate(this.maxDate.getDate() + 0)
+    this.Machinelist = [
+      { name: "Open" },
+      { name: "Pending" },
+      { name: "Close" },
+    ];
+
   }
   ngOnInit() {
     this.initializeItems()
-
     this.formGroup = this.fb.group({
       Datepurchased: ['', Validators.compose([
+        Validators.required
+      ])],
+      Datepurchased1: ['', Validators.compose([
         Validators.required
       ])],
       email: ['', Validators.compose([
         Validators.required,
         Validators.pattern("[a-z_A-Z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z_A-Z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z_A-Z0-9](?:[a-z_A-Z0-9-]*[a-z_A-Z0-9])?\.)+[a-z_A-Z0-9](?:[a-z_A-Z0-9-]*[a-z_A-Z0-9])?")
       ])],
-    
+
     })
+
   }
   getItems(ev: any) {
     const val = ev.target.value;
     if (val && val.trim() != '') {
       this.complaint = this.complaint.filter((item) => {
-       if(parseInt(item.c_id) === parseInt(val)){
-        return parseInt(item.c_id) === parseInt(val);
-       }
+        if (parseInt(item.c_id) === parseInt(val)) {
+          return parseInt(item.c_id) === parseInt(val);
+        }
       })
     }
-    if(val.length === 0){
-      this.initializeItems(); 
-          }
+    if (val.length === 0) {
+      this.initializeItems();
+    }
   }
   initializeItems() {
     this.charts.getAllComplaint().subscribe((result: any) => {
@@ -131,31 +134,38 @@ selectedData;
       this.selectedData = this.complaint;
     })
   }
- 
-onSelect(val){
-  console.log(val);
-  this.selectedData = this.complaint.filter(x => x.c_status == val)
-}
-excelToMail()
-  {
+
+  onSelect(val) {
+    console.log(val);
+    let start_date = new Date(this.formGroup.value.Datepurchased).toLocaleDateString()
+    let end_date = new Date(this.formGroup.value.Datepurchased1).toLocaleDateString()
+    let dd = this.formGroup.value.options
+    console.log(dd)
+    this.selectedData = this.complaint.filter((el) => {
+  //     return 
+     return (((start_date) <= (new Date(el.c_date).toLocaleDateString()) )&& ((end_date) >= (new Date(el.c_date).toLocaleDateString())) &&  (el.c_status == val) )
+    })
+    console.log(this.selectedData)
+  }
+  excelToMail() {
     this.charts.downloadAllComplait(
       this.formGroup.value.email,
       this.selectedData
-    ).subscribe((result:any)=>{
+    ).subscribe((result: any) => {
       if (result.status === "success") {
         this.notificationservice.success(" Mail Send  successfully")
         this.initializeItems();
-    
-      } if (result.status === "error") {   
+
+      } if (result.status === "error") {
         this.notificationservice.error("Mail not Send !!!")
         this.initializeItems();
-      }  
+      }
     })
     this.spinner.show();
     this.submitted = true;
 
   }
-  openModal(item:any){
+  openModal(item: any) {
     $("#myModal").modal('show');
   }
 }
