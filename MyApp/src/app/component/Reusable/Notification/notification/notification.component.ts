@@ -24,16 +24,16 @@ export class NotificationComponent implements OnInit {
       this.Opencomplaint = this.Opencomplaint.filter((ele: any) => {
       return ele.c_status ===1
       })
-      console.log(this.Opencomplaint);
       this.countData.openCount=this.Opencomplaint.length;
       this.openCount1=this.countData.openCount
     })
   }
   notification(){
-    $('.toast') .toast('show');
     this.showMyContainer=!this.showMyContainer
+    $('.toast') .toast('show');
   }
     carddissmiss(){
+      this.showMyContainer=!this.showMyContainer
       $('.toast') .toast('hide');
     }
 }

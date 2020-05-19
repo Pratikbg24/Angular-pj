@@ -2,7 +2,7 @@
     <span>Notification</span>
     <i class="fas fa-bell"><span class="badge">{{openCount1}}</span></i>
 </a>
-<div class="container" id="myDiv" [hidden]="showMyContainer"  >
+<div class="container" id="myDiv" [hidden]="!showMyContainer" >
 <div class="card"  id="toastmsg"  style="position: relative; min-height:auto">
   <div class="card-body">
 <div   class="toast fade"  *ngFor="let desc of Opencomplaint" 
