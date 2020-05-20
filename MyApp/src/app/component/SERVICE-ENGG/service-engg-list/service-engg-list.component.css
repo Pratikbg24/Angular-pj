@@ -39,11 +39,8 @@ thead, th {
   }
   .form-control {
     margin-top: 20px;
-    border-radius: 20px;
     background-color: #edeeee;
     align-items: center;
-    border-bottom:groove;
-    border: groove;
 }
 .fromicon{
     margin-left: 20%;
@@ -53,6 +50,4 @@ thead, th {
 }
 span.input-group-text{
     background-color: royalblue;
-    border-bottom: groove;
-    border: groove;
 }

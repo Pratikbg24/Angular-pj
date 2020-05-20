@@ -2,35 +2,51 @@
 
 <body>
   <div class="container">
-      <div class=" col-lg-12 mb-4">    
-    <div class=" card">
-      <div class="card-header">
-        <h3>Customer Status</h3>
+    <div class="card btnCard">
+    <div class="card-body">
+    <div class="row" id="r1">
+      <div class="col-md-4 mx-auto " *ngIf="userCount1 > 0">
+          <button class=" btn box" (click)="userCount()">
+              <p class="label">User <span><i class="fa fa-users"></i> </span></p>
+              <p class="count"> {{userCount1}}</p><br>
+          </button>
       </div>
-      <div class="card-body">
-      <div class="row">
-      <div class="col-md-3 offset-md-3 ">
-        <button class="btn btn-success" (click)="userCount()">
-          <span class="count userCount"> {{userCount1}}</span><span><i class="fa fa-users" aria-hidden="true"></i></span><br>
-          <span class="lable lable1">Users</span>
-        </button>
+      <div class="col-md-4 mx-auto" *ngIf="enggCount1 > 0">
+          <button class=" btn box" (click)="enggCount()">
+              <p class="label">Engineers <span><i class="fa fa-users"></i> </span></p>
+              <p class="count"> {{enggCount1}}</p><br>
+          </button>
       </div>
-      <div class="col-md-3">
-        <button class="btn btn-primary"  (click)="enggCount()">
-          <span class="count">{{enggCount1}}</span><span><i class="fa fa-users" aria-hidden="true"></i></span><br>
-          <span class="lable">Engineers</span>
-        </button>
+      <div class="col-md-4 mx-auto " *ngIf="adminCount1 > 0">
+          <button class=" btn box">
+              <p class="label">Admin<span><i class="fa fa-users"></i> </span></p>
+              <p class="count">{{adminCount1}}</p><br>
+          </button>
       </div>
-      <div class="col-md-3">
-        <button class="btn btn-warning">
-          <span class="count">{{adminCount1}}</span><span><i class="fa fa-users" aria-hidden="true"></i></span><br>
-          <span class="lable">Admin</span>
-        </button>
-      </div>
-    </div>
-    </div>
-    </div>
   </div>
+  <div class="row" id="r1">
+    <div class="col-md-4 mx-auto" *ngIf="openCount1 > 0">
+        <button class=" btn box" (click)="openComplaint()">
+            <p class="label" >Unassigned <span><i class="fas fa-folder-open" ></i> </span></p>
+            <p class="count"> {{openCount1}}</p><br>
+        </button>
+    </div>
+    <div class="col-md-4 mx-auto" *ngIf="closedCount1 > 0">
+        <button class=" btn box" (click)="closeComplaint()">
+            <p class="label"  >Closed <span><i class="fas fa-clone"></i> </span></p>
+            <p class="count"> {{closedCount1}}</p><br>
+        </button>
+    </div>
+    <div class="col-md-4 mx-auto" *ngIf="pendingCount1 > 0">
+        <button class=" btn box" (click)="pendingComplaint()">
+            <p class="label" >Pending<span><i class="fas fa-pencil-square-o"></i> </span></p>
+            <p class="count">{{pendingCount1}}</p><br>
+        </button>
+    </div>
+</div>
+</div>
+</div>
+
   <div class=" col-lg-12 ">    
         <div class="row">
       <div class="col-md-6">
@@ -53,45 +69,23 @@
 </div>
 </div>
 </div>
-<div class=" col-lg-12 mb-4">    
-  <div class=" card ">
-    <div class="card-header">
-      <h3>Complaint Status</h3>
-    </div>
-    <div class="card-body">
-    <div class="row">
-    <div class="col-md-4 ">
-      <button class="btn btn-success" (click)="openComplaint()">
-        <span class="count userCount"> {{openCount1}}</span><span><i class="fas fa-clipboard" aria-hidden="true"></i></span><br>
-        <span class="lable lable1">Open Complaint</span>
-      </button>
-    </div>
-    <div class="col-md-4">
-      <button class="btn btn-danger"  (click)="closeComplaint()">
-        <span class="count">{{closedCount1}}</span><span><i class="fas fa-clipboard" aria-hidden="true"></i></span><br>
-        <span class="lable">Closed Complaint</span>
-      </button>
-    </div>
-    <div class="col-md-4">
-      <button class="btn btn-warning" (click)="pendingComplaint()">
-        <span class="count">{{pendingCount1}}</span><span><i class="fas fa-clipboard" aria-hidden="true"></i></span><br>
-        <span class="lable">Pending Complaint</span>
-      </button>
-    </div>
-  </div>
-  </div>
-  </div>
-</div>
-      <div class="col-lg-12">
+      <div class="col-lg-12 complainttable">
      <div class="card">
       <div class="card-header"> 
         <div class="row row123 ">
           <div class='col-md-2'><b>Search</b> 
           </div>
           <div class='col-md-8'>
-              <input class="form-control"
-               type="text" name="search" [(ngModel)]="searchText" autocomplete="off" 
-               placeholder="Enter your complaint name or complaint status"/>
+              <div class="input-group form-group">   
+        <input type="text" class="form-control"
+            placeholder="Start searching for a customer Name or Mobile number or Email" name="search"
+            [(ngModel)]="searchText" autocomplete="off">
+            <div class="input-group-append">
+                <span class="input-group-text form-control">
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                </span>
+            </div>
+            </div>
                </div>
             </div>
          </div>

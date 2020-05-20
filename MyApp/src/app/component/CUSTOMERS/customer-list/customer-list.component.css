@@ -40,12 +40,9 @@ h3 {
   }
 .form-control {
     margin-top: 20px;
-    border-radius: 20px;
     background-color: #edeeee;
     align-items: center;
-    border-bottom:groove;
-    border: groove;
-}
+ }
 .fa-search{
     color: white;
 }
@@ -55,9 +52,7 @@ button .close{
 }
 span.input-group-text{
     background-color: royalblue;
-    border-bottom: groove;
-    border: groove;
-}
+ }
 .searchicon{
     margin-left: 20%;
 }

@@ -81,13 +81,6 @@ export class ViewPreviousComplaintComponent implements OnInit {
     }
   }
 
-//   filteredDate = new Array();
-//   list;   
-
-//   getFilteredDate(fromDate:any, toDate:any): void {  
-//     this.filteredDate = this.datePipe.transform(this.list, fromDate, toDate);          
-// }  
-
   clearText() {
     this.searchText = '';
     this.c_status = '';

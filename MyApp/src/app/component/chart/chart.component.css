@@ -1,5 +1,4 @@
 .btn{
-  margin-top: 20px;
   border-radius: 5px;
   color: black;
   width: 100%;
@@ -23,55 +22,60 @@
   font-size: 30px;
   margin-top: 10px;
   float: right;
-  color:white;
+  color:black;
 }
 .fa{
   font-size: 30px;
   margin-top: 10px;
   float: right;
-  color:white;
+  color:black;
 }
 .fa-trash{
   color: red;
   margin: 0px;
   font-size: 20px;
 }
-.row .form-control{
-  color: #555;
-	letter-spacing: 1px;
-	height: 37px;
-	padding: 2px 15px 2px 35px;
-  border-radius: 50px;
-  margin-top: 5px;
-}
 .row .form-control::placeholder{
   color: rgba(0, 0, 0, 0.7);
 	font-size: 14px;
 	text-transform: capitalize;
 }
-.col-md-2{
-  margin-left: 20px;
-  margin-bottom: 5px;
-  margin-top: 15px;
-  font-size: medium;
-  text-align: center;
+.col-md-4{
+  margin-top: 20px;
 }
-.col-md-8{
-  margin-bottom: 5px;
-  margin-top: 5px;
-   width: 100%;
+.btnCard{
+  margin-bottom: 20px;
+}
+.complainttable{
+  margin-top: 30px;
 }
 .table-responsive{
   margin-top: 10px;
 }
-.lable{
-  font-weight: bold;  
+label {
+  font-weight: bold;
+  display: inline-block;
 }
-.count{
-  font-size: 20px;}
-.mb-4{
-  margin-top: 25px;
+.label {
+  text-align: center;
+  font-weight: bold;
+  margin: auto;
 }
+.box {
+  box-sizing: border-box;
+  height: 75px;
+  padding: 5px;
+  border: 1px solid #ccc;
+}
+#r1 {
+  margin-bottom: 30px;
+}
+.count {
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+}
+
 .card-body{
   padding-top: 0px;
 }
@@ -83,4 +87,21 @@
 .modal-header .close{
   padding: none;
   margin: none;
+}
+.row .form-control{
+  color: #555;
+	letter-spacing: 1px;
+	height: 37px;
+  margin-top: 5px;
+}
+
+.fa-search{
+  color: white;
+  font-size: 20px;
+  margin-top: 0px;
+  float:none;
+}
+span.input-group-text{
+  background-color: royalblue;
+  align-items: center;
 }

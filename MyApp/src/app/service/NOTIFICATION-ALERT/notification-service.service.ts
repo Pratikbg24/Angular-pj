@@ -8,7 +8,7 @@ export class NotificationServiceService {
   constructor() {
     this.setting();
    }
-    success(title:string,message?:string){
+    success(title:any,message?:any){
       toastr.success(title,message)
     }
     warning(title:string,message?:string){
