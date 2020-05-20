@@ -50,6 +50,7 @@ import { EnggViewPreviousComponent } from './component/service-engineer/engg-vie
 import { SearchPipe1Pipe } from './pipes/search-pipe1.pipe';
 import { NotificationComponent } from './component/Reusable/Notification/notification/notification.component';
 import { CustNotificationComponent } from './component/CUSTOMERS/cust-notification/cust-notification.component';
+import { datePipe } from './pipes/date-pipe';
    
   @NgModule({
   declarations: [
@@ -119,6 +120,8 @@ import { CustNotificationComponent } from './component/CUSTOMERS/cust-notificati
     EnggViewPreviousComponent,
 
     SearchPipe1Pipe,
+
+    datePipe,
 
     NotificationComponent,
     CustNotificationComponent

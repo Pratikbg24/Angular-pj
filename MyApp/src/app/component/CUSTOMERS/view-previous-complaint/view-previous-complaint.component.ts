@@ -4,7 +4,9 @@ import { NgxSpinnerService } from 'ngx-spinner'
 import { ChartService } from '../../../service/chart.service'
 import { HttpClient } from '@angular/common/http';
 import { FormGroup, FormArray, Validators, FormBuilder } from '@angular/forms';
-import { AppSettings } from '../../../app.settings'
+import { AppSettings } from '../../../app.settings';
+//import { datePipe } from '../../../pipes/date-pipe';
+
 @Component({
   selector: 'app-view-previous-complaint',
   templateUrl: './view-previous-complaint.component.html',
@@ -31,7 +33,11 @@ export class ViewPreviousComplaintComponent implements OnInit {
   c_date: [];
 
   searchText;
+  c_status;
   searchText1;
+  filtered: [];
+  toDate: any;
+  fromDate: any;
   machinType: [];
   data = [
 
@@ -73,5 +79,12 @@ export class ViewPreviousComplaintComponent implements OnInit {
     if(val.length === 0){
       this.initializeItems();   
     }
+  }
+
+  clearText() {
+    this.searchText = '';
+    this.c_status = '';
+    this.toDate = '';
+    this.fromDate = '';
   }
 }
