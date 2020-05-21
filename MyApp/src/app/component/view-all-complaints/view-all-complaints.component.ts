@@ -11,10 +11,14 @@ import { filter } from 'rxjs/operators';
 import { SearchPipe1Pipe } from 'src/app/pipes/search-pipe1.pipe';
 declare var $: any;
 
+import { DatePipe } from '@angular/common';
+
+
 @Component({
   selector: 'app-view-all-complaints',
   templateUrl: './view-all-complaints.component.html',
-  styleUrls: ['./view-all-complaints.component.css']
+  styleUrls: ['./view-all-complaints.component.css'],
+  providers: [ DatePipe ]
 })
 export class ViewAllComplaintsComponent implements OnInit {
   c_status: string;
@@ -23,6 +27,11 @@ export class ViewAllComplaintsComponent implements OnInit {
   submitted = false
   alert = false
   invalid: boolean
+  obj={
+    start_date:"",
+    end_date:"",
+    status:""
+  }
   serviceEnggData: any = {
     engg_Id: null,
     engg_Name: null,
@@ -72,6 +81,7 @@ export class ViewAllComplaintsComponent implements OnInit {
   selected;
   selectedData;
   constructor(private route: ActivatedRoute,
+    private datePipe: DatePipe,
     private router: Router,
     private charts: ChartService,
     private fb: FormBuilder,
@@ -79,7 +89,7 @@ export class ViewAllComplaintsComponent implements OnInit {
     private dpconfig: BsDatepickerConfig,
     private spinner: NgxSpinnerService,
     private httpCilent: HttpClient) {
-    this.dpconfig.dateInputFormat = 'DD-MM-YYYY';
+    this.dpconfig.dateInputFormat = 'YYYY-MM-DD';
     this.dpconfig.isAnimated = true;
     this.maxDate = new Date();
     this.maxDate.setDate(this.maxDate.getDate() + 0)
@@ -91,6 +101,7 @@ export class ViewAllComplaintsComponent implements OnInit {
 
   }
   ngOnInit() {
+   
     this.initializeItems()
     this.formGroup = this.fb.group({
       Datepurchased: ['', Validators.compose([
@@ -134,19 +145,41 @@ export class ViewAllComplaintsComponent implements OnInit {
       this.selectedData = this.complaint;
     })
   }
+  
 
   onSelect(val) {
     console.log(val);
-    let start_date = new Date(this.formGroup.value.Datepurchased).toLocaleDateString()
-    let end_date = new Date(this.formGroup.value.Datepurchased1).toLocaleDateString()
-    let dd = this.formGroup.value.options
-    console.log(dd)
-    this.selectedData = this.complaint.filter((el) => {
-  //     return 
-     return (((start_date) <= (new Date(el.c_date).toLocaleDateString()) )&& ((end_date) >= (new Date(el.c_date).toLocaleDateString())) &&  (el.c_status == val) )
-    })
-    console.log(this.selectedData)
+  let end=this.datePipe.transform(this.formGroup.value.Datepurchased1, 'yyyy-MM-dd');
+  let start=this.datePipe.transform(this.formGroup.value.Datepurchased, 'yyyy-MM-dd');
+
+  
+  if( start)
+  {  this.selectedData = this.complaint.filter(
+      m => new Date(m.c_date) >= new Date(start) && new Date(m.c_date) <= new Date(end)
+      );
+
+    return this.selectedData
+   
+    }
+
+  else if(start && val ) 
+  {
+    this.selectedData = this.complaint.filter(
+      m => new Date(m.c_date) >= new Date(start) && new Date(m.c_date) <= new Date(end) && m.c_status===val
+      );
+    return this.selectedData 
   }
+
+
+  else if(val)
+  {
+    this.selectedData = this.complaint.filter(
+      m =>m.c_status===val
+      );
+    return this.selectedData
+  }
+
+    }
   excelToMail() {
     this.charts.downloadAllComplait(
       this.formGroup.value.email,

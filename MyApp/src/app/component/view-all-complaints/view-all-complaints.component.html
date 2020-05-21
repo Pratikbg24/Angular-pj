@@ -54,7 +54,7 @@
                             <label style="margin-top:12px ;margin-left: 20px;font-size: medium;"><b>Start Date</b></label>
                         </div>
                         <div class="col-md-4 form-group">
-                            <input type="text" (ngModelChange)="onSelect(selected)" formControlName="Datepurchased" class="abc" placeholder="DD/MM/YYYY" bsDatepicker [bsConfig]="dpconfig" [maxDate]="maxDate" [ngClass]="{ 'is-invalid': submitted && f.Datepurchased.errors?.invalid }">
+                            <input type="text" [(ngModel)]="obj.start_date" formControlName="Datepurchased" class="abc" placeholder="YYYY/MM/DD" bsDatepicker [bsConfig]="dpconfig" [maxDate]="maxDate" [ngClass]="{ 'is-invalid': submitted && f.Datepurchased.errors?.invalid }">
                         </div>
                     </div>
 
@@ -63,7 +63,7 @@
                             <label style="margin-top:12px ;margin-left: 20px;font-size: medium;"><b>End Date</b></label>
                         </div>
                         <div class="col-md-4 form-group">
-                            <input type="text" class="abc" (ngModelChange)="onSelect(selected)" formControlName="Datepurchased1" placeholder="DD/MM/YYYY" bsDatepicker [bsConfig]="dpconfig" [maxDate]="maxDate" [ngClass]="{ 'is-invalid': submitted && f.Datepurchased.errors?.invalid }">
+                            <input type="text" class="abc" [(ngModel)]="obj.end_date" (ngModelChange)="onSelect(obj.end_date)" formControlName="Datepurchased1" placeholder="YYYY/MM/DD" bsDatepicker [bsConfig]="dpconfig" [maxDate]="maxDate" [ngClass]="{ 'is-invalid': submitted && f.Datepurchased.errors?.invalid }">
                         </div>
                     </div>
                 </form>
@@ -79,7 +79,9 @@
                               {{ option }}
                             </option>
                        </select>
-
+                    </div>
+                    <div class="col-md-2">
+                        <button class="btn btn-primary" (click)="ngOnInit()">Reset Filter</button>
                     </div>
 
                 </div>
@@ -107,7 +109,7 @@
                                     {{x.c_desc}}
                                 </td>
                                 <td>
-                                    {{x.c_date | date:'MM/dd/yyy'}}
+                                    {{x.c_date | date:'yyy/MM/dd'}}
 
                                 </td>
                                 <td>{{x.c_status}}</td>
