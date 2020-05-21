@@ -12,3 +12,10 @@ thead {
 .container{
   margin-bottom: 30px !important;
 }
+.modal-content{
+  overflow-y: scroll;
+  height:500px;
+}
+.selected{
+  background-color:green;
+}

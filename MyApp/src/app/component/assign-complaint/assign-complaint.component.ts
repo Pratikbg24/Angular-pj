@@ -5,7 +5,6 @@ import { ChartService } from '../../service/chart.service'
 import { HttpClient } from '@angular/common/http';
 import { FormGroup, FormArray, Validators, FormBuilder } from '@angular/forms';
 import { NotificationServiceService } from 'src/app/service/NOTIFICATION-ALERT/notification-service.service';
-
 declare var $: any;
 @Component({
   selector: 'app-assign-complaint',
@@ -33,6 +32,7 @@ export class AssignComplaintComponent implements OnInit {
   pageTitle = 'Assign Complaints';
   complaint: any[];
   c_id: any[];
+  complaint_id:any;
   Machine_type: any = 
   {
     u_Machinepurchesed: null,
@@ -44,18 +44,26 @@ export class AssignComplaintComponent implements OnInit {
   data = []
   showSuccessMsg: boolean = false;
   showInvalidMsg: boolean = false;
-  
+  hoverow: boolean=false;
   constructor(private route: ActivatedRoute,
     private router: Router,
     private charts: ChartService,
     private spinner: NgxSpinnerService,
     private notificationservice: NotificationServiceService,
-    private httpCilent: HttpClient) {
+    private httpCilent: HttpClient,
+    private ActivactedRoute:ActivatedRoute) {
     this.serviceEnggData = [];
   }
   ngOnInit() {
     this.getAllServiceEngg();
     this.complaintInitialize()
+    this.complaint_id = this.ActivactedRoute.snapshot.params["c_id"];
+    console.log(this.complaint_id)
+    if(this.complaint_id === this.c_id){
+      $(".test").css("background-color","red");
+      // $("tr").css("background-color", "#F4F4F8");
+    }
+    
   }
   
   complaintInitialize(){

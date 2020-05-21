@@ -30,8 +30,8 @@
                                 <th>Assign</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr *ngFor="let user of complaint | filter:searchText">
+                        <tbody *ngFor="let user of complaint | filter:searchText">
+                            <tr class="test" >
                                 <td>
                                     {{user.c_id}}
                                 </td>
@@ -58,7 +58,6 @@
         </div>
     </div>
 </div>
-
 <div id="customerModal" class="modal fade" role="dialog">
     <div>
         <div class="modal-dialog">

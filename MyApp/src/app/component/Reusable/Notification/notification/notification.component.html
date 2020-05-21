@@ -14,7 +14,7 @@ role="alert" aria-live="assertive" aria-atomic="true" data-autohide="false">
    </div>
    <div class="toast-body"  >
      {{desc.c_desc}}
-     <a  (click)="carddissmiss()" routerLink="/home1/app-assign-complaint">Click here!</a>
+     <a  (click)="carddissmiss()" [routerLink]="['app-assign-complaint/view',desc.c_id]">Click here!</a>
    </div>
   </div>
 </div>

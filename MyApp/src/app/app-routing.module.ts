@@ -81,7 +81,7 @@ const routes: Routes = [
       component:ViewAllComplaintsComponent,  
       },
       {
-        path: 'app-assign-complaint',
+        path: 'app-assign-complaint/view/:c_id',
         component: AssignComplaintComponent,
       },
       {
