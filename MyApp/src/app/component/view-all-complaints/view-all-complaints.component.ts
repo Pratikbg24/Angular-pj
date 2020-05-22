@@ -7,18 +7,12 @@ import { FormGroup, FormArray, Validators, FormBuilder } from '@angular/forms';
 import { AppSettings } from '../../app.settings'
 import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker'
 import { NotificationServiceService } from 'src/app/service/NOTIFICATION-ALERT/notification-service.service';
-import { filter } from 'rxjs/operators';
-import { SearchPipe1Pipe } from 'src/app/pipes/search-pipe1.pipe';
 declare var $: any;
-
-import { DatePipe } from '@angular/common';
-
 
 @Component({
   selector: 'app-view-all-complaints',
   templateUrl: './view-all-complaints.component.html',
   styleUrls: ['./view-all-complaints.component.css'],
-  providers: [ DatePipe ]
 })
 export class ViewAllComplaintsComponent implements OnInit {
   
@@ -73,7 +67,6 @@ export class ViewAllComplaintsComponent implements OnInit {
   selected;
   selectedData;
   constructor(private route: ActivatedRoute,
-    private datePipe: DatePipe,
     private router: Router,
     private charts: ChartService,
     private fb: FormBuilder,
@@ -134,9 +127,6 @@ export class ViewAllComplaintsComponent implements OnInit {
   
 
   onSelect(data) {
-    
-   
-   console.log(data);
   this.selectedData = this.complaint.filter((item) => {
     
     if ((data.status !== "") && (data.startDate !== "")) {
@@ -152,36 +142,8 @@ export class ViewAllComplaintsComponent implements OnInit {
     else{
       return this.selectedData
     }
-    //}
   })
-
-/*  
-  if( start)
-  {  this.selectedData = this.complaint.filter(
-      m => new Date(m.c_date) >= new Date(start) && new Date(m.c_date) <= new Date(end)
-      );
-
-    return this.selectedData
-   
-    }
-
-  else if(start && val ) 
-  {
-    this.selectedData = this.complaint.filter(
-      m =>  m.c_status===val && new Date(m.c_date) >= new Date(start) && new Date(m.c_date) <= new Date(end)       );
-    return this.selectedData 
-  }
-
-
-  else if(val)
-  {
-    this.selectedData = this.complaint.filter(
-      m =>m.c_status===val
-      );
-    return this.selectedData
-  }
-*/
-    }
+ }
   excelToMail() {
     this.charts.downloadAllComplait(
       this.formGroup.value.email,
