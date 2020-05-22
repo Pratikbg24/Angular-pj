@@ -21,15 +21,15 @@ import { DatePipe } from '@angular/common';
   providers: [ DatePipe ]
 })
 export class ViewAllComplaintsComponent implements OnInit {
-  c_status: string;
+  
   arr: FormArray
   formGroup: FormGroup
   submitted = false
   alert = false
   invalid: boolean
-  obj={
-    start_date:"",
-    end_date:"",
+   data={
+    startDate:"",
+    endDate:"",
     status:""
   }
   serviceEnggData: any = {
@@ -39,6 +39,7 @@ export class ViewAllComplaintsComponent implements OnInit {
   }
   Machinelist: Array<any> = [];
   maxDate: Date;
+  minDate:Date;
 
   pageTitle = 'All Complaints';
 
@@ -46,23 +47,14 @@ export class ViewAllComplaintsComponent implements OnInit {
   c_id: any[];
   Machine_type: any = {
     u_Machinepurchesed: null,
-
   }
   filterData: any[];
-  value: any
-  //complaint;
+  value: any;
   complaintData;
-
   c_date: [];
 
   searchText;
-  searchText1;
   machinType: [];
-  data = [
-
-  ]
-  showSuccessMsg: boolean = false;
-  showInvalidMsg: boolean = false;
 
   validation_messages = {
     'Datepurchased': [
@@ -93,15 +85,8 @@ export class ViewAllComplaintsComponent implements OnInit {
     this.dpconfig.isAnimated = true;
     this.maxDate = new Date();
     this.maxDate.setDate(this.maxDate.getDate() + 0)
-    this.Machinelist = [
-      { name: "Open" },
-      { name: "Pending" },
-      { name: "Close" },
-    ];
-
   }
   ngOnInit() {
-   
     this.initializeItems()
     this.formGroup = this.fb.group({
       Datepurchased: ['', Validators.compose([
@@ -132,6 +117,7 @@ export class ViewAllComplaintsComponent implements OnInit {
     }
   }
   initializeItems() {
+    
     this.charts.getAllComplaint().subscribe((result: any) => {
       this.complaint = result.data;
       this.complaint = this.complaint.filter((ele: any) => {
@@ -147,12 +133,29 @@ export class ViewAllComplaintsComponent implements OnInit {
   }
   
 
-  onSelect(val) {
-    console.log(val);
-  let end=this.datePipe.transform(this.formGroup.value.Datepurchased1, 'yyyy-MM-dd');
-  let start=this.datePipe.transform(this.formGroup.value.Datepurchased, 'yyyy-MM-dd');
+  onSelect(data) {
+    
+   
+   console.log(data);
+  this.selectedData = this.complaint.filter((item) => {
+    
+    if ((data.status !== "") && (data.startDate !== "")) {
+      
+      return (item.c_status === data.status) && ((new Date(data.startDate) <= new Date(item.c_date)) && (new Date(data.endDate) >= new Date(item.c_date)));
+    } else if (data.status && data.startDate === "") {
+      
+      return (item.c_status === data.status)
+    } else if ((data.status === "") && (data.startDate !== "")) {
+   
+      return (new Date(data.startDate) <= new Date(item.c_date)) && (new Date(data.endDate) >= new Date(item.c_date))
+    }
+    else{
+      return this.selectedData
+    }
+    //}
+  })
 
-  
+/*  
   if( start)
   {  this.selectedData = this.complaint.filter(
       m => new Date(m.c_date) >= new Date(start) && new Date(m.c_date) <= new Date(end)
@@ -165,8 +168,7 @@ export class ViewAllComplaintsComponent implements OnInit {
   else if(start && val ) 
   {
     this.selectedData = this.complaint.filter(
-      m => new Date(m.c_date) >= new Date(start) && new Date(m.c_date) <= new Date(end) && m.c_status===val
-      );
+      m =>  m.c_status===val && new Date(m.c_date) >= new Date(start) && new Date(m.c_date) <= new Date(end)       );
     return this.selectedData 
   }
 
@@ -178,7 +180,7 @@ export class ViewAllComplaintsComponent implements OnInit {
       );
     return this.selectedData
   }
-
+*/
     }
   excelToMail() {
     this.charts.downloadAllComplait(

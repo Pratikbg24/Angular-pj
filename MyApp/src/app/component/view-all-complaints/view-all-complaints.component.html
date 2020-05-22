@@ -54,7 +54,7 @@
                             <label style="margin-top:12px ;margin-left: 20px;font-size: medium;"><b>Start Date</b></label>
                         </div>
                         <div class="col-md-4 form-group">
-                            <input type="text" [(ngModel)]="obj.start_date" formControlName="Datepurchased" class="abc" placeholder="YYYY/MM/DD" bsDatepicker [bsConfig]="dpconfig" [maxDate]="maxDate" [ngClass]="{ 'is-invalid': submitted && f.Datepurchased.errors?.invalid }">
+                            <input type="text" [(ngModel)]="data.startDate" formControlName="Datepurchased" class="abc" placeholder="YYYY/MM/DD" bsDatepicker [bsConfig]="dpconfig" [maxDate]="maxDate" [ngClass]="{ 'is-invalid': submitted && f.Datepurchased.errors?.invalid }">
                         </div>
                     </div>
 
@@ -63,7 +63,7 @@
                             <label style="margin-top:12px ;margin-left: 20px;font-size: medium;"><b>End Date</b></label>
                         </div>
                         <div class="col-md-4 form-group">
-                            <input type="text" class="abc" [(ngModel)]="obj.end_date" (ngModelChange)="onSelect(obj.end_date)" formControlName="Datepurchased1" placeholder="YYYY/MM/DD" bsDatepicker [bsConfig]="dpconfig" [maxDate]="maxDate" [ngClass]="{ 'is-invalid': submitted && f.Datepurchased.errors?.invalid }">
+                            <input type="text" class="abc" [(ngModel)]="data.endDate" (ngModelChange)="onSelect(data)" formControlName="Datepurchased1" placeholder="YYYY/MM/DD" bsDatepicker [bsConfig]="dpconfig" [minDate]="data.startDate" [maxDate]="maxDate" [ngClass]="{ 'is-invalid': submitted && f.Datepurchased.errors?.invalid }">
                         </div>
                     </div>
                 </form>
@@ -73,7 +73,7 @@
                         <label style="margin-top:12px ;margin-left: 20px;font-size: medium;"><b>Status:</b></label>
                     </div>
                     <div class="col-md-4">
-                        <select class="abc" [(ngModel)]="selected" (ngModelChange)="onSelect(selected)">
+                        <select class="abc" [(ngModel)]="data.status" (ngModelChange)="onSelect(data)">
                             <option *ngFor="let option of options" 
                                     [value]="option"> 
                               {{ option }}
