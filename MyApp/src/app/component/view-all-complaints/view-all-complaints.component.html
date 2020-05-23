@@ -10,7 +10,7 @@
                 <b> {{pageTitle}}</b>
             </div>
             <div class='card-body'>
-                <div class='row' style="padding-top: 15px; border: 1px solid blueviolet;">
+                <div class='row' style="padding-top: 15px; ">
                     <div class='col-md-2' style="margin-left: 20px;margin-top: 5px; font-size: medium;"><b>Search</b> </div>
                     <div class='col-md-8'>
                         <input style="margin-bottom: 17px;" class="abc" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" />
@@ -47,73 +47,75 @@
                     </div>
 
                 </div>
-                <div class="row " style="margin-top: 10px; margin-bottom: 10px; ">
-                    <div class="col-md-2 ">
-                        <label style="margin-top:12px ;margin-left: 20px;font-size: medium;"><b>Start Date</b></label>
-                    </div>
-                    <div class="col-md-4">
-                        <input type="text" class="abc" placeholder="DD/MM/YYYY" bsDatepicker [bsConfig]="dpconfig" [maxDate]="maxDate" [ngClass]="{ 'is-invalid': submitted && f.Datepurchased.errors?.invalid }">
-                    </div>
-                </div>
+                <form class="form" [formGroup]="formGroup">
 
-                <div class="row " style="margin-top: 10px; margin-bottom: 10px; ">
-                    <div class="col-md-2 ">
-                        <label style="margin-top:12px ;margin-left: 20px;font-size: medium;"><b>End Date</b></label>
+                    <div class="row " style="margin-top: 10px; margin-bottom: 10px; ">
+                        <div class="col-md-2 ">
+                            <label style="margin-top:12px ;margin-left: 20px;font-size: medium;"><b>Start Date</b></label>
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <input type="text" [(ngModel)]="data.startDate" formControlName="Datepurchased" class="abc" placeholder="YYYY/MM/DD" bsDatepicker [bsConfig]="dpconfig" [maxDate]="maxDate" [ngClass]="{ 'is-invalid': submitted && f.Datepurchased.errors?.invalid }">
+                        </div>
                     </div>
-                    <div class="col-md-4">
-                        <input type="text" class="abc" placeholder="DD/MM/YYYY" bsDatepicker [bsConfig]="dpconfig" [maxDate]="maxDate" [ngClass]="{ 'is-invalid': submitted && f.Datepurchased.errors?.invalid }">
+
+                    <div class="row " style="margin-top: 10px; margin-bottom: 10px; ">
+                        <div class="col-md-2 ">
+                            <label style="margin-top:12px ;margin-left: 20px;font-size: medium;"><b>End Date</b></label>
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <input type="text" class="abc" [(ngModel)]="data.endDate" (ngModelChange)="onSelect(data)" formControlName="Datepurchased1" placeholder="YYYY/MM/DD" bsDatepicker [bsConfig]="dpconfig" [minDate]="data.startDate" [maxDate]="maxDate" [ngClass]="{ 'is-invalid': submitted && f.Datepurchased.errors?.invalid }">
+                        </div>
                     </div>
-                </div>
+                </form>
                 <div class="row " style="margin-top: 10px; margin-bottom: 10px; ">
                     <div class="col-md-2 ">
 
                         <label style="margin-top:12px ;margin-left: 20px;font-size: medium;"><b>Status:</b></label>
                     </div> 
                     <div class="col-md-4">
-                        <div class="form-group">
-                            <select class="form-control" [(ngModel)]="c_status">
-                            <option>Select Status</option>      
-                            <option value="Open">Open</option>
-                            <option value="Close">Close</option>
-                            <option value="Pending">Pending</option>
-                            
-                          </select>
-
-                        </div>
-
+                        <select class="abc" [(ngModel)]="data.status" (ngModelChange)="onSelect(data)">
+                            <option *ngFor="let option of options" 
+                                    [value]="option"> 
+                              {{ option }}
+                            </option>
+                       </select>
                     </div>
-                    <div class='row' *ngIf='listFilter'>
-                        <div class='col-md-6'>
-                            <h4> Filtered by: {{content}}</h4>
-                        </div>
+                    <div class="col-md-2">
+                        <button class="btn btn-primary" (click)="ngOnInit()">Reset Filter</button>
                     </div>
-                    <div class='table-responsive'>
-                        <table class='table'>
-                            <thead>
-                                <tr>
-                                    <th>Id</th>
-                                    <th>Complaint</th>
-                                    <th>Date</th>
-                                    <th>Status</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr *ngFor="let user of complaint | filter:searchText | searchPipe1: c_status">
-                                    <td>
-                                        {{user.c_id}}
-                                    </td>
-                                    <td>
-                                        {{user.c_desc}}
-                                    </td>
-                                    <td>
-                                        {{user.c_date | date:'dd/MM/yyy'}}
 
-                                    </td>
-                                    <td>{{user.c_status}}</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                </div>
+                <div class='row' *ngIf='listFilter'>
+                    <div class='col-md-6'>
+                        <h4> Filtered by: {{content}}</h4>
                     </div>
+                </div>
+                <div class='table-responsive'>
+                    <table class='table'>
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Complaint</th>
+                                <th>Date</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let x of selectedData | filter:searchText">
+                                <td>
+                                    {{x.c_id}}
+                                </td>
+                                <td>
+                                    {{x.c_desc}}
+                                </td>
+                                <td>
+                                    {{x.c_date | date:'yyy/MM/dd'}}
+
+                                </td>
+                                <td>{{x.c_status}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>

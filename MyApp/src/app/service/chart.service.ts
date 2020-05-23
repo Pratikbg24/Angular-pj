@@ -75,6 +75,10 @@ export class ChartService {
   }
 
 
+  public getAllUsers() {
+    return this._http.get(AppSettings.baseUrl + 'users/getAllCustomer');
+  }
+
   public updateComplaint(c_status: any,
     c_id:any,
     e_desc:any
