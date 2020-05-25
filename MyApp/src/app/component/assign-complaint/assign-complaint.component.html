@@ -6,12 +6,13 @@
         <div class='card'>
             <div class='card-header' id="r1">
                 <b> {{pageTitle}}</b>
+                <!-- <button class="btn btn-primary" (onClick)="sortNumberColumn()"> sort list</button> -->
             </div>
             <div class='card-body'>
                 <div class='row'>
                     <div class='col-md-1' style="margin-left: 20px;margin-top: 5px; font-size: medium;"><b>Filter By</b> </div>
                     <div class='col-md-8'>
-                        <input style="margin-bottom: 17px;" class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" />
+                        <input style="margin-bottom: 17px;" class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="Search..." />
                     </div>
                 </div>
                 <div class='row' *ngIf='listFilter'>
@@ -30,8 +31,8 @@
                                 <th>Assign</th>
                             </tr>
                         </thead>
-                        <tbody *ngFor="let user of complaint | filter:searchText">
-                            <tr class="test" >
+                        <tbody >
+                            <tr  *ngFor="let user of complaint | filter:searchText   let i=index" (click)="setClickedRow(i)" [class.active]="i == selectedRow" >
                                 <td>
                                     {{user.c_id}}
                                 </td>
@@ -119,3 +120,5 @@
         </div>
     </div>
 </div>
+
+<!-- [class.active]="c_id === complaint_id" -->

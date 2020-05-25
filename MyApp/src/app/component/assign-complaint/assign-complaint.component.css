@@ -19,3 +19,8 @@ thead {
 .selected{
   background-color:green;
 }
+
+.table tr.active td {
+  background-color:#123456 !important;
+  color: white;
+}
