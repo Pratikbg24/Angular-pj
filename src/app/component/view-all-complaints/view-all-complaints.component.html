@@ -1,0 +1,123 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<ngx-spinner [fullScreen]="true" type="ball-clip-rotate-multiple" size="medium">
+
+</ngx-spinner>
+<div class="container" *ngIf="complaint">
+    <div class="row">
+        <div class='card'>
+            <div class='card-header' id="r1">
+                <b> {{pageTitle}}</b>
+            </div>
+            <div class='card-body'>
+                <div class='row' style="padding-top: 15px; ">
+                    <div class='col-md-2' style="margin-left: 20px;margin-top: 5px; font-size: medium;"><b>Search</b> </div>
+                    <div class='col-md-8'>
+                        <input style="margin-bottom: 17px;" class="abc" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" />
+                    </div>
+                    <div class='col-md-1 float-right'>
+                        <div class="modal fade" id="myModal" role="dialog">
+                            <div class="modal-dialog">
+                                <form class="form" [formGroup]="formGroup">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h4><span></span> Download Data</h4>
+                                            <button class="close" data-dismiss="modal">&times;</button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="form-group">
+                                                <label for="usrname"><span><i class="fas fa-envelope"></i></span> Email</label>
+                                                <input type="email" class="form-control" formControlName="email" placeholder="Enter Your Email" [ngClass]="{ 'is-invalid': submitted && f.email.errors?.invalid }">
+                                            </div>
+                                            <div class="validation-errors">
+                                                <ng-container *ngFor="let validation of validation_messages.email">
+                                                    <div class="error-message text-danger" *ngIf="formGroup.get('email').hasError(validation.type) && (formGroup.get('email').dirty || formGroup.get('email').touched)">
+                                                        <span name="information-circle-outline"></span> {{ validation.message }}
+                                                    </div>
+                                                </ng-container>
+                                            </div>
+                                            <button type="submit" id="button1" data-dismiss="modal" class="btn btn-success btn-block" (click)=" excelToMail()"><span><i class="fas fa-sign-in-alt"></i></span> Submit</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <button id="button2" class="fas fa-download" (click)="openModal()" data-toggle="modal"></button>
+
+                    </div>
+
+                </div>
+                <form class="form" [formGroup]="formGroup">
+
+                    <div class="row " style="margin-top: 10px; margin-bottom: 10px; ">
+                        <div class="col-md-2 ">
+                            <label style="margin-top:12px ;margin-left: 20px;font-size: medium;"><b>Start Date</b></label>
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <input type="text" [(ngModel)]="data.startDate" formControlName="Datepurchased" class="abc" placeholder="YYYY/MM/DD" bsDatepicker [bsConfig]="dpconfig" [maxDate]="maxDate" [ngClass]="{ 'is-invalid': submitted && f.Datepurchased.errors?.invalid }">
+                        </div>
+                    </div>
+
+                    <div class="row " style="margin-top: 10px; margin-bottom: 10px; ">
+                        <div class="col-md-2 ">
+                            <label style="margin-top:12px ;margin-left: 20px;font-size: medium;"><b>End Date</b></label>
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <input type="text" class="abc" [(ngModel)]="data.endDate" (ngModelChange)="onSelect(data)" formControlName="Datepurchased1" placeholder="YYYY/MM/DD" bsDatepicker [bsConfig]="dpconfig" [minDate]="data.startDate" [maxDate]="maxDate" [ngClass]="{ 'is-invalid': submitted && f.Datepurchased.errors?.invalid }">
+                        </div>
+                    </div>
+                </form>
+                <div class="row " style="margin-top: 10px; margin-bottom: 10px; ">
+                    <div class="col-md-2 ">
+
+                        <label style="margin-top:12px ;margin-left: 20px;font-size: medium;"><b>Status:</b></label>
+                    </div> 
+                    <div class="col-md-4">
+                        <select class="abc" [(ngModel)]="data.status" (ngModelChange)="onSelect(data)">
+                            <option *ngFor="let option of options" 
+                                    [value]="option"> 
+                              {{ option }}
+                            </option>
+                       </select>
+                    </div>
+                    <div class="col-md-2">
+                        <button class="btn btn-primary" (click)="ngOnInit()">Reset Filter</button>
+                    </div>
+
+                </div>
+                <div class='row' *ngIf='listFilter'>
+                    <div class='col-md-6'>
+                        <h4> Filtered by: {{content}}</h4>
+                    </div>
+                </div>
+                <div class='table-responsive'>
+                    <table class='table'>
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Complaint</th>
+                                <th>Date</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let x of selectedData | filter:searchText">
+                                <td>
+                                    {{x.c_id}}
+                                </td>
+                                <td>
+                                    {{x.c_desc}}
+                                </td>
+                                <td>
+                                    {{x.c_date | date:'yyy/MM/dd'}}
+
+                                </td>
+                                <td>{{x.c_status}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,83 +1,87 @@
-<<<<<<< HEAD
-=======
 
->>>>>>> 1edb25d82ff76a9851b83f139b4f31a2612e6e4e
 <ngx-spinner [fullScreen]="true" type="ball-clip-rotate-multiple" size="medium">
-    <p class="loading">Loading Awesomeness...</p>
 </ngx-spinner>
 
-<body>
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top row " id="topheader">
-        <div class="col-md-8">
-
-            <div class="collapse navbar-collapse float-left" id="ftco-nav">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                         <a class="navbar-brand" routerLink="/home1"(click)="showButton(2)" [class.phase-active]="activeButton === 2" > <i class="fas fa-home"></i>Admin Home</a>                       
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" 
-                            aria-haspopup="true" aria-expanded="false"><i class="fas fa-users"></i>Customer</a>
-                        <div class="dropdown-menu" aria-labelledby="dropdown04">
-                            <a class="dropdown-item" routerLink="createcustomer"  (click)="createCustomer()" >Create Customer</a>
-                            <a class="dropdown-item" routerLink="customerdetails">Customer Details</a>
-                            <a class="dropdown-item" routerLink="updateCustomer1">Update Customer</a>
-                        </div>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false"><i class="fas fa-users-cog"></i>Service
+<nav class="navbar navbar-expand-sm navbar-dark fixed-top row " id="topheader">
+    <div class="col-md-8">
+        <div class="collapse navbar-collapse float-left" id="ftco-nav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="navbar-brand" routerLink="/home1" (click)="showButton(2)" [class.phase-active]="activeButton === 2"> <i class="fas fa-home"></i>Ticketing Tool</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-users"></i>Customer</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdown04">
+                        <a class="dropdown-item" routerLink="createcustomer" (click)="createCustomer()">Create Customer</a>
+                        <a class="dropdown-item" routerLink="updateCustomer1" (click)="updateCustomer()">Customer Details</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-users-cog"></i>Service
                             Engineer</a>
-                        <div class="dropdown-menu" aria-labelledby="dropdown04">
-                            <a class="dropdown-item" routerLink="createserviceEngineer" routerLinkActive="active"  [routerLinkActiveOptions]="{ exact: true }" (click)="serviceEngg()">Create Service Engineer</a>
-                            <a class="dropdown-item" routerLink="serviceEngglist">Service Engineer Details</a>
-                            <a class="dropdown-item" routerLink="updateserviceEngineer">Update Service Engineer</a>
-                        </div>
-                    </li>
+                    <div class="dropdown-menu" aria-labelledby="dropdown04">
+                        <a class="dropdown-item" routerLink="createserviceEngineer" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="serviceEngg()">Create Service Engineer</a>
+                        <a class="dropdown-item" routerLink="updateserviceEngineer" (click)="serviceEnggUpdate()">Service Engineer Details</a>
+                    </div>
+                </li>
 
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false"> <i class="fas fa-list-ul"></i>
-                            Complaints</a>
-                        <div class="dropdown-menu" aria-labelledby="dropdown04">
-                            <a class="dropdown-item">View Complaints</a>
-                            <a class="dropdown-item" routerLink="app-assign-complaint" routerLinkActive="active"  [routerLinkActiveOptions]="{ exact: true }" (click)="AssignComplaint()">Assign Complaints</a>
-                        </div>
-                    </li>
-
-                </ul>
-            </div>
-
-
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="fas fa-clipboard"></i> Complaints
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="dropdown04">
+                        <a class="dropdown-item" routerLink="app-view-all-complaints" (click)="assign_complaint()">View Complaints</a>
+                        <a class="dropdown-item" routerLink="app-assign-complaint" (click)="assign_complaint()">Assign Complaints</a>
+                    </div>
+                </li>
+            </ul>
         </div>
-        <div class="col-md-4">
-            <div class="collapse navbar-collapse float-right" id="ftco-nav">
-                <ul class="navbar-nav ml-auto">
-
-                    <li class="nav-item">
-                        <a href="#" class="notification">
-                            <span>Notification</span>
-                            <i class="fas fa-bell">  <span class="badge">3</span></i>
-                          
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="notification">
-                            <span>Logout</span>
-                            <i class="fas fa-sign-out-alt"></i>
-                        </a>
-                    </li>
-                </ul>
-            </div>
+    </div>
+    <div class="col-md-4">
+        <div class="collapse navbar-collapse float-right" id="ftco-nav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <app-notification>
+                    </app-notification>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="Logout">
+                        <span>Setting</span>
+                        <i class="fas fa-cog"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#logoutModal" data-toggle="modal" data-target="#logoutModal" class="Logout">
+                        <span>Logout</span>
+                        <i class="fas fa-sign-out-alt"></i>
+                    </a>
+                </li>
+            </ul>
         </div>
-
-
-
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
-        aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="oi oi-menu"></span> <b>Menu</b>
     </button>
+</nav>      
 
-    </nav>
-   </body>
+<div id="logoutModal" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-confirm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Are you sure?</h4>
+                <span><button class="close" data-dismiss="modal" >&times;</button></span>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to Log out.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger deletebtn" routerLink="" data-dismiss="modal" name="delete" >Logout</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Alert  -->
+               
+    

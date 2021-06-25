@@ -1,74 +1,85 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <ngx-spinner [fullScreen]="true" type="ball-clip-rotate-multiple" size="medium">
-  <p class="loading">Loading Awesomeness...</p>
 </ngx-spinner>
 
 <body class="bg">
-  <div class="container">
-
-    <div class="d-flex justify-content-center">
-        <div class="main">        
+    <div class="container">
         <div class="d-flex justify-content-center">
-          <img src="assets\Login.png" alt="HTML5 Icon">
-        </div>
-
-        <h2> Login</h2>
-        <form id="form_id" class="" name="myform" [formGroup]="formGroup" (ngSubmit)="onSubmit()">
-          <div class="form-group">
-            <label for="exampleInputEmail1">User Name :</label>
-            <input type="text" name="username" class="form-control" formControlName="email" id="username"
-              aria-describedby="emailHelp" placeholder="Enter username">
-
-          </div>
-          <div class="validation-errors">
-            <ng-container *ngFor="let validation of validation_messages.email">
-              <div class="error-message text-danger"
-                *ngIf="formGroup.get('email').hasError(validation.type) && (formGroup.get('email').dirty || formGroup.get('email').touched)">
-                <span name="information-circle-outline"></span> {{ validation.message }}
-              </div>
-            </ng-container>
-          </div>
-          <div class="form-group">
-            <label for="exampleInputEmail1">Password :</label>
-            <div class="input-group">
-              <input [type]="PasswordfieldTextType ? 'text':'password'" name="password" formControlName="password"
-                class="form-control" id="password" placeholder="Enter password"/>
-            <div class="input-group-prepend">
-                <span class="input-group-text">
-                  <i class="fa" [ngClass]="{'fa-eye-slash' : !PasswordfieldTextType,'fa-eye' : PasswordfieldTextType}" id="btn2"
-                    (click)="toggleFieldTextType()"></i>
+            <div class="main">
+                <div class="d-flex justify-content-center">
+                    <img src="assets\Login.png" alt="HTML5 Icon">
+                </div>
+                <h2> Login</h2>
+                <form id="form_id" class="" name="myform" [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+                    <div class="form-group" >
+                        <label for="exampleInputEmail1">User Name :</label>
+                        <input type="text" name="username" class="form-control" formControlName="email" id="username" aria-describedby="emailHelp" placeholder="Enter username">
+                    </div>
+                    <div class="validation-errors">
+                        <ng-container *ngFor="let validation of validation_messages.email">
+                            <div class="error-message text-danger" *ngIf="formGroup.get('email').hasError(validation.type) && (formGroup.get('email').dirty || formGroup.get('email').touched)">
+                                <span name="information-circle-outline"></span> {{ validation.message }}
+                            </div>
+                        </ng-container>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Password :</label>
+                        <div class="input-group">
+                            <input [type]="PasswordfieldTextType ? 'text':'password'" name="password" formControlName="password" class="form-control" id="password" placeholder="Enter password" />
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                  <i class="fa" [ngClass]="{'fa-eye-slash' : !PasswordfieldTextType,'fa-eye' : PasswordfieldTextType}"
+                    id="btn2" (click)="toggleFieldTextType()"></i>
                 </span>
-              </div>
-            </div>
-          </div>
-
-          <div class="validation-errors">
-            <ng-container *ngFor="let validation of validation_messages.password">
-              <p class="error-message text-danger"
-                *ngIf="formGroup.get('password').hasError(validation.type) && (formGroup.get('password').dirty || formGroup.get('password').touched)">
-                <!-- <div class="error-message"
-                   *ngIf="formGroup.get('password').hasError(validation.type) && (formGroup.get('password').minlength || formGroup.get('password').maxlength)"> -->
-
-                <span name="information-circle-outline"></span> {{ validation.message }}
-              </p>
-            </ng-container>
-          </div>
-
-          <div *ngIf="alert" class="alert alert-warning alert-dismissible fade show">
-            <strong>Warning!</strong> Please enter a valid value in all the required fields before proceeding.
-          </div>
-
-          <div>
-            <button class="btn btn-primary" type="submit" id="btn1" [disabled]="!formGroup.valid">
-              <!-- <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span> -->
-              <b>Login</b>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="validation-errors">
+                        <ng-container *ngFor="let validation of validation_messages.password">
+                            <p class="error-message text-danger" *ngIf="formGroup.get('password').hasError(validation.type) && (formGroup.get('password').dirty || formGroup.get('password').touched)">
+                                <span name="information-circle-outline"></span> {{ validation.message }}
+                            </p>
+                        </ng-container>
+                    </div>
+                    <div *ngIf="alert" class="alert alert-warning alert-dismissible fade show">
+                        <strong>Warning!</strong> Please enter a valid UserName & Password in all the required fields before proceeding.
+                    </div>
+                    <div>
+                        <button class="btn btn-primary" type="submit" id="btn1" [disabled]="!formGroup.valid">
+              <b><span><i class="fas fa-power-off"></i></span> Login</b>
             </button>
-          </div>
-
-          <a href="#">Forget Password?</a>
-        </form>
-      </div>
+                    </div>
+                    <a href="#myModal" data-toggle="modal">Forget Password?</a>
+                </form>
+            </div>
+        </div>
     </div>
-  </div>
-</body>
 
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4><span><i class="fa fa-unlock" aria-hidden="true"></i></span> Forget Password ?</h4>
+                <span><button class="close" data-dismiss="modal">&times;</button></span>
+            </div>
+            <div class="modal-body">
+                <form name="form" (ngSubmit)="f.form.valid && submitdata()" #f="ngForm"  novalidate>
+                    <div class="form-group">
+                        <label>Email<span id="indicate">*</span></label>
+                        <input type="email" name="email" class="form-control" 
+                        [(ngModel)]="model.email" #email="ngModel" 
+                        [ngClass]="{ 'is-invalid':(f.dirty || f.touched) && f.submitted && email.invalid }"
+                        placeholder="Enter your registered email address" 
+                        required email/>
+                        <div *ngIf="(f.dirty || f.touched) && f.submitted && email.invalid" class="invalid-feedback">
+                            <div *ngIf="email.errors.required">Email is required</div>
+                            <div *ngIf="email.errors.email">Email must be a valid email address</div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-success btn-block" [disabled]="!f.form.valid" ><span><i class="fas fa-sign-in-alt"></i></span> Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>

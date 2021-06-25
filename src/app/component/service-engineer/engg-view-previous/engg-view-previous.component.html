@@ -1,0 +1,53 @@
+<ngx-spinner [fullScreen]="true" type="ball-clip-rotate-multiple" size="medium">
+    <p class="loading"></p>
+</ngx-spinner>
+
+<div class="container" *ngIf="complaint">
+    <div class="row">
+        <div class='card'>
+            <div class='card-header' id="r1">
+                <b> {{pageTitle}}</b>
+            </div>
+            <div class='card-body'>
+                <div class='row'>
+                    <div class='col-md-1' style="margin-left: 20px;margin-top: 5px; font-size: medium;"><b>Filter By</b> </div>
+                    <div class='col-md-8'>
+                        <input style="margin-bottom: 17px;" class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" />
+                    </div>
+                </div>
+                <div class='row' *ngIf='listFilter'>
+                    <div class='col-md-6'>
+                        <h4> Filtered by: {{content}}</h4>
+                    </div>
+                </div>
+                <div class='table-responsive'>
+                    <table class='table'>
+                        <thead>
+                            <tr>
+
+                                <th>Id</th>
+                                <th>Complaint</th>
+                                <th>Date</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let user of complaint | filter:searchText">
+                                <td>
+                                    {{user.c_id}}
+                                </td>
+                                <td>
+                                    {{user.c_desc}}
+                                </td>
+                                <td>
+                                    {{user.c_date | date:'dd/MM/yyy'}}
+                                </td>
+                                <td>{{user.e_desc}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

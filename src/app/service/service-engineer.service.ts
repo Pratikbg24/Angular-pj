@@ -17,7 +17,7 @@ export class ServiceEngineerService {
     EngineerType:any,
     DateOfjoining:any,
     password:any,
-    confirmPassword:any,
+    confirmPassword:any
    )
    {
     let data ={
@@ -27,13 +27,12 @@ export class ServiceEngineerService {
       "u_email":email,
       "u_address":Address,
       "u_EngineerType":EngineerType,
-      "u_DateOfjoining":DateOfjoining,
+      "u_joinDate":DateOfjoining,
       "u_password":password,
       "u_cpassword":confirmPassword,
       "u_role":3,
-      "u_roleType":1,
+      "u_roleType":1
       }
-      console.log(data)
       let url = "https://thawing-eyrie-14958.herokuapp.com/";
       return this.http.post(url + 'users/createUser',data)
     }

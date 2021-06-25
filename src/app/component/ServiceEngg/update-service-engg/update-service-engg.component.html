@@ -1,45 +1,37 @@
 <div class="container">
     <h3>Service Engineer Details</h3>
     <div class="input-group">
-        <input type="text" class="form-control" placeholder="Start searching for a customer Name or Mobilenumber or Email" name="search" 
-        [(ngModel)]="u_email" autocomplete="off">
-        <div class="input-group-append">
-            <button type="submit" class="btn btn-primary">Search</button>
-        </div>
+        <input type="text" class="form-control" placeholder="Start searching for a Service Engineer Name or Mobile number or Email" name="search" [(ngModel)]="u_email" autocomplete="off">
     </div>
 
     <table class="table">
-      <thead>
-        <tr>
-          <th scope="col">Id</th>
-          <th scope="col">Name</th>
-          <th scope="col">Mobile</th>
-          <th scope="col">Email</th>
-          <th scope="col">Address</th>
-          <th scope="col">EnggType</th>
-          <th scope="col">JoiningDate</th>
-          <th scope="col">Password</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let item of serviceEnggData | searchPipe:u_email;let i=index">
-          <td>{{item.u_id}}</td>
-          <td>{{item.u_name}}</td>
-          <td>{{item.u_mobile}}</td>
-          <td>{{item.u_email}}</td>
-          <td>{{item.u_address}}</td>
-          <td>{{item.u_EngineerType}}</td>
-          <td>{{item.u_joinDate |date:'dd/MM/yyyy'}}</td>
-          <td>{{item.u_password}}</td>
-          <td style="display: flex">
-              <button type="button" class="btn btn-success btn-md" [routerLink]="['view',item.u_id]">View</button>
-            
-          </td>
-        </tr>
-      </tbody>
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Name</th>
+                <th scope="col">Mobile</th>
+                <th scope="col">Email</th>
+                <th scope="col">Address</th>
+                <th scope="col">JoiningDate</th>
+                <th scope="col">Password</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of serviceEnggData | searchPipe:u_email;let i=index">
+                <td>{{item.u_id}}</td>
+                <td>{{item.u_name}}</td>
+                <td>{{item.u_mobile}}</td>
+                <td>{{item.u_email}}</td>
+                <td>{{item.u_address}}</td>
+                <td>{{item.u_joinDate |date:'dd/MM/yyyy'}}</td>
+                <td>{{item.u_password}}</td>
+                <td style="display: flex">
+                    <button type="button" class="btn btn-primary btn-md" [routerLink]="['view',item.u_id]" (click)="loader()">View</button>
+
+                </td>
+            </tr>
+        </tbody>
     </table>
-  </div>
+</div>
 
-  <router-outlet></router-outlet>
-
-
+<router-outlet></router-outlet>

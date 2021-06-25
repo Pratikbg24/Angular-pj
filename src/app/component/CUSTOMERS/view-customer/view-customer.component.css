@@ -1,0 +1,32 @@
+p {
+    margin-left: 10px;
+}
+
+#row1 {
+    margin-left: 100px;
+}
+
+img {
+    width: 130px;
+    height: 130px;
+}
+
+.container {
+    margin-left: 100px;
+}
+
+.card-header {
+    text-align: center;
+}
+
+.btn {
+    float: right;
+    margin-top: 5px;
+    margin: 20px;
+    width: 30%;
+}
+
+.fa {
+    font-size: 24px;
+    margin-right: 10px;
+}

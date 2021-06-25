@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { UpdateServiceService} from '../../../service/update-service.service';
-
+import { Component, OnInit, Inject } from '@angular/core';
+import { UpdateServiceService } from 'src/app/service/update-service.service';
+import { NotificationServiceService } from 'src/app/service/NOTIFICATION-ALERT/notification-service.service';
+import { LoadingSpinnerService } from '../../../service/loading-spinner.service'
+declare var $: any
 @Component({
   selector: 'app-service-engg-list',
   templateUrl: './service-engg-list.component.html',
@@ -9,27 +11,50 @@ import { UpdateServiceService} from '../../../service/update-service.service';
 export class ServiceEnggListComponent implements OnInit {
 
   serviceEnggData: any;
-  DataList:any
-  u_email="";
-  constructor(private updateservice:UpdateServiceService) { 
+  DataList: any
+  u_email = "";
+  u_id: any
+  constructor(private updateservice: UpdateServiceService,
+    private notificationservice: NotificationServiceService,
+    private spinner: LoadingSpinnerService) {
     this.serviceEnggData = [];
   }
-  
+
   ngOnInit() {
     this.getAllServiceEngg();
-    // this.getEngineerType();
   }
-  getAllServiceEngg(){
-    this.updateservice.getList().subscribe((data:any)=>{
-      this.serviceEnggData=data.data.filter((el:any)=>{
+  getAllServiceEngg() {
+    this.updateservice.getList().subscribe((data: any) => {
+      this.serviceEnggData = data.data.filter((el: any) => {
         return el.u_role === 3;
+      });
+      this.u_id = data.data.filter((el: any) => {
+        return el.u_id
       })
     })
   }
-  // getEngineerType(){
-  //   this.updateservice.machineType().subscribe((data:any)=>{
-  //     this.serviceEnggData=data;
-  //   })
-  // }
-
+  delete(item: any) {
+    let data = {
+      "u_id": this.u_id
+    }
+    this.updateservice.deleteItem(data).subscribe((result: any) => {
+      if (result.status === "success") {
+        this.notificationservice.warning("Record has been successfully deleted")
+        this.getAllServiceEngg()
+      } else {
+        this.notificationservice.error("The record cannot be deleted")
+      }
+    })
+    this.spinner.show();
+  }
+  openModal(item: any) {
+    this.u_id = item.u_id
+    $("#deleteModal").modal('show');
+  }
+  editServiceEngg() {
+    this.spinner.show();
+  }
+  loader(){
+  this.spinner.show()
+  }
 }

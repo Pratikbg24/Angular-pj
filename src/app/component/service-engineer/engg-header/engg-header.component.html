@@ -1,0 +1,53 @@
+<ngx-spinner [fullScreen]="true" type="ball-clip-rotate-multiple" size="medium">
+</ngx-spinner>
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top row " id="topheader">
+    <div class="col-md-8">
+
+        <div class="collapse navbar-collapse float-left" id="ftco-nav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="navbar-brand" routerLink="/app-engg-home" (click)="showButton(2)" [class.phase-active]="activeButton === 2"> <i class="fas fa-home"></i>Ticketing Tool</a>
+                </li>
+                <li class="nav-item">
+                    <a class="notification" routerLink="app-accept-complaint" (click)="loader()">
+                        <i class="fas fa-chalkboard-teacher"></i>Accept Complaint</a>
+                </li>
+                <li class="nav-item">
+                    <a class="notification" id="a1" routerLink="app-engg-view-previous" (click)="loader()"> <i class="far fa-clipboard"></i> View Previous Complaint</a>
+
+                </li>
+
+            </ul>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="collapse navbar-collapse float-right" id="ftco-nav">
+            <ul class="navbar-nav ml-auto">
+
+                <li class="nav-item">
+                    <a href="#" class="notification">
+                        <span>Notification</span>
+                        <i class="fas fa-bell">  <span class="badge">3</span></i>
+
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="#" class="Logout">
+                        <span>Setting</span>
+                        <i class="fas fa-cog"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="Logout">
+                        <span>Logout</span>
+                        <i class="fas fa-sign-out-alt"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="oi oi-menu"></span> <b>Menu</b>
+    </button>
+</nav>

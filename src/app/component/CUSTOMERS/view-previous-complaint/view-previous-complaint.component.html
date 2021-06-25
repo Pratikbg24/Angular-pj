@@ -1,0 +1,100 @@
+<ngx-spinner [fullScreen]="true" type="ball-clip-rotate-multiple" size="medium">
+</ngx-spinner>
+
+<div class="container" *ngIf="complaint">
+    <div class="row">
+        <div class='card'>
+            <div class='card-header' id="r1">
+                <b> {{pageTitle}}</b>
+            </div>
+            
+            <div class='card-body'>
+                <div class="head">Filter Complaints By:</div>
+                <div class='row'>
+                    <div class='col-md-2'>
+                        <label style="margin-left: 20px;margin-top: 5px; font-size: medium;"><b>Keywords:</b></label>
+                    </div> 
+                    <div class='col-md-8'>
+                        <input style="margin-bottom: 17px;" class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" />
+                    </div>
+                </div>
+    
+                <div class='row'>
+                    <div class="col-md-2">
+                        <label style="margin-left: 20px;margin-top: 5px; font-size: medium;"><b>Status:</b></label>
+                    </div>
+                    <div class="col-md-2">
+                            <select style="border-radius: 3px" [(ngModel)]="c_status">
+                            <option>Select Status</option>      
+                            <option value="Open">Open</option>
+                            <option value="Close">Close</option>
+                            <option value="Pending">Pending</option>     
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">
+                        <label style="margin-left: 20px;margin-top: 5px; font-size: medium;"><b>Start Date:</b></label>
+                    </div>
+                    <div class="col-md-2">
+                        <input 
+                            class="input"
+                            type="text" 
+                            placeholder=" DD/MM/YYYY" 
+                            bsDatepicker 
+                            [(bsValue)]="newVar1" 
+                            value="{{ newVar1 | date:'dd-MM-yyyy' }}" 
+                            [(ngModel)]="fromDate">
+                    </div>
+                    <div class="col-md-2">
+                        <label style="margin-left: 20px;margin-top: 5px; font-size: medium;"><b>End Date:</b></label>
+                    </div>
+                    <div class="col-md-2">
+                        <input 
+                            type="text" 
+                            class="input"
+                            placeholder=" DD/MM/YYYY" 
+                            bsDatepicker 
+                            [(bsValue)]="newVar2" 
+                            value="{{ newVar2 | date:'dd-MM-yyyy' }}" 
+                            [(ngModel)]="toDate">
+                    </div>
+                </div>
+                
+                <div class="text-center my-2">
+                    <button type="reset" class="btn btn-warning clear" (click)="clearText()">Clear Filter</button>
+                </div>
+            
+                <div class='table-responsive'>
+                    <table class='table'>
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Complaint</th>
+                                <th>Date</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let user of complaint | filter:searchText | searchPipe1: c_status | datePipe: fromDate: toDate">
+                                <td>
+                                    {{user.c_id}}
+                                </td>
+                                <td>
+                                    {{user.c_desc}}
+                                </td>
+                                <td>
+                                    {{ user.c_date | date:'dd/MM/yyy'}}
+                                </td>
+                                <td>
+                                    {{user.c_status}}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>

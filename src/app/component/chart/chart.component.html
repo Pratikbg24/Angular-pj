@@ -1,13 +1,145 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-
-<div class="chart-container"  style="float: left; height:30vh; width:50vw;margin-top: 100px !important;">    
-   <canvas id="canvas"></canvas>    
- </div>
-
-
- <div *ngFor='let user of users' style="text-align: center;">
-  <h2>
-         {{user.u_joinDate}}    </h2>
+<body>
+  <div class="container">
+    <div class="card btnCard">
+    <div class="card-body">
+    <div class="row" id="r1">
+      <div class="col-md-4 mx-auto " *ngIf="userCount1 > 0">
+          <button class=" btn box" (click)="userCount()">
+              <p class="label">User <span><i class="fa fa-users"></i> </span></p>
+              <p class="count"> {{userCount1}}</p><br>
+          </button>
+      </div>
+      <div class="col-md-4 mx-auto" *ngIf="enggCount1 > 0">
+          <button class=" btn box" (click)="enggCount()">
+              <p class="label">Engineers <span><i class="fa fa-users"></i> </span></p>
+              <p class="count"> {{enggCount1}}</p><br>
+          </button>
+      </div>
+      <div class="col-md-4 mx-auto " *ngIf="adminCount1 > 0">
+          <button class=" btn box">
+              <p class="label">Admin<span><i class="fa fa-users"></i> </span></p>
+              <p class="count">{{adminCount1}}</p><br>
+          </button>
+      </div>
+  </div>
+  <div class="row" id="r1">
+    <div class="col-md-4 mx-auto" *ngIf="openCount1 > 0">
+        <button class=" btn box" (click)="openComplaint()">
+            <p class="label" >Unassigned <span><i class="fas fa-folder-open" ></i> </span></p>
+            <p class="count"> {{openCount1}}</p><br>
+        </button>
+    </div>
+    <div class="col-md-4 mx-auto" *ngIf="closedCount1 > 0">
+        <button class=" btn box" (click)="closeComplaint()">
+            <p class="label"  >Closed <span><i class="fas fa-clone"></i> </span></p>
+            <p class="count"> {{closedCount1}}</p><br>
+        </button>
+    </div>
+    <div class="col-md-4 mx-auto" *ngIf="pendingCount1 > 0">
+        <button class=" btn box" (click)="pendingComplaint()">
+            <p class="label" >Pending<span><i class="fas fa-pencil-square-o"></i> </span></p>
+            <p class="count">{{pendingCount1}}</p><br>
+        </button>
+    </div>
+</div>
+</div>
 </div>
 
+  <div class=" col-lg-12 ">    
+        <div class="row">
+      <div class="col-md-6">
+        <div class=" card">
+          <div class="card-body">
+            <div class="chart-container">
+              <canvas id="complaintsStatusCart"></canvas>
+            </div>
+          </div>
+    </div>
+</div>
+<div class="col-md-6">
+  <div class=" card">
+    <div class="card-body">
+      <div class="chart-container">
+        <canvas id="canvas"></canvas>
+      </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+      <div class="col-lg-12 complainttable">
+     <div class="card">
+      <div class="card-header"> 
+        <div class="row row123 ">
+          <div class='col-md-2'><b>Search</b> 
+          </div>
+          <div class='col-md-8'>
+              <div class="input-group form-group">   
+        <input type="text" class="form-control"
+            placeholder="Start searching for a customer Name or Mobile number or Email" name="search"
+            [(ngModel)]="searchText" autocomplete="off">
+            <div class="input-group-append">
+                <span class="input-group-text form-control">
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                </span>
+            </div>
+            </div>
+               </div>
+            </div>
+         </div>
+         <div class="card-body">
+        <div class='table-responsive'>
+          <table class='table'>
+              <thead>
+                  <tr>
+                      <th>Id</th>
+                      <th>Complaint</th>
+                      <th>Date</th>
+                      <th>Status</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr *ngFor="let user of filterData| filter:searchText">
+                      <td>
+                          {{user.c_id}}
+                      </td>
+                      <td>
+                          {{user.c_desc}}
+                      </td>
+                      <td>
+                          {{user.c_date | date:'dd/MM/yyy'}}
+                      </td>
+                      <td>
+                      {{user.c_status}}
+                      </td>
+                      <td>
+                      <a  href="#deleteModal" data-toggle="modal" data-target="#deleteModal" (click)="openModal()" ><i class="fa fa-trash delete" aria-hidden="true"></i></a>
+                      </td>
+                    </tr>
+                </tbody>
+              </table>
+            </div>       
+          </div>
+       </div> 
+       </div>
+       </div>
+      </body>
 
+      <div id="deleteModal" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-confirm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Are you sure?</h4>
+                    <span><button class="close" data-dismiss="modal" >&times;</button></span>
+                </div>
+                <div class="modal-body">
+                    <p>Do you really want to delete these records? This process cannot be undone.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger deletebtn" data-dismiss="modal" name="delete">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>

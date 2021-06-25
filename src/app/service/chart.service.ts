@@ -10,33 +10,22 @@ import { retry, catchError } from 'rxjs/operators';
 })
 export class ChartService {
   base_path ="https://thawing-eyrie-14958.herokuapp.com/users/getAnalysisData";
-  
-  // Http Options
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json'
     })
   }
- 
-  // Handle API errors
   handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
-      // A client-side or network error occurred. Handle it accordingly.
       console.error('An error occurred:', error.error.message);
     } else {
-      // The backend returned an unsuccessful response code.
-      // The response body may contain clues as to what went wrong,
       console.error(
         `Backend returned code ${error.status}, ` +
         `body was: ${error.error}`);
     }
-    // return an observable with a user-facing error message
     return throwError(
       'Something bad happened; please try again later.');
   };
-
-
-  // Get single customer data by ID
   getItem(u_id:any): Observable<Data> {
     return this._http
       .get<Data>(this.base_path + '/' + u_id)
@@ -45,8 +34,6 @@ export class ChartService {
         catchError(this.handleError)
       )
   }
- 
-  // Get customer data
   getList(): Observable<Data> {
     return this._http
       .get<Data>(this.base_path)
@@ -62,8 +49,6 @@ export class ChartService {
   public getMachineType() {
     return this._http.get(AppSettings.baseUrl + 'complaint/getMachineType');
   }
-
-  
    getData()
   {
     return this._http.get<user[]>("https://thawing-eyrie-14958.herokuapp.com/users/getAnalysisData");
@@ -77,22 +62,58 @@ export class ChartService {
     let url="https://thawing-eyrie-14958.herokuapp.com/";
     return this._http.post(url+'complaint/assignComplaint',data);
   }
+  
+  public getAllComplaint() {
+    return this._http.get(AppSettings.baseUrl + 'complaint/gelAllcomplaint');
+  }
+  
+  public getCustomerDetails(id: any) {
+    let data = {
+      "u_id": id
+    }
+    return this._http.post(AppSettings.baseUrl + 'users/getAll', data);
+  }
 
 
+  public getAllUsers() {
+    return this._http.get(AppSettings.baseUrl + 'users/getAllCustomer');
+  }
 
-
+  public updateComplaint(c_status: any,
+    c_id:any,
+    e_desc:any
+    ) {
+    let data={
+      "status":c_status,
+     " complaintId":c_id,
+     " e_desc":e_desc
+    }
+        return this._http.post(AppSettings.baseUrl + 'complaint/updateComplaint', data);
+  }
   public createComplaint(name:any,
     EngineerType:any,
+    priority: any,
     DateOfjoining:any,
     c_status:any,
+    c_assignBy:any,
     ) {
       let data = {
         "c_desc": name,
-   //     "c_assignBy": this.navParams.get("user_id"),
+      "c_assignBy": window.localStorage.getItem('id'),
         "machine_type": EngineerType,
+        "priority": priority,
         "c_date": DateOfjoining,
         "c_status": 1
       }
     return this._http.post(AppSettings.baseUrl + 'complaint/newComplaint', data);
+  }
+  public downloadAllComplait(email:any,result:any)
+  {
+    let data = {
+      "email": email,
+    "data": result,
+     }
+    return this._http.post(AppSettings.baseUrl + 'users/excelToMail', data);
+
   }
 }

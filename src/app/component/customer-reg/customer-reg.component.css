@@ -47,3 +47,12 @@ select.ng-touched.ng-invalid {
     margin: 20px;
     width: 30%;     
  }
+ #New{
+    font-weight: normal;
+    margin-left: 10px;
+  }
+  #Re-condition{
+    font-weight: normal;
+    margin-left: 10px;
+  }
+  

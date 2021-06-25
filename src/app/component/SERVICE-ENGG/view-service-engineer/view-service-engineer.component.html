@@ -1,1 +1,53 @@
-<p>view-service-engineer works!</p>
+<div class="container">
+    <div *ngFor="let item of Viewserviceengg">
+        <div class="col-md-8 mx-auto">
+            <div class="card">
+                <div class="card-header">
+                    <h1>{{item.u_name}} </h1>
+                </div>
+                <div class="card-body">
+                    <div class="col-md-4" id="row1">
+                        <img src="assets/Image/customer.png" alt="image">
+                    </div>
+                    <div class="row">
+                        <h6>Id:</h6>
+                        <p>{{item.u_id}}</p>
+                    </div>
+                    <div class="row">
+                        <h6>Mobile:</h6>
+                        <p>{{item.u_mobile}}</p>
+                    </div>
+                    <div class="row">
+                        <h6>Alternate Mobile Number:</h6>
+                        <p>{{item.u_altermobile}}</p>
+                    </div>
+                    <div class="row">
+                        <h6>Email:</h6>
+                        <p>{{item.u_email}}</p>
+                    </div>
+                    <div class="row">
+                        <h6>Address:</h6>
+                        <p>{{item.u_address}}</p>
+                    </div>
+                    <div class="row">
+                        <h6>Engineer Type:</h6>
+                        <p>{{item.u_EngineerType}}</p>
+                    </div>
+                    <div class="row">
+                        <h6>Date Of Purchased: </h6>
+                        <p>{{item.u_joinDate|date:'dd/MM/yyy'}}</p>
+                    </div>
+                    <div class="row">
+                        <h6>Password:</h6>
+                        <p>{{item.u_password}}</p>
+                    </div>
+                    <div class="row">
+                        <h6>Confirm Password:</h6>
+                        <p>{{item.u_cpassword}}</p>
+                    </div>
+                    <button class="btn btn-primary" (click)="back()"><i class="fa fa-arrow-left"></i>Back</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

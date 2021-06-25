@@ -6,7 +6,6 @@ import { ServiceEngineerComponent } from './component/service-engineer/service-e
 import { CustomerRegComponent } from './component/customer-reg/customer-reg.component';
 import { PageNotFoundComponent } from './component/page-not-found/page-not-found.component';
 import { ChartComponent } from "./component/chart/chart.component"
-//import { CustomerDetailComponent } from './component/customer-detail/customer-detail.component';
 import { UpdateCustomerComponent } from './component/customer/update-customer/update-customer.component';
 import { UpdateServiceEnggComponent } from './component/ServiceEngg/update-service-engg/update-service-engg.component';
 import { CustomerListComponent } from './component/CUSTOMERS/customer-list/customer-list.component';
@@ -15,77 +14,110 @@ import { ServiceEnggListComponent } from './component/SERVICE-ENGG/service-engg-
 import { ServiceEnggEditComponent } from './component/SERVICE-ENGG/service-engg-edit/service-engg-edit.component';
 import { ViewCustomerComponent } from './component/CUSTOMERS/view-customer/view-customer.component';
 import { ViewServiceEngineerComponent } from './component/SERVICE-ENGG/view-service-engineer/view-service-engineer.component';
-import { AssignComplaintComponent } from './component/assign-complaint/assign-complaint.component';
-import {CustHomeComponent} from './component/CUSTOMERS/cust-home/cust-home.component'
+import{AssignComplaintComponent} from './component/assign-complaint/assign-complaint.component'
+import{ViewAllComplaintsComponent}from './component/view-all-complaints/view-all-complaints.component'
+import{CustHomeComponent} from './component/CUSTOMERS/cust-home/cust-home.component'
+import{CustRaiseComplaintComponent} from './component/CUSTOMERS/cust-raise-complaint/cust-raise-complaint.component'
+import{ViewPreviousComplaintComponent} from './component/CUSTOMERS/view-previous-complaint/view-previous-complaint.component'
+import {EnggHomeComponent} from './component/service-engineer/engg-home/engg-home.component'
+import{AcceptComplaintComponent} from './component/service-engineer/accept-complaint/accept-complaint.component'
+import { EnggViewPreviousComponent } from './component/service-engineer/engg-view-previous/engg-view-previous.component';
+import { CustNotificationComponent } from './component/CUSTOMERS/cust-notification/cust-notification.component';
 const routes: Routes = [
   {
     path: '',
     component: LoginComponent
   },
+  // { path: 'app-cust-home', loadChildren: '' },
   {
     path: 'app-cust-home',
     component: CustHomeComponent,
-    
-  },
+    children: [
+        {
+            path: '',
+            component: CustRaiseComplaintComponent
+        },
+        {
+            path: 'app-view-previous-complaint',
+            component: ViewPreviousComplaintComponent
+        },
+        {
+            path: 'app-cust-notification',
+            component: CustNotificationComponent
+        }
+    ]
+},
+  {
+    path:'app-engg-home',
+    component:EnggHomeComponent,
+    children: [
+      {
+        path:  'app-accept-complaint',
+        component: AcceptComplaintComponent,
+
+      },
+      {
+        path: 'app-engg-view-previous',
+        component: EnggViewPreviousComponent,
+      },
+    ]
+},
   {
     path: 'home1',
     component: Home1Component,
     children: [
       {
-        path: '',pathMatch: 'full',
+        path: '',
         component: ChartComponent
 
       },
       {
-        path: 'app-assign-complaint',pathMatch: 'full',
-        component: AssignComplaintComponent,
-
-      },
-      {
-        path:'app-assign-complaint/view/:id',pathMatch: 'full',
-        component: AssignComplaintComponent
-      },
-      
-      {
-        path: 'createserviceEngineer',pathMatch: 'full',
+        path: 'createserviceEngineer',
         component: ServiceEngineerComponent,
 
       },
-
       {
-        path: 'serviceEngglist',pathMatch: 'full',
+      path: 'app-view-all-complaints',
+      component:ViewAllComplaintsComponent,  
+      },
+      {
+        path: 'app-assign-complaint',
+        component: AssignComplaintComponent,
+      },
+      {
+        path: 'serviceEngglist',
         component: UpdateServiceEnggComponent,
       },
       {
-        path:'serviceEngglist/view/:id',pathMatch: 'full',
+        path:'updateserviceEngineer/view/:u_id',
         component:ViewServiceEngineerComponent
       },
       {
-        path: 'createcustomer',pathMatch: 'full',
+        path: 'createcustomer',
         component: CustomerRegComponent,
       },
       {
-        path:'updateCustomer1/edit/:id', pathMatch: 'full',
+        path:'updateCustomer1/edit/:u_id', 
         component: CustomerEditComponent        
       },
       {
-        path:'updateCustomer1',pathMatch: 'full',
+        path:'updateCustomer1',
         component:CustomerListComponent
         },
       {
-        path: 'customerdetails',pathMatch: 'full',
+        path: 'customerdetails',
         component: UpdateCustomerComponent
       },
       {
-          path:'customerdetails/view/:id',pathMatch: 'full',
+          path:'updateCustomer1/view/:u_id',
           component:ViewCustomerComponent
       },
       {
-        path :'updateserviceEngineer',pathMatch: 'full',
+        path :'updateserviceEngineer',
         component:ServiceEnggListComponent
       },
       {
-        path:'updateserviceEngineer/edit/:u_id',pathMatch: 'full',
+        path:'updateserviceEngineer/edit/:u_id',
         component:ServiceEnggEditComponent
       }
     ]

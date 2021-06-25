@@ -1,0 +1,28 @@
+thead {
+    color: #337ab7;
+  }
+
+  #r1{
+    background-color: rgb(170, 170, 252) !important;
+  }
+.table{
+  table-layout: fixed !important;
+  width: 100% !important;  
+}
+.container{
+  margin-bottom: 30px !important;
+}
+.input {
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+button.clear:hover {
+  background-color: #FFB133;
+}
+.head {
+  text-align: center;
+  font-weight: bold;
+  font-size: inherit;
+  margin-bottom: 5px;
+}

@@ -1,31 +1,26 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { LoadingSpinnerService } from '../../../service/loading-spinner.service'
-import { from } from 'rxjs';
-import { LoginComponent } from '../../login/login.component';
+import { ChartService } from '../../../service/chart.service'
+import { NotificationServiceService } from 'src/app/service/NOTIFICATION-ALERT/notification-service.service';
+import { AppSettings } from '../../../app.settings'
+
 
 @Component({
   selector: 'app-cust-header',
   templateUrl: './cust-header.component.html',
   styleUrls: ['./cust-header.component.css']
 })
-export class CustHeaderComponent implements OnInit {
+export class CustHeaderComponent {
 
-  activeButton
-  constructor(private spinner: LoadingSpinnerService) { }
+  activeButton;
+  @Input() openCount1: number[];
 
-  ngOnInit() {
-  }
-  createCustomer(event) {
-    this.spinner.show();
-    this.activeButton=event;
+  constructor(private spinner: LoadingSpinnerService,
+              private charts: ChartService,
+              private notificationservice: NotificationServiceService) { }
 
-  }
-  serviceEngg(event) {
-    this.spinner.show();
-    this.activeButton=event;
-  }
-  
- AssignComplaint(event) {
+
+ loader(event) {
     this.spinner.show();
     this.activeButton=event;
   }

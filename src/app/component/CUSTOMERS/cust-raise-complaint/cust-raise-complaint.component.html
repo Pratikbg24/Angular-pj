@@ -1,23 +1,53 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <ngx-spinner [fullScreen]="true" type="ball-clip-rotate-multiple" size="medium">
-    <p class="loading">Loading Awesomeness...</p>
 </ngx-spinner>
+<app-cust-header [openCount1]="openCount1"></app-cust-header>
 
 <div class="container">
+    <div class="row" id="r1">
+        <div class="col-md-4 mx-auto" *ngIf="openCount1 > 0">
+            <div class="box">
+                <p class="label">Unassigned <span><i class="fas fa-folder-open" style="color:black; float:right"></i> </span></p>
+                <p class="count"> {{openCount1}}</p><br>
+            </div>
+        </div>
+        <div class="col-md-4 mx-auto" *ngIf="closedCount1 > 0">
+            <div class="box">
+                <p class="label">Closed <span><i class="fas fa-clone" style="color:black; float:right"></i> </span></p>
+                <p class="count"> {{closedCount1}}</p><br>
+            </div>
+        </div>
+        <div class="col-md-4 mx-auto" *ngIf="pendingCount1 > 0">
+            <div class="box">
+                <p class="label">Pending<span><i class="fas fa-pencil-square-o" style="color:black; float:right"></i> </span></p>
+                <p class="count">{{pendingCount1}}</p><br>
+            </div>
+        </div>
+    </div>
+
+    <form class="searchbox" id="r1">
+        <input type="text" placeholder="How can we help?" name="search">
+        <button type="submit"><i class="fa fa-search"></i></button>
+    </form>
+    
+
     <div class="row">
         <div class="col-md-8 mx-auto">
             <div class="card">
                 <div class="card-header">
-                    <h3> Raise Complaint </h3>
+                    <h3> Raise Your Complain </h3>
                 </div>
                 <div class="card-body">
                     <form class="form" [formGroup]="formGroup" (ngSubmit)="onSubmit(fb)">
 
                         <div class="form-group">
                             <label>Description<p class="p12">*</p></label>
-                            <input type="text" class="form-control" formControlName="name" placeholder="Enter Description"
+                            <textarea class="form-control" rows="4" formControlName="name"
+                                placeholder="Enter Description"
                                 [ngClass]="{ 'is-invalid': submitted && f.name.errors?.invalid }">
-                        </div>
+                            </textarea>
+                        
                         <div class="validation-errors">
                             <ng-container *ngFor="let validation of validation_messages.name">
                                 <div class="error-message text-danger"
@@ -26,19 +56,31 @@
                                 </div>
                             </ng-container>
                         </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Priority<p class="p12">*</p></label>
+                            <select class="form-control" formControlName="priority" placeholder="Select Priority">
+                                <option value="">Select Priority</option>
+                                <option *ngFor="let priority of priorityList; let i= index" value="{{priority.key}}"
+                                    [selected]="i == 0">{{priority.name}}</option>
+                            </select>
 
-                       
-
+                            <div class="validation-errors">
+                                <ng-container *ngFor="let validation of validation_messages.priority">
+                                    <div class="error-message text-danger"
+                                        *ngIf="formGroup.get('priority').hasError(validation.type) && (formGroup.get('priority').dirty || formGroup.get('priority').touched)">
+                                        <span name="information-circle-outline"></span> {{ validation.message }}
+                                    </div>
+                                </ng-container>
+                            </div>
+                        </div>
                         <div class="form-group">
                             <label>Engineer Type<p class="p12">*</p></label>
-                            <!-- <input  class="custom-select" (change)="changeCity($event)" formControlName="Machine_purchase" placeholder="select Machine"> -->
-                            <select class="form-control"  formControlName="EngineerType"  placeholder=" Choose Engineer">
+                            <select class="form-control" formControlName="EngineerType" placeholder=" Choose Engineer">
                                 <option value="">Choose engg type</option>
-<<<<<<< HEAD
-                                <option *ngFor="let engg of enggList; let i= index" value="{{engg.key}}" [selected]="i == 0">{{engg.name}}</option>
-=======
-                                <option *ngFor="let engg of enggList; let i= index" value="{{engg.name}}" [selected]="i == 0">{{engg.name}}</option>
->>>>>>> 1edb25d82ff76a9851b83f139b4f31a2612e6e4e
+                                <option *ngFor="let engg of enggList; let i= index" value="{{engg.key}}"
+                                    [selected]="i == 0">{{engg.name}}</option>
+
                             </select>
 
                             <div class="validation-errors">
@@ -55,9 +97,9 @@
                             <label>Problem Starting Date<p class="p12">*</p></label>
                             <input type="text" class="form-control" formControlName="DateOfjoining"
                                 placeholder="MM/DD/YYYY" bsDatepicker [bsConfig]="{ isAnimated: true }"
-                                [maxDate]="maxDate" [ngClass]="{ 'is-invalid': submitted && f.DateOfjoining.errors?.invalid }">
-                            <!-- <i class="fa fa-calendar"></i> -->
-                        </div>
+                                [maxDate]="maxDate"
+                                [ngClass]="{ 'is-invalid': submitted && f.DateOfjoining.errors?.invalid }">
+                        
                         <div class="validation-errors">
                             <ng-container *ngFor="let validation of validation_messages.DateOfjoining">
                                 <div class="error-message text-danger"
@@ -66,36 +108,14 @@
                                 </div>
                             </ng-container>
                         </div>
-
-                        <div  id="serviceEnggModal" class="modal fade" role="dialog">
-                            <div class="modal-dialog">
-                          
-                              <!-- Modal content-->
-                              <div class="modal-content">
-                                <div class="modal-header">
-                                  <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                  </div>
-                                <div class="modal-body">
-                                    <div class="alert alert-success fade show" *ngIf="showSuccessMsg" >
-                                        <strong>Success!</strong>Registration Successfully!
-                                    </div>
-                                    <div class="alert alert-danger fade show" *ngIf="showInvalidMsg">
-                                        <strong>Error! </strong>The email address or phone number you have entered is already registered!.
-                                    </div>                                                                        
-                                </div>
-                                <div class="modal-footer">
-                                  <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
-                                </div>
-                              </div>                        
-                            </div>
-                          </div>                    
-
+                        </div>
                         <div class="form-group">
-                            <button type="submit" class="btn btn-primary" id="Registerbutton" data-toggle="modal" data-target="#serviceEnggModal" [disabled]="!formGroup.valid">
+                            <button type="submit" class="btn btn-primary" id="Registerbutton" data-dismiss="modal"
+                                [disabled]="!formGroup.valid">
                                 Register
                             </button>
                             <button type="reset" class="btn btn-secondary" id="ResetButton">
-                                Reset Form
+                                Reset
                             </button>
                         </div>
                     </form>

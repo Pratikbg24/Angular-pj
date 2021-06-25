@@ -10,10 +10,14 @@ import { format } from 'url';
 })
 export class Home1Component implements OnInit {
  
-  constructor() { }
+  constructor( ) { }
 
   ngOnInit() {
-    }
+    window.localStorage.getItem('id');
+console.log(  window.localStorage.getItem('id')
+)
 
+  }
+    
 }
 

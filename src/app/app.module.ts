@@ -6,7 +6,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './component/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
 import{Data} from './data'
 import { HttpClient, HttpClientModule } from "@angular/common/http";
 import { Home1Component } from './component/home1/home1.component';
@@ -20,13 +19,12 @@ import { ChartComponent } from './component/chart/chart.component';
 import { CustomerDasboardComponent } from './component/customer/customer-dasboard/customer-dasboard.component';
 import { HeaderComponent } from './component/header/header.component';
 import { FooterComponent } from './component/footer/footer.component';
- import{ChartService} from './service/chart.service'; 
+import{ChartService} from './service/chart.service'; 
 import { from } from 'rxjs';
 import { AssignComplaintComponent } from './component/assign-complaint/assign-complaint.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { LoadingSpinnerService} from './service/loading-spinner.service'
 import { CustomerRegService} from './service/customer-reg.service'
-
 import { UpdateCustomerComponent } from './component/customer/update-customer/update-customer.component';
 import { SearchPipePipe } from './pipes/search-pipe.pipe';
 import { UpdateServiceEnggComponent } from './component/ServiceEngg/update-service-engg/update-service-engg.component';
@@ -36,17 +34,25 @@ import { ServiceEnggListComponent } from './component/SERVICE-ENGG/service-engg-
 import { ServiceEnggEditComponent } from './component/SERVICE-ENGG/service-engg-edit/service-engg-edit.component';
 import { ViewCustomerComponent } from './component/CUSTOMERS/view-customer/view-customer.component';
 import { ViewServiceEngineerComponent } from './component/SERVICE-ENGG/view-service-engineer/view-service-engineer.component';
+import { UpdateServiceService } from '../../../../Angular-pj/MyApp/src/app/service/update-service.service';
 import { CustHeaderComponent } from './component/CUSTOMERS/cust-header/cust-header.component';
 import { CustFooterComponent } from './component/CUSTOMERS/cust-footer/cust-footer.component';
 import { CustHomeComponent } from './component/CUSTOMERS/cust-home/cust-home.component';
 import { CustRaiseComplaintComponent } from './component/CUSTOMERS/cust-raise-complaint/cust-raise-complaint.component';
 import { PopupModalComponent } from './component/popup-modal/popup-modal.component';
+import { ViewAllComplaintsComponent } from './component/view-all-complaints/view-all-complaints.component';
+import { ViewPreviousComplaintComponent } from './component/CUSTOMERS/view-previous-complaint/view-previous-complaint.component';
+import { EnggHomeComponent } from './component/service-engineer/engg-home/engg-home.component';
+import { EnggHeaderComponent } from './component/service-engineer/engg-header/engg-header.component';
+import { EnggFooterComponent } from './component/service-engineer/engg-footer/engg-footer.component';
+import { AcceptComplaintComponent } from './component/service-engineer/accept-complaint/accept-complaint.component';
+import { EnggViewPreviousComponent } from './component/service-engineer/engg-view-previous/engg-view-previous.component';
+import { SearchPipe1Pipe } from './pipes/search-pipe1.pipe';
+import { NotificationComponent } from './component/Reusable/Notification/notification/notification.component';
+import { CustNotificationComponent } from './component/CUSTOMERS/cust-notification/cust-notification.component';
+import { datePipe } from './pipes/date-pipe';
    
-
-//import { ConfirmDialogmodalComponent } from './component/CONFIRM-DIALOG/confirm-dialogmodal/confirm-dialogmodal.component'; 
-import { UpdateServiceService } from '../../../../Angular-pj/MyApp/src/app/service/update-service.service';
-//import { ConfirmDialogserviceService } from '../../../../Angular-pj/MyApp/src/app/service/CONFIRM-DIALOG/confirm-dialogservice.service' 
-@NgModule({
+  @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
@@ -97,11 +103,31 @@ import { UpdateServiceService } from '../../../../Angular-pj/MyApp/src/app/servi
 
     CustRaiseComplaintComponent,
 
-    PopupModalComponent
+    PopupModalComponent,
+
+    ViewAllComplaintsComponent,
+
+    ViewPreviousComplaintComponent,
+
+    EnggHomeComponent,
+
+    EnggHeaderComponent,
+
+    EnggFooterComponent,
+
+    AcceptComplaintComponent,
+
+    EnggViewPreviousComponent,
+
+    SearchPipe1Pipe,
+
+    datePipe,
+
+    NotificationComponent,
+    CustNotificationComponent
   ],
   imports: [
     FormsModule,
-    //ReactiveFormsModule,
     ReactiveFormsModule.withConfig({warnOnNgModelWithFormControl: 'never'}),
     BrowserModule,
     NgxSpinnerModule,
@@ -110,9 +136,6 @@ import { UpdateServiceService } from '../../../../Angular-pj/MyApp/src/app/servi
     BsDatepickerModule.forRoot(),
     BrowserAnimationsModule,
     Ng2SearchPipeModule,
-    BrowserAnimationsModule
-
-  
   ],
   providers: [
     LoginService,

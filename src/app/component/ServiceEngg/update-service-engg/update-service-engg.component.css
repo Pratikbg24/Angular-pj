@@ -5,16 +5,39 @@
 h3{
     text-align: center;
 }
-.btn{
-    border-radius: 10px;
+.btn {
+    color: #fff;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: all 0.4s;
+    line-height: normal;
+    min-width: 120px;
+    border: none;
+    min-height: 40px;
+    border-radius: 3px;
+    margin: 0 5px;
+    outline: none !important;
 }
-
-.table{
-    /* margin-left: 10px; */
-    /* margin-right: 10px; */
+.table {
     margin-top: 20px;
-    /* margin-bottom: 20px; */
-    /* overflow-x:scroll; */
+    width: 100%;
+    }    
+.table td,th{
+border: 1px solid #ddd;
+padding: 8px;
+}
+.table tr:nth-child(even){
+background-color: #f2f2f2;
+}
+.table tr:hover {
+background-color: #ddd;
+}
+thead, th {
+padding-top: 20px;
+padding-bottom: 12px;
+text-align: left;
+background-color: #4CAF50;
+color: white;
 }
 .form-cpntrol{
     margin: 10px;
