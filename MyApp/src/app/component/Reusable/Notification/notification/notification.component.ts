@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ChartService} from '../../../../service/chart.service'
+import { ChartService} from '../../../../service/chart.service';
+import { NotificationServiceService} from '../../../../service/NOTIFICATION-ALERT/notification-service.service'
+import { from } from 'rxjs';
 declare var $:any
 @Component({
   selector: 'app-notification',
@@ -13,7 +15,8 @@ export class NotificationComponent implements OnInit {
     openCount:0,
   };
   openCount1:any
-  constructor(private getcomplaint:ChartService) { }
+  constructor(private getcomplaint:ChartService,
+    private alert1:NotificationServiceService) { }
 
   ngOnInit() {
     this.initializeItems()
@@ -24,16 +27,22 @@ export class NotificationComponent implements OnInit {
       this.Opencomplaint = this.Opencomplaint.filter((ele: any) => {
       return ele.c_status ===1
       })
-      console.log(this.Opencomplaint);
       this.countData.openCount=this.Opencomplaint.length;
       this.openCount1=this.countData.openCount
     })
   }
   notification(){
-    $('.toast') .toast('show');
-    this.showMyContainer=!this.showMyContainer
+    this.showMyContainer=!this.showMyContainer    
+    if(this.openCount1 > 0){
+      $('.toast') .toast('show');
+    }
+    else{
+      $('.toast') .toast('hide');
+      this.alert1.warning("No new notification")
+    }
   }
     carddissmiss(){
+      this.showMyContainer=!this.showMyContainer
       $('.toast') .toast('hide');
     }
 }
